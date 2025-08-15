@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gráfico e Tabela de Valores</title>
+    <link rel="stylesheet" href="estilo.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div id="tit1" class="detalhes-convite3">
+        <h1>Explorando o Princípio da Indução Matemática</h1>
+      </div>
+      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+    </header>
+    <section>
+      <fieldset>
+        <legend>Escolha um número n de partes:</legend>
+        <div class="input-container">
+          <p>
+            <label for="n-value"><b>Digite o valor de n:</b></label>
+            <input type="number" id="n-value" min="2" value="2" />
+            <button onclick="generatePlot()"><b>Gerar Gráfico</b></button>
+            <button onclick="resetPage()"><b>Limpar</b></button>
+          </p>
+        </div>
+      </fieldset>
+    </section>
+    <main>
+      <fieldset id="plot">
+        <legend>Gráfico Gerado</legend>
+      </fieldset>
+      <fieldset id="table-container">
+        <legend>Tabela de Valores</legend>
+        <div id="tabela-container"></div>
+      </fieldset>
+    </main>
+    <script src="area2.js"></script>
+    <footer>
+      <p>
+        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução
+        Matemática
+      </p>
+    </footer>
+  </body>
+</html>
