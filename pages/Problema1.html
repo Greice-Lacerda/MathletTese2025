@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Descrição do Problema - Explorando o Princípio da Indução Matemática
+    </title>
+    <link rel="stylesheet" href="../styles/estiloProb1.css" />
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+  </head>
+  <body>
+    <header>
+      <div id="tit1">
+        <h1>Explorando o Princípio da Indução Matemática</h1>
+      </div>
+      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+    </header>
+
+    <main>
+      <section>
+        <div>
+          <img id="Parabola" src="../img/Parabola.jpg" alt="Parabola1" />
+        </div>
+
+        <div>
+          <fieldset class="Prob1">
+
+            <p id="pProb">
+              A área do polígono retangular inscrito sob a faixa da parábola 
+              y = x<sup>2</sup> no intervalo [0, 1], ilustrado na figura, foi descrita por
+              Lima (2000), como a expressão: 
+
+              <p id="pProb"><strong><span class="subscript">P<sub>n</sub></span> 
+                    = <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac>
+                <mn>1</mn><msup><mi>n</mi><mn>3</mn></msup></mfrac></math> . [1<sup>2</sup> + 2<sup>2</sup> + ... + (n &minus; 1)<sup>2</sup>]</strong>                
+            </strong>
+            </p>
+
+            <p id="pProb">Onde:
+            </p>
+
+            <p class="pProb">
+            <ul class="pProb">
+            <li><strong>n</strong> é o <strong>número de subintervalos</strong> de mesmo 
+            tamanho obtidos com a divisão do intervalo [0, 1] em n partes iguais; </li>
+            <li>e o <strong>polígono retangular inscrito
+            </strong> é a figura geométrica
+            formada pelos <strong>n &minus; 1</strong> retângulos justapostos internos à 
+            faixa de parábola. </li>
+            </ul>
+            </p>
+
+          </fieldset>
+        </div>
+
+        <div>
+          <fieldset class="Prob1">
+            <p id="pProb">
+                Assim, considerando que a área construída possui as seguintes características: 
+                <ul class="pProb">
+                
+                <li>a <strong>largura (x<sub>i</sub>)</strong> de cada retângulo igual a Δx = <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mfrac><mn>1</mn><mn>n</mn></mfrac></math>.
+                </li> 
+                
+                <li>as <strong>alturas (y<sub>i</sub>)</strong> dos retângulos calculadas pela <strong>função y = x<sup>2</sup></strong> nos pontos
+                de partida de cada subintervalo: x<sub>i</sub> = 0, 
+                <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>1</mn><mn>n</mn></mfrac></math>,
+                <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>2</mn><mn>n</mn></mfrac></math>,
+                <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>3</mn><mn>n</mn></mfrac></math>,
+                ..., <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mn>n &minus; 1</mn><mn>n</mn></mfrac></math>.
+                </li>
+                
+                <li>a <strong>área total A(n)</strong> é a soma das áreas (A<sub>i</sub>) de todos os retângulos inscritos. 
+                </li>
+                </ul>
+                </p>
+                <p id="recuo"> 
+                </p>
+                <p id="pProb">
+                Demonstre, pelo <strong>Princípio da Indução Matemática</strong>, que a área de um polígono retangular inscrito sob a parábola y = x<sup>2</sup> no intervalo [0, 1] é dada por 
+                <strong>A(n) = <math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac>
+                <mn>1</mn><msup><mi>n</mi><mn>3</mn></msup></mfrac></math> . [1<sup>2</sup> + 2<sup>2</sup> + ... + (n &minus; 1)<sup>2</sup>]</strong>.
+                </p>
+          </fieldset>
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <fieldset class="controles">
+            <button
+              id="voltar"
+              onclick="window.location.href='./apresentacaoTeorica.html'"
+            >
+              Voltar
+            </button>
+
+            <button id="Inicial" onclick="window.location.href='./Passo1.html'">
+              Iniciar Exploração
+            </button>
+
+            <button
+              id="Sair"
+              onclick="window.location.href='https://www.google.com.br'"
+            >
+              Sair
+            </button>
+          </fieldset>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+  </body>
+</html>

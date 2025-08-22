@@ -1,0 +1,81 @@
+/* --- Configurações de estilo da index --- */
+fieldset {
+  border-color: rgba(202, 248, 247, 0.2);
+  background-color: rgb(252, 252, 250, 0.2);
+  border-radius: 20px;
+  margin: 2px 20px;
+  padding: 2px;
+  width: 95%;
+  height: 290px;
+  box-sizing: border-box;
+  box-shadow: #000 10px 10px 20px;
+}
+
+fieldset:hover {
+  transform: scale(1.05);
+  background-color: #bee2be;
+}
+
+legend {
+  font-style: italic;
+  font-size: 20px;
+  color: transparent;
+}
+
+.controles {
+  width: 95%;
+  height: 90px;
+  display: flex;
+  flex-direction: row; /* Correção da direção */
+  align-items: flex-start;
+  margin: 0 auto;
+  padding: 0 auto;
+  background-color: transparent;
+  box-shadow: #000 10px 10px 20px;
+  border: 1px solid rgb(5, 44, 1, 0.5);
+  border-radius: 10px;
+}
+
+/* === Estilos dos Botões (Propriedades consolidadas) === */
+.controles button {
+  width: 250px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 60px auto;
+  padding: 10px 5px auto;
+  font-size: 18px;
+  border-radius: 10px;
+  border: outset 6px #4caf50;
+  background: linear-gradient(
+    to right,
+    #064108,
+    #09680e,
+    #56d25a,
+    #aff7b1,
+    #7a9c7d
+  );
+  color: white;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
+}
+
+.controles button:hover {
+  background: linear-gradient(
+    to right,
+    #6bc06e,
+    #9ed4a0,
+    #bee2be,
+    #d8ead8,
+    #f0f9f0
+  );
+  border: outset 6px #6bc06e;
+  scale: 1.1;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.controles button:active {
+  transform: scale(0.95);
+}

@@ -1,0 +1,355 @@
+/* === Estilos de Elementos do Formulário === */
+#Explorar11 {
+  width: 1185px;
+  height: 120px;
+  position: fixed;
+  margin-top: 300px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+#Explorar11:hover {
+  transform: scale(1.04);
+  background-color: #bee2be;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+#grafico-container {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border: 2px solid rgba(128, 128, 128, 0.728);
+  border-radius: 20px;
+  box-shadow: inset 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+section {
+  gap: 15px;
+  position: relative;
+  top: 36px;
+  margin-left: 6px;
+  justify-content: flex-start;
+}
+
+.grafico-container {
+  width: 400px;
+  height: 300px;
+  position: relative;
+  margin-bottom: 150px;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+#Perguntas1 {
+  width: 600px;
+  height: 300px;
+  position: relative;
+  margin-bottom: 150px;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: justify;
+  padding: 0 25px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 18px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+#Perguntas1:hover {
+  transform: scale(1.05);
+  background-color: #bee2be;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+#alternativas {
+  width: 380px;
+  height: 160px;
+  margin: 10px 0 0 0;
+  flex-direction: column;
+  text-align: left;
+}
+
+legend {
+  margin: 5px 0;
+  color: #032b04;
+  text-shadow: 2px 2px 5px #0a0a0a;
+  text-align: center;
+}
+
+#Justific {
+  width: 980px;
+  height: 95px;
+  margin: 0 auto;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 0 auto;
+  line-height: 0.5;
+  font-size: 19px;
+  color: #001112;
+  font-weight: bold;
+  background-color: #00111200;
+}
+
+/* === Estilos dos Botões (Propriedades consolidadas) === */
+
+#ProximaEtapa button,
+#ProximaPerguntaBtn,
+#finalizarBtn,
+#refazerBtn {
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(
+    to right,
+    #350202,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  width: 180px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px auto;
+  gap: 10px;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
+  color: white;
+}
+
+#ProximaEtapa button:hover,
+#ProximaPerguntaBtn:hover,
+#finalizarBtn:hover,
+#refazerBtn:hover {
+  transform: scale(1.1);
+  color: rgb(124, 249, 7);
+  filter: invert(599%) sepia(0%) saturate(50%) hue-rotate(270deg);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+#ProximaEtapa button:active,
+#ProximaPerguntaBtn:active,
+#finalizarBtn:active,
+#refazerBtn:active {
+  transform: scale(0.95);
+}
+
+.Fexplorar14 {
+  width: 160px;
+  height: 300px;
+  position: relative;
+  margin-bottom: 150px;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+.Fexplorar14 button {
+  width: 140px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  padding: 8px 0;
+  font-size: 14px;
+  border-radius: 10px;
+  border: outset 4px #4caf50;
+  background: linear-gradient(
+    to right,
+    #064108,
+    #09680e,
+    #56d25a,
+    #aff7b1,
+    #7a9c7d
+  );
+  color: white;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
+}
+
+.Fexplorar14 button:hover {
+  background: linear-gradient(
+    to right,
+    #6bc06e,
+    #9ed4a0,
+    #bee2be,
+    #d8ead8,
+    #f0f9f0
+  );
+  border: outset 4px #6bc06e;
+  transform: scale(1.1);
+  color: white;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.Fexplorar14 button:active {
+  transform: scale(0.95);
+}
+
+.alternativa-btn {
+  /* Estilos padrão do botão */
+  margin: 10px 0;
+  border: 0;
+  font-size: 16px;
+  font-family: "Times New Roman", Times, serif;
+  background: transparent;
+  font-weight: bold;
+  flex-direction: row;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.alternativa-btn:hover {
+  /* Estilos para o estado 'hover' */
+  transform: scale(1.1);
+  color: white;
+  box-shadow: inset 2px 2px 15px rgba(0, 0, 0, 0.9);
+  border-radius: 5px;
+}
+
+#quiz-progress-container {
+  width: 95%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px auto;
+  position: relative; /* ADICIONE ESTA LINHA */
+}
+
+#quiz-progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: #4caf50;
+  transition: width 0.5s ease-in-out;
+  border-radius: 10px;
+}
+
+#quiz-progress-text {
+  /* ADICIONE ESTE NOVO BLOCO */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black; /* Escolha uma cor visível */
+  font-size: 10px;
+  font-weight: bold;
+}
+
+#ProximaPerguntaBtn {
+  /* Estilizado para ter a mesma aparência do botão 'Finalizar' */
+  margin-top: 20px;
+  display: block;
+}
+
+/* === Estilos da Seção Principal e Layout === */
+#plot {
+  width: 400px;
+  min-width: 300px;
+  height: 330px;
+  max-height: 340px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 auto;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* === Novas Classes para a Tabela e Frações === */
+
+.fraction-container {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  font-size: 16px;
+  margin: 4px auto;
+}
+
+.numerator {
+  text-align: center;
+  line-height: 1;
+}
+
+.denominator {
+  border-top: 1px solid black;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Estilo para a coluna A(n) e seus valores */
+.an-column {
+  text-align: left;
+  padding-left: 15px;
+}
+
+.an-cell {
+  text-align: left;
+  padding-left: 15px;
+}
+
+/* Estilo para a string da soma e valor de aproximação dentro da célula */
+.an-sum,
+.an-approx {
+  white-space: nowrap;
+}
+
+/* Estilo para as linhas de resumo de comparação */
+.summary-description {
+  font-size: 15px;
+  text-align: left;
+  padding-left: 15px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.summary-value {
+  font-size: 15px;
+  text-align: left;
+  padding-left: 15px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+/* === Media Queries para Responsividade === */
+@media (max-width: 768px) {
+  #Explorar11,
+  .input-container {
+    width: 95%;
+    height: 120px;
+    flex-direction: column;
+    align-items: center;
+    margin: 3px auto;
+    padding: 5px 0;
+  }
+
+  .Fexplorar14 button {
+    flex-direction: row;
+    width: 130px;
+    margin: 5px auto;
+    padding: 1px 0;
+    font-size: 13px;
+  }
+
+  #plot,
+  #table-container {
+    max-width: 95%;
+    min-width: auto;
+    margin: 10px auto;
+  }
+}

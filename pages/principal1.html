@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exploração - Parte 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+    <link rel="stylesheet" href="../styles/estiloExplorar1.css" />
+    <link rel="stylesheet" href="../styles/estiloApresentacao.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div id="tit1" class="detalhes-convite3">
+        <h1><strong>Explorando o Princípio da Indução Matemática</strong></h1>
+      </div>
+      <div id="tit2">
+        <strong>Uma Abordagem Visual com Faixas de Parábola</strong>
+      </div>
+    </header>
+
+    <main>
+        <section class="apresentacao">
+            <div>
+            <fieldset class="input-container">
+              <legend>Escolha um número <b>n</b> de partes:</legend>
+                <p>
+                  <label for="n-value"><b>Digite o valor de n: </b></label>
+                  <input type="number" id="n-value" min="2" value="2" />
+                  <button onclick="generatePlot()"><b>Gerar Gráfico</b></button>
+                  <button onclick="resetPage()"><b>Limpar</b></button>
+                </p>
+            </fieldset>
+            </div>
+
+            <div>        
+              <fieldset id="plot">
+                <legend>Gráfico Gerado</legend>
+              </fieldset>
+              
+              <fieldset id="table-container">
+                <legend>Tabela de Valores</legend>
+                <div id="tabela-container"></div>
+              </fieldset>
+            </div>
+    </main>
+    <script src="../js/areas2.js"></script>
+    <footer>
+      <p>
+        &copy;
+        <strong
+          >Greice Lacerda 2025 - Explorando o Princípio da Indução
+          Matemática</strong
+        >
+      </p>
+    </footer>
+  </body>
+</html>

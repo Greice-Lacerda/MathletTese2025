@@ -1,0 +1,388 @@
+/* === Estilos de Elementos do Formulário === */
+#Explorar11 {
+  /*campo de escolha de n*/
+  width: 98%;
+  height: 70px;
+  margin: 60px 0 0 10px;
+  padding: 0;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+input {
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  padding: 0 5px 0 5px;
+  border-radius: 50px;
+  border: 2px solid #ccc;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0);
+}
+
+section{
+  gap: 30px;
+}
+
+#Explorar12 {
+  width: 500px;
+  height: 340px;
+  justify-content: center;
+  margin: 0 5px 0 15px;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+#Explorar13 {
+  overflow: hidden;
+  width: 450px; /* Ou a largura que você desejar para a tabela */
+  height: 320px;
+  margin: 0 auto;
+  padding: o auto;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+.Fexplorar14 {
+  width: 170px;
+  height: 340px;
+  justify-content: center;
+  margin: 0 5px 0 15px;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+.Elegend {
+  margin: 0 5px 0 5px;
+  color: #032b04;
+  text-shadow: 2px 2px 5px #0a0a0a;
+  text-align: center;
+}
+
+/* === Estilos dos Botões (Propriedades consolidadas) === */
+#ProximaEtapa {
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(
+    to right,
+    #350202,
+    #6b0505,
+    #f29494,
+    #f8dbae,
+    #daa96c,
+    #f6ad47
+  );
+}
+
+.Fexplorar14 button {
+  width: 160px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  padding: 18px auto;
+  font-size: 16px;
+  border-radius: 10px;
+  border: outset 4px #4caf50;
+  background: linear-gradient(
+    to right,
+    #064108,
+    #09680e,
+    #56d25a,
+    #aff7b1,
+    #7a9c7d
+  );
+  color: white;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
+}
+
+.Fexplorar14 button:hover {
+  background: linear-gradient(
+    to right,
+    #6bc06e,
+    #9ed4a0,
+    #bee2be,
+    #d8ead8,
+    #f0f9f0
+  );
+  border: outset 4px #6bc06e;
+  scale: 1.1;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.Fexplorar14 button:active {
+  transform: scale(0.95);
+}
+
+.input-container button {
+  width: 180px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0 50px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: outset 4px #8ae1f3;
+  background: linear-gradient(
+    to right,
+    #010238,
+    #1618bd,
+    #208bf0,
+    #0ae6f6,
+    #9ff4f5
+  );
+  color: white;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
+}
+
+.input-container button:hover {
+  border: outset 4px #97a4a4;
+  background: linear-gradient(
+    to right,
+    #d3d3ed,
+    #8082e5,
+    #083a6a,
+    #134245,
+    #001112
+  );
+  scale: 1.1;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.input-container button:active {
+  transform: scale(0.95);
+}
+
+/* === Estilos da Seção Principal e Layout === */
+#plot {
+  width: 400px;
+  min-width: 300px;
+  height: 330px;
+  max-height: 340px;
+  box-sizing: border-box;
+  margin: 2px auto;
+  padding: 2px auto;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+}
+
+#plot:hover {
+  transform: scale(1.5);
+  position: absolute;
+  justify-items: center;
+  border: outset 4px #97a4a4;
+  background: linear-gradient(
+    to right,
+    #d3d3ed,
+    #8082e5,
+    #083b6ae7,
+    #134245e6,
+    #15e5f0c7
+  );
+  box-shadow: 15px 15px 5px rgb(60, 58, 58);
+  width: 500px;
+  border-radius: 20px;  
+  height: 350px;
+  margin-top: -100px;
+  margin-left: 300px;
+  justify-content: center;
+  justify-items: center;
+  padding-top: 10px;
+  z-index: 2;
+}
+
+#tabela-container { 
+  height: 310px;
+  width: 440px;
+  margin: 20px auto;
+  padding: 20px auto; 
+  max-width: 450px; /* Ou a largura que você desejar para a tabela */
+  max-height: 320px;
+}
+
+#tabela-container:hover {
+  height: 345px;
+  width: 795px;
+  margin: 10px auto;
+  padding: 10px auto; 
+  max-width: 790px; /* Ou a largura que você desejar para a tabela */
+  max-height: 320px;
+  overflow-x: auto; /* Adiciona a barra de rolagem horizontal se o conteúdo for maior */
+  overflow-y: auto;
+}
+
+#Explorar13:hover {
+  transform: scale(1.5);
+  position: absolute;
+  justify-items: center;
+  background-color: #3cddfd;
+  width: 600px;
+  height: 350px;
+  margin-top: -160px;
+  margin-left: -40px;
+  padding: 20px auto;
+  z-index: 2;
+}
+
+/* Pseudo-elemento para a barra de rolagem completa */
+::-webkit-scrollbar {
+  width: 8px; /* Largura da barra de rolagem vertical */
+  height: 8px; /* Altura da barra de rolagem horizontal */
+}
+
+/* Fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+  background: #f1f1f13c; /* Cor do fundo da barra de rolagem */
+  border-radius: 10px;
+}
+
+/* A "alça" da barra de rolagem, que você arrasta */
+::-webkit-scrollbar-thumb {
+  background: #888888de; /* Cor da alça */
+  border-radius: 10px;
+}
+
+/* Estilo da alça quando o mouse passa sobre ela */
+::-webkit-scrollbar-thumb:hover {
+  background: #55555582; /* Cor da alça ao passar o mouse */
+}
+
+/* === Estilos da Tabela === */
+table {
+  border-collapse: separate;
+  border-spacing: 2px;
+  text-align: center;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+}
+
+td {
+  border-bottom: 1px solid lightgray;
+  padding: 0 auto;
+  line-height: 1.2;
+  box-shadow: 1px 1px 26px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: lightblue;
+  border: 1px solid darkblue;
+  color: brown;
+  padding: 0 auto;
+  border-radius: 5px;
+}
+
+/* === Novas Classes para a Tabela e Frações === */
+
+/* Container geral para a fração */
+.fraction-container {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  font-size: 16px;
+  margin: 4px auto;
+}
+
+/* Numerador */
+.numerator {
+  text-align: center;
+  line-height: 1;
+}
+
+/* Denominador com a linha divisória */
+.denominator {
+  border-top: 1px solid black;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Estilo para a coluna A(n) e seus valores */
+.an-column {
+  text-align: left;
+  padding-left: 15px;
+}
+
+.an-cell {
+  text-align: left;
+  padding-left: 15px;
+}
+
+/* Estilo para a string da soma e valor de aproximação dentro da célula */
+.an-sum,
+.an-approx {
+  white-space: nowrap;
+}
+
+/* Estilo para as linhas de resumo de comparação */
+.summary-description {
+  font-size: 15px;
+  text-align: left;
+  padding-left: 15px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.summary-value {
+  font-size: 15px;
+  text-align: left;
+  padding-left: 15px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+/* === Media Queries para Responsividade === */
+@media (max-width: 768px) {
+
+  #Explorar11, .input-container {
+    width: 95%;
+    height: 120px;
+    flex-direction: column;
+    align-items: center;
+    margin: 3px auto;
+    padding: 5px auto;
+  }
+
+  .Fapresentacao {
+    width: 00%;
+    margin: 5px auto;
+    padding: 2px auto;
+  }
+
+  .Fcontroles, button {
+    width: 95%;
+    position: relative;
+    margin: 55px auto;
+    padding: 15px auto;
+  }
+
+  .Fexplorar14 button {
+    flex-direction: row;
+    width: 130px;
+    margin: 5px auto;
+    padding: 1px auto;
+    font-size: 13px;
+  }
+  
+
+  #plot,
+  #table-container {
+    max-width: 95%;
+    min-width: auto;
+    margin: 10px auto;
+  }
+}

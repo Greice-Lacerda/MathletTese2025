@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Descrição do Problema - Explorando o Princípio da Indução Matemática
+    </title>
+    <link rel="stylesheet" href="../styles/estiloPasso1.css" />
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+  </head>
+  <body>
+    <header>
+      <div id="tit1">
+        <h1>Explorando o Princípio da Indução Matemática</h1>
+      </div>
+      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+    </header>
+
+    <main>
+      <section>
+        <fieldset class="grafico-container">
+          <legend>Gráfico e Tabela</legend>
+          <img
+            id="grafico-container"
+            src="../img/ParabolaQuizz.jpg"
+            alt="Parabola1"
+          />
+          <img
+            id="grafico-container2"
+            style="display: none"
+            src="../img/ParabolaQuizz2.jpg"
+            alt="Parabola1"
+          />
+          <div id="table-container" style="display: none"></div>
+        </fieldset>
+
+        <fieldset id="Perguntas1">
+          <legend>Quizz</legend>
+          <div id="perguntas"></div>
+          <div id="alternativas"></div>
+          <div id="quiz-progress-container">
+            <div id="quiz-progress-bar" style="display: none"></div>
+            <span id="quiz-progress-text"></span>
+          </div>
+        </fieldset>
+
+        <fieldset class="Fexplorar14">
+          <legend id="Elegend">Menu</legend>
+          <button
+            id="voltarTeoria"
+            onclick="window.location.href='./descricao.html'"
+          >
+            Voltar
+          </button>
+
+          <button
+            id="Instrucao"
+            onclick="window.location.href='./instrucao.html'"
+          >
+            Instruções
+          </button>
+
+          <button
+            id="Verificar"
+            onclick="window.location.href='./Verificar.html'"
+          >
+            Verificar Resposta
+          </button>
+
+          <button
+            id="Sair"
+            onclick="window.location.href='https://www.google.com.br'"
+          >
+            Sair
+          </button>
+        </fieldset>
+
+        <fieldset id="Explorar11">
+          <legend id="Elegend">Mensagens</legend>
+          <div id="Justific"></div>
+          <button id="ProximaPerguntaBtn" style="display: none">
+            Próxima Pergunta
+          </button>
+
+          <div id="ProximaEtapa" style="display: none">
+            <button id="finalizarBtn">Finalizar</button>
+          </div>
+
+          <div id="RefazerQuizz" style="display: none">
+            <button id="refazerBtn">Reiniciar Quizz</button>
+          </div>
+        </fieldset>
+      </section>
+    </main>
+    <script src="../js/graficoP1.js"></script>
+    <script src="../js/Passo1.js" type="module"></script>
+    <footer>
+      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+  </body>
+</html>

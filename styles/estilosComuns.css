@@ -1,0 +1,324 @@
+/* Importação das fontes - DEVE estar no topo do arquivo */
+@import url("https://fonts.googleapis.com/css2?family=Gill+Sans&family=Handlee&family=Monsieur+La+Doulaise&family=Archivo+Black&display=swap");
+
+/* === Estilos Globais e do Corpo da Página === */
+html {
+  width: 100%;
+  height: 100%;
+  margin-top: 1px;
+}
+
+body {
+  margin-bottom: 2px;
+  margin-top: 1px;
+  font-family: "Times New Roman", Times, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  background-clip: padding-box;
+  padding: 5px;
+  overflow: hidden;
+  line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  background-image: url("../img/Logo01.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.28;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* === Estilos do Cabeçalho e Títulos === */
+header {
+  top: 0px;
+  height: 82px;
+  position: absolute;
+  padding: 0;
+  text-align: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  box-shadow: 2px 2px 10px #000;
+  background: linear-gradient(
+    to right,
+    #ff5f6d,
+    /* Vermelho Coral */ #ffc371,
+    /* Laranja Pêssego */ #fff8ba,
+    /* Amarelo Suave */ #b5e8a6,
+    /* Verde Menta */ #7ac5c1 /* Azul Turquesa */
+  );
+}
+
+header:hover {
+  box-shadow: 10px 10px 10px rgba(255, 255, 255, 1);
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 30px auto;
+  padding: 25px auto;
+}
+
+#tit1 {
+  position: relative;
+  width: 100%;
+  font-style: italic;
+  background-color: transparent;
+}
+
+#tit2 {
+  position: relative;
+  top: -20px;
+  font-size: 28px;
+  color: rgb(3, 7, 252, 0.6);
+  text-shadow: 2px 2px 2px rgb(100, 98, 124);
+  font-family: "Handlee", cursive;
+  font-style: italic;
+  background-color: transparent;
+  z-index: 2;
+}
+
+h1 {
+  width: 100%;
+  margin: 0;
+  font-size: 40px;
+  padding: 0;
+  color: rgba(8, 2, 93, 0.936);
+  text-shadow: 3px 3px 4px rgb(101, 100, 105);
+}
+
+h1:hover {
+  transform: scale(1.1);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Archivo Black", sans-serif;
+  text-shadow: 6px 6px 5px rgb(249, 248, 248);
+}
+
+/* === Estilos do Rodapé === */
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 1px;
+  background: linear-gradient(
+    to right,
+    #ff5f6d,
+    /* Vermelho Coral */ #ffc371,
+    /* Laranja Pêssego */ #fff8ba,
+    /* Amarelo Suave */ #b5e8a6,
+    /* Verde Menta */ #7ac5c1 /* Azul Turquesa */
+  );
+  color: black;
+  font-size: 18px;
+  height: 28px;
+  text-align: center;
+  text-shadow: 2px 2px 1px rgb(151, 137, 137);
+}
+
+footer:hover {
+  transform: scale(1.1);
+  box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 1);
+  border-radius: 10%;
+}
+
+/* Texto especial */
+#tbem {
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: transparent;
+  background-clip: text;
+  background-color: hsl(34, 53%, 82%);
+  background-image: repeating-linear-gradient(
+    45deg,
+    #0a0909 10%,
+    #2746aa 20%,
+    #2d2950 30%,
+    #10495a 40%,
+    #6314f7 50%,
+    #37094a 60%,
+    #310329 70%,
+    #250417 80%,
+    #022330 90%
+  );
+}
+
+p {
+  width: 90%;
+  text-align: justify;
+  text-indent: 32px; /* 2rem convertidos para px */
+  margin: 15px auto;
+  font-size: 16px;
+  padding: 2px;
+  line-height: 1.5;
+}
+
+img {
+  width: 370px;
+  height: auto;
+  margin: 60px 20px 30px;
+  border-radius: 40px;
+  border: 20px double #040111;
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.8);
+}
+
+img:hover {
+  border: inset 20px #f8f7f5;
+  transform: scale(1);
+  margin: 60px 20px 30px;
+  filter: invert(999%) sepia(0%) saturate(5%) hue-rotate(270deg);
+  box-shadow: #000 25px 20px 15px;
+}
+
+/* === Media Queries para Responsividade === */
+@media (max-width: 768px) {
+  html {
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /*
+   * A propriedade `background-image` não pode ter estilos inline.
+   * Para opacidade, é preciso usar um pseudoelemento ::before.
+   * Removi a imagem daqui para que ela seja configurada no body::before,
+   * como discutimos anteriormente.
+   */
+  body {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    text-align: center;
+    overflow-x: hidden;
+    /*
+     * Removi as propriedades background-image, background-size, etc.
+     * Elas devem ser aplicadas ao body::before para funcionar com a opacidade.
+     */
+  }
+
+  header {
+    position: relative;
+    height: auto;
+    width: 100%;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin: 5px 0;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  #tit2 {
+    font-size: 1.2rem;
+    line-height: 1.2;
+    margin: 8px 0;
+    text-align: center;
+    padding: 0 15px;
+  }
+
+  main {
+    width: 100%;
+    padding: 15px;
+  }
+
+  section {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    margin: 1px 2px;
+    padding: 1px;
+  }
+
+  /*
+   * A largura da imagem estava muito pequena. 30% pode ser menor que o ideal
+   * em telas de 768px. Ajustei para um valor mais flexível e adequado.
+   * O seletor `div` é muito genérico e pode afetar outros elementos não desejados,
+   * removi ele e mantive `fieldset`.
+   */
+  /* Este código ajusta o tamanho da imagem de fundo do BODY */
+body::before {
+  content: "";
+  background-image: url("../img/Logo01.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.28;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+/* Este código ajusta o tamanho da imagem dentro da div (a imagem do conteúdo) */
+img {
+  width: 150px; /* Reduz a largura da imagem para 250 pixels */
+  height: auto; /* Mantém a proporção da imagem */
+  margin: 6px 20px 3px;
+  border-radius: 40px;
+  border: 20px double #040111;
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.8);
+}
+
+  fieldset, div{
+    width: 95%;
+    margin: 1px auto;
+    padding: 1px;
+  }
+
+  legend,
+  button {
+    font-size: 14px;
+  }
+
+  p {
+    text-align: justify;
+    padding: 0 5px;
+    font-size: 14px;
+  }
+
+  .controles,
+  .controles button {
+    padding: 0;
+    font-size: 13px;
+  }
+
+  footer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-size: 16px;
+    padding: 10px 0;
+    bottom: 0;
+  }
+}

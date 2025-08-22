@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exploração - Parte 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../styles/estiloExplorar1.css" />
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+    <link rel="stylesheet" href="../styles/estiloApresentacao.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div id="tit1">
+        <h1>Explorando o Princípio da Indução Matemática</h1>
+      </div>
+      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+    </header>
+
+    <main>
+      <fieldset id="Explorar11" class="input-container">
+        <legend class="Elegend">Escolha um número <b>n</b> de partes:</legend>
+        <label for="n-value"><b>Digite o valor de n: </b></label>
+        <input type="number" id="n-value" min="2" max="10" value="2" />
+
+        <button onclick="generatePlot()">
+          <b>Gerar Gráfico</b>
+        </button>
+
+        <button onclick="resetPage()">
+          <b>Limpar</b>
+        </button>
+      </fieldset>
+
+      <section>
+        <fieldset id="Explorar12">
+        <legend id="Elegend">Gráfico</legend>
+          <div id="plot"></div>
+        </fieldset>
+
+        <fieldset id="Explorar13">
+                <legend id="Elegend">Tabela</legend>
+          <div id="tabela-container"></div>
+        </fieldset>
+
+        <fieldset class="Fexplorar14">
+                  <legend id="Elegend">Menu</legend>
+          <button
+            id="voltarTeoria"
+            onclick="window.location.href='./descricao.html'"
+          >
+            Voltar
+          </button>
+
+          <button
+            id="Instrucao"
+            onclick="window.location.href='./instrucao.html'"
+          >
+            Instruções
+          </button>
+
+          <button
+            id="Verificar"
+            onclick="window.location.href='./Verificar.html'"
+          >
+            Verificar Resposta
+          </button>
+          <button
+            id="ProximaEtapa"
+            style="display: none"
+            onclick="window.location.href='./passo2.html'"
+          >
+            Próxima Etapa
+          </button>
+
+          <button
+            id="Sair"
+            onclick="window.location.href='https://www.google.com.br'"
+          >
+            Sair
+          </button>
+        </fieldset>
+      </section>
+      <br />
+    </main>
+    <script src="../js/areas2.js"></script>
+    <footer>
+      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+  </body>
+</html>
