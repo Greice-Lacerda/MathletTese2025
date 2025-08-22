@@ -85,37 +85,36 @@
 @media (max-width: 768px) {
   .apresentacao {
     width: 100%;
-    height: auto;
-    font-size: 16px;
+    font-size: 20px;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
-    padding: 5px auto;
+    margin: 15px auto;
+    padding: 25px auto;
   }
 
   .Fapresentacao {
     width: 100%;
-    height: auto;
-    margin: 8px auto;
-    padding: 0px 20px 20px 20px;
+    height: 200%;
+    margin: 18px auto;
+    padding: 10px 60px 10px 40px;
   }
 
   legend,
   button {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .Fcontroles {
     width: 95%;
+    height: 100px;
     position: relative;
-    margin: 35px auto;
-    padding: 5px auto;
+    margin: 45px auto;
+    padding: 15px auto;
   }
 
   .Fcontroles button {
     width: 130px;
     margin: 15px auto;
-    padding: 5px auto;
-    font-size: 13px;
+    padding: 15px auto;
   }
 }

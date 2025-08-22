@@ -76,8 +76,8 @@ section {
   text-align: left;
 }
 
-legend {
-  margin: 5px 0;
+.Elegend1 {
+  margin: 12px;
   color: #032b04;
   text-shadow: 2px 2px 5px #0a0a0a;
   text-align: center;
@@ -328,28 +328,66 @@ legend {
 
 /* === Media Queries para Responsividade === */
 @media (max-width: 768px) {
-  #Explorar11,
-  .input-container {
+  /* Ajusta o contêiner geral do HTML */
+  html,
+  body {
     width: 95%;
-    height: 120px;
-    flex-direction: column;
-    align-items: center;
-    margin: 3px auto;
-    padding: 5px 0;
+    overflow-x: hidden;
+    height: auto;
   }
 
+  /* Contêiner principal, ajustado para ocupar espaço e centralizar */
+  #Explorar11,
+  .Fexplorar14,
+  #Justific,
+  #ProximaEtapa,
+  #RefazerQuizz {
+    width: 90%;
+    margin: 0 2px; /* Centraliza o elemento e adiciona uma margem */
+    height: auto; /* Altura flexível para se ajustar ao conteúdo */
+    display: flex;
+    flex-direction: row; /* Organiza os itens em coluna */
+    position: relative;
+    font-size: small;
+    padding: 0 5px; /* Adiciona um espaçamento interno */
+  }
+
+  #Explorar11 button,
   .Fexplorar14 button {
-    flex-direction: row;
-    width: 130px;
-    margin: 5px auto;
-    padding: 1px 0;
-    font-size: 13px;
+    width: 90px;
+    height: 45px; /* Ajusta a altura do botão */
+    margin: 0 2px 6px 25px;
+    padding: 0 auto; /* Adiciona um espaçamento interno */
+    font-size: small;
   }
 
-  #plot,
-  #table-container {
-    max-width: 95%;
-    min-width: auto;
-    margin: 10px auto;
+  /* Gráfico: Posição fixa e margens absolutas removidas */
+  .grafico-container {
+    display: none;
+  }
+
+  /* Seções: Removido o overflow para permitir a rolagem natural */
+  section {
+    gap: 1px;
+    top: auto;
+    padding: 0 1px 0 1px; /* Adiciona um espaçamento interno */
+  }
+
+  /* Seção de perguntas: Posição fixa removida */
+  #Perguntas1 {
+    width: 90%;
+    height: auto;
+    margin: 0px 1px 2px 1px; /* Margens ajustadas para espaçamento */
+    flex-direction: column;
+    line-height: 1.2;
+    display: flex; /* Display corrigido para flex */
+    position: relative; /* Posição relativa, o que permite que o elemento flua */
+    padding: 0 1px 0 1px; /* Adiciona um espaçamento interno */
+    bottom: auto; /* Posição inferior removida */
+  }
+
+  #alternativas {
+    flex-direction: column;
+    gap: 3px; /* Espaçamento entre as alternativas */
   }
 }

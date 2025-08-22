@@ -1,0 +1,184 @@
+/* === Estilos de Elementos do Formulário === */
+#Explorar11 {
+  width: 1200px;
+  height: 460px;
+  display: flex;
+  flex-direction: row;
+  text-align: justify;
+  margin: 20px auto;
+  border-radius: 15px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+section {
+  gap: 5px;
+  position: relative;
+  top: 16px;
+  margin-left: 6px;
+  justify-content: flex-start;
+}
+
+.Elegend1 {
+  margin: 0 2px;
+  color: #032b04;
+  text-shadow: 2px 2px 5px #0a0a0a;
+  text-align: center;
+}
+
+#ProximaEtapa {
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(
+    to right,
+    #350202,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  width: 180px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 40px auto;
+  gap: 20px;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
+  color: white;
+}
+
+#ProximaEtapa:hover {
+  background: linear-gradient(
+    to right,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  cursor: pointer;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
+  transform: scale(1.2);
+}
+
+#ProximaEtapa:active {
+  background: linear-gradient(
+    to right,
+    #350202,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  box-shadow: inset 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 1.5px 1.5px 1px rgba(82, 65, 65, 0.9);
+  color: white;
+}
+
+.instruc1 {
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.instruc2 {
+  width: 400px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+  padding: 0 10px;
+  font-size: 16px;
+}
+
+.instruc3 {
+  width: 400px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+  padding: 0 10px;
+  font-size: 16px;
+}
+
+h2 {
+  color: #032b04;
+  text-shadow: 2px 2px 5px #0a0a0a;
+  margin: 6px 0;
+  text-align: center;
+}
+
+ul {
+  list-style-type: disc;
+  margin: 0;
+  padding: 5px 40px 0px 40px; /* Adiciona espaçamento à esquerda */
+}
+
+/* === Media Queries para Responsividade === */
+@media (max-width: 768px) {
+  /* Ajusta o contêiner geral do HTML */
+  html,
+  body {
+    width: 90%;
+    overflow-x: hidden;
+    height: auto;
+  }
+
+  /* Contêiner principal, ajustado para ocupar espaço e centralizar */
+  #Explorar11 {
+    width: 93%;
+    height: 820px; /* Altura flexível para se ajustar ao conteúdo */
+    display: flex;
+    flex-direction: column; /* Organiza os itens em coluna */
+    position: relative;
+    padding: 5px 10px 5px 10px; /* Adiciona um espaçamento interno */
+    margin: 5px 40px 5px 40px;
+  }
+
+  /* Seções: Removido o overflow para permitir a rolagem natural */
+  section {
+    gap: 5px;
+    top: 1px;
+    padding: 0 1px 0 1px; /* Adiciona um espaçamento interno */
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  #ProximaEtapa {
+    margin-top: 30px;
+    margin-right: 30px;
+    margin-bottom: 1px;
+    gap: 5px;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+    text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
+    color: white;
+  }
+
+  .instruc1,
+  .instruc2,
+  .instruc3 {
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 10px 0 20px;
+    font-size: 16px;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin: 0;
+    padding: 0px 30px 0 20px; /* Adiciona espaçamento à esquerda */
+  }
+}

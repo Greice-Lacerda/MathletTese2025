@@ -14,7 +14,7 @@ body {
   font-family: "Times New Roman", Times, serif;
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   background-clip: padding-box;
   padding: 5px;
   overflow: hidden;
@@ -216,6 +216,7 @@ img:hover {
     flex-direction: column;
     text-align: center;
     overflow-x: hidden;
+    overflow-y: auto;
     /*
      * Removi as propriedades background-image, background-size, etc.
      * Elas devem ser aplicadas ao body::before para funcionar com a opacidade.
@@ -266,34 +267,35 @@ img:hover {
    * removi ele e mantive `fieldset`.
    */
   /* Este código ajusta o tamanho da imagem de fundo do BODY */
-body::before {
-  content: "";
-  background-image: url("../img/Logo01.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.28;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: -1;
-}
+  body::before {
+    content: "";
+    background-image: url("../img/Logo01.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.28;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+  }
 
-/* Este código ajusta o tamanho da imagem dentro da div (a imagem do conteúdo) */
-img {
-  width: 150px; /* Reduz a largura da imagem para 250 pixels */
-  height: auto; /* Mantém a proporção da imagem */
-  margin: 6px 20px 3px;
-  border-radius: 40px;
-  border: 20px double #040111;
-  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.8);
-}
+  /* Este código ajusta o tamanho da imagem dentro da div (a imagem do conteúdo) */
+  img {
+    width: 150px; /* Reduz a largura da imagem para 250 pixels */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 6px 20px 3px;
+    border-radius: 40px;
+    border: 20px double #040111;
+    box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.8);
+  }
 
-  fieldset, div{
+  fieldset,
+  div {
     width: 95%;
     margin: 1px auto;
-    padding: 1px;
+    padding: 1px auto;
   }
 
   legend,
