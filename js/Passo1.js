@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const progressBarDiv = document.getElementById("quiz-progress-container");
   const progressBar = document.getElementById("quiz-progress-bar");
   const progressText = document.getElementById("quiz-progress-text");
+  const parabola1 = document.getElementById("grafico-container");
+  const parabola2 = document.getElementById("grafico-container2");
 
   // Esconde os elementos no início
   proximaPerguntaBtn.style.display = "none";
@@ -26,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
   progressBar.style.display = "none";
   progressText.style.display = "none";
   refazerQuizzDiv.style.display = "none";
+  parabola2.style.display = "none";
+
 
   // Função para embaralhar as perguntas
   function shuffleArray(array) {
@@ -62,6 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
       justificativaDiv.style.display = "none";
       proximaPerguntaBtn.style.display = "none";
       proximaEtapaBtn.style.display = "none";
+      parabola2.style.display = "none";
+      parabola1.style.display = "block";
       attempts = 0;
     } else {
       // Lógica de finalização do quiz
@@ -84,24 +90,33 @@ document.addEventListener("DOMContentLoaded", function () {
     )}%. Você precisa refazer o Quizz.</div>`;
         justificativaDiv.style.display = "block";
         refazerQuizzDiv.style.display = "block";
+        progressBarDiv.style.display = "none";
+        progressBar.style.display = "none";
+        progressText.style.display = "none";
+        parabola1.style.display = "block";
+        parabola2.style.display = "none";
 
         // Adicionar este listener para o botão de refazer
         refazerBtn.addEventListener("click", refazerQuiz);
       } else {
         // Pontuação suficiente: exibir mensagem de porcentagem por 2s, depois a final
         setTimeout(() => {
-          justificativaDiv.innerHTML = `<h2 style="color: blue;">Parabéns!</h2><div style="text-align: center; line-height: 1.3; font-size: 22px; margin: 0 20px 0 20px;">Prossiga para a próxima etapa.</div>`;
+          justificativaDiv.innerHTML = `<h2 style="color: blue;">Agora, você está pronto para o Passo 2!</h2><div style="text-align: center; line-height: 1.3; font-size: 22px; margin: 0 20px 0 20px;">Prossiga para a próxima etapa.</div>`;
           justificativaDiv.style.display = "block";
           perguntasDiv.innerHTML = `
-          <h2 style="text-align: center; color:blue; line-height: 1.3; font-size: 28px; margin: 20px auto;">Conclusões Importantes:</h2>
-          <div style="text-align: justify; line-height: 1.3; font-size: 22px; margin: 5px auto;">Observe no gráfico que para n<sub>0</sub> igual a 1, não são gerados retângulos e para n<sub>0</sub> = 2, é gerado apenas um único retângulo.
-           Por isso o caso base nessa exploração é n<sub>0</sub> = 2. Logo, para n = 2, A(2) é verdadeira.</div>.
-          `;
+          <h2 style="text-align: center; color:blue; line-height: 1.3; font-size: 22px; margin: 20px auto;">Conclusões Importantes:</h2>
+          <div style="text-align: justify; line-height: 1.3; font-size: 16px; margin: 5px auto;">Observe no gráfico que para n<sub>0</sub> = 1, não são gerados retângulos e para n<sub>0</sub> = 2, é gerado apenas um único retângulo inscrito.
+           Por isso, o caso base nessa exploração é n<sub>0</sub> = 2. Comparando o cálculo da área desse retângulo com o valor obtido substituindo n por 2 na fórmula, verificamos a ocorrência do mesmo valor como resultado e conseguimos validar o caso base. Logo, para n = 2, A(2) é verdadeira.</div>.`;
           alternativasDiv.innerHTML = "";
           proximaEtapaBtn.style.display = "block";
+          parabola1.style.display = "none";
+          parabola2.style.display = "block";
+          progressBarDiv.style.display = "none";
+          progressBar.style.display = "none";
+          progressText.style.display = "none";
           proximaEtapaBtn.querySelector("button").onclick = () =>
             (window.location.href = "./Passo2.html");
-        }, 5000);
+        }, 8000);
       }
     }
     updateProgressBar();
@@ -117,6 +132,8 @@ document.addEventListener("DOMContentLoaded", function () {
     progressBarDiv.style.display = "none";
     progressBar.style.display = "none";
     progressText.style.display = "none";
+    parabola2.style.display = "none";
+    parabola1.style.display = "block";
     mostrarPergunta();
   }
 
@@ -126,9 +143,13 @@ document.addEventListener("DOMContentLoaded", function () {
       correctAnswersCount++;
       justificativaDiv.innerHTML = `<h2 style="color: blue; margin-top: 1px;">Parabéns! Resposta Correta!</h2><div style="text-align: justify; line-height: 1.3; font-size: 16px; margin: 0 20px 0 20px;">${questions[currentQuestionIndex].justificativa}</div>`;
       justificativaDiv.style.display = "block";
+      parabola1.style.display = "none";
+      parabola2.style.display = "block";
     } else {
       justificativaDiv.innerHTML = `<h2 style="color: red;">Que Pena!</h2><div style="text-align: center; line-height: 1.3; font-size: 20px; margin: 0 20px 0 20px;">Você usou todas as suas tentativas.</div>`;
       justificativaDiv.style.display = "block";
+      parabola1.style.display = "none";
+      parabola2.style.display = "block";
     }
 
     document.querySelectorAll(".alternativa-btn").forEach((btn) => {
@@ -139,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       currentQuestionIndex++;
       mostrarPergunta();
-    }, 5000);
+    }, 8000);
   }
 
   window.verificarResposta = function (index) {
@@ -149,6 +170,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (index === currentQuestion.respostaCorretaIndex) {
       if (isLastQuestion) {
         lidarComUltimaPergunta(true);
+        parabola1.style.display = "none";
+        parabola2.style.display = "block";
       } else {
         correctAnswersCount++;
         justificativaDiv.innerHTML = `<h2 style="color: blue; margin-top: 1px;">Parabéns! Resposta Correta!</h2><div style="text-align: justify; line-height: 1.3; font-size: 16px; margin: 0 20px 0 20px;">${questions[currentQuestionIndex].justificativa}</div>`;
@@ -158,6 +181,8 @@ document.addEventListener("DOMContentLoaded", function () {
           btn.disabled = true;
         });
         proximaPerguntaBtn.style.display = "block";
+        parabola2.style.display = "block";
+        parabola1.style.display = "none";
       }
     } else {
       attempts++;
@@ -170,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
           justificativaDiv.style.display = "none";
           justificativaDiv.innerHTML = "";
-        }, 2000);
+        }, 4000);
       } else {
         // Se esgotou as tentativas, verifica se é a última pergunta
         if (isLastQuestion) {
@@ -178,11 +203,15 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           justificativaDiv.innerHTML = `<h2 style="color: red;">Que Pena!</h2><div style="text-align: center; line-height: 1.3; font-size: 20px; margin: 0 20px 0 20px;">Você usou todas as suas tentativas. Responda a próxima questão.</div>`;
           justificativaDiv.style.display = "block";
+          parabola1.style.display = "none";
+          parabola2.style.display = "block";
 
           document.querySelectorAll(".alternativa-btn").forEach((btn) => {
             btn.disabled = true;
           });
           proximaPerguntaBtn.style.display = "block";
+          parabola1.style.display = "none";
+          parabola2.style.display = "block";
         }
       }
     }
