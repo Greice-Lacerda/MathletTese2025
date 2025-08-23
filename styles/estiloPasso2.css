@@ -1,0 +1,511 @@
+/* Passo2.css */
+
+/* === Novas classes para controlar visibilidade === */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: flex;
+}
+
+/* === Seções originais com seletores corrigidos === */
+
+.input-container {
+  display: none; /* Mantido por compatibilidade, mas a classe .hidden no HTML é o ideal */
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-container label {
+  font-weight: bold;
+}
+
+.input-container input {
+  padding: 8px auto;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100px;
+  
+  flex-direction: column;
+  text-align: center;
+}
+
+.input-container button {
+  background-color: var(--cor-primaria);
+  color: var(--cor-texto-claro);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.input-container button:hover {
+  background-color: var(--cor-secundaria);
+}
+
+#plot,
+#tabela-container {
+  width: 100%;
+  min-height: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#tabela-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#tabela-container th,
+#tabela-container td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+#tabela-container th {
+  background-color: transparent;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 85px;
+  width: 1250px;
+  height: 460px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.792);
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content-custom {
+  background-color: #e7f7e7;
+  padding: 20px auto;
+  border-radius: 10px;
+  text-align: center;
+  flex-direction: row;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.modal-content-custom img {
+  width: 1300px;
+  height: 460px;
+  border-radius: 8px;
+}
+
+#parabola-img {
+  width: 300px;
+  height: 300px;
+  
+}
+
+/* === Estilos de Elementos do Formulário === */
+#Explorar11 {
+  /*campo de escolha de n*/
+  width: 98%;
+  height: 70px;
+  margin: 60px 0 0 10px;
+  padding: 0;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+input {
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+  flex-direction: column;
+  padding: 0 5px 0 5px;
+  border-radius: 50px;
+  border: 2px solid #ccc;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0);
+}
+
+section {
+  gap: 30px;
+}
+
+#Explorar12 {
+  width: 500px;
+  height: 340px;
+  justify-content: center;
+  margin: 0 5px 0 15px;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+#Explorar13 {
+  overflow: hidden;
+  width: 450px; /* Ou a largura que você desejar para a tabela */
+  height: 320px;
+  margin: 0 auto;
+  padding: 0 auto;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+.Fexplorar14 {
+  width: 170px;
+  height: 340px;
+  justify-content: center;
+  margin: 0 5px 0 15px;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+.Elegend {
+  margin: 0 5px 0 5px;
+  color: #032b04;
+  text-shadow: 2px 2px 5px #0a0a0a;
+  text-align: center;
+}
+
+/* === Estilos dos Botões (Propriedades consolidadas) === */
+#ProximaEtapa {
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(
+    to right,
+    #350202,
+    #6b0505,
+    #f29494,
+    #f8dbae,
+    #daa96c,
+    #f6ad47
+  );
+}
+
+.Fexplorar14 button {
+  width: 160px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  padding: 18px auto;
+  font-size: 16px;
+  border-radius: 10px;
+  border: outset 4px #4caf50;
+  background: linear-gradient(
+    to right,
+    #064108,
+    #09680e,
+    #56d25a,
+    #aff7b1,
+    #7a9c7d
+  );
+  color: white;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
+}
+
+.Fexplorar14 button:hover {
+  background: linear-gradient(
+    to right,
+    #6bc06e,
+    #9ed4a0,
+    #bee2be,
+    #d8ead8,
+    #f0f9f0
+  );
+  border: outset 4px #6bc06e;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.Fexplorar14 button:active {
+  /* Mantido para feedback visual sem escala */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.input-container button {
+  width: 180px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0 50px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: outset 4px #8ae1f3;
+  background: linear-gradient(
+    to right,
+    #010238,
+    #1618bd,
+    #208bf0,
+    #0ae6f6,
+    #9ff4f5
+  );
+  color: white;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
+}
+
+.input-container button:hover {
+  border: outset 4px #97a4a4;
+  background: linear-gradient(
+    to right,
+    #d3d3ed,
+    #8082e5,
+    #083a6a,
+    #134245,
+    #001112
+  );
+  color: white;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.input-container button:active {
+  /* Mantido para feedback visual sem escala */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* === Estilos da Seção Principal e Layout === */
+#plot {
+  width: 400px;
+  min-width: 300px;
+  height: 330px;
+  max-height: 340px;
+  box-sizing: border-box;
+  margin: 2px auto;
+  padding: 2px auto;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+}
+
+#plot:hover {
+  /* Transform: scale removido, a largura e altura são ajustadas diretamente */
+  position: absolute;
+  justify-items: center;
+  border: outset 4px #97a4a4;
+  background: linear-gradient(
+    to right,
+    #d3d3ed,
+    #8082e5,
+    #083b6ae7,
+    #134245e6,
+    #15e5f0c7
+  );
+  box-shadow: 15px 15px 5px rgb(60, 58, 58);
+  border-radius: 20px;
+  margin-top: -100px;
+  margin-left: 300px;
+  justify-content: center;
+  justify-items: center;
+  padding-top: 10px;
+  z-index: 2;
+}
+
+#tabela-container {
+  height: 310px;
+  width: 440px;
+  margin: 20px auto;
+  padding: 20px auto;
+  max-width: 450px;
+  max-height: 320px;
+}
+
+#tabela-container:hover {
+  height: 345px;
+  width: 795px;
+  margin: 10px auto;
+  padding: 10px auto;
+  max-width: 790px;
+  max-height: 320px;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+#Explorar13:hover {
+  /* Transform: scale removido, a largura e altura são ajustadas diretamente */
+  width: 600px;
+  height: 350px;
+  position: absolute;
+  justify-items: center;
+  background-color: #3cddfd;
+  margin-top: -160px;
+  margin-left: -40px;
+  padding: 20px auto;
+  z-index: 2;
+}
+
+/* Pseudo-elemento para a barra de rolagem completa */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Fundo da barra de rolagem */
+::-webkit-scrollbar-track {
+  background: #f1f1f13c;
+  border-radius: 10px;
+}
+
+/* A "alça" da barra de rolagem, que você arrasta */
+::-webkit-scrollbar-thumb {
+  background: #888888de;
+  border-radius: 10px;
+}
+
+/* Estilo da alça quando o mouse passa sobre ela */
+::-webkit-scrollbar-thumb:hover {
+  background: #55555582;
+}
+
+/* === Estilos da Tabela === */
+table {
+  border-collapse: separate;
+  border-spacing: 2px;
+  text-align: center;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+}
+
+td {
+  border-bottom: 1px solid lightgray;
+  padding: 0 auto;
+  line-height: 1.2;
+  box-shadow: 1px 1px 26px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: lightblue;
+  border: 1px solid darkblue;
+  color: brown;
+  padding: 0 auto;
+  border-radius: 5px;
+}
+
+/* === Novas Classes para a Tabela e Frações === */
+.fraction-container {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  font-size: 16px;
+  margin: 4px auto;
+}
+
+.numerator {
+  text-align: center;
+  line-height: 1;
+}
+
+.denominator {
+  border-top: 1px solid black;
+  text-align: center;
+  line-height: 1;
+}
+
+.an-column {
+  text-align: left;
+  padding-left: 15px;
+}
+
+.an-cell {
+  text-align: left;
+  padding-left: 15px;
+}
+
+.an-sum,
+.an-approx {
+  white-space: nowrap;
+}
+
+.summary-description {
+  font-size: 15px;
+  text-align: left;
+  padding-left: 15px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.summary-value {
+  font-size: 15px;
+  text-align: left;
+  padding-left: 15px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+/* === Media Queries para Responsividade === */
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 95%;
+    overflow-x: hidden;
+    height: auto;
+  }
+
+  #Explorar11,
+  .Fexplorar14,
+  #Justific,
+  #ProximaEtapa,
+  #RefazerQuizz {
+    width: 90%;
+    margin: 0 2px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    font-size: small;
+    padding: 0 5px;
+  }
+
+  #Explorar11 button,
+  .Fexplorar14 button {
+    width: 90px;
+    height: 45px;
+    margin: 0 2px 6px 25px;
+    padding: 0 auto;
+    font-size: small;
+  }
+
+  .grafico-container {
+    display: none;
+  }
+
+  section {
+    gap: 1px;
+    top: auto;
+    padding: 0 1px 0 1px;
+  }
+
+  #Perguntas1 {
+    width: 90%;
+    height: auto;
+    margin: 0px 1px 2px 1px;
+    flex-direction: column;
+    line-height: 1.2;
+    display: flex;
+    position: relative;
+    padding: 0 1px 0 1px;
+    bottom: auto;
+  }
+
+  #alternativas {
+    flex-direction: column;
+    gap: 3px;
+  }
+}

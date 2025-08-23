@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const clapSound = new Audio("../sons/Aplausos.mp3");
   const PenaSound = new Audio("../sons/Pena.mp3");
   const confettiConfig = {
-    particleCount: 300,
+    particleCount: 500,
     spread: 70,
     origin: { y: 0.6 },
   };
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
       refazerQuizzDiv.style.display = "block";
       parabola1.style.display = "block";
     } else {
-      clapSound.play();
+      
       justificativaDiv.innerHTML = `
         <h2 style="color: blue;">Parabéns!</h2>
         <div style="text-align: center; line-height: 1.3; font-size: 22px; margin: 0 20px 0 20px;">Sua porcentagem de acertos foi de ${scorePercentage.toFixed(
@@ -88,9 +88,13 @@ document.addEventListener("DOMContentLoaded", function () {
         confetti(confettiConfig);
         clapSound.play();
         perguntasDiv.innerHTML = `
-          <h2 style="text-align: center; color:blue; line-height: 1.5; font-size: 22px; margin: 20px auto;">Conclusões Importantes:</h2>
-          <div style="text-align: justify; line-height: 1.5; font-size: 16px; margin: 5px auto;">Observe no gráfico que para n<sub>0</sub> = 1, não são gerados retângulos e para n<sub>0</sub> = 2, é gerado apenas um único retângulo inscrito.
-          Por isso, o caso base nessa exploração é n<sub>0</sub> = 2. Comparando o cálculo da área desse retângulo com o valor obtido substituindo n por 2 na fórmula, verificamos a ocorrência do mesmo valor como resultado e conseguimos validar o caso base. Logo, para n = 2, A(2) é verdadeira.</div>`;
+          <h2 style="text-align: center; color:blue; line-height: 1.2; font-size: 22px; margin: 10px auto;">Conclusões Importantes:</h2>
+          <div style="text-align: justify; line-height: 1.3; font-size: 16px; margin: 5px auto;">
+          <p>Observe no gráfico que para n<sub>0</sub> = 1, não são gerados retângulos e para n<sub>0</sub> = 2, é gerado apenas um único retângulo inscrito.
+          Por isso, o caso base nessa exploração é n<sub>0</sub> = 2.</p>
+          
+          <p>Comparando o cálculo da área desse retângulo com o valor obtido substituindo n por 2 na fórmula, verificamos a ocorrência do mesmo valor como resultado e conseguimos validar o caso base. Logo, para n = 2, A(2) é verdadeira.</p>
+          </div>`;
         proximaEtapaBtn.style.display = "block";
         parabola1.style.display = "none";
         parabola2.style.display = "block";
@@ -139,8 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
       justificativaDiv.style.display = "block";
       parabola1.style.display = "none";
       parabola2.style.display = "block";
-      clapSound.play();
-
+      
       if (!isLastQuestion) {
         proximaPerguntaBtn.style.display = "block";
       } else {

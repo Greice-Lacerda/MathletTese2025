@@ -195,8 +195,8 @@ function generatePlot() {
     showlegend: false,
     barmode: "overlay",
     autosize: true,
-    width: plotDiv.offsetWidth * 0.95,
-    height: plotDiv.offsetHeight * 0.95,
+    width: plotDiv.offsetWidth,
+    height: plotDiv.offsetHeight * 0.9,
     margin: {
       l: 20,
       r: 20,
