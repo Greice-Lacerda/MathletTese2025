@@ -71,68 +71,213 @@
 
       <div id="modalP2" class="w3-modal hidden" style="width: auto; height: auto;">
         <div class="w3-modal-content">
+          <header class="w3-container w3-teal">
+            <span class="w3-button w3-display-topright fechar-modal">&times;</span>
+            <h2 class="desafio-titulo"></h2>
+          </header>
+          
+          <div class="modal-body">
+            <!-- Conteúdo inicial para n = 3  (Desafio 1) -->
+            <div id="conteudo-desafio" class="modal-columns-container hidden">
+              <div class="modal-column">
+                <img id="parabola-img" src="../img/ParabolaQuizz.jpg" alt="Parábola y = x²" />
+              </div>
+              <div class="modal-column">
+                <p class="modal-texto">
+                  A parábola será dividida em 3 partes iguais. Quantos retângulos serão formados?
+                  <br><br>
+                </p>
+                <input type="number" id="prompt-input" min="2" placeholder="Digite um valor aqui: " />
+              </div>
+              <div class="modal-column">
+                <button id="prompt-ok-btn">Confirmar</button>
+                <button id="prompt-cancel-btn">Cancelar</button>
+                <button id="prompt-fechar-btn">Fechar</button>
+              </div>
+            </div>
+
+            <!-- Conteúdo do Gráfico para n = 3 -->
+            <div id="conteudo-grafico-e-pergunta" class="modal-columns-container hidden">
+              <div class="modal-column">
+                <img id="ParabolaDesafio" src="../img/Parabola2desafio.jpg" alt="Polígono retangular inscrito" />
+              </div>
+              <div class="modal-column">
+                <p class="modal-texto">
+                  Qual é a área do polígono retangular inscrito nesse gráfico? <span style="font-size: 15px; color:blue";>(Considere uma aproximação de três casas decimais.)</span> <br><br>
+                </p>
+                <input type="number" id="area-input" placeholder="Digite a área aqui: " />
+              </div>
+              <div class="modal-column">
+                <button id="proximo-passo-btn">Confirmar</button>
+                <button id="prompt-cancel-btn-2">Cancelar</button>
+                <button id="prompt-fechar-btn-2">Fechar</button>
+              </div>
+            </div>
+
+            <!-- Conteúdo de Verificação para n=3 -->
+            <div id="conteudo-verificacao" class="modal-columns-container hidden">
+              <div class="modal-column">
+                <img id="Parabola2Verificacao" src="../img/Parabola2Verificacao.jpg" alt="Polígono retangular inscrito n3" />
+              </div>
+              <div id="TabelaD1" class="modal-column1">
+                <p class="modal-texto">
+                  <img id="TabelaDesafio" src="../img/Tabela1Verificacao.jpg" alt="Tabela1VerificacaoN3" />
+                </p>
+              </div>
+              <div class="modal-column">
+                <button id="proximo-passo-btn3">Desafio 2</button>
+                <button id="prompt-fechar-btn-3">Fechar</button>
+              </div>
+            </div>
+
+            <!-- Novo conteúdo para n = 4 (Desafio 2) -->
+            <div id="conteudo-desafio2" class="modal-columns-container hidden">
+            <div class="modal-column">
+                <img id="parabola-img" src="../img/ParabolaQuizz.jpg" alt="Parábola y = x²" />
+              </div>
+              <div class="modal-column">
+                <p class="modal-texto">
+                  Agora, a parábola será dividida em 4 partes. Quantos retângulos serão formados?
+                  <br><br>
+                </p>
+                <input type="number" id="prompt-input-2" placeholder="Digite um valor aqui: " />
+              </div>
+              <div class="modal-column">
+                <button id="prompt-ok-btn-2">Confirmar</button>
+                <button id="prompt-cancel-btn-4">Cancelar</button>
+                <button id="prompt-fechar-btn-4">Fechar</button>
+              </div>
+            </div>
+
+            <!-- Novo conteúdo do Gráfico para n = 4 -->
+            <div id="conteudo-grafico-e-pergunta2" class="modal-columns-container hidden">
+              <div class="modal-column">
+                <img id="ParabolaDesafio-4" src="../img/Parabola2desafio.jpg" alt="Polígono retangular inscrito n4" />
+              </div>
+              <div class="modal-column">
+                <p class="modal-texto">
+                  Qual é a área para n = 4?
+                  <br><br>
+                </p>
+                <input type="number" id="area-input-2" placeholder="Digite a área aqui: " />
+              </div>
+              <div class="modal-column">
+                <button id="proximo-passo-btn-4">Confirmar</button>
+                <button id="prompt-cancel-btn-5">Cancelar</button>
+                <button id="prompt-fechar-btn-5">Fechar</button>
+              </div>
+            </div>
+
+            <!-- Conteúdo de Verificação para n = 4 -->
+            <div id="conteudo-verificacao2" class="modal-columns-container hidden">
+              <div class="modal-column">
+                <img id="ParabolaVerificacao-4" src="../img/Parabola2Verificacao.jpg" alt="Polígono retangular inscrito n4" />
+              </div>
+              <div class="modal-column">
+                <p class="modal-texto">
+                  <img id="TabelaVerificacao-4" src="../img/Tabela1Verificacao.jpg" alt="Tabela1VerificacaoN4" />
+                </p>
+              </div>
+              <div class="modal-column">
+                <button id="proximo-passo-btn-5">Desafio 3</button>
+                <button id="prompt-fechar-btn-6">Fechar</button>
+              </div>
+            </div>
+            
+            <!-- Novo conteúdo para n = 5 (Desafio 3) -->
+            <div id="conteudo-desafio3" class="modal-columns-container hidden">
+              <div class="modal-column">
+                <img id="ParabolaVerificacao-4" src="../img/Parabola2Verificacao.jpg" alt="Polígono retangular inscrito n4" />
+              </div>
+              <div class="modal-column">
+                <p class="modal-texto">
+                  E para n = 5? Quantos retângulos serão formados?
+                  <br><br>
+                </p>
+                <input type="number" id="prompt-input-3" placeholder="Digite um valor aqui: " />
+              </div>
+              <div class="modal-column">
+                <button id="prompt-ok-btn-3">Confirmar</button>
+                <button id="prompt-cancel-btn-6">Cancelar</button>
+                <button id="prompt-fechar-btn-7">Fechar</button>
+              </div>
+            </div>
+
+            <!-- Novo conteúdo do Gráfico para n = 5 -->
+            <div id="conteudo-grafico-e-pergunta3" class="modal-columns-container hidden">
+              <div class="modal-column">
+                <img id="ParabolaDesafio-5" src="../img/Parabola2desafio.jpg" alt="Polígono retangular inscrito n5" />
+              </div>
+              <div class="modal-column">
+                <p class="modal-texto">
+                  Qual é a área para n = 5?<br><br>
+                </p>
+                <input type="number" id="area-input-3" placeholder="Digite a área aqui: " />
+              </div>
+              <div class="modal-column">
+                <button id="proximo-passo-btn-6">Confirmar</button>
+                <button id="prompt-cancel-btn-7">Cancelar</button>
+                <button id="prompt-fechar-btn-8">Fechar</button>
+              </div>
+            </div>
+
+            <!-- Conteúdo de Verificação para n = 5 -->
+            <div id="conteudo-verificacao3" class="modal-columns-container hidden">
+              <div class="modal-column">
+                <img id="ParabolaVerificacao-5" src="../img/Parabola2Verificacao.jpg" alt="Polígono retangular inscrito n5" />
+              </div>
+              <div class="modal-column">
+                <p class="modal-texto">
+                  <img id="TabelaVerificacao-5" src="../img/Tabela1Verificacao.jpg" alt="Tabela1VerificacaoN5" />
+                </p>
+              </div>
+              <div class="modal-column">
+                <button id="proximo-passo-btn-7">Desafio 4</button>
+                <button id="prompt-fechar-btn-9">Fechar</button>
+              </div>
+            </div>
+
+            <!-- Novo conteúdo para n=k (Desafio 4) -->
+            <div id="conteudo-desafio4" class="modal-columns-container hidden">
+            <div class="modal-column">
+                <img id="ParabolaVerificacao-5" src="../img/Parabola2Verificacao.jpg" alt="Polígono retangular inscrito n5" />
+              </div>
+              <div class="modal-column">
+                <p class="modal-texto">
+                  Qual a área do polígono retangular inscrito para um valor genérico de n = k?
+                  <br><br>
+                </p>
+                <p> Experimente diferentes valores de n, antes de responder essa pergunta.
+                </p>
+              </div>
+              <div class="modal-column">
+                <!-- Este botão fecha o modal e habilita os botões da página principal. -->
+                <button id="proximo-passo-btn5">Próxima Etapa</button>
+                <button id="prompt-fechar-btn-11">Fechar</button>
+              </div>
+            </div>
+
+            <!-- Conteúdo de Verificação genérico -->
+            <div id="conteudo-verificar" class="modal-columns-container hidden">
+            <div class="modal-column">
+                <img id="ParabolaVerificacao-5" src="../img/Parabola2Verificacao.jpg" alt="Polígono retangular inscrito n5" />
+              </div>
+              <div class="modal-column">
+                <p class="modal-texto">
+                  A área total sob a parábola y = x² de 0 a 1, usando o limite de Riemann com n retângulos, pode ser calculada pela fórmula: $${lim_{n \to \infty} \sum_{i=1}^n f(x_i)\Delta x}$$
+                  Para o nosso caso, a integral de $x^2$ de 0 a 1 é igual a 1/3.
+                </p>
+              </div>
+              <div class="modal-column">
+                <!-- Clica no botão fechar da pagina Passo2.html-->
+                <button id="fecharVerificarBtn">Fechar</button>
+              </div>
+            </div>
+          </div>
+          
           <footer style="transform:scale(1);" class="w3-container">
             &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
           </footer>
-          <header class="w3-container w3-teal">
-            <span class="w3-button w3-display-topright">&times;</span>
-            <h2 class="desafio-titulo">Desafio!</h2>
-          </header>
-          <div class="modal-columns-container">
-            <div class="modal-column">
-              <img id="parabola-img" src="../img/ParabolaQuizz.jpg" alt="Parábola y = x²" />
-            </div>
-            <div class="modal-column">
-              <p class="modal-texto">
-                A parábola será dividida em 3 partes iguais. Quantos retângulos serão formados?
-              </p>
-              <input type="number" id="prompt-input" min="2" placeholder="Digite um valor aqui: " />
-            </div>
-            <div class="modal-column">
-              <button id="prompt-ok-btn">Confirmar</button>
-              <button id="prompt-cancel-btn">Cancelar</button>
-              <button id="prompt-fechar-btn">Fechar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="modalInstrucoes" class="w3-modal hidden">
-        <div class="w3-modal-content">
-          <header class="w3-container w3-teal">
-            <span class="w3-button w3-display-topright">&times;</span>
-            <h2 class="desafio-titulo">Instruções</h2>
-          </header>
-          <div class="modal-columns-container">
-            <div class="modal-column">
-              <p class="modal-texto">
-                Nesta etapa, você deve escolher um valor para 'n' para dividir a área sob a parábola. Um gráfico com retângulos será gerado e uma tabela com os valores de área de cada retângulo será exibida. Explore o que acontece com a área total ao alterar o valor de 'n'.
-              </p>
-            </div>
-            <div class="modal-column">
-              <button id="fecharInstrucoesBtn">Fechar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="modalVerificar" class="w3-modal hidden">
-        <div class="w3-modal-content">
-          <header class="w3-container w3-teal">
-            <span class="w3-button w3-display-topright">&times;</span>
-            <h2 class="desafio-titulo">Verificar Resposta</h2>
-          </header>
-          <div class="modal-columns-container">
-            <div class="modal-column">
-              <p class="modal-texto">
-                A área total sob a parábola y = x² de 0 a 1, usando o limite de Riemann com n retângulos, pode ser calculada pela fórmula: $${lim_{n \to \infty} \sum_{i=1}^n f(x_i)\Delta x}$$
-                Para o nosso caso, a integral de $x^2$ de 0 a 1 é igual a 1/3.
-              </p>
-            </div>
-            <div class="modal-column">
-              <button id="fecharVerificarBtn">Fechar</button>
-            </div>
-          </div>
         </div>
       </div>
     </main>

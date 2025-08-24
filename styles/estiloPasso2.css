@@ -325,15 +325,63 @@ button {
   margin-bottom: 20px;
 }
 
-#parabola-img {
-  width: 200px;
-  height: 200px;
+#parabola-img, #ParabolaDesafio{
+  width: 250px;
+  height: 250px;
   object-fit: contain;
 }
 
+#Parabola2Verificacao,#TabelaDesafio {
+  width: 340px;
+  height: 300px;
+  object-fit: contain;
+  padding: 8px;
+  border: solid 2px rgba(248, 33, 33, 0.452);
+}
+
+.modal-column1{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: -95px;
+  margin-right: -95px;
+  padding: 20px;
+  margin-top: 15px;
+  height: auto;
+  max-height: 400px;
+}
+
+
+#prompt-ok-btn-2,
+#prompt-cancel-btn-4,
+#prompt-fechar-btn-4,
 #prompt-ok-btn,
 #prompt-cancel-btn,
-#prompt-fechar-btn {
+#prompt-fechar-btn,
+#proximo-passo-btn,
+#prompt-cancel-btn-2,
+#prompt-fechar-btn-2,
+#proximo-passo-btn3,
+#prompt-fechar-btn-3,
+#prompt-ok-btn-2,
+#prompt-cancel-btn-4,
+#prompt-fechar-btn-4,
+#fecharVerificarBtn,
+#proximo-passo-btn-4,
+#prompt-cancel-btn-5,
+#prompt-fechar-btn-5,
+#proximo-passo-btn-5,
+#prompt-fechar-btn-6,
+#prompt-ok-btn-3,
+#prompt-cancel-btn-6,
+#prompt-fechar-btn-7,
+#proximo-passo-btn-6,
+#prompt-cancel-btn-7,
+#prompt-fechar-btn-8,
+#proximo-passo-btn-7,
+#prompt-fechar-btn-9,
+#proximo-passo-btn5,
+#prompt-fechar-btn-11 {
   width: 180px;
   height: 40px;
   margin: 15px auto;
@@ -351,7 +399,31 @@ button {
 
 #prompt-ok-btn:hover,
 #prompt-cancel-btn:hover,
-#prompt-fechar-btn:hover {
+#prompt-fechar-btn:hover,
+#proximo-passo-btn:hover,
+#prompt-cancel-btn-2:hover,
+#prompt-fechar-btn-2:hover,
+#proximo-passo-btn3:hover,
+#prompt-fechar-btn-3:hover,
+#prompt-ok-btn-2:hover,
+#prompt-cancel-btn-4:hover,
+#prompt-fechar-btn-4:hover,
+#fecharVerificarBtn:houver,
+#proximo-passo-btn-4:hover,
+#prompt-cancel-btn-5:hover,
+#prompt-fechar-btn-5:hover,
+#proximo-passo-btn-5:hover,
+#prompt-fechar-btn-6:hover,
+#prompt-ok-btn-3:hover,
+#prompt-cancel-btn-6:hover,
+#prompt-fechar-btn-7:hover,
+#proximo-passo-btn-6:hover,
+#prompt-cancel-btn-7:hover,
+#prompt-fechar-btn-8:hover,
+#proximo-passo-btn-7:hover,
+#prompt-fechar-btn-9:hover,
+#proximo-passo-btn5:hover,
+#prompt-fechar-btn-11:hover {
   background: linear-gradient(
     to right,
     #d3d3ed,
@@ -367,12 +439,41 @@ button {
 
 #prompt-ok-btn:active,
 #prompt-cancel-btn:active,
-#prompt-fechar-btn:active {
+#prompt-fechar-btn:active,
+#proximo-passo-btn:active,
+#prompt-cancel-btn-2:active,
+#prompt-fechar-btn-2:active,
+#proximo-passo-btn3:active,
+#prompt-fechar-btn-3:active,
+#prompt-ok-btn-2:active,
+#prompt-cancel-btn-4:active,
+#prompt-fechar-btn-4:active,
+#fecharVerificarBtn:active,
+#proximo-passo-btn-4:active,
+#prompt-cancel-btn-5:active,
+#prompt-fechar-btn-5:active,
+#proximo-passo-btn-5:active,
+#prompt-fechar-btn-6:active,
+#prompt-ok-btn-3:active,
+#prompt-cancel-btn-6:active,
+#prompt-fechar-btn-7:active,
+#proximo-passo-btn-6:active,
+#prompt-cancel-btn-7:active,
+#prompt-fechar-btn-8:active,
+#proximo-passo-btn-7:active,
+#prompt-fechar-btn-9:active,
+#proximo-passo-btn5:active,
+#prompt-fechar-btn-11:active {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   transform: scale(1);
 }
 
-#prompt-input {
+#prompt-input,
+#area-input,
+#prompt-input-2,
+#area-input-2,
+#prompt-input-3,
+#area-input-3 {
   width: 240px;
   height: 40px;
   margin: auto 5px;
