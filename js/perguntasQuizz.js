@@ -49,7 +49,7 @@ export const quizData = [
       "<span style='font-weight: bold; color: #3717eaff; text-shadow: 1px 1px 3px rgba(82, 65, 65, 0.9);'><u> QUESTÃO 4:</u></span> Dividindo a faixa da parabola y = x<sup>2</sup> determinada pelo intervalo [0, 1] em duas partes iguais, qual seria a medida do comprimento de cada subintervalo?",
     alternativas: [
       "A) Comprimento igual a zero.",
-      "B) Comprimento igual a 1/4.",
+      "B) Comprimento igual a 1/8.",
       "C) Comprimento igual a 1/4.",
       "D) Comprimento igual a 1/2.",
       "E) Comprimento igual a 1.",

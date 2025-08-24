@@ -1,3 +1,5 @@
+// graficoP2.js
+
 /**
  * Calcula y = x^2 para cada valor em um array de x.
  * @param {number[]} x - Um array de valores de x.
@@ -13,18 +15,21 @@ export function parabola(x) {
  * @param {number} n - O número de retângulos para dividir o gráfico.
  */
 export function generatePlot(n) {
+  const plotContainer = document.getElementById("plot");
+
+  // Define o intervalo de integração
   const a = 0;
   const b = 1;
   const bar_width = (b - a) / n;
 
-  // Dados para a parábola
+  // --- 1. Dados para a Parábola (curva de fundo) ---
   const x_parabola = Array.from(
     { length: 400 },
     (_, i) => a + (i * (b - a)) / 399
   );
   const y_parabola = parabola(x_parabola);
 
-  // Dados para os retângulos
+  // --- 2. Dados para os Retângulos (área de aproximação) ---
   const x_rect = [];
   const y_rect = [];
   const text_labels = [];
@@ -32,7 +37,7 @@ export function generatePlot(n) {
 
   for (let i = 0; i < n; i++) {
     const xi = a + i * bar_width;
-    const yi = parabola([xi])[0];
+    const yi = xi * xi;
     const area = yi * bar_width;
 
     x_rect.push(xi);
@@ -41,7 +46,7 @@ export function generatePlot(n) {
     totalArea += area;
   }
 
-  // Configuração dos traces do Plotly.js
+  // --- 3. Configuração dos Traces do Plotly.js ---
   const traces = [
     {
       x: x_parabola,
@@ -49,7 +54,7 @@ export function generatePlot(n) {
       mode: "lines",
       name: "Parábola y = x²",
       line: {
-        color: "rgb(255, 127, 14)", // Cor da parábola
+        color: "#ff7f0e",
         width: 3,
       },
       showlegend: true,
@@ -59,9 +64,9 @@ export function generatePlot(n) {
       y: y_rect,
       type: "bar",
       width: bar_width,
-      name: "Retângulos (Aproximação)",
+      name: `Aproximação com ${n} Retângulos`,
       marker: {
-        color: "rgba(31, 119, 180, 0.5)", // Cor dos retângulos com transparência
+        color: "rgba(31, 119, 180, 0.5)",
         line: {
           color: "rgba(31, 119, 180, 1.0)",
           width: 1.5,
@@ -70,27 +75,20 @@ export function generatePlot(n) {
       text: text_labels,
       hoverinfo: "text",
       showlegend: true,
-      base: 0, // Garante que a base do retângulo seja o eixo X
+      base: 0,
     },
   ];
 
-  // Configuração do layout do Plotly.js
-  const plotContainer = document.getElementById("plot");
+  // --- 4. Configuração do Layout do Plotly.js ---
   const layout = {
-    title: `Área sob a parábola y = x² (n=${n})<br>Área Total ≈ ${totalArea.toFixed(
-      4
-    )}`,
-    annotations: [],
-    showlegend: true,
-    barmode: "overlay",
-    autosize: true,
-    width: plotContainer.clientWidth,
-    height: plotContainer.clientHeight,
-    margin: {
-      l: 50,
-      r: 50,
-      t: 80,
-      b: 70,
+    title: {
+      text: `Área sob a parábola y = x² (n=${n})<br>Área Total ≈ ${totalArea.toFixed(
+        4
+      )}`,
+      font: {
+        family: "Bree Serif",
+        size: 20,
+      },
     },
     xaxis: {
       title: "Valores de X",
@@ -100,7 +98,17 @@ export function generatePlot(n) {
       title: "Valores de Y",
       range: [0, 1.1],
     },
+    showlegend: true,
+    hovermode: "closest",
+    autosize: true,
+    margin: {
+      l: 50,
+      r: 50,
+      t: 80,
+      b: 70,
+    },
   };
 
-  Plotly.newPlot("plot", traces, layout, { responsive: true });
+  // --- 5. Criação do Gráfico ---
+  Plotly.newPlot(plotContainer, traces, layout, { responsive: true });
 }

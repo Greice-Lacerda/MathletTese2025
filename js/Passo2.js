@@ -1,89 +1,89 @@
 // Passo2.js
 
-// Importa funções dos módulos auxiliares
+// Importa as funções de geração de conteúdo
 import { generatePlot } from "./graficoP2.js";
 import { generateTable } from "./TableP2.js";
 
+// Importa as funções para gerenciar os modais
+import { setupModalCloseButtons, closeModal } from "./botoesModal.js";
+
+// Variáveis para armazenar os valores do modal principal.
+const desafioData = {};
+
 /**
- * Limpa o conteúdo da área do gráfico e reinicia a página.
+ * Função para fechar o modal e processar os dados inseridos pelo usuário.
  */
-export function resetPage() {
-  document.getElementById("plot").innerHTML = "";
-  document.getElementById("tabela-container").innerHTML = "";
-  document.getElementById("tabela-container").classList.add("hidden");
-  document.getElementById("Explorar11").classList.add("hidden");
-  document.getElementById("ProximaEtapa").classList.add("hidden");
-  // Exibe o modal novamente para reiniciar a interação
-  document.getElementById("prompt-modal").classList.remove("hidden");
+function handleModalSubmit() {
+  const inputN = document.getElementById("prompt-input").value;
+  // Busca o elemento de áudio usando o ID correto: "error-audio"
+  const errorAudio = document.getElementById("error-audio");
+
+  // Valida o valor digitado. Se for diferente de 2, exibe o erro.
+  if (parseInt(inputN, 10) !== 3) {
+    if (errorAudio) {
+      errorAudio.play();
+    }
+    alert("Por favor, tente novamente.");
+  } else {
+    // Se o valor for 2, prossegue com a lógica normal.
+    desafioData.nValue = parseInt(inputN, 10);
+    closeModal("modalP2");
+
+  desafioData.nValue = parseInt(inputN, 10);
+  closeModal("modalP2");
+
+  if (desafioData.nValue) {
+    // Torna os contêineres do gráfico e da tabela visíveis
+    const graficoFieldset = document.getElementById("Explorar12");
+    const tabelaFieldset = document.getElementById("Explorar13");
+
+    if (graficoFieldset) {
+      graficoFieldset.classList.remove("hidden");
+      graficoFieldset.classList.add("visible");
+    }
+    if (tabelaFieldset) {
+      tabelaFieldset.classList.remove("hidden");
+      tabelaFieldset.classList.add("visible");
+    }
+
+    // Gera o gráfico e a tabela com o valor fornecido
+    generatePlot(desafioData.nValue);
+    //generateTable(desafioData.nValue);
+  }
+}
+}
+/**
+ * Função para abrir um modal específico.
+ * @param {string} modalId - O ID do modal a ser aberto.
+ */
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove("hidden");
+    modal.classList.add("visible");
+  }
 }
 
-/**
- * Lógica principal para o modal inicial e interação com o usuário.
- * Escuta o evento DOMContentLoaded para garantir que o DOM está pronto.
- */
-document.addEventListener("DOMContentLoaded", function () {
-  const promptModal = document.getElementById("prompt-modal");
-  const promptInput = document.getElementById("prompt-input");
-  const promptOkBtn = document.getElementById("prompt-ok-btn");
-  const tabelaContainer = document.getElementById("tabela-container");
-  const errorAudio = document.getElementById("error-audio");
-  const proximaEtapaBtn = document.getElementById("ProximaEtapa");
-  const explore11Fieldset = document.getElementById("Explorar11");
-  const nValueInput = document.getElementById("n-value");
-  const generatePlotBtn = explore11Fieldset.querySelector(
-    "button:nth-of-type(1)"
-  );
-  const resetPageBtn = explore11Fieldset.querySelector("button:nth-of-type(2)");
+document.addEventListener("DOMContentLoaded", () => {
+  openModal("modalP2");
 
-  // Oculta a tabela e o fieldset de controle inicialmente
-  tabelaContainer.classList.add("hidden");
-  explore11Fieldset.classList.add("hidden");
+  const confirmBtn = document.getElementById("prompt-ok-btn");
+  if (confirmBtn) {
+    confirmBtn.addEventListener("click", handleModalSubmit);
+  }
 
-  // Exibe o modal assim que a página carregar
-  promptModal.classList.remove("hidden");
+  const instrucaoBtn = document.getElementById("Instrucao");
+  const verificarBtn = document.getElementById("Verificar");
 
-  // Lógica do botão "OK" do modal
-  promptOkBtn.addEventListener("click", () => {
-    const inputValue = parseInt(promptInput.value);
+  if (instrucaoBtn) {
+    instrucaoBtn.addEventListener("click", () => openModal("modalInstrucoes"));
+  }
 
-    // A lógica de uma parábola dividida em 3 partes forma 5 retângulos.
-    // O usuário deve digitar 5, não 2.
-    if (inputValue === 5) {
-      promptModal.classList.add("hidden");
-      tabelaContainer.classList.remove("hidden");
-      explore11Fieldset.classList.remove("hidden");
-      proximaEtapaBtn.classList.remove("hidden");
+  if (verificarBtn) {
+    verificarBtn.addEventListener("click", () => openModal("modalVerificar"));
+  }
 
-      // Habilita os botões de controle após o acerto
-      generatePlotBtn.disabled = false;
-      resetPageBtn.disabled = false;
-
-      // Chama a função para gerar o gráfico e a tabela com n=3
-      generatePlot(3);
-      generateTable(3);
-    } else {
-      errorAudio.play(); // Toca o som de erro
-      alert(
-        "Valor incorreto. A resposta é 5, pois a fórmula para o número de retângulos é 2n-1."
-      );
-      promptInput.value = "";
-    }
-  });
-
-  // Evento para o botão "Gerar Gráfico" do fieldset Explorar11
-  generatePlotBtn.addEventListener("click", () => {
-    const n = parseInt(nValueInput.value);
-    // Assegura que o valor de 'n' está no intervalo correto, se necessário.
-    if (n >= 2 && n <= 10) {
-      generatePlot(n);
-      generateTable(n);
-    } else {
-      alert("Por favor, digite um valor de 'n' entre 2 e 10.");
-    }
-  });
-
-  // Evento para o botão "Limpar"
-  resetPageBtn.addEventListener("click", () => {
-    resetPage();
-  });
+  setupModalCloseButtons();
 });
+
+window.openModal = openModal;

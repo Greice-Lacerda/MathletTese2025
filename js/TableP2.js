@@ -1,4 +1,4 @@
-import { parabola } from "./graficoP2.js";
+// TableP2.js
 
 /**
  * Gera a tabela de áreas e o valor total.
@@ -28,7 +28,7 @@ export function generateTable(n) {
 
   for (let i = 0; i < n; i++) {
     const xi = a + i * bar_width;
-    const yi = parabola([xi])[0];
+    const yi = xi * xi; // Simplificado: calcula y diretamente
     const area = yi * bar_width;
 
     tableHtml += `<tr><td>${i + 1}</td><td>${area.toFixed(10)}</td></tr>`;
