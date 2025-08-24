@@ -19,17 +19,17 @@ function handleModalSubmit() {
   const errorAudio = document.getElementById("error-audio");
 
   // Valida o valor digitado. Se for diferente de 2, exibe o erro.
-  if (parseInt(inputN, 10) !== 3) {
+  if (parseInt(inputN, 10) !== 2) {
     if (errorAudio) {
       errorAudio.play();
     }
     alert("Por favor, tente novamente.");
   } else {
     // Se o valor for 2, prossegue com a lógica normal.
-    desafioData.nValue = parseInt(inputN, 10);
+    desafioData.nValue = parseInt(inputN, 10) + 1;
     closeModal("modalP2");
 
-  desafioData.nValue = parseInt(inputN, 10);
+  desafioData.nValue = parseInt(inputN, 10) + 1;
   closeModal("modalP2");
 
   if (desafioData.nValue) {
