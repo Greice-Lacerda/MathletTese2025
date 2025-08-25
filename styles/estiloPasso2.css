@@ -107,6 +107,8 @@ input[type="number"] {
   text-align: center;
 }
 
+/*Botoes da pagina*/
+
 button {
   font-weight: bold;
   cursor: pointer;
@@ -181,33 +183,75 @@ button {
   transform: scale(1);
 }
 
+#ProximaEtapa {
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(
+    to right,
+    #350202,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px auto;
+  gap: 10px;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
+  color: white;
+}
+
+#ProximaEtapa:hover {
+  transform: scale(1.1);
+  color: rgb(124, 249, 7);
+  filter: invert(599%) sepia(0%) saturate(50%) hue-rotate(270deg);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+#ProximaEtapa:active {
+  transform: scale(0.95);
+}
+
+
 /* ========================================================================== */
 /* Estilos do Gráfico e Tabela */
 /* ========================================================================== */
 
 #plot,
 #tabela-container {
-  width: 95%;
-  height: 90%;
+  max-width: 400px;
+  max-height: 320px;
   min-height: 280px;
   background-color: #fff;
   border-radius: 10px;
   padding: 1px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Centraliza o elemento */
+}
+
+#tabela-container {
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #tabela-container table {
-  width: 100%;
+  width: 100%; /* Garante que a tabela use o espaço disponível */
   border-collapse: separate;
   border-spacing: 2px;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px; /* Tamanho da fonte ajustado */
 }
 
 #tabela-container th,
 #tabela-container td {
   border: 1px solid #ccc;
-  padding: 8px;
+  padding: 4px; /* Espaçamento reduzido */
   text-align: center;
 }
 
@@ -221,6 +265,104 @@ button {
 #tabela-container td {
   border-bottom: 1px solid lightgray;
   box-shadow: 1px 1px 26px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================================================== */
+/* Estilos do Modal (Desafio) */
+/* ========================================================================== */
+
+.w3-modal {
+  display: block;
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 50px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 2px;
+  text-align: center;
+  font-size: 14px; /* Tamanho da fonte ajustado */
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+}
+
+td {
+  border-bottom: 1px solid lightgray;
+  padding: 2px;
+  line-height: 1.2;
+  box-shadow: 1px 1px 26px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: lightblue;
+  border: 1px solid darkblue;
+  color: brown;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+/* Container geral para a fração */
+.fraction-container {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  font-size: 14px; /* Tamanho da fonte ajustado */
+  margin: 2px auto;
+}
+
+/* Numerador */
+.numerator {
+  text-align: center;
+  line-height: 1;
+}
+
+/* Denominador com a linha divisória */
+.denominator {
+  border-top: 1px solid black;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Estilo para a coluna A(n) e seus valores */
+.an-column {
+  text-align: left !important; /* Força o alinhamento à esquerda */
+  padding-left: 5px; /* Espaçamento reduzido */
+}
+
+.an-cell {
+  text-align: left;
+  padding-left: 5px; /* Espaçamento reduzido */
+}
+
+/* Estilo para a string da soma e valor de aproximação dentro da célula */
+.an-sum,
+.an-approx {
+  text-align: left !important; /* Força o alinhamento à esquerda */
+  white-space: nowrap;
+  font-size: 13px; /* Tamanho da fonte reduzido para evitar quebra de linha */
+}
+
+/* Estilo para as linhas de resumo de comparação */
+.summary-description {
+  font-size: 13px; /* Tamanho da fonte reduzido */
+  text-align: left;
+  padding-left: 5px; /* Espaçamento reduzido */
+  font-weight: bold;
+  padding-top: 5px; /* Espaçamento reduzido */
+}
+
+.summary-value {
+  font-size: 13px; /* Tamanho da fonte reduzido */
+  text-align: left;
+  padding-left: 5px; /* Espaçamento reduzido */
+  font-weight: bold;
+  padding-top: 5px; /* Espaçamento reduzido */
 }
 
 /* ========================================================================== */
@@ -325,18 +467,52 @@ button {
   margin-bottom: 20px;
 }
 
-#parabola-img, #ParabolaDesafio{
+#parabola-img,
+#ParabolaDesafio,
+#ParabolaDesafio-4,
+#ParabolaDesafio-5,
+#ParabolaVerificacao-5,
+#ParabolaDesafio-k {
   width: 250px;
   height: 250px;
   object-fit: contain;
 }
 
-#Parabola2Verificacao,#TabelaDesafio {
+#Parabola2Verificacao,
+#TabelaDesafio,
+#ParabolaVerificacao-4,
+#ParabolaVerificacao-5,
+#ParabolaVerificacao-k{
   width: 340px;
   height: 300px;
   object-fit: contain;
   padding: 8px;
   border: solid 2px rgba(248, 33, 33, 0.452);
+}
+
+
+#TabelaVerificacao-4,
+#TabelaVerificacao-5,
+#TabelaVerificacao-k {
+  width: 450px;
+  height: 300px;
+  object-fit: contain;
+  margin-left: -65px;
+  border: solid 2px rgba(248, 33, 33, 0.452);
+}
+
+#TabelaVerificacao-4:hover,
+#TabelaVerificacao-5:hover,
+#TabelaVerificacao-k:hover{
+  transform: scale(1.4);
+  filter: none;
+  object-fit: cover;
+}
+
+#TabelaVerificacao-4:active,
+#TabelaVerificacao-5:active,
+#TabelaVerificacao-k:active{
+  transform: scale(1.2);
 }
 
 .modal-column1{

@@ -49,8 +49,9 @@ export function mostrarConteudoModal(conteudoId, titulo) {
  * @param {Function} handlers.handleConfirmN5 - Lógica para o desafio n=5.
  * @param {Function} handlers.handleNextStepN5 - Lógica para a área do polígono (n=5).
  * @param {Function} handlers.handleNextStepFromVerification3 - Lógica para o botão do Desafio 4.
- * @param {Function} handlers.handleNextStepNK - Lógica para o desafio n=k.
  * @param {Function} handlers.enableMainButtons - Lógica para habilitar botões da página principal.
+ * @param {Function} handlers.handleCloseVerificationAndEnableNext - Lógica para fechar o modal de verificação e habilitar o botão principal.
+ * @param {Function} handlers.handleCloseModal - Novo manipulador para o fechamento do modal.
  */
 export function setupModalControls(handlers) {
   const modalPrincipal = document.getElementById("modalP2");
@@ -58,11 +59,12 @@ export function setupModalControls(handlers) {
   // Seleciona todos os botões de fechar e adicionar o listener
   document
     .querySelectorAll(
-      ".fechar-modal, #fecharInstrucoesBtn, #fecharVerificarBtn, #prompt-fechar-btn, #prompt-fechar-btn-2, #prompt-fechar-btn-3, #prompt-fechar-btn-4, #prompt-fechar-btn-5, #prompt-fechar-btn-6, #prompt-fechar-btn-7, #prompt-fechar-btn-8, #prompt-fechar-btn-9, #prompt-fechar-btn-10, #prompt-fechar-btn-11"
+      ".fechar-modal, #prompt-fechar-btn, #prompt-fechar-btn-2, #prompt-fechar-btn-3, #prompt-fechar-btn-4, #prompt-fechar-btn-5, #prompt-fechar-btn-6, #prompt-fechar-btn-7, #prompt-fechar-btn-8, #prompt-fechar-btn-9, #prompt-fechar-btn-10, #prompt-fechar-btn-11"
     )
     .forEach((btn) => {
+      // Usa o novo manipulador de fechamento
       btn.addEventListener("click", () => {
-        modalPrincipal.classList.add("hidden");
+        handlers.handleCloseModal();
       });
     });
 
@@ -73,9 +75,7 @@ export function setupModalControls(handlers) {
     )
     .forEach((btn) => {
       btn.addEventListener("click", () => {
-        const modalInput = btn
-          .closest(".modal-columns-container")
-          .querySelector("input");
+        const modalInput = btn.closest(".modal-columns-container").querySelector("input");
         if (modalInput) {
           modalInput.value = "";
         }
@@ -97,6 +97,11 @@ export function setupModalControls(handlers) {
     });
   }
 
+  const fecharVerificarBtn = document.getElementById("fecharVerificarBtn");
+  if (fecharVerificarBtn && handlers.handleCloseVerificationAndEnableNext) {
+      fecharVerificarBtn.addEventListener("click", handlers.handleCloseVerificationAndEnableNext);
+  }
+
   const botaoConfirmarN2 = document.getElementById("prompt-ok-btn");
   if (botaoConfirmarN2 && handlers.handleConfirmN2) {
     botaoConfirmarN2.addEventListener("click", handlers.handleConfirmN2);
@@ -106,17 +111,10 @@ export function setupModalControls(handlers) {
   if (botaoProximoPassoN3 && handlers.handleNextStepN3) {
     botaoProximoPassoN3.addEventListener("click", handlers.handleNextStepN3);
   }
-
-  const botaoProximoPassoN3Verificacao =
-    document.getElementById("proximo-passo-btn3");
-  if (
-    botaoProximoPassoN3Verificacao &&
-    handlers.handleNextStepFromVerification
-  ) {
-    botaoProximoPassoN3Verificacao.addEventListener(
-      "click",
-      handlers.handleNextStepFromVerification
-    );
+  
+  const botaoProximoPassoN3Verificacao = document.getElementById("proximo-passo-btn3");
+  if (botaoProximoPassoN3Verificacao && handlers.handleNextStepFromVerification) {
+    botaoProximoPassoN3Verificacao.addEventListener("click", handlers.handleNextStepFromVerification);
   }
 
   const botaoConfirmarN4 = document.getElementById("prompt-ok-btn-2");
@@ -129,17 +127,9 @@ export function setupModalControls(handlers) {
     botaoProximoPassoN4.addEventListener("click", handlers.handleNextStepN4);
   }
 
-  const botaoProximoPassoN4Verificacao = document.getElementById(
-    "proximo-passo-btn-5"
-  );
-  if (
-    botaoProximoPassoN4Verificacao &&
-    handlers.handleNextStepFromVerification2
-  ) {
-    botaoProximoPassoN4Verificacao.addEventListener(
-      "click",
-      handlers.handleNextStepFromVerification2
-    );
+  const botaoProximoPassoN4Verificacao = document.getElementById("proximo-passo-btn-5");
+  if (botaoProximoPassoN4Verificacao && handlers.handleNextStepFromVerification2) {
+    botaoProximoPassoN4Verificacao.addEventListener("click", handlers.handleNextStepFromVerification2);
   }
 
   const botaoConfirmarN5 = document.getElementById("prompt-ok-btn-3");
@@ -152,17 +142,9 @@ export function setupModalControls(handlers) {
     botaoProximoPassoN5.addEventListener("click", handlers.handleNextStepN5);
   }
 
-  const botaoProximoPassoN5Verificacao = document.getElementById(
-    "proximo-passo-btn-7"
-  );
-  if (
-    botaoProximoPassoN5Verificacao &&
-    handlers.handleNextStepFromVerification3
-  ) {
-    botaoProximoPassoN5Verificacao.addEventListener(
-      "click",
-      handlers.handleNextStepFromVerification3
-    );
+  const botaoProximoPassoN5Verificacao = document.getElementById("proximo-passo-btn-7");
+  if (botaoProximoPassoN5Verificacao && handlers.handleNextStepFromVerification3) {
+    botaoProximoPassoN5Verificacao.addEventListener("click", handlers.handleNextStepFromVerification3);
   }
 
   const botaoProximoPassoNK = document.getElementById("proximo-passo-btn5");

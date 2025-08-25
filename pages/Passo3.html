@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Passo 2 da Exploração - Explorando o Princípio da Indução Matemática
+      Passo 3 da Exploração - Explorando o Princípio da Indução Matemática
     </title>
     
     <link rel="stylesheet" href="../styles/estilosComuns.css" />
@@ -17,7 +17,7 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     
-    <script type="module" src="../js/Passo2.js"></script>
+    <script type="module" src="../js/Passo3.js"></script>
   </head>
   <body>
     <header>
@@ -55,22 +55,22 @@
           <legend class="Elegend">Menu</legend>
           
           <button id="voltarTeoria" onclick="window.open('./Problema1.html', '_blank')">
-              O Problema
+                O Problema
             </button>
 
             <button id="Instrucao" onclick="window.open('./instrucaoP2.html', '_blank')">
-              Instruções
+                Instruções
             </button>
             <button id="Verificar">
-              Verificar Resposta
+                Verificar Resposta
             </button>
 
             <button id="ProximaEtapa" class="hidden" onclick="window.location.href='./Passo3.html'">
-              Próxima Etapa
+                Próxima Etapa
             </button>
 
             <button id="Sair" onclick="window.location.href='https://www.google.com.br'" target="_blank">
-              Sair
+                Sair
             </button>
 
         </fieldset>
@@ -140,7 +140,7 @@
             <!-- Novo conteúdo para n = 4 (Desafio 2) -->
             <div id="conteudo-desafio2" class="modal-columns-container hidden">
             <div class="modal-column">
-              <img id="parabola-img" src="../img/ParabolaQuizz.jpg" alt="Parábola y = x²" />
+                <img id="parabola-img" src="../img/ParabolaQuizz.jpg" alt="Parábola y = x²" />
               </div>
               <div class="modal-column">
                 <p class="modal-texto">
@@ -247,15 +247,15 @@
             <!-- Novo conteúdo para n = k (Desafio 4) -->
             <div id="conteudo-desafio4" class="modal-columns-container hidden">
             <div class="modal-column">
-              <img id="ParabolaDesafio-k" src="../img/ParabolaNkdesafio.jpg" alt="Polígono retangular inscrito n5" />
+                <img id="ParabolaDesafio-k" src="../img/ParabolaNkdesafio.jpg" alt="Polígono retangular inscrito n5" />
               </div>
               <div class="modal-column">
-                <p class="modal-texto" style="font-size: 16px; margin-top: 10px;"">
+                <p class="modal-texto">
                   Considerando n = k partes iguais do intervalo [0, 1], como poderiamos representar em função de k, o cálculo da área do polígono retangular inscrito?
-                <br><br>
-                &bullet; Experimente diferentes valores de n, antes de responder essa pergunta. Clique no botão <span style="color:blue";>"Próxima Etapa"</span>.
-                <br><br>
-                &bullet; Após a experimentação, clique no botão <span style="color:green";>"Verificar Resposta"</span> para seguir para o próximo passo.
+                </p>
+                <p> &bullet; Experimente diferentes valores de n, antes de responder essa pergunta. Clique no botão "<span style="color:blue";>Próxima Etapa</span>".
+                </p>
+                <p> &bullet; Após a experimentação, clique no botão "<span style="color:green";>Verificar Resposta</span>" para seguir para o próximo passo.
                 </p>
               </div>
               <div class="modal-column">
@@ -268,7 +268,7 @@
             <!-- Conteúdo de Verificação genérico -->
             <div id="conteudo-verificar" class="modal-columns-container hidden">
             <div class="modal-column">
-              <img id="ParabolaVerificacao-k" src="../img/ParabolaNkdesafio.jpg" alt="Polígono retangular inscrito n5" />
+                <img id="ParabolaVerificacao-k" src="../img/ParabolaNkdesafio.jpg" alt="Polígono retangular inscrito n5" />
               </div>
               <div class="modal-column">
                 <p class="modal-texto">

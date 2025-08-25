@@ -109,7 +109,7 @@ section{
 .formula {
   width: 250px;
   font-size: 17px;
-  font-family: "Times New Roman", Times, serif;  
+  font-family: "Times New Roman", serif;
   text-align: center;
   font-weight: bold;
   margin: 0 0 -15px 100px;

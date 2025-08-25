@@ -1,25 +1,32 @@
-// area2.js
+/**
+ * Este arquivo JavaScript é responsável por gerar e exibir a fórmula da área
+ * do polígono retangular inscrito sob a parábola y = x² no intervalo [0, 1].
+ *
+ * A fórmula é gerada dinamicamente com base no número de retângulos 'n' e formatada
+ * para respeitar as classes CSS fornecidas, garantindo que o visual seja coeso.
+ */
 
 // Função auxiliar para formatar a fração usando as novas classes CSS
 function formatFraction(numerator, denominator) {
   return `<span class="fraction-container">
             <span class="numerator">${numerator}</span>
+            <span class="line"></span>
             <span class="denominator">${denominator}</span>
-          </span>`;
+            </span>`;
 }
 
 // Função auxiliar para formatar um termo da área (largura * altura)
 function formatAreaTerm(i, n) {
   const widthFraction = formatFraction(1, n);
   const heightFraction = formatFraction(
-    `${i}<sup><small>2</small></sup>`,
-    `${n}<sup><small>2</small></sup>`
+    `(${i})<sup>2</sup>`,
+    `(${n})<sup>2</sup>`
   );
-  return `${widthFraction} x ${heightFraction}`;
+  return `${widthFraction} &times; ${heightFraction}`;
 }
 
 // Função para recarregar a página de forma eficiente
-export function resetPage() {
+function resetPage() {
   document.getElementById("n-value").value = "2";
   document.getElementById("tabela-container").innerHTML = "";
   Plotly.newPlot("plot", [], { title: "Parábola y = x²" });
@@ -29,12 +36,18 @@ function parabola(x) {
   return x.map((xi) => xi ** 2);
 }
 
-/**
- * Função principal para gerar o gráfico no modal.
- * @param {number} n - O valor de n para a geração do gráfico.
- */
-export function generateModalPlot(n) {
-  const plotDiv = document.getElementById("grafico-modal-placeholder");
+function generatePlot() {
+  const n = parseInt(document.getElementById("n-value").value);
+  const plotDiv = document.getElementById("plot");
+  const tableContainer = document.getElementById("tabela-container");
+
+  // Validação de entrada do usuário
+  if (isNaN(n) || n < 2) {
+    alert("Por favor, insira um número inteiro maior ou igual a 2.");
+    return;
+  }
+
+  tableContainer.innerHTML = ""; // Limpa a tabela no início
 
   const a = 0;
   const b = 1;
@@ -46,6 +59,10 @@ export function generateModalPlot(n) {
 
   let traces;
   let annotations;
+  let tableBodyData = [];
+  let totalArea = 0;
+  const realTotalArea = (1 / 3).toFixed(8);
+  let error = (realTotalArea - 0).toFixed(8);
 
   if (n >= 2) {
     const x_rect = Array.from(
@@ -54,6 +71,31 @@ export function generateModalPlot(n) {
     );
     const y_rect = parabola(x_rect);
     const bar_width = (b - a) / n;
+    const area_values = x_rect
+      .slice(0, -1)
+      .map((xi, i) => bar_width * y_rect[i]);
+
+    const cumulativeArea_values = [];
+    let accumulated_numerator = 0;
+    const formatted_area_terms = [];
+    const cumulativeArea_string = [];
+
+    x_rect.slice(0, -1).forEach((xi, i) => {
+      const currentArea_numerator = i ** 2;
+      const denominator = n ** 3;
+      accumulated_numerator += currentArea_numerator;
+
+      if (currentArea_numerator > 0) {
+        formatted_area_terms.push(
+          formatFraction(`${i}<sup>2</sup>`, `${n}<sup>3</sup>`)
+        );
+      }
+
+      const current_cumulative_string = formatted_area_terms.join(" + ");
+
+      cumulativeArea_string.push(current_cumulative_string);
+      cumulativeArea_values.push(accumulated_numerator / denominator);
+    });
 
     traces = [
       {
@@ -68,7 +110,7 @@ export function generateModalPlot(n) {
         y: [y_rect[i]],
         type: "bar",
         width: [bar_width],
-        name: `Area_${i}`,
+        name: `Area_${i} = ${area_values[i].toFixed(8)}`,
         marker: {
           color: "rgba(0, 0, 255, 0.3)",
           line: {
@@ -83,16 +125,70 @@ export function generateModalPlot(n) {
 
     annotations =
       n <= 30
-        ? x_rect.slice(0, -1).map((xi, i) => ({
-            x: xi + bar_width / 2,
-            y: y_rect[i],
-            text: `A<sub>${i}</sub>`,
-            showarrow: false,
-            xanchor: "center",
-            yanchor: "top",
-            font: { size: 18, color: "white" },
-          }))
+        ? x_rect.slice(0, -1).flatMap((xi, i) => {
+            const widthText = `x<sub>${i}</sub> = ${i}/${n}`;
+            const heightText = `y<sub>${i}</sub> = (${i}/${n})<sup>2</sup>`;
+            const areaText = `A<sub>${i}</sub>`;
+
+            return [
+              {
+                x: xi + bar_width - 1 / n,
+                y: 0,
+                text: widthText,
+                showarrow: false,
+                xanchor: "left",
+                yanchor: "top",
+                font: { size: 12 },
+                textangle: -90,
+              },
+              {
+                x: xi + bar_width - 0.01,
+                y: y_rect[i] / 2,
+                text: heightText,
+                showarrow: false,
+                xanchor: "right",
+                yanchor: "middle",
+                font: { size: 12 },
+                textangle: -90,
+              },
+              {
+                x: xi + bar_width / 2,
+                y: y_rect[i],
+                text: areaText,
+                showarrow: false,
+                xanchor: "center",
+                yanchor: "top",
+                font: { size: 18, color: "white" },
+              },
+            ];
+          })
         : [];
+
+    tableBodyData = x_rect.slice(0, -1).map((xi, i) => {
+      const xFraction = formatFraction(i, n);
+      const yFractionSquared = formatFraction(
+        `(${i})<sup>2</sup>`,
+        `(${n})<sup>2</sup>`
+      );
+      const accumulatedString = cumulativeArea_string[i] || "0";
+      const approxValue = cumulativeArea_values[i]
+        ? cumulativeArea_values[i].toFixed(8)
+        : "0";
+
+      const contentString = `
+        <div class="an-sum">
+          A<span class="subscript">n</span> = ${accumulatedString}
+        </div>
+        <div class="an-approx">
+          A<span class="subscript">n</span> &asymp; ${approxValue}
+        </div>
+      `;
+
+      return [i + 1, i, xFraction, yFractionSquared, contentString];
+    });
+
+    totalArea = cumulativeArea_values.pop().toFixed(8);
+    error = (realTotalArea - totalArea).toFixed(8);
   } else {
     traces = [
       {
@@ -104,10 +200,12 @@ export function generateModalPlot(n) {
       },
     ];
     annotations = [];
+    totalArea = 0;
+    error = (realTotalArea - totalArea).toFixed(8);
   }
 
   const layout = {
-    title: `Gráfico com n = ${n} Retângulos`,
+    title: "Parábola y = x²",
     annotations: annotations,
     showlegend: false,
     barmode: "overlay",
@@ -122,5 +220,62 @@ export function generateModalPlot(n) {
     },
   };
 
-  Plotly.newPlot("grafico-modal-placeholder", traces, layout);
+  Plotly.newPlot("plot", traces, layout);
+
+  if (n >= 2) {
+    const table = document.createElement("table");
+    const header = table.createTHead();
+    const headerRow = header.insertRow(0);
+    ["Partes", "Retângulos", "x<sub>i</sub>", "y<sub>i</sub>", "A(n)"].forEach(
+      (text, index) => {
+        const cell = headerRow.insertCell(index);
+        if (index === 4) {
+          cell.classList.add("an-column");
+        }
+        cell.innerHTML = `<b>${text}</b>`;
+      }
+    );
+
+    const body = table.createTBody();
+    tableBodyData.forEach((rowInfo) => {
+      const row = body.insertRow();
+      rowInfo.forEach((value, j) => {
+        const cell = row.insertCell(j);
+        cell.innerHTML = value;
+
+        if (j === 2) {
+          cell.style.textAlign = "left";
+          cell.style.paddingLeft = "15px";
+          cell.style.paddingRight = "15px";
+        } else if (j === 3) {
+          cell.style.textAlign = "left";
+          cell.style.paddingLeft = "15px";
+          cell.style.paddingRight = "15px";
+        } else if (j === 4) {
+          cell.classList.add("an-cell");
+        }
+      });
+    });
+
+    const summaryData = [
+      ["<u>COMPARAÇAO DAS ÁREAS", "<u>VALORES"],
+      ["Área Real sob a Curva", realTotalArea],
+      ["Área por Retângulos", totalArea],
+      ["Erro", error],
+    ];
+
+    summaryData.forEach((rowInfo) => {
+      const row = body.insertRow();
+      const descriptionCell = row.insertCell();
+      descriptionCell.innerHTML = `<strong>${rowInfo[0]}</strong>`;
+      descriptionCell.colSpan = 4;
+      descriptionCell.classList.add("summary-description");
+
+      const valueCell = row.insertCell();
+      valueCell.innerHTML = `<strong>${rowInfo[1]}</strong>`;
+      valueCell.classList.add("summary-value", "an-cell");
+    });
+
+    tableContainer.appendChild(table);
+  }
 }
