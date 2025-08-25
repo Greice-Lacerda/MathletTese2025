@@ -31,7 +31,7 @@
       <fieldset class="Explorar11">
         <legend class="Elegend">Escolha um número <b>n</b> de partes:</legend>
         <label for="n-value"><b>Digite o valor de n: </b></label>
-        <input type="number" id="n-value" min="2" max="10" value="2" />
+        <input type="number" id="n-value" class="modal-input" min="2" max="1000" value="2" />
         <button id="gerar-grafico">
           <b>Gerar Gráfico</b>
         </button>
@@ -48,7 +48,7 @@
 
         <fieldset id="Explorar13">
           <legend class="Elegend">Tabela</legend>
-          <div id="tabela-container"></div>
+          <div id="tabela-container" class="tabela-zoom"></div>
         </fieldset>
 
         <fieldset class="Fexplorar14">
@@ -94,12 +94,12 @@
                   A parábola será dividida em 3 partes iguais. Quantos retângulos serão formados?
                   <br><br>
                 </p>
-                <input type="number" id="prompt-input" min="2" placeholder="Digite um valor aqui: " />
+                <input type="number" id="prompt-input" class="modal-input" min="2" placeholder="Digite um valor aqui: " />
               </div>
               <div class="modal-column">
-                <button id="prompt-ok-btn">Confirmar</button>
-                <button id="prompt-cancel-btn">Cancelar</button>
-                <button id="prompt-fechar-btn">Fechar</button>
+                <button id="prompt-ok-btn" class="modal-button">Confirmar</button>
+                <button id="prompt-cancel-btn" class="modal-button">Cancelar</button>
+                <button id="prompt-fechar-btn" class="modal-button">Fechar</button>
               </div>
             </div>
 
@@ -112,16 +112,16 @@
                 <p class="modal-texto">
                   Qual é a área do polígono retangular inscrito nesse gráfico? <span style="font-size: 15px; color:blue";>(Considere uma aproximação de três casas decimais.)</span> <br><br>
                 </p>
-                <input type="number" id="area-input" placeholder="Digite a área aqui: " />
+                <input type="number" id="area-input" class="modal-input" placeholder="Digite a área aqui: " />
               </div>
               <div class="modal-column">
-                <button id="proximo-passo-btn">Confirmar</button>
-                <button id="prompt-cancel-btn-2">Cancelar</button>
-                <button id="prompt-fechar-btn-2">Fechar</button>
+                <button id="proximo-passo-btn" class="modal-button">Confirmar</button>
+                <button id="prompt-cancel-btn-2" class="modal-button">Cancelar</button>
+                <button id="prompt-fechar-btn-2" class="modal-button">Fechar</button>
               </div>
             </div>
 
-            <!-- Conteúdo de Verificação para n=3 -->
+            <!-- Conteúdo de Verificação para n = 3 -->
             <div id="conteudo-verificacao" class="modal-columns-container hidden">
               <div class="modal-column">
                 <img id="Parabola2Verificacao" src="../img/Parabola2Verificacao.jpg" alt="Polígono retangular inscrito n3" />
@@ -132,8 +132,8 @@
                 </p>
               </div>
               <div class="modal-column">
-                <button id="proximo-passo-btn3">Desafio 2</button>
-                <button id="prompt-fechar-btn-3">Fechar</button>
+                <button id="proximo-passo-btn3" class="modal-button"> Desafio 2</button>
+                <button id="prompt-fechar-btn-3" class="modal-button">Fechar</button>
               </div>
             </div>
 
@@ -147,12 +147,12 @@
                   Agora, a parábola será dividida em 4 partes. Quantos retângulos serão formados?
                   <br><br>
                 </p>
-                <input type="number" id="prompt-input-2" placeholder="Digite um valor aqui: " />
+                <input type="number" id="prompt-input-2" class="modal-input" placeholder="Digite um valor aqui: " />
               </div>
               <div class="modal-column">
-                <button id="prompt-ok-btn-2">Confirmar</button>
-                <button id="prompt-cancel-btn-4">Cancelar</button>
-                <button id="prompt-fechar-btn-4">Fechar</button>
+                <button id="prompt-ok-btn-2" class="modal-button">Confirmar</button>
+                <button id="prompt-cancel-btn-4" class="modal-button">Cancelar</button>
+                <button id="prompt-fechar-btn-4" class="modal-button">Fechar</button>
               </div>
             </div>
 
@@ -166,12 +166,12 @@
                   Considerando uma aproximação de três casas decimais, qual é a área para n = 4?
                   <br><br>
                 </p>
-                <input type="number" id="area-input-2" placeholder="Digite a área aqui: " />
+                <input type="number" id="area-input-2"  class="modal-input" placeholder="Digite a área aqui: " />
               </div>
               <div class="modal-column">
-                <button id="proximo-passo-btn-4">Confirmar</button>
-                <button id="prompt-cancel-btn-5">Cancelar</button>
-                <button id="prompt-fechar-btn-5">Fechar</button>
+                <button id="proximo-passo-btn-4" class="modal-button">Confirmar</button>
+                <button id="prompt-cancel-btn-5" class="modal-button">Cancelar</button>
+                <button id="prompt-fechar-btn-5" class="modal-button">Fechar</button>
               </div>
             </div>
 
@@ -186,8 +186,8 @@
                 </p>
               </div>
               <div class="modal-column">
-                <button id="proximo-passo-btn-5">Desafio 3</button>
-                <button id="prompt-fechar-btn-6">Fechar</button>
+                <button id="proximo-passo-btn-5" class="modal-button">Desafio 3</button>
+                <button id="prompt-fechar-btn-6" class="modal-button">Fechar</button>
               </div>
             </div>
             
@@ -201,12 +201,12 @@
                   Considerando uma divisão do intervalo [0, 1] em cinco partes iguas, para n = 5, uantos retângulos serão formados?
                   <br><br>
                 </p>
-                <input type="number" id="prompt-input-3" placeholder="Digite um valor aqui: " />
+                <input type="number" id="prompt-input-3" class="modal-input" placeholder="Digite um valor aqui: " />
               </div>
               <div class="modal-column">
-                <button id="prompt-ok-btn-3">Confirmar</button>
-                <button id="prompt-cancel-btn-6">Cancelar</button>
-                <button id="prompt-fechar-btn-7">Fechar</button>
+                <button id="prompt-ok-btn-3" class="modal-button">Confirmar</button>
+                <button id="prompt-cancel-btn-6" class="modal-button">Cancelar</button>
+                <button id="prompt-fechar-btn-7" class="modal-button">Fechar</button>
               </div>
             </div>
 
@@ -219,12 +219,12 @@
                 <p class="modal-texto">
                   Qual é a área do polígono retangular inscrito formada pela partição do intervalo em n = 5 partes iguais?<br><br>
                 </p>
-                <input type="number" id="area-input-3" placeholder="Digite a área aqui: " />
+                <input type="number" id="area-input-3" class="modal-input" placeholder="Digite a área aqui: " />
               </div>
               <div class="modal-column">
-                <button id="proximo-passo-btn-6">Confirmar</button>
-                <button id="prompt-cancel-btn-7">Cancelar</button>
-                <button id="prompt-fechar-btn-8">Fechar</button>
+                <button id="proximo-passo-btn-6" class="modal-button">Confirmar</button>
+                <button id="prompt-cancel-btn-7" class="modal-button">Cancelar</button>
+                <button id="prompt-fechar-btn-8" class="modal-button">Fechar</button>
               </div>
             </div>
 
@@ -239,8 +239,8 @@
                 </p>
               </div>
               <div class="modal-column">
-                <button id="proximo-passo-btn-7">Desafio 4</button>
-                <button id="prompt-fechar-btn-9">Fechar</button>
+                <button id="proximo-passo-btn-7" class="modal-button">Desafio 4</button>
+                <button id="prompt-fechar-btn-9" class="modal-button">Fechar</button>
               </div>
             </div>
 
@@ -260,8 +260,8 @@
               </div>
               <div class="modal-column">
                 <!-- Este botão fecha o modal e habilita os botões da página principal. -->
-                <button id="proximo-passo-btn5">Próxima Etapa</button>
-                <button id="prompt-fechar-btn-11">Fechar</button>
+                <button id="proximo-passo-btn5" class="modal-button">Próxima Etapa</button>
+                <button id="prompt-fechar-btn-11" class="modal-button">Fechar</button>
               </div>
             </div>
 
@@ -277,7 +277,7 @@
               </div>
               <div class="modal-column">
                 <!-- Clica no botão fechar da pagina Passo2.html-->
-                <button id="fecharVerificarBtn">Fechar</button>
+                <button id="fecharVerificarBtn" class="modal-button">Fechar</button>
               </div>
             </div>
           </div>

@@ -1,10 +1,4 @@
-/**
- * Este arquivo JavaScript é responsável por gerar e exibir a fórmula da área
- * do polígono retangular inscrito sob a parábola y = x² no intervalo [0, 1].
- *
- * A fórmula é gerada dinamicamente com base no número de retângulos 'n' e formatada
- * para respeitar as classes CSS fornecidas, garantindo que o visual seja coeso.
- */
+/*Gera grafico e tabela area2.js */
 
 // Função auxiliar para formatar a fração usando as novas classes CSS
 function formatFraction(numerator, denominator) {
@@ -29,7 +23,10 @@ function formatAreaTerm(i, n) {
 function resetPage() {
   document.getElementById("n-value").value = "2";
   document.getElementById("tabela-container").innerHTML = "";
+
+  // AQUI: A linha foi ajustada para apagar completamente o gráfico
   Plotly.newPlot("plot", [], { title: "Parábola y = x²" });
+  Plotly.purge("plot");
 }
 
 function parabola(x) {
@@ -57,7 +54,7 @@ function generatePlot() {
   );
   const y_parabola = parabola(x_parabola);
 
-  let traces;
+  let traces = []; // trace precisa ser inicializado para o else
   let annotations;
   let tableBodyData = [];
   let totalArea = 0;
@@ -124,7 +121,7 @@ function generatePlot() {
     ];
 
     annotations =
-      n <= 30
+      n <= 10
         ? x_rect.slice(0, -1).flatMap((xi, i) => {
             const widthText = `x<sub>${i}</sub> = ${i}/${n}`;
             const heightText = `y<sub>${i}</sub> = (${i}/${n})<sup>2</sup>`;
@@ -138,7 +135,7 @@ function generatePlot() {
                 showarrow: false,
                 xanchor: "left",
                 yanchor: "top",
-                font: { size: 12 },
+                font: { size: 10 },
                 textangle: -90,
               },
               {
@@ -148,7 +145,7 @@ function generatePlot() {
                 showarrow: false,
                 xanchor: "right",
                 yanchor: "middle",
-                font: { size: 12 },
+                font: { size: 10 },
                 textangle: -90,
               },
               {
@@ -158,7 +155,7 @@ function generatePlot() {
                 showarrow: false,
                 xanchor: "center",
                 yanchor: "top",
-                font: { size: 18, color: "white" },
+                font: { size: 12, color: "white" },
               },
             ];
           })
@@ -190,15 +187,6 @@ function generatePlot() {
     totalArea = cumulativeArea_values.pop().toFixed(8);
     error = (realTotalArea - totalArea).toFixed(8);
   } else {
-    traces = [
-      {
-        x: x_parabola,
-        y: y_parabola,
-        mode: "lines",
-        name: "Parábola y = x²",
-        showlegend: false,
-      },
-    ];
     annotations = [];
     totalArea = 0;
     error = (realTotalArea - totalArea).toFixed(8);
@@ -210,14 +198,15 @@ function generatePlot() {
     showlegend: false,
     barmode: "overlay",
     autosize: true,
-    width: plotDiv.offsetWidth,
-    height: plotDiv.offsetHeight * 0.9,
+    width: plotDiv.offsetWidth * 0.8,
+    height: plotDiv.offsetHeight * 0.8,
     margin: {
       l: 20,
       r: 20,
       t: 30,
       b: 20,
     },
+    dragmode: "zoom",
   };
 
   Plotly.newPlot("plot", traces, layout);
@@ -273,6 +262,7 @@ function generatePlot() {
 
       const valueCell = row.insertCell();
       valueCell.innerHTML = `<strong>${rowInfo[1]}</strong>`;
+      valueCell.style.textAlign = "left";
       valueCell.classList.add("summary-value", "an-cell");
     });
 

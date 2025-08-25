@@ -225,19 +225,52 @@ button {
 
 #plot,
 #tabela-container {
-  max-width: 400px;
+  width: 450px;
+  max-width: 450px;
   max-height: 320px;
   min-height: 280px;
   background-color: #fff;
   border-radius: 10px;
-  padding: 1px;
+  padding: 0 auto;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
   margin: 0 auto; /* Centraliza o elemento */
 }
 
-#tabela-container {
+#Explorar13:hover{
+  width: 600px;
+  height: 380px;
+  max-width: 10%;
+  max-height: 62%;
+  overflow: hidden;
+  position: absolute;
+  top:80px;
+  background-color: #fff;
+  transform: scale(1.5);
+  transition-duration: 0.5s;
+  z-index: 7;
+}
+
+#tabela-container:hover {
+  width: 850px;
+  height: 400px;
+  max-width: 90%;
+  max-height: 90%;
+  margin-top:10px;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
+}
+
+#plot:hover{
+  width: 800px;
+  height: 400px;
+  overflow: hidden;
+  position: absolute;
+  margin-left:700px;
+  justify-content: center;
+  top:120px;
+  transform: scale(1.5);
+  transition-duration: 0.5s;
+  z-index: 10;
 }
 
 #tabela-container table {
@@ -359,10 +392,27 @@ th {
 
 .summary-value {
   font-size: 13px; /* Tamanho da fonte reduzido */
-  text-align: left;
-  padding-left: 5px; /* Espaçamento reduzido */
+  text-align: left !important; /* Força o alinhamento à esquerda */
+  white-space: nowrap;
+  margin-left: 20px; /* Espaçamento reduzido */
   font-weight: bold;
   padding-top: 5px; /* Espaçamento reduzido */
+}
+
+/* Estilo inicial da tabela */
+.tabela-zoom {
+  /* `transform: scale(1);` é o tamanho original. */
+  transform: scale(1);
+  /* A transição é o que faz o zoom ser suave, levando 0.3 segundos. */
+  transition: transform 0.3s ease-in-out;
+  /* Garante que a tabela seja um bloco para aplicar o zoom corretamente. */
+  display: block;
+}
+
+/* Estilo da tabela quando ela está com zoom */
+.tabela-zoom.zoom-ativo {
+  /* `transform: scale(1.2);` aumenta o tamanho da tabela em 20%. */
+  transform: scale(1.2);
 }
 
 /* ========================================================================== */
@@ -527,37 +577,8 @@ th {
   max-height: 400px;
 }
 
-
-#prompt-ok-btn-2,
-#prompt-cancel-btn-4,
-#prompt-fechar-btn-4,
-#prompt-ok-btn,
-#prompt-cancel-btn,
-#prompt-fechar-btn,
-#proximo-passo-btn,
-#prompt-cancel-btn-2,
-#prompt-fechar-btn-2,
-#proximo-passo-btn3,
-#prompt-fechar-btn-3,
-#prompt-ok-btn-2,
-#prompt-cancel-btn-4,
-#prompt-fechar-btn-4,
-#fecharVerificarBtn,
-#proximo-passo-btn-4,
-#prompt-cancel-btn-5,
-#prompt-fechar-btn-5,
-#proximo-passo-btn-5,
-#prompt-fechar-btn-6,
-#prompt-ok-btn-3,
-#prompt-cancel-btn-6,
-#prompt-fechar-btn-7,
-#proximo-passo-btn-6,
-#prompt-cancel-btn-7,
-#prompt-fechar-btn-8,
-#proximo-passo-btn-7,
-#prompt-fechar-btn-9,
-#proximo-passo-btn5,
-#prompt-fechar-btn-11 {
+/* Agrupando todos os seletores de botões em uma única classe para melhor manutenção */
+.modal-button {
   width: 180px;
   height: 40px;
   margin: 15px auto;
@@ -571,35 +592,16 @@ th {
     #9ff4f5
   );
   color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
 }
 
-#prompt-ok-btn:hover,
-#prompt-cancel-btn:hover,
-#prompt-fechar-btn:hover,
-#proximo-passo-btn:hover,
-#prompt-cancel-btn-2:hover,
-#prompt-fechar-btn-2:hover,
-#proximo-passo-btn3:hover,
-#prompt-fechar-btn-3:hover,
-#prompt-ok-btn-2:hover,
-#prompt-cancel-btn-4:hover,
-#prompt-fechar-btn-4:hover,
-#fecharVerificarBtn:houver,
-#proximo-passo-btn-4:hover,
-#prompt-cancel-btn-5:hover,
-#prompt-fechar-btn-5:hover,
-#proximo-passo-btn-5:hover,
-#prompt-fechar-btn-6:hover,
-#prompt-ok-btn-3:hover,
-#prompt-cancel-btn-6:hover,
-#prompt-fechar-btn-7:hover,
-#proximo-passo-btn-6:hover,
-#prompt-cancel-btn-7:hover,
-#prompt-fechar-btn-8:hover,
-#proximo-passo-btn-7:hover,
-#prompt-fechar-btn-9:hover,
-#proximo-passo-btn5:hover,
-#prompt-fechar-btn-11:hover {
+/* Aplicando o hover a todos os botões com a classe .modal-button */
+.modal-button:hover {
   background: linear-gradient(
     to right,
     #d3d3ed,
@@ -610,46 +612,17 @@ th {
   );
   border: outset 4px #97a4a4;
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
-#prompt-ok-btn:active,
-#prompt-cancel-btn:active,
-#prompt-fechar-btn:active,
-#proximo-passo-btn:active,
-#prompt-cancel-btn-2:active,
-#prompt-fechar-btn-2:active,
-#proximo-passo-btn3:active,
-#prompt-fechar-btn-3:active,
-#prompt-ok-btn-2:active,
-#prompt-cancel-btn-4:active,
-#prompt-fechar-btn-4:active,
-#fecharVerificarBtn:active,
-#proximo-passo-btn-4:active,
-#prompt-cancel-btn-5:active,
-#prompt-fechar-btn-5:active,
-#proximo-passo-btn-5:active,
-#prompt-fechar-btn-6:active,
-#prompt-ok-btn-3:active,
-#prompt-cancel-btn-6:active,
-#prompt-fechar-btn-7:active,
-#proximo-passo-btn-6:active,
-#prompt-cancel-btn-7:active,
-#prompt-fechar-btn-8:active,
-#proximo-passo-btn-7:active,
-#prompt-fechar-btn-9:active,
-#proximo-passo-btn5:active,
-#prompt-fechar-btn-11:active {
+/* Aplicando o active a todos os botões com a classe .modal-button */
+.modal-button:active {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  transform: scale(1);
+  transform: scale(1.2);
 }
 
-#prompt-input,
-#area-input,
-#prompt-input-2,
-#area-input-2,
-#prompt-input-3,
-#area-input-3 {
+/* Estilos para inputs dentro do modal */
+.modal-input {
   width: 240px;
   height: 40px;
   margin: auto 5px;
@@ -683,6 +656,8 @@ th {
 ::-webkit-scrollbar-thumb:hover {
   background: #55555582;
 }
+
+
 
 @media (max-width: 768px) {
   section {
