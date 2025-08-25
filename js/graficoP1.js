@@ -22,31 +22,45 @@ function generatePlot() {
   const y_rect = parabola(x_rect);
   const area_values = x_rect.slice(0, -1).map((xi, i) => bar_width * y_rect[i]);
 
-  const traces = [
-    {
-      x: x_parabola,
-      y: y_parabola,
-      mode: "lines",
-      name: "Parábola y = x²",
-      showlegend: false,
-    },
-    ...x_rect.slice(0, -1).map((xi, i) => ({
-      x: [xi],
-      y: [y_rect[i]],
-      type: "bar",
-      width: [bar_width],
-      name: `Área_${i} = ${area_values[i].toFixed(10)}`,
-      marker: {
-        color: "rgba(0, 0, 255, 0.3)",
-        line: {
-          color: "black",
-          width: 1,
-        },
-      },
-      offset: 0,
-      showlegend: false,
-    })),
-  ];
+  annotations =
+    n <= 10? x_rect.slice(0, -1).flatMap((xi, i) => {
+          const widthText = `x<sub>${i}</sub> = ${i}/${n}`;
+          const heightText = `y<sub>${i}</sub> = (${i}/${n})<sup>2</sup>`;
+          const areaText = `A<sub>${i}</sub>`;
+
+          return [
+            {
+              x: xi + bar_width - 1 / n,
+              y: 0,
+              text: widthText,
+              showarrow: false,
+              xanchor: "left",
+              yanchor: "top",
+              font: { size: 10 },
+              textangle: -90,
+            },
+            {
+              x: xi + bar_width - 0.01,
+              y: y_rect[i] / 2,
+              text: heightText,
+              showarrow: false,
+              xanchor: "right",
+              yanchor: "middle",
+              font: { size: 10 },
+              textangle: -90,
+            },
+            {
+              x: xi + bar_width / 2,
+              y: y_rect[i],
+              text: areaText,
+              showarrow: false,
+              xanchor: "center",
+              yanchor: "top",
+              font: { size: 12, color: "white" },
+            },
+          ];
+        })
+      : [];
 
   const layout = {
     title: "Área sob a parábola y = x²",

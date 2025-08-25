@@ -57,7 +57,7 @@ function generatePlot() {
     ];
 
     const annotations =
-      n <= 30
+      n <= 10
         ? x_rect.slice(0, -1).map((xi, i) => ({
             x: xi + bar_width / 2,
             y: y_rect[i],

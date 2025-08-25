@@ -1,50 +1,18 @@
 /*Gera grafico e tabela area2.js */
 
-// Função auxiliar para formatar a fração usando as novas classes CSS
-function formatFraction(numerator, denominator) {
-  return `<span class="fraction-container">
-            <span class="numerator">${numerator}</span>
-            <span class="line"></span>
-            <span class="denominator">${denominator}</span>
-            </span>`;
-}
-
-// Função auxiliar para formatar um termo da área (largura * altura)
-function formatAreaTerm(i, n) {
-  const widthFraction = formatFraction(1, n);
-  const heightFraction = formatFraction(
-    `(${i})<sup>2</sup>`,
-    `(${n})<sup>2</sup>`
-  );
-  return `${widthFraction} &times; ${heightFraction}`;
-}
-
-// Função para recarregar a página de forma eficiente
-function resetPage() {
-  document.getElementById("n-value").value = "2";
-  document.getElementById("tabela-container").innerHTML = "";
-
-  // AQUI: A linha foi ajustada para apagar completamente o gráfico
-  Plotly.newPlot("plot", [], { title: "Parábola y = x²" });
-  Plotly.purge("plot");
-}
-
-function parabola(x) {
-  return x.map((xi) => xi ** 2);
-}
+// ... (Funções auxiliares)
 
 function generatePlot() {
   const n = parseInt(document.getElementById("n-value").value);
   const plotDiv = document.getElementById("plot");
   const tableContainer = document.getElementById("tabela-container");
 
-  // Validação de entrada do usuário
   if (isNaN(n) || n < 2) {
     alert("Por favor, insira um número inteiro maior ou igual a 2.");
     return;
   }
 
-  tableContainer.innerHTML = ""; // Limpa a tabela no início
+  tableContainer.innerHTML = "";
 
   const a = 0;
   const b = 1;
@@ -54,13 +22,16 @@ function generatePlot() {
   );
   const y_parabola = parabola(x_parabola);
 
-  let traces = []; // trace precisa ser inicializado para o else
-  let annotations;
+  let traces = [];
   let tableBodyData = [];
   let totalArea = 0;
   const realTotalArea = (1 / 3).toFixed(8);
   let error = (realTotalArea - 0).toFixed(8);
 
+  // Mover a inicialização de annotations para fora do if/else, antes do if(n>=2)
+  let annotations = []; // Garante que annotations é um array vazio por padrão
+
+  // Agora, a lógica de anotações só é aplicada se n for válido (n >= 2)
   if (n >= 2) {
     const x_rect = Array.from(
       { length: n + 1 },
@@ -119,47 +90,57 @@ function generatePlot() {
         showlegend: false,
       })),
     ];
+    // Se a condição for verdadeira, o valor de annotations é alterado
+    if (n < 10) {
+      annotations = x_rect.slice(0, -1).flatMap((xi, i) => {
+        const widthText = `x<sub>${i}</sub> = ${i}/${n}`;
+        const heightText = `y<sub>${i}</sub> = (${i}/${n})<sup>2</sup>`;
+        const areaText = `A<sub>${i}</sub>`;
 
-    annotations =
-      n <= 10
-        ? x_rect.slice(0, -1).flatMap((xi, i) => {
-            const widthText = `x<sub>${i}</sub> = ${i}/${n}`;
-            const heightText = `y<sub>${i}</sub> = (${i}/${n})<sup>2</sup>`;
-            const areaText = `A<sub>${i}</sub>`;
-
-            return [
-              {
-                x: xi + bar_width - 1 / n,
-                y: 0,
-                text: widthText,
-                showarrow: false,
-                xanchor: "left",
-                yanchor: "top",
-                font: { size: 10 },
-                textangle: -90,
-              },
-              {
-                x: xi + bar_width - 0.01,
-                y: y_rect[i] / 2,
-                text: heightText,
-                showarrow: false,
-                xanchor: "right",
-                yanchor: "middle",
-                font: { size: 10 },
-                textangle: -90,
-              },
-              {
-                x: xi + bar_width / 2,
-                y: y_rect[i],
-                text: areaText,
-                showarrow: false,
-                xanchor: "center",
-                yanchor: "top",
-                font: { size: 12, color: "white" },
-              },
-            ];
-          })
-        : [];
+        return [
+          {
+            x: xi + bar_width - 1 / n,
+            y: 0,
+            text: widthText,
+            showarrow: false,
+            xanchor: "left",
+            yanchor: "top",
+            font: { size: 10 },
+            textangle: -90,
+          },
+          {
+            x: xi + bar_width - 0.01,
+            y: y_rect[i] / 2,
+            text: heightText,
+            showarrow: false,
+            xanchor: "right",
+            yanchor: "middle",
+            font: { size: 10 },
+            textangle: -90,
+          },
+          {
+            x: xi + bar_width / 2,
+            y: y_rect[i],
+            text: areaText,
+            showarrow: false,
+            xanchor: "center",
+            yanchor: "top",
+            font: { size: 12, color: "white" },
+          },
+        ];
+      });
+    } else {
+      const layout = {
+        title: "Parábola y = x²",
+        annotations: ` `,
+        showlegend: false,
+        widthText: ` `,
+        heightText: ` `,
+        areaText: ` `,
+        barmode: "overlay",
+        // ... (outras configurações de layout)
+      };
+    }
 
     tableBodyData = x_rect.slice(0, -1).map((xi, i) => {
       const xFraction = formatFraction(i, n);
@@ -180,14 +161,13 @@ function generatePlot() {
           A<span class="subscript">n</span> &asymp; ${approxValue}
         </div>
       `;
-
       return [i + 1, i, xFraction, yFractionSquared, contentString];
     });
 
     totalArea = cumulativeArea_values.pop().toFixed(8);
     error = (realTotalArea - totalArea).toFixed(8);
   } else {
-    annotations = [];
+    // Se n < 2, annotations já é um array vazio.
     totalArea = 0;
     error = (realTotalArea - totalArea).toFixed(8);
   }
@@ -208,64 +188,10 @@ function generatePlot() {
     },
     dragmode: "zoom",
   };
-
+  
   Plotly.newPlot("plot", traces, layout);
 
-  if (n >= 2) {
-    const table = document.createElement("table");
-    const header = table.createTHead();
-    const headerRow = header.insertRow(0);
-    ["Partes", "Retângulos", "x<sub>i</sub>", "y<sub>i</sub>", "A(n)"].forEach(
-      (text, index) => {
-        const cell = headerRow.insertCell(index);
-        if (index === 4) {
-          cell.classList.add("an-column");
-        }
-        cell.innerHTML = `<b>${text}</b>`;
-      }
-    );
-
-    const body = table.createTBody();
-    tableBodyData.forEach((rowInfo) => {
-      const row = body.insertRow();
-      rowInfo.forEach((value, j) => {
-        const cell = row.insertCell(j);
-        cell.innerHTML = value;
-
-        if (j === 2) {
-          cell.style.textAlign = "left";
-          cell.style.paddingLeft = "15px";
-          cell.style.paddingRight = "15px";
-        } else if (j === 3) {
-          cell.style.textAlign = "left";
-          cell.style.paddingLeft = "15px";
-          cell.style.paddingRight = "15px";
-        } else if (j === 4) {
-          cell.classList.add("an-cell");
-        }
-      });
-    });
-
-    const summaryData = [
-      ["<u>COMPARAÇAO DAS ÁREAS", "<u>VALORES"],
-      ["Área Real sob a Curva", realTotalArea],
-      ["Área por Retângulos", totalArea],
-      ["Erro", error],
-    ];
-
-    summaryData.forEach((rowInfo) => {
-      const row = body.insertRow();
-      const descriptionCell = row.insertCell();
-      descriptionCell.innerHTML = `<strong>${rowInfo[0]}</strong>`;
-      descriptionCell.colSpan = 4;
-      descriptionCell.classList.add("summary-description");
-
-      const valueCell = row.insertCell();
-      valueCell.innerHTML = `<strong>${rowInfo[1]}</strong>`;
-      valueCell.style.textAlign = "left";
-      valueCell.classList.add("summary-value", "an-cell");
-    });
-
-    tableContainer.appendChild(table);
-  }
+    // ... (Resto do código para criar o gráfico e a tabela)
+  Plotly.newPlot("plot", traces, layout);
+  // ... (Tabela)
 }

@@ -1,114 +1,110 @@
-// graficoP2.js
+/*Gera grafico e tabela area2.js */
 
-/**
- * Calcula y = x^2 para cada valor em um array de x.
- * @param {number[]} x - Um array de valores de x.
- * @returns {number[]} Um array dos valores de y correspondentes.
- */
-export function parabola(x) {
-  return x.map((xi) => xi ** 2);
-}
+// ... (Resto das funções auxiliares e início da função generatePlot)
 
-/**
- * Gera e exibe o gráfico da área sob a parábola y = x^2.
- * A parábola é dividida em 'n' retângulos.
- * @param {number} n - O número de retângulos para dividir o gráfico.
- */
-export function generatePlot(n) {
-  const plotContainer = document.getElementById("plot");
+function generatePlot() {
+  const n = parseInt(document.getElementById("n-value").value);
+  const plotDiv = document.getElementById("plot");
+  const tableContainer = document.getElementById("tabela-container");
 
-  // Define o intervalo de integração
+  if (isNaN(n) || n < 2) {
+    alert("Por favor, insira um número inteiro maior ou igual a 2.");
+    return;
+  }
+
+  tableContainer.innerHTML = "";
+
   const a = 0;
   const b = 1;
-  const bar_width = (b - a) / n;
-
-  // --- 1. Dados para a Parábola (curva de fundo) ---
   const x_parabola = Array.from(
     { length: 400 },
     (_, i) => a + (i * (b - a)) / 399
   );
   const y_parabola = parabola(x_parabola);
 
-  // --- 2. Dados para os Retângulos (área de aproximação) ---
-  const x_rect = [];
-  const y_rect = [];
-  const text_labels = [];
-  let totalArea = 0;
+  // ... (código que define x_rect, y_rect, bar_width, etc.)
 
-  for (let i = 0; i < n; i++) {
-    const xi = a + i * bar_width;
-    const yi = xi * xi;
-    const area = yi * bar_width;
-
-    x_rect.push(xi);
-    y_rect.push(yi);
-    text_labels.push(`Área ${i + 1} = ${area.toFixed(4)}`);
-    totalArea += area;
-  }
-
-  // --- 3. Configuração dos Traces do Plotly.js ---
+  // Crie os traces, que são os elementos do gráfico (linha e barras)
   const traces = [
     {
       x: x_parabola,
       y: y_parabola,
       mode: "lines",
       name: "Parábola y = x²",
-      line: {
-        color: "#ff7f0e",
-        width: 3,
-      },
-      showlegend: true,
+      showlegend: false,
     },
-    {
-      x: x_rect,
-      y: y_rect,
+    ...x_rect.slice(0, -1).map((xi, i) => ({
+      x: [xi],
+      y: [y_rect[i]],
       type: "bar",
-      width: bar_width,
-      name: `Aproximação com ${n} Retângulos`,
+      width: [bar_width],
+      name: `Area_${i} = ${area_values[i].toFixed(8)}`,
       marker: {
-        color: "rgba(31, 119, 180, 0.5)",
+        color: "rgba(0, 0, 255, 0.3)",
         line: {
-          color: "rgba(31, 119, 180, 1.0)",
-          width: 1.5,
+          color: "black",
+          width: 0.5,
         },
       },
-      text: text_labels,
-      hoverinfo: "text",
-      showlegend: true,
-      base: 0,
-    },
+      offset: 0,
+      showlegend: false,
+    })),
   ];
 
-  // --- 4. Configuração do Layout do Plotly.js ---
+  // Agora, crie as anotações separadamente
+  const annotations =
+    n < 10
+      ? x_rect.slice(0, -1).flatMap((xi, i) => {
+          const widthText = `x<sub>${i}</sub> = ${i}/${n}`;
+          const heightText = `y<sub>${i}</sub> = (${i}/${n})<sup>2</sup>`;
+          const areaText = `A<sub>${i}</sub>`;
+
+          return [
+            {
+              x: xi + bar_width - 1 / n,
+              y: 0,
+              text: widthText,
+              showarrow: false,
+              xanchor: "left",
+              yanchor: "top",
+              font: { size: 10 },
+              textangle: -90,
+            },
+            {
+              x: xi + bar_width - 0.01,
+              y: y_rect[i] / 2,
+              text: heightText,
+              showarrow: false,
+              xanchor: "right",
+              yanchor: "middle",
+              font: { size: 10 },
+              textangle: -90,
+            },
+            {
+              x: xi + bar_width / 2,
+              y: y_rect[i],
+              text: areaText,
+              showarrow: false,
+              xanchor: "center",
+              yanchor: "top",
+              font: { size: 12, color: "white" },
+            },
+          ];
+        })
+      : [];
+
+  // E passe as anotações para o layout do gráfico
   const layout = {
-    title: {
-      text: `Área sob a parábola y = x² (n=${n})<br>Área Total ≈ ${totalArea.toFixed(
-        4
-      )}`,
-      font: {
-        family: "Bree Serif",
-        size: 20,
-      },
-    },
-    xaxis: {
-      title: "Valores de X",
-      range: [a, b],
-    },
-    yaxis: {
-      title: "Valores de Y",
-      range: [0, 1.1],
-    },
-    showlegend: true,
-    hovermode: "closest",
-    autosize: true,
-    margin: {
-      l: 50,
-      r: 50,
-      t: 80,
-      b: 70,
-    },
+    title: "Parábola y = x²",
+    annotations: annotations,
+    showlegend: false,
+    widthText: ` `,
+    heightText: ` `,
+    areaText: ` `,
+    barmode: "overlay",
+    // ... (outras configurações de layout)
   };
 
-  // --- 5. Criação do Gráfico ---
-  Plotly.newPlot(plotContainer, traces, layout, { responsive: true });
+  Plotly.newPlot("plot", traces, layout);
+  // ... (Resto do código para criar a tabela)
 }
