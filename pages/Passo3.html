@@ -4,19 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Passo 3 da Exploração - Conclusão da Prova por Indução Matemática
+      Explorando a Prova do Passo de Indução - Conclusão da Prova por Indução
+      Matemática
     </title>
-    
+
     <link rel="stylesheet" href="../styles/estilosComuns.css" />
     <link rel="stylesheet" href="../styles/estiloPasso3.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Geist+Mono:wght@100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Parisienne&family=Playwrite+HR+Lijeva:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Geist+Mono:wght@100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Parisienne&family=Playwrite+HR+Lijeva:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    
+
     <script type="module" src="../js/Passo3.js"></script>
   </head>
   <body>
@@ -28,115 +32,99 @@
     </header>
 
     <main>
-      <section class="Explorar11">
-        
-        <!-- Coluna 1: Caso Base -->
-        <fieldset class="column-fieldset">
-          <legend class="Elegend">Passo 1: Caso Base</legend>
-          <p>
-            No Passo 1, verificamos que a fórmula é válida para o primeiro caso, n = 2.
-          </p>
-            <div class="case-image">
-            <img src="../img/GraficoPassoN2.jpg" id="Passo2NK">
-            </div>
-          </div>
-          <div>
-            <img src="../img/FormulaPassoN2.jpg" id="formN2">
-          </div>
-        </fieldset>
-        
-        <!-- Coluna 2: Hipótese de Indução -->
-        <fieldset class="column-fieldset">
-          <legend class="Elegend">Passo 2: Hipótese de Indução</legend>
-          <p>
-            Assumimos que a fórmula é verdadeira para um número inteiro arbitrário, n = k.
-          </p>
-          <div class="case-image">
-            <img src="../img/ParabolaNkdesafio.jpg" id="Passo2NK">
-            </div>
-          </div>
-          <div>
-            <img src="../img/FormulaPassoK.jpg" id="form2NK">
-          </div>
-        </fieldset>
-        
-        <!-- Coluna 3: Passo Indutivo -->
-        <fieldset class="column-fieldset">
-          <legend class="Elegend">Passo 3: Passo Indutivo</legend>
-          <p class="intro-text">
-            <b>Agora, vamos para o passo de indução.</b>
-            </p>
-            <br>
-            <p class="intro-text">Clique no botão abaixo para explorarmos a provar de que a fórmula também é verdadeira para o próximo número, n = k + 1.
-          </p>
-          <br><br>
-          <button id="start-proof-btn">
-            Iniciar Prova
-          </button>
-        </fieldset>
-
-      </section>
-
-      <!-- O Modal da Prova permanece o mesmo -->
-      <div id="proof-modal" class="w3-modal hidden">
-        <div class="w3-modal-content">
-          <header class="w3-container w3-teal">
-            <span class="w3-button w3-display-topright fechar-modal">&times;</span>
-            <h2 class="desafio-titulo">Prova de Indução para n = k+1</h2>
-          </header>
-          
-          <div class="modal-body">
-            <!-- Os painéis do modal também permanecem os mesmos -->
-            <div id="step-1" class="modal-panel">
-              <p>
-                No Passo 2, mostramos que a fórmula da área é válida para alguns
-                valores de `n`. Agora, vamos assumir que ela é verdadeira para **n = k**.
-              </p>
-              <div class="formula-display">
-                Área(k) = $\frac{(k-1)k(2k-1)}{6k^2}$
-              </div>
-              <button class="next-step-btn" data-step="2">Próximo Passo</button>
-            </div>
-
-            <div id="step-2" class="modal-panel hidden">
-              <h3>Adicionando o (k+1)-ésimo retângulo</h3>
-              <p>
-                A prova por indução exige que a fórmula funcione para $n=k+1$.
-                Para isso, precisamos adicionar o próximo retângulo ao polígono.
-              </p>
-              <button id="add-rectangle-btn">
-                Adicionar Retângulo (k+1)
-              </button>
-              <div id="plot"></div>
-              <p class="final-paragraph hidden">
-                A nova área total é a soma da Área(k) com a área do novo retângulo.
-              </p>
-              <button class="next-step-btn hidden" data-step="3">Mostrar a Prova Final</button>
-            </div>
-
-            <div id="step-3" class="modal-panel hidden">
-              <h3>A Prova Algébrica: A nova Área Total</h3>
-              <p>
-                A nova área do polígono, com $k+1$ retângulos, pode ser expressa como:
-              </p>
-              <div id="final-proof" class="formula-display">
-                Área(k+1) = Área(k) + Área do Retângulo (k+1)
-              </div>
-              <button class="next-step-btn" data-step="4">Concluir Prova</button>
-            </div>
-
-            <div id="step-4" class="modal-panel hidden">
-              <h3>Parabéns!</h3>
-              <div id="congratulations-message" class="formula-display">
-                Você concluiu a prova do passo de indução. A fórmula é
-                verdadeira para todos os números inteiros $n \ge 2$.
-              </div>
-            </div>
-          </div>
-        </div>
+  <section class="Explorar11">
+    <fieldset class="column-fieldset">
+      <legend class="Elegend">Passo 1: Caso Base</legend>
+      <p>
+        No Passo 1, verificamos que a fórmula é válida para o primeiro caso, n
+        = 2 <span style="color:red; font-weight:bold;">(Caso base)</span>.
+        <br><br><br>
+      </p>
+      <div class="case-image">
+        <img
+          src="../img/GraficoPassoN2.jpg"
+          id="Passo2NK"
+          alt="Gráfico da parábola para n=2, representando o caso base."
+        />
       </div>
-    </main>
-    
+      <br><br>
+      <div class="formula-display">
+        A(2) =
+        <div class="fraction-container">
+          <div class="numerator">1</div>
+          <div class="denominator">2</div>
+        </div>
+        &middot;
+        <div class="fraction-container">
+          <div class="numerator">1</div>
+          <div class="denominator">2<sup>2</sup></div>
+        </div>
+        =
+        <div class="fraction-container">
+          <div class="numerator">1</div>
+          <div class="denominator">2<sup>3</sup></div>
+        </div>
+        =
+        <div class="fraction-container">
+          <div class="numerator">1</div>
+          <div class="denominator">8</div>
+        </div>
+        = 0,185
+      </div>
+    </fieldset>
+
+    <fieldset class="column-fieldset">
+      <legend class="Elegend">Passo 2: Hipótese de Indução</legend>
+      <p>
+        Assumimos que a fórmula é verdadeira para um número inteiro arbitrário,
+        n = k <span style="color:red; font-weight:bold;">(Hipótese de indução)</span>.
+        <br><br><br>
+      </p>
+      <div class="case-image">
+        <img
+          src="../img/ParabolaNkdesafio.jpg"
+          id="Passo22NK"
+          alt="Gráfico da parábola para n=k, ilustrando a hipótese de indução."
+        />
+      </div>
+      <div class="formula-display1">
+        A(k) =
+        <div class="fraction-container">
+          <div class="numerator">1</div>
+          <div class="denominator">k<sup>3</sup></div>
+        </div>
+        &middot;
+        <div class="numerator">[1<sup>2</sup> + 2<sup>2</sup> + 3<sup>2</sup> + ... + (k &minus; 1)<sup>2</sup>]
+        </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="column-fieldset">
+      <legend class="Elegend">Passo 3: Passo Indutivo</legend>
+      <p class="intro-text">
+        <b>Agora, vamos para o passo de indução.</b>
+      </p>
+      <p class="intro-text">
+        Clique no botão abaixo para explorarmos a provar de que a fórmula:
+        <div class="formula-display1">
+        A(n) =
+        <div class="fraction-container">
+          <div class="numerator">1</div>
+          <div class="denominator">n<sup>3</sup></div>
+        </div>
+        &middot;
+        <div class="numerator">[1<sup>2</sup> + 2<sup>2</sup> + 3<sup>2</sup> + ... + (n &minus; 1)<sup>2</sup>]
+        </div>
+        </div>
+        <p>
+        Também é verdadeira para o próximo número <span style="color:blue; font-weight:bold;">n = k + 1</span> <span style="color:red; font-weight:bold;">(Passo de Indução)</span>.<br>
+      </p>
+      <button id="start-proof-btn">Iniciar Prova</button>
+    </fieldset>
+  </section>
+
+  </main>
+
     <footer>
       &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
     </footer>

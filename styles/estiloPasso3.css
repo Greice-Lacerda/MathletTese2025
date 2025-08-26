@@ -44,7 +44,7 @@ section {
   border: 1px solid #ccc;
   border-radius: 15px;
   box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
-  margin: 10px;
+  margin: 10px auto;
   padding: 20px;
   display: flex;
   height: 400px;
@@ -67,11 +67,22 @@ section {
   line-height: 1.5;
 }
 
-#Passo2NK, #form2NK {
+#Passo2NK {
+  width: 200px;
+  margin: -90px auto;
+  padding: 0;  
+  border-radius: 8px;
+  display: flex;
+  height: auto;
+  border: solid 2px rgba(255, 0, 0, 0.247);
+}
+
+#Passo22NK {
   width: 200px;
   margin: -130px auto;
   padding: 0;
   display: flex;
+  border-radius: 8px;
   height: auto;
   border: solid 2px rgba(255, 0, 0, 0.247);
 }
@@ -85,7 +96,7 @@ section {
 #formN2{
   width: 280px;
   margin: -70px auto;
-  padding: 0;
+  padding: 0 auto;
   display: flex;
   height: auto;
   border: solid 2px rgba(255, 0, 0, 0.247);
@@ -142,9 +153,8 @@ section {
   transform: scale(1.1);
 }
 
-/* ========================================================================== */
+
 /* Estilos do Modal (mantidos do código anterior) */
-/* ========================================================================== */
 
 .w3-modal {
   display: block;
@@ -198,13 +208,72 @@ section {
 .formula-display {
   font-family: 'Times New Roman', Times, serif;
   font-size: 18px;
-  background-color: #f0f4f8;
+  background-color: #f0f4f82b;
   border: 1px dashed #208bf0;
-  padding: 15px;
-  border-radius: 10px;
   text-align: center;
-  margin: 10px 0;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  font-family: 'Times New Roman', Times, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 0px auto;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0);
+  text-shadow: 1.5px 1.5px 3px rgb(56, 17, 17);
+}
+
+.formula-display1 {
+  width: 330px;
+  height: 50px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 19px;
+  background-color: #f0f4f82b;
+  border: 1px dashed #208bf0;
+  text-align: center;
+  margin: 0 auto;
+  font-family: 'Times New Roman', Times, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  border-radius: 8px;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0);
+  text-shadow: 1.5px 1.5px 3px rgb(56, 17, 17);
+}
+
+/* Container geral para a fração */
+.fraction-container {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  font-size: 14px;
+  margin: 0 5px;
+  cursor: pointer; /* Adiciona o cursor de mãozinha para indicar interatividade */
+  transition: color 0.3s ease; /* Adiciona transição suave para a cor do texto */
+}
+
+/* --- EFEITO HOVER --- */
+.formula-display:hover,
+.formula-display1:hover{
+  transform: scale(1.15);
+  background-color: rgba(12, 0, 0, 0.393);
+  color: white;
+  border: 1.5px solid white;
+}
+
+/* Numerador */
+.numerator {
+  text-align: center;
+  line-height: 1.2;
+  padding: 0 4px;
+}
+
+/* Denominador com a linha divisória */
+.denominator {
+  border-top: 1.5px solid black;
+  text-align: center;
+  line-height: 1.2;
+  padding: 0 4px;
 }
 
 #plot {
