@@ -71,6 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <div style="text-align: center; line-height: 1.3; font-size: 22px; margin: 0 20px 0 20px;">Sua porcentagem de acertos foi de ${scorePercentage.toFixed(
           2
         )}%. Você precisa refazer o Quizz.</div>`;
+        
+      perguntasDiv.innerHTML = "";
       justificativaDiv.style.display = "block";
       refazerQuizzDiv.style.display = "block";
       parabola1.style.display = "block";
@@ -80,13 +82,15 @@ document.addEventListener("DOMContentLoaded", function () {
         <h2 style="color: blue;">Parabéns!</h2>
         <div style="text-align: center; line-height: 1.3; font-size: 22px; margin: 0 20px 0 20px;">Sua porcentagem de acertos foi de ${scorePercentage.toFixed(
           2
-        )}%. Prossiga para a próxima etapa.</div>`;
+        )}%. Aguarde para prosseguir.</div>`;
       justificativaDiv.style.display = "block";
+      perguntasDiv.style.display = "none";
 
       setTimeout(() => {
         justificativaDiv.innerHTML = `<h2 style="color: blue;">Agora, você está pronto para o Passo 2!</h2><div style="text-align: center; line-height: 1.3; font-size: 22px; margin: 0 20px 0 20px;">Prossiga para a próxima etapa.</div>`;
         confetti(confettiConfig);
         clapSound.play();
+        perguntasDiv.style.display = "block";
         perguntasDiv.innerHTML = `
           <h2 style="text-align: center; color:blue; line-height: 1.2; font-size: 22px; margin: 10px auto;">Conclusões Importantes:</h2>
           <div style="text-align: justify; line-height: 1.3; font-size: 16px; margin: 5px auto;">
@@ -98,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
         proximaEtapaBtn.style.display = "block";
         parabola1.style.display = "none";
         parabola2.style.display = "block";
-      }, 6000);
+      }, 5000);
     }
   }
 
@@ -147,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isLastQuestion) {
         proximaPerguntaBtn.style.display = "block";
       } else {
-        setTimeout(finalizarQuiz, 6000);
+        setTimeout(finalizarQuiz, 5000);
       }
     } else {
       attempts++;
@@ -163,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
           document.querySelectorAll(".alternativa-btn").forEach((btn) => {
             btn.disabled = false;
           });
-        }, 2500);
+        }, 2000);
       } else {
         justificativaDiv.innerHTML = `<h2 style="color: red;">Que Pena!</h2><div style="text-align: center; line-height: 1.3; font-size: 20px; margin: 0 20px 0 20px;">Você usou todas as suas tentativas.</div>`;
         PenaSound.play();
@@ -171,9 +175,9 @@ document.addEventListener("DOMContentLoaded", function () {
         parabola1.style.display = "none";
         parabola2.style.display = "block";
         if (!isLastQuestion) {
-          proximaPerguntaBtn.style.display = "block";
+        proximaPerguntaBtn.style.display = "block";
         } else {
-          setTimeout(finalizarQuiz, 6000);
+          setTimeout(finalizarQuiz, 5000);
         }
       }
     }

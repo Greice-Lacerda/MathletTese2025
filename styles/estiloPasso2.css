@@ -1,8 +1,4 @@
-/* Passo2.css */
-
-/* ========================================================================== */
-/* Estilos Comuns de Layout e Visibilidade */
-/* ========================================================================== */
+/* Estilos para a etapa Passo2.css Perfeito*/
 
 .hidden {
   display: none !important;
@@ -30,8 +26,8 @@ fieldset {
   border-radius: 15px;
   box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
   margin: 1px;
-  padding: 1px;
-  height: 320px; /* Mantém a altura fixa para os contêineres do gráfico e tabela */
+  padding: 2px;
+  height: 325px; /* Mantém a altura fixa para os contêineres do gráfico e tabela */
 }
 
 .Elegend {
@@ -39,7 +35,7 @@ fieldset {
   color: black;
   text-shadow: 2px 2px 1px #0a0a0a62;
   text-align: center;
-  padding: 0 1px;
+  padding: 0;
 }
 
 .Explorar11 {
@@ -48,19 +44,19 @@ fieldset {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+  flex-wrap: wrap;
   gap: 20px;
   width: 90%;
   max-width: 1000px;
   height: 80px; /* Altura flexível */
-  padding: 8px;
-  margin: 58px 0 0 0;
+  padding: 6px;
+  margin: 56px 0 0 0;
 }
 
 #Explorar12 {
   /* Contêiner do gráfico */
   width: 500px;
-  height: 320px;
+  height: 327px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,6 +81,7 @@ fieldset {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 3px;
 }
 
 /* ========================================================================== */
@@ -151,7 +148,7 @@ button {
 .Fexplorar14 button {
   width: 150px;
   height: 40px;
-  margin: 10px auto;
+  margin: 15px auto;
   border: outset 4px #4caf50;
   background: linear-gradient(
     to right,
@@ -227,8 +224,8 @@ button {
 #tabela-container {
   width: 450px;
   max-width: 450px;
-  max-height: 320px;
-  min-height: 280px;
+  max-height: 280px;
+  min-height: 275px;
   background-color: #fff;
   border-radius: 10px;
   padding: 0 auto;
@@ -262,13 +259,13 @@ button {
 
 #plot:hover{
   width: 800px;
-  height: 400px;
+  height: 380px;
   overflow: hidden;
   position: absolute;
   margin-left:700px;
   justify-content: center;
   top:120px;
-  transform: scale(1.5);
+  transform: scale(1.6);
   transition-duration: 0.5s;
   z-index: 10;
 }
@@ -540,25 +537,27 @@ th {
   border: solid 2px rgba(248, 33, 33, 0.452);
 }
 
-
 #TabelaVerificacao-4,
 #TabelaVerificacao-5,
 #TabelaVerificacao-k {
   width: 450px;
   height: 300px;
-  object-fit: contain;
+  object-fit: cover;
   margin-left: -65px;
   border: solid 2px rgba(248, 33, 33, 0.452);
 }
 
+#TabelaDesafio:hover,
 #TabelaVerificacao-4:hover,
 #TabelaVerificacao-5:hover,
 #TabelaVerificacao-k:hover{
   transform: scale(1.4);
   filter: none;
   object-fit: cover;
+  padding: 0;
 }
 
+#TabelaDesafio:active,
 #TabelaVerificacao-4:active,
 #TabelaVerificacao-5:active,
 #TabelaVerificacao-k:active{

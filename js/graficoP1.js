@@ -64,7 +64,6 @@ function generatePlot() {
 
   const layout = {
     title: "Área sob a parábola y = x²",
-    annotations: [],
     showlegend: false,
     barmode: "overlay",
     autosize: true,

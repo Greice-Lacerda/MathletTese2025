@@ -51,52 +51,10 @@ function generatePlot() {
     })),
   ];
 
-  // Agora, crie as anotações separadamente
-  const annotations =
-    n < 10
-      ? x_rect.slice(0, -1).flatMap((xi, i) => {
-          const widthText = `x<sub>${i}</sub> = ${i}/${n}`;
-          const heightText = `y<sub>${i}</sub> = (${i}/${n})<sup>2</sup>`;
-          const areaText = `A<sub>${i}</sub>`;
-
-          return [
-            {
-              x: xi + bar_width - 1 / n,
-              y: 0,
-              text: widthText,
-              showarrow: false,
-              xanchor: "left",
-              yanchor: "top",
-              font: { size: 10 },
-              textangle: -90,
-            },
-            {
-              x: xi + bar_width - 0.01,
-              y: y_rect[i] / 2,
-              text: heightText,
-              showarrow: false,
-              xanchor: "right",
-              yanchor: "middle",
-              font: { size: 10 },
-              textangle: -90,
-            },
-            {
-              x: xi + bar_width / 2,
-              y: y_rect[i],
-              text: areaText,
-              showarrow: false,
-              xanchor: "center",
-              yanchor: "top",
-              font: { size: 12, color: "white" },
-            },
-          ];
-        })
-      : [];
-
+  
   // E passe as anotações para o layout do gráfico
   const layout = {
     title: "Parábola y = x²",
-    annotations: annotations,
     showlegend: false,
     widthText: ` `,
     heightText: ` `,

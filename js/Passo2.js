@@ -50,7 +50,7 @@ function displayError(message, inputElement) {
   errorMessageElement.textContent = message;
   errorMessageElement.classList.add("error-message");
   errorMessageElement.style.color = "red";
-  errorMessageElement.style.marginTop = "5px";
+  errorMessageElement.style.marginTop = "15px";
 
   // Insere o elemento logo após o input
   inputElement.parentNode.insertBefore(
@@ -67,7 +67,7 @@ function displayError(message, inputElement) {
 }
 
 /**
- * Função para processar a resposta do usuário para o desafio de n=2.
+ * Função para processar a resposta do usuário para o desafio de n = 2.
  */
 function handleConfirmN2() {
   const inputElement = document.getElementById("prompt-input");
@@ -358,7 +358,7 @@ function generatePlot() {
     ];
 
     annotations =
-      n <= 30
+      n <= 10
         ? x_rect.slice(0, -1).flatMap((xi, i) => {
             const widthText = `x<sub>${i}</sub> = ${i}/${n}`;
             const heightText = `y<sub>${i}</sub> = (${i}/${n})<sup>2</sup>`;
@@ -441,8 +441,8 @@ function generatePlot() {
     showlegend: false,
     barmode: "overlay",
     autosize: true,
-    width: plotDiv.offsetWidth,
-    height: plotDiv.offsetHeight * 0.9,
+    width: plotDiv.offsetWidth * 0.89,
+    height: plotDiv.offsetHeight * 0.85,
     margin: {
       l: 20,
       r: 20,
@@ -530,10 +530,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const confirmReloadBtn = document.getElementById("confirm-reload-btn"); // ADIÇÃO: Referência ao botão de confirmação
 
   if (gerarGraficoBtn) {
-    gerarGraficoBtn.disabled = true;
+    gerarGraficoBtn.disabled = false;
   }
   if (limparPaginaBtn) {
-    limparPaginaBtn.disabled = true;
+    limparPaginaBtn.disabled = false;
   }
 
   if (confirmReloadBtn) {

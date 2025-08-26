@@ -28,10 +28,7 @@ function generatePlot() {
   const realTotalArea = (1 / 3).toFixed(8);
   let error = (realTotalArea - 0).toFixed(8);
 
-  // Mover a inicialização de annotations para fora do if/else, antes do if(n>=2)
-  let annotations = []; // Garante que annotations é um array vazio por padrão
-
-  // Agora, a lógica de anotações só é aplicada se n for válido (n >= 2)
+    // Agora, a lógica de anotações só é aplicada se n for válido (n >= 2)
   if (n >= 2) {
     const x_rect = Array.from(
       { length: n + 1 },
@@ -90,58 +87,7 @@ function generatePlot() {
         showlegend: false,
       })),
     ];
-    // Se a condição for verdadeira, o valor de annotations é alterado
-    if (n < 10) {
-      annotations = x_rect.slice(0, -1).flatMap((xi, i) => {
-        const widthText = `x<sub>${i}</sub> = ${i}/${n}`;
-        const heightText = `y<sub>${i}</sub> = (${i}/${n})<sup>2</sup>`;
-        const areaText = `A<sub>${i}</sub>`;
-
-        return [
-          {
-            x: xi + bar_width - 1 / n,
-            y: 0,
-            text: widthText,
-            showarrow: false,
-            xanchor: "left",
-            yanchor: "top",
-            font: { size: 10 },
-            textangle: -90,
-          },
-          {
-            x: xi + bar_width - 0.01,
-            y: y_rect[i] / 2,
-            text: heightText,
-            showarrow: false,
-            xanchor: "right",
-            yanchor: "middle",
-            font: { size: 10 },
-            textangle: -90,
-          },
-          {
-            x: xi + bar_width / 2,
-            y: y_rect[i],
-            text: areaText,
-            showarrow: false,
-            xanchor: "center",
-            yanchor: "top",
-            font: { size: 12, color: "white" },
-          },
-        ];
-      });
-    } else {
-      const layout = {
-        title: "Parábola y = x²",
-        annotations: ` `,
-        showlegend: false,
-        widthText: ` `,
-        heightText: ` `,
-        areaText: ` `,
-        barmode: "overlay",
-        // ... (outras configurações de layout)
-      };
-    }
-
+    
     tableBodyData = x_rect.slice(0, -1).map((xi, i) => {
       const xFraction = formatFraction(i, n);
       const yFractionSquared = formatFraction(
@@ -174,12 +120,11 @@ function generatePlot() {
 
   const layout = {
     title: "Parábola y = x²",
-    annotations: annotations,
     showlegend: false,
     barmode: "overlay",
     autosize: true,
-    width: plotDiv.offsetWidth * 0.8,
-    height: plotDiv.offsetHeight * 0.8,
+    width: plotDiv.offsetWidth * 0.78,
+    height: plotDiv.offsetHeight * 0.78,
     margin: {
       l: 20,
       r: 20,

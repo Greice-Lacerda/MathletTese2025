@@ -56,22 +56,8 @@ function generatePlot() {
       })),
     ];
 
-    const annotations =
-      n <= 10
-        ? x_rect.slice(0, -1).map((xi, i) => ({
-            x: xi + bar_width / 2,
-            y: y_rect[i],
-            text: `Area_${i} = ${area_values[i].toFixed(10)}`,
-            showarrow: false,
-            xanchor: "center",
-            yanchor: "bottom",
-            textangle: -90,
-          }))
-        : [];
-
-    const layout = {
+        const layout = {
       title: "Parábola y = x²",
-      annotations: annotations,
       showlegend: false,
       barmode: "overlay",
       autosize: true,
