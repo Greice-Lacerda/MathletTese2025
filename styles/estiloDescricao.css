@@ -1,12 +1,45 @@
+/* --- Estilo da página de Objetivos Perfeito--- */
+
+fieldset {
+  border-color: rgba(202, 248, 247, 0.2);
+  background-color: rgb(252, 252, 250, 0.2);
+  border-radius: 20px;  
+    margin: 2px 20px;
+    padding: 2px;
+  width: 95%;
+  height: 290px;
+  box-sizing: border-box;  
+  box-shadow: #000 10px 10px 20px;
+}
+
+legend {
+  font-style: italic;
+  font-size: 20px;
+  color: transparent;
+}
+
+.controles {
+  width: 95%;
+  height: 90px;
+  display: flex;
+  flex-direction: row; /* Correção da direção */
+  align-items: flex-start;
+  margin: 0 auto;
+  padding: 0 auto;
+  background-color: transparent;
+  box-shadow: #000 10px 10px 20px;
+  border: 1px solid rgb(5, 44, 1, 0.5);
+  border-radius: 10px;
+}
 
 /* === Estilos dos Botões (Propriedades consolidadas) === */
 .controles button {
   width: 200px;
   height: 50px;
   align-items: center;
-  justify-content: center;
-  margin: 20px 25px auto;
-  padding: 10px 5px auto;
+    justify-content: center;
+    margin: 20px 25px auto;
+    padding: 10px 5px auto;
   font-size: 16px;
   border-radius: 10px;
   border: outset 6px #4caf50;

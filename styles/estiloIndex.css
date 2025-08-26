@@ -1,35 +1,43 @@
-/* --- Configurações de estilo da index --- */
-fieldset {
+/* --- Configurações de estilo da index Perfeito --- */
+
+main{
+top: -1000px;
+}
+
+#IndFil {
   border-color: rgba(202, 248, 247, 0.2);
   background-color: rgb(252, 252, 250, 0.2);
   border-radius: 20px;
-  margin: 2px 20px;
   padding: 2px;
   width: 95%;
   height: 290px;
+  position: relative;
+  display: flexbox;
   box-sizing: border-box;
   box-shadow: #000 10px 10px 20px;
 }
 
-fieldset:hover {
+#IndFil:hover {
   transform: scale(1.05);
   background-color: #bee2be;
 }
 
-legend {
+#IndLeg {
   font-style: italic;
   font-size: 20px;
   color: transparent;
 }
 
+#IndIma{
+  margin-top: 50px;
+}
+
 .controles {
-  width: 95%;
+  width: 770px;
   height: 90px;
-  display: flex;
-  flex-direction: row; /* Correção da direção */
-  align-items: flex-start;
-  margin: 0 auto;
-  padding: 0 auto;
+  margin-top: -40px;
+  flex-direction: row;
+  padding: auto;
   background-color: transparent;
   box-shadow: #000 10px 10px 20px;
   border: 1px solid rgb(5, 44, 1, 0.5);
@@ -37,6 +45,7 @@ legend {
 }
 
 /* === Estilos dos Botões (Propriedades consolidadas) === */
+
 .controles button {
   width: 250px;
   height: 50px;

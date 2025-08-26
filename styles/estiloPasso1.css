@@ -1,4 +1,5 @@
-/* === Estilos de Elementos do Formulário === */
+/* === Estilos Da Pagina Passo 1 Perfeito === */
+
 #Explorar11 {
   width: 1185px;
   height: 120px;
@@ -86,6 +87,31 @@ section {
   text-align: left;
 }
 
+.alternativa-btn {
+  /* Estilos padrão do botão */
+  margin: 10px 0;
+  border: 0;
+  font-size: 16px;
+  font-family: "Times New Roman", Times, serif;
+  background: transparent;
+  font-weight: bold;
+  flex-direction: row;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.alternativa-btn:hover {
+  /* Estilos para o estado 'hover' */
+  transform: scale(1.05);
+  color: white;
+  border-radius: 5px;
+  box-shadow: inset 20px 20px 10px rgba(0, 0, 0, 0.614);
+}
+
 .Elegend1 {
   margin: 2px;
   color: #032b04;
@@ -153,11 +179,12 @@ section {
   transform: scale(0.95);
 }
 
-.Fexplorar14 {
+.FexplorarP114 {
   width: 160px;
   height: 300px;
   position: relative;
-  margin-bottom: 150px;
+  margin: 15px auto;
+  bottom: 75px;
   flex-direction: column;
   box-sizing: border-box;
   text-align: center;
@@ -165,13 +192,13 @@ section {
   box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
 }
 
-.Fexplorar14 button {
+.FexplorarP114 button {
   width: 140px;
   height: 40px;
   align-items: center;
   justify-content: center;
   margin: 10px auto;
-  padding: 8px 0;
+  padding: 8px;
   font-size: 14px;
   border-radius: 10px;
   border: outset 4px #4caf50;
@@ -188,7 +215,7 @@ section {
   text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
 }
 
-.Fexplorar14 button:hover {
+.FexplorarP114 button:hover {
   background: linear-gradient(
     to right,
     #6bc06e,
@@ -204,34 +231,8 @@ section {
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
 }
 
-.Fexplorar14 button:active {
+.F.FexplorarP114 button:active {
   transform: scale(0.95);
-}
-
-.alternativa-btn {
-  /* Estilos padrão do botão */
-  margin: 10px 0;
-  border: 0;
-  font-size: 16px;
-  font-family: "Times New Roman", Times, serif;
-  background: transparent;
-  font-weight: bold;
-  flex-direction: row;
-  color: black;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-.alternativa-btn:hover {
-  /* Estilos para o estado 'hover' */
-  transform: scale(1.1);
-  color: white;
-  box-shadow: inset 2px 2px 15px rgba(0, 0, 0, 0.9);
-  border-radius: 5px;
 }
 
 #quiz-progress-container {

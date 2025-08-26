@@ -1,4 +1,5 @@
-/* --- Configurações de estilo da página de objetivos --- */
+/* --- Estilo da página Descrição do Problema de Investigação Perfeito --- */
+
 .Prob1 {
   flex-direction: row;
   border-color: rgba(202, 248, 247, 0.2);
@@ -18,7 +19,7 @@
   background-color: #bee2be;
 }
 
-#pProb {    
+#pProb {
   font-size: 14px;
 }
 
@@ -26,7 +27,7 @@
     margin:-40px 0 0 0;
 }
 
-.pProb { 
+.pProb {
   font-size: 13px;
   margin: -5px 0;
   padding: 0 25px 0px 40px;

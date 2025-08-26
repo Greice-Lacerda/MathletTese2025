@@ -1,12 +1,12 @@
-/* === Instruções do Passo 1 Perfeito === */
+/* === Estilos da página Apresentação Teorica 2 do Passo 1 Perfeito. */
 
-#ExplorarIn11 {
+#ExplorarAp11 {
   width: 1200px;
-  height: 480px;
+  height: 420px;
   display: flex;
   flex-direction: row;
   text-align: justify;
-  margin: 10px auto;
+  margin: 20px auto;
   border-radius: 15px;
   box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
 }
@@ -42,7 +42,7 @@ section {
   border-radius: 10px;
   font-size: 16px;
   font-weight: bold;
-  margin: 100px auto;
+  margin: 10px auto;
   gap: 20px;
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
   text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
@@ -79,47 +79,53 @@ section {
   color: white;
 }
 
-.instrucIn1 {
-  width: 300px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px auto;
-  padding: 2px;
-  font-size: 14px;
-  line-height: 1.3;
-}
-
-#Im11{
-  width: 150px;
-  height: auto;
-  margin: 0 auto;
-  border: solid 4px rgba(255, 0, 0, 0.331);
-  padding: 4px;
-  border-radius: 8px;
-}
-.instrucIn2 {
-  width: 420px;
+.instrucAp1 {
+  width: 350px;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0px auto;
-  padding: 10px;
-  font-size: 16px;
-  line-height: 1.3;
+  padding: 2px;
+  font-size: 14px;
+  line-height: 1;
 }
 
-.instrucIn3 {
-  width: 400px;
+.instrucAp2 {
+  width: 350px;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px auto;
+  margin: 0px auto;
   padding: 2px;
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.instrucAp3 {
+  width: 370px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px auto;
+  padding: 2px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.instrucAp11{
+margin: 10px auto;
+  padding: 2px;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.instrucAp111{
+margin-top: -20px;
+  padding: 2px;
+  font-size: 15px;
   line-height: 1.3;
 }
 
@@ -130,9 +136,9 @@ h2 {
   text-align: center;
 }
 
-ul, li {
+ul{
   margin: 4px 8px 4px 0;
-  padding: 5px; /
+  padding: 5px;
 }
 
 /* === Media Queries para Responsividade === */
