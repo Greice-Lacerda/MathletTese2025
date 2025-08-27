@@ -1,33 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resumo da Exploração</title>
-    <link rel="stylesheet" href="../styles/estilosComuns.css">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
-        main {
-            max-width: 600px;
-        }
-    </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Exploração Concluída! - Explorando o Princípio da Indução Matemática
+    </title>
+    <link rel="stylesheet" href="../styles/estiloDescricao.css" />
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div id="tit1">
+        <h1>Explorando o Princípio da Indução Matemática</h1>
+      </div>
+      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+    </header>
+
     <main>
-        <h1>Exploração Concluída!</h1>
-        <p style="font-size: 1.2em;">
-            Obrigado por explorar o Princípio da Indução Matemática conosco.
-        </p>
-        <p>
-            Esperamos que a abordagem visual tenha ajudado a solidificar seu entendimento sobre como o passo indutivo garante que, se uma propriedade é válida para um caso 'k', ela também se sustenta para 'k+1', formando uma corrente lógica infinita.
-        </p>
-        <p><strong>Não se esqueça de responder ao questionário que abriu na outra aba!</strong></p>
+      <section>
+        <div>
+          <img
+            src="../img/LogoPagInicialClaro.png"
+            alt="Ilustração do Princípio da Indução Matemática"
+          />
+        </div>
+        <div>
+          <fieldset>
+            <legend><h1 id="ConLeg1" id="ConLeg2">Exploração Concluída!</h1></legend>
+
+            <p style="font-size: 1.2em">
+              Obrigado por explorar o Princípio da Indução Matemática conosco.
+            </p>
+            <p>
+              Esperamos que a abordagem visual tenha ajudado a solidificar seu
+              entendimento sobre como o passo indutivo garante que, se uma
+              propriedade é válida para um caso 'k', ela também se sustenta para
+              'k+1', formando uma corrente lógica infinita.
+            </p>
+            <p>
+              <strong
+                >Não se esqueça de responder ao questionário que abriu na outra
+                aba!</strong
+              >
+            </p>
+          </fieldset>
+          <br />
+          <div class="controles">
+            <button id="voltar" onclick="window.location.href='../index.html'">
+              Página Inicial
+            </button>
+            <button
+              id="teoria"
+              onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScl3BiowD4RUjZAna2NEACEsEckfY8cYR11_8mJ1d0xfwjYew/viewform', '_blank');"
+            >
+              Avaliação da Oficina
+            </button>
+            <button
+              id="Sair"
+              onclick="window.location.href='https://www.google.com.br'"
+            >
+              Sair
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
-</body>
+
+    <footer>
+      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        
+        // Confetes automáticos ao carregar a página
+        confetti({
+          particleCount: 500,
+          spread: 100,
+          origin: { y: 0.6 },
+          zIndex: 10000
+        });
+
+      });
+    </script>
+  </body>
 </html>

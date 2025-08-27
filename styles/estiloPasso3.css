@@ -1,10 +1,8 @@
-/* estiloPasso3.css */
+/* estiloPasso3.css Ajsutar as telas da exploração do gráfico em diante*/
 
-/* ========================================================================== */
+
 /* ESTILOS GERAIS E LAYOUT PRINCIPAL */
-/* ========================================================================== */
 
-/* Utilitário para ocultar elementos via JavaScript */
 .hidden {
   display: none !important;
 }
@@ -153,8 +151,26 @@
   color: #0e0d0d;
 }
 
-#step-2{
-  flex-direction: row;
+/* ========================================================================== */
+/* ESTILOS PARA LAYOUT DE DUAS COLUNAS NOS PAINEIS */
+/* ========================================================================== */
+
+/* Adicione esta classe ao .modal-panel que você quer dividir */
+.two-columns {
+  flex-direction: row; /* Alinha os itens filhos lado a lado */
+  align-items: flex-start; /* Alinha o topo das colunas */
+  gap: 30px; /* Espaço entre as colunas */
+  flex-wrap: wrap;
+}
+
+/* Define o estilo para cada coluna */
+.column {
+  flex: 1; /* Faz cada coluna ocupar um espaço igual */
+  min-width: 300px; /* Largura mínima antes de quebrar a linha */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo da coluna */
+  gap: 20px;
 }
 
 /* Gráfico Plotly */
@@ -331,17 +347,24 @@ math {
 /* ========================================================================== */
 /* RESPONSIVIDADE */
 /* ========================================================================== */
-
+/* Ajuste de responsividade: em telas menores que 992px... */
 @media (max-width: 992px) {
+  .two-columns {
+    flex-direction: column; /* ...as colunas voltam a ficar uma sobre a outra */
+    align-items: center;
+  }
+
   .Explorar11 {
     flex-direction: column;
     align-items: center;
   }
+
   .column-fieldset {
     width: 90%;
     max-width: 500px;
     height: auto; /* Altura automática em telas menores */
   }
+
   .desafio-titulo31 {
     font-size: 1.3em;
   }

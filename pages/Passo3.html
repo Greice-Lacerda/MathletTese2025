@@ -343,82 +343,77 @@
                 </button>
               </div>
 
-              <div id="step-2" class="modal-panel hidden">
-                <h3>Construindo a Área(k + 1)</h3>
-                <p class="ProvaP33">
-                  Abaixo está a representação da <strong>Área(k)</strong>.
-                  Clique no botão para adicionar o retângulo que falta e formar
-                  a <strong>Área(k + 1)</strong>.
-                </p>
-                <div id="plot"></div>
-                <button id="add-rectangle-btn">
-                  Adicionar (k + 1)-ésimo Retângulo
-                </button>
-                <button class="next-step-btn hidden" data-step="3">
-                  Entendi! Próximo Passo
-                </button>
+              <div id="step-2" class="modal-panel two-columns hidden">
+                <div class="column">
+                  <h3>Construindo a Área(k + 1)</h3>
+                  <p class="ProvaP33">
+                    Abaixo está a representação da <strong>Área(k)</strong>. Clique no botão
+                    para recalcular a área para <strong>k+1</strong> retângulos. Observe como os retângulos
+                    azuis se ajustam e o novo retângulo (laranja) é adicionado.
+                  </p>
+                </div>
+                <div class="column">
+                  <div id="plot"></div>
+                  <button id="add-rectangle-btn">Adicionar (k + 1)-ésimo Retângulo</button>
+                  <button class="next-step-btn hidden" data-step="3">
+                    Entendi! Próximo Passo
+                  </button>
+                </div>
               </div>
 
-              <div id="step-3" class="modal-panel hidden">
-                <h3>Juntando as Peças</h3>
-                <p class="ProvaP33">
-                  Perfeito! A nova área total é a soma da área original com o
-                  novo retângulo.
-                </p>
-                <div class="formula-display formula-highlight">
-                  Área(k+1) &nbsp; = &nbsp;
-                  <span style="color: #007bff">Área(k)</span>
-                  &nbsp; + &nbsp;
-                  <span style="color: #fd7e14">Novo Retângulo</span>
-                </div>
-                <p class="ProvaP33">
-                  Agora que entendemos o conceito visual, vamos traduzir isso
-                  para a matemática.
-                </p>
-                <button class="next-step-btn" data-step="4">
-                  Formalizar com Álgebra
-                </button>
-              </div>
-
-              <div id="step-4" class="modal-panel hidden">
-                <h3>Traduzindo o Visual para a Matemática</h3>
-                <p class="ProvaP33">
-                  A prova depende da <b>soma dos quadrados</b>. Focaremos
-                  nela. A soma para k + 1 termos é a soma para k termos (nossa
-                  hipótese) mais o novo termo k²:
-                </p>
-                <div class="formula-display formula-large-text">
-                  S<sub>k+1</sub> &nbsp; = &nbsp;
-                  <div class="formula-com-delimitador">
-                    <span class="delimitador-grande">[</span>
-                    <span class="summation-term">S<sub>k</sub></span>
-                    <span class="delimitador-grande">]</span>
-                  </div>
-                  &nbsp; + &nbsp; k<sup>2</sup>
-                </div>
-                <p class="ProvaP33">
-                  Substituindo a fórmula da hipótese para S<sub>k</sub>, temos:
-                </p>
-                <div class="formula-display">
-                  <span>S<sub>k + 1</sub> =</span>
-                  <div class="formula-com-delimitador">
-                    <span class="delimitador-grande">[</span>
-                    <div class="fraction-container">
-                      <div class="numerator">(k - 1)k(2k - 1)</div>
-                      <div class="denominator">6</div>
+              <div id="step-3" class="modal-panel two-columns hidden">
+                  <div class="column">
+                    <h3>Juntando as Peças</h3>
+                      <p class="ProvaP33">
+                        Perfeito! A nova área total é a soma da área dos
+                        <strong>k+1</strong> retângulos mais finos.
+                      </p>
+                      <p class="ProvaP33">
+                        Agora que entendemos o conceito visual, vamos traduzir isso para a
+                        matemática.
+                      </p>
                     </div>
-                    <span class="delimitador-grande">]</span>
+                    <div class="column">
+                      <div class="formula-display formula-highlight">
+                        Área(k+1) &nbsp; = &nbsp;
+                        <span style="color: #007bff">Área dos k retângulos recalculados</span>
+                        &nbsp; + &nbsp;
+                        <span style="color: #fd7e14">Novo Retângulo</span>
+                      </div>
+                      <button class="next-step-btn" data-step="4">Formalizar com Álgebra</button>
+                    </div>
                   </div>
-                  <span>+ k<sup>2</sup></span>
-                </div>
-                <p class="proof-step-text">
-                  <em>Agora, o desafio é simplificar essa expressão.</em>
-                </p>
-                <button class="next-step-btn" data-step="5">
-                  Concluir Prova
-                </button>
-              </div>
 
+                  <div id="step-4" class="modal-panel hidden">
+                    <h3>Traduzindo o Visual para a Matemática</h3>
+                    <p class="ProvaP33">
+                      A prova depende da <b>soma dos quadrados</b>. Focaremos nela. A soma para
+                      k + 1 termos é a soma para k termos (nossa hipótese) mais o novo termo k²:
+                    </p>
+                    <div class="formula-display formula-large-text">
+                      S<sub>k+1</sub> &nbsp; = &nbsp;
+                      <div class="formula-com-delimitador">
+                        <span class="summation-term">S<sub>k</sub></span>
+                      </div>
+                      &nbsp; + &nbsp; k<sup>2</sup>
+                    </div>
+                    <p class="ProvaP33">
+                      Substituindo a fórmula da hipótese para S<sub>k</sub>, temos:
+                    </p>
+                    <div class="formula-display">
+                      <span>S<sub>k + 1</sub> =</span>
+                      <div class="fraction-container">
+                        <div class="numerator">(k - 1)k(2k - 1)</div>
+                        <div class="denominator">6</div>
+                      </div>
+                      <span>+ k<sup>2</sup></span>
+                    </div>
+                    <p class="proof-step-text">
+                      <em>Agora, o desafio é simplificar essa expressão.</em>
+                    </p>
+                    <button class="next-step-btn" data-step="5">Concluir Prova</button>
+                  </div>
+              
               <div id="step-5" class="modal-panel hidden">
                 <h3>Parabéns!</h3>
                 <div

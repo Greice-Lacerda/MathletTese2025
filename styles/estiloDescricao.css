@@ -75,3 +75,34 @@ legend {
 .controles button:active {
   transform: scale(0.95);
 }
+
+/* Alternativa para um piscar mais abrupto */
+
+@keyframes piscar-seco {
+  50% {
+    visibility: hidden;
+  }
+}
+
+#ConLeg1 {
+  animation: piscar-seco 1s infinite;
+  animation: alternate;
+}
+
+/* Passo 1: Define a animação de piscar */
+@keyframes piscar {
+  0% {
+    opacity: 1; /* Totalmente visível no início */
+  }
+  50% {
+    opacity: 0; /* Totalmente invisível no meio da animação */
+  }
+  100% {
+    opacity: 1; /* Totalmente visível no final */
+  }
+}
+
+/* Passo 2: Aplica a animação ao seu elemento #Elengend1 */
+#ConLeg2 {
+  animation: piscar 2.5s infinite; /* Aplica a animação 'piscar', com duração de 2.5 segundos, repetindo infinitamente */
+}

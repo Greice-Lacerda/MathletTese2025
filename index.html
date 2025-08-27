@@ -3,55 +3,115 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Página Inicial - Explorando o Princípio da Indução Matemática</title>
+    <title>
+      Página Inicial - Explorando o Princípio da Indução Matemática
+    </title>
     <link rel="stylesheet" href="./styles/estiloIndex.css" />
     <link rel="stylesheet" href="./styles/estilosComuns.css" />
   </head>
   <body>
-    <header>
-      <div id="tit1">
-        <h1 id="Tit1";>Explorando o Princípio da Indução Matemática</h1>
+    <div id="welcome-modal">
+      <div class="modal-content">
+        <div><img
+          src="./img/LogoPagInicialClaro.png"
+          alt="Logo da Oficina"
+          class="modal-logo"
+        /></div>
+        <div>
+        <h1 style="color:white;">Explorando o Princípio da Indução Matemática</h1>
+        <p style="text-align:center;">Uma Abordagem Visual com Faixas de Parábola</p>
+        
+        <button id="start-workshop-btn">Iniciar Oficina</button>
+        </div>
       </div>
-      <div id="tit2"><span id="Tit2";>Uma Abordagem Visual com Faixas de Parábola</span></div>
-    </header>
-
-    <main>
-      <section>
-        <div>
-          <img id="IndIma"
-            src="./img/ImgPagInicial.jpg"
-            alt="Ilustração do Princípio da Indução Matemática"
-          />
+    </div>
+    <div id="main-content" style="visibility: hidden">
+      <header>
+        <div id="tit1">
+          <h1 id="Tit1">Explorando o Princípio da Indução Matemática</h1>
         </div>
+        <div id="tit2">
+          <span id="Tit2"
+            >Uma Abordagem Visual com Faixas de Parábola</span
+          >
+        </div>
+      </header>
 
-        <div>
-          <fieldset id="IndFil">
-            <legend id="IndLeg">Bem-vindo!</legend>
-              <p id="tbem"><b > Bem-vindo à nossa jornada de aprendizado sobre o Princípio da
-              Indução Matemática!</b>
+      <main>
+        <section>
+          <div>
+            <img
+              id="IndIma"
+              src="./img/ImgPagInicial.jpg"
+              alt="Ilustração do Princípio da Indução Matemática"
+            />
+          </div>
 
-                <p>Esta página é o ponto de partida para você
-                explorar este conceito de uma forma nova e visual. Inspirado na
-                ideia de que os conceitos matemáticos desafiadores podem se tornar mais familiares, criamos este
-                espaço para ajudá-lo a "ressignificar" seu entendimento.
-                </p>
+          <div>
+            <fieldset id="IndFil">
+              <legend id="IndLeg">Bem-vindo!</legend>
+              <p id="tbem">
+                <b>
+                  Bem-vindo à nossa jornada de aprendizado sobre o Princípio da
+                  Indução Matemática!</b
+                >
+              </p>
 
-                <p>Deixe a abordagem puramente algébrica por um momento e prepare-se
+              <p>
+                Esta página é o ponto de partida para você explorar este
+                conceito de uma forma nova e visual. Inspirado na ideia de que
+                os conceitos matemáticos desafiadores podem se tornar mais
+                familiares, criamos este espaço para ajudá-lo a "ressignificar"
+                seu entendimento.
+              </p>
+
+              <p>
+                Deixe a abordagem puramente algébrica por um momento e prepare-se
                 para visualizar propriedades e características do Princípio da
-                Indução Matemática através da geometria e da tecnologia digital.
-                </p>
-          </fieldset>
-          <br><br><br>
+                Indução Matemática através da geometria e da tecnologia
+                digital.
+              </p>
+            </fieldset>
+            <br /><br /><br />
             <div class="controles">
-            <button id="objetivos" onclick="window.location.href='./pages/descricao.html'"">Objetivos do Mathlet</button>
-            <button id="Sair" onclick="window.location.href='https://www.google.com.br'">Sair</button>
+              <button
+                id="objetivos"
+                onclick="window.location.href='./pages/descricao.html'"
+              >
+                Objetivos do Mathlet
+              </button>
+              <button
+                id="Sair"
+                onclick="window.location.href='https://www.google.com.br'"
+              >
+                Sair
+              </button>
             </div>
-        </div>
-      </section>
-    </main>
+          </div>
+        </section>
+      </main>
 
-    <footer>
-      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
-    </footer>
+      <footer>
+        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução
+        Matemática
+      </footer>
+    </div>
+    <script>
+      // Aguarda o carregamento da página
+      document.addEventListener("DOMContentLoaded", () => {
+        // Pega as referências dos elementos
+        const welcomeModal = document.getElementById("welcome-modal");
+        const mainContent = document.getElementById("main-content");
+        const startButton = document.getElementById("start-workshop-btn");
+
+        // Adiciona o evento de clique ao botão "Iniciar Oficina"
+        startButton.addEventListener("click", () => {
+          // Esconde o modal
+          welcomeModal.style.display = "none";
+          // Mostra o conteúdo principal da página
+          mainContent.style.visibility = "visible";
+        });
+      });
+    </script>
   </body>
 </html>
