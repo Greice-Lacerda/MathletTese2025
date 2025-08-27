@@ -63,7 +63,7 @@ function displayError(message, inputElement) {
     if (errorMessageElement && errorMessageElement.parentNode) {
       errorMessageElement.parentNode.removeChild(errorMessageElement);
     }
-  }, 3000);
+  }, 2500);
 }
 
 /**
@@ -93,7 +93,7 @@ function handleNextStepN3() {
   const inputElement = document.getElementById("area-input");
   const areaInput = inputElement.value;
 
-  if (parseFloat(areaInput) !== 0.185) {
+  if (parseFloat(areaInput) !== 0.125) {
     displayError("Valor incorreto. Por favor, tente novamente.", inputElement);
     return;
   }

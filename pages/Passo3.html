@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Explorando a Prova do Passo de Indução - Conclusão da Prova por Indução
-      Matemática
+      Conclusão da Prova por Indução - Explorando a Prova do Passo de Indução Matemática
     </title>
 
     <link rel="stylesheet" href="../styles/estilosComuns.css" />
@@ -44,33 +43,69 @@
         <img
           src="../img/GraficoPassoN2.jpg"
           id="Passo2NK"
-          alt="Gráfico da parábola para n=2, representando o caso base."
+          alt="Gráfico da parábola para n = 2, representando o caso base."
         />
       </div>
       <br><br>
-      <div class="formula-display">
-        A(2) =
-        <div class="fraction-container">
-          <div class="numerator">1</div>
-          <div class="denominator">2</div>
+        <div class="formula-display">
+              <math display="block">
+              <mi>A</mi>
+              <mrow>
+                <mo>(</mo>
+                <mi>2</mi>
+                <mo>)</mo>
+              </mrow>
+              <mo>=</mo>
+              <mfrac>
+              <mn>1</mn>
+              <mi>2</mi>
+                  </mfrac>
+              <mo>&middot;</mo>
+              <msup>
+                  <mrow>
+                    <mo>(</mo>
+                    <mrow>
+              <mfrac>
+                <mn>1</mn>
+                <msup>
+                  <mi>2</mi>
+                </msup>
+              </mfrac>
+              </mrow>
+                    <mo>)</mo>
+                  </mrow>
+                  <mn>2</mn>
+                </msup>
+              <mo>=</mo>
+              <mfrac>
+              <mn>1</mn>
+              <mi>2</mi>
+                  </mfrac>
+              <mo>&middot;</mo>
+                <mfrac>
+                <mn>1</mn>
+                <msup>
+                  <mi>2</mi>
+                  <mn>2</mn>
+                </msup>
+              </mfrac>
+              <mo>=</mo>
+              <mfrac>
+                <mn>1</mn>
+                <msup>
+                  <mi>2</mi>
+                  <mn>3</mn>
+                </msup>
+              </mfrac>
+              <mo>=</mo>
+              <mfrac>
+                <mn>1</mn>
+                  <mi>8</mi>
+              </mfrac>
+              <mo>=</mo>
+              <mn>0,125 </mn>
+            </math>
         </div>
-        &middot;
-        <div class="fraction-container">
-          <div class="numerator">1</div>
-          <div class="denominator">2<sup>2</sup></div>
-        </div>
-        =
-        <div class="fraction-container">
-          <div class="numerator">1</div>
-          <div class="denominator">2<sup>3</sup></div>
-        </div>
-        =
-        <div class="fraction-container">
-          <div class="numerator">1</div>
-          <div class="denominator">8</div>
-        </div>
-        = 0,185
-      </div>
     </fieldset>
 
     <fieldset class="column-fieldset">
@@ -80,22 +115,59 @@
         n = k <span style="color:red; font-weight:bold;">(Hipótese de indução)</span>.
         <br><br><br>
       </p>
-      <div class="case-image">
+      <div class="case-image2">
         <img
           src="../img/ParabolaNkdesafio.jpg"
           id="Passo22NK"
-          alt="Gráfico da parábola para n=k, ilustrando a hipótese de indução."
+          alt="Gráfico da parábola para n = k, ilustrando a hipótese de indução."
         />
       </div>
       <div class="formula-display1">
-        A(k) =
-        <div class="fraction-container">
-          <div class="numerator">1</div>
-          <div class="denominator">k<sup>3</sup></div>
-        </div>
-        &middot;
-        <div class="numerator">[1<sup>2</sup> + 2<sup>2</sup> + 3<sup>2</sup> + ... + (k &minus; 1)<sup>2</sup>]
-        </div>
+        <math display="block">
+              <mi>A</mi>
+              <mrow>
+                <mo>(</mo>
+                <mi>k</mi>
+                <mo>)</mo>
+              </mrow>
+              <mo>=</mo>
+              <mfrac>
+                <mn>1</mn>
+                <msup>
+                  <mi>k</mi>
+                  <mn>3</mn>
+                </msup>
+              </mfrac>
+              <mo>&middot;</mo>
+              <mrow>
+                <mo>[</mo>
+                <msup>
+                  <mn>1</mn>
+                  <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <msup>
+                  <mn>2</mn>
+                  <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <mo>...</mo>
+                <mo>+</mo>
+                <msup>
+                  <mrow>
+                    <mo>(</mo>
+                    <mrow>
+                      <mi>k</mi>
+                      <mo>&minus;</mo>
+                      <mn>1</mn>
+                    </mrow>
+                    <mo>)</mo>
+                  </mrow>
+                  <mn>2</mn>
+                </msup>
+                <mo>]</mo>
+              </mrow>
+            </math>
         </div>
     </fieldset>
 
@@ -105,25 +177,272 @@
         <b>Agora, vamos para o passo de indução.</b>
       </p>
       <p class="intro-text">
-        Clique no botão abaixo para explorarmos a provar de que a fórmula:
-        <div class="formula-display1">
-        A(n) =
-        <div class="fraction-container">
-          <div class="numerator">1</div>
-          <div class="denominator">n<sup>3</sup></div>
+        Clique no botão abaixo para explorar a provar da validade de:
+        <div class="formula-display2">
+        <math display="block">
+              <mi>A</mi>
+              <mrow>
+                <mo>(</mo>
+                <mi>n</mi>
+                <mo>)</mo>
+              </mrow>
+              <mo>=</mo>
+              <mfrac>
+                <mn>1</mn>
+                <msup>
+                  <mi>n</mi>
+                  <mn>3</mn>
+                </msup>
+              </mfrac>
+              <mo>&middot;</mo>
+              <mrow>
+                <mo>[</mo>
+                <msup>
+                  <mn>1</mn>
+                  <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <msup>
+                  <mn>2</mn>
+                  <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <mo>...</mo>
+                <mo>+</mo>
+                <msup>
+                  <mrow>
+                    <mo>(</mo>
+                    <mrow>
+                      <mi>n</mi>
+                      <mo>&minus;</mo>
+                      <mn>1</mn>
+                    </mrow>
+                    <mo>)</mo>
+                  </mrow>
+                  <mn>2</mn>
+                </msup>
+                <mo>]</mo>
+              </mrow>
+            </math>
+        </p>
         </div>
-        &middot;
-        <div class="numerator">[1<sup>2</sup> + 2<sup>2</sup> + 3<sup>2</sup> + ... + (n &minus; 1)<sup>2</sup>]
-        </div>
-        </div>
-        <p>
-        Também é verdadeira para o próximo número <span style="color:blue; font-weight:bold;">n = k + 1</span> <span style="color:red; font-weight:bold;">(Passo de Indução)</span>.<br>
-      </p>
       <button id="start-proof-btn">Iniciar Prova</button>
     </fieldset>
-  </section>
 
-  </main>
+    
+        <div id="ProvaP3" class="ProvaP3" style="display:block";>
+          <div class="ProvaP31">
+            <header class="ProvaHP31">
+            <h2 class="desafio-titulo31">Prova de Indução para n = k + 1</h2>
+            </header>
+
+            <div class="modal-body3">
+              <div id="step-1" class="modal-panel3">
+                <p class="ProvaP33">O objetivo aqui é provar que para todo n natural maior ou igual a 2, a área A(n) do polígono retangular inscrito na parábola y = x<sup>2</sup> no intervalo de [0, 1], pode ser expressa por:
+                <p class="ProvaP34">
+                <math display="block">
+              <mi>A</mi>
+              <mrow>
+                <mo>(</mo>
+                <mi>n</mi>
+                <mo>)</mo>
+              </mrow>
+              <mo>=</mo>
+              <mfrac>
+                <mn>1</mn>
+                <msup>
+                  <mi>n</mi>
+                  <mn>3</mn>
+                </msup>
+              </mfrac>
+              <mo>&middot;</mo>
+              <mrow>
+                <mo>[</mo>
+                <msup>
+                  <mn>1</mn>
+                  <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <msup>
+                  <mn>2</mn>
+                  <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <mo>...</mo>
+                <mo>+</mo>
+                <msup>
+                  <mrow>
+                    <mo>(</mo>
+                    <mrow>
+                      <mi>n</mi>
+                      <mo>&minus;</mo>
+                      <mn>1</mn>
+                    </mrow>
+                    <mo>)</mo>
+                  </mrow>
+                  <mn>2</mn>
+                </msup>
+                <mo>]</mo>
+              </mrow>
+            </math>
+        </p>
+                  <p class="ProvaP333">
+                  Pela Hipótese de Indução, assumimos que a fórmula da área A(k) funciona para <strong>n = k</strong>, do seguinte modo:
+                  <p class="ProvaP34">
+                <math display="block">
+              <mi>A</mi>
+              <mrow>
+                <mo>(</mo>
+                <mi>k</mi>
+                <mo>)</mo>
+              </mrow>
+              <mo>=</mo>
+              <mfrac>
+                <mn>1</mn>
+                <msup>
+                  <mi>k</mi>
+                  <mn>3</mn>
+                </msup>
+              </mfrac>
+              <mo>&middot;</mo>
+              <mrow>
+                <mo>[</mo>
+                <msup>
+                  <mn>1</mn>
+                  <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <msup>
+                  <mn>2</mn>
+                  <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <mo>...</mo>
+                <mo>+</mo>
+                <msup>
+                  <mrow>
+                    <mo>(</mo>
+                    <mrow>
+                      <mi>k</mi>
+                      <mo>&minus;</mo>
+                      <mn>1</mn>
+                    </mrow>
+                    <mo>)</mo>
+                  </mrow>
+                  <mn>2</mn>
+                </msup>
+                <mo>]</mo>
+              </mrow>
+            </math>
+        </p>
+        <p class="ProvaP33">Nosso desafio é provar que A(k) também funciona para <strong>n = k + 1</strong>. Antes de
+                  usarmos álgebra, vamos entender como isso funciona visualmente.
+                </p>
+                <button class="next-step-btn" data-step="2">
+                  Começar a Visualização
+                </button>
+              </div>
+
+              <div id="step-2" class="modal-panel hidden">
+                <h3>Construindo a Área(k + 1)</h3>
+                <p class="ProvaP33">
+                  Abaixo está a representação da <strong>Área(k)</strong>.
+                  Clique no botão para adicionar o retângulo que falta e formar
+                  a <strong>Área(k + 1)</strong>.
+                </p>
+                <div id="plot"></div>
+                <button id="add-rectangle-btn">
+                  Adicionar (k + 1)-ésimo Retângulo
+                </button>
+                <button class="next-step-btn hidden" data-step="3">
+                  Entendi! Próximo Passo
+                </button>
+              </div>
+
+              <div id="step-3" class="modal-panel hidden">
+                <h3>Juntando as Peças</h3>
+                <p class="ProvaP33">
+                  Perfeito! A nova área total é a soma da área original com o
+                  novo retângulo.
+                </p>
+                <div class="formula-display formula-highlight">
+                  Área(k+1) &nbsp; = &nbsp;
+                  <span style="color: #007bff">Área(k)</span>
+                  &nbsp; + &nbsp;
+                  <span style="color: #fd7e14">Novo Retângulo</span>
+                </div>
+                <p class="ProvaP33">
+                  Agora que entendemos o conceito visual, vamos traduzir isso
+                  para a matemática.
+                </p>
+                <button class="next-step-btn" data-step="4">
+                  Formalizar com Álgebra
+                </button>
+              </div>
+
+              <div id="step-4" class="modal-panel hidden">
+                <h3>Traduzindo o Visual para a Matemática</h3>
+                <p class="ProvaP33">
+                  A prova depende da <b>soma dos quadrados</b>. Focaremos
+                  nela. A soma para k + 1 termos é a soma para k termos (nossa
+                  hipótese) mais o novo termo k²:
+                </p>
+                <div class="formula-display formula-large-text">
+                  S<sub>k+1</sub> &nbsp; = &nbsp;
+                  <div class="formula-com-delimitador">
+                    <span class="delimitador-grande">[</span>
+                    <span class="summation-term">S<sub>k</sub></span>
+                    <span class="delimitador-grande">]</span>
+                  </div>
+                  &nbsp; + &nbsp; k<sup>2</sup>
+                </div>
+                <p class="ProvaP33">
+                  Substituindo a fórmula da hipótese para S<sub>k</sub>, temos:
+                </p>
+                <div class="formula-display">
+                  <span>S<sub>k + 1</sub> =</span>
+                  <div class="formula-com-delimitador">
+                    <span class="delimitador-grande">[</span>
+                    <div class="fraction-container">
+                      <div class="numerator">(k - 1)k(2k - 1)</div>
+                      <div class="denominator">6</div>
+                    </div>
+                    <span class="delimitador-grande">]</span>
+                  </div>
+                  <span>+ k<sup>2</sup></span>
+                </div>
+                <p class="proof-step-text">
+                  <em>Agora, o desafio é simplificar essa expressão.</em>
+                </p>
+                <button class="next-step-btn" data-step="5">
+                  Concluir Prova
+                </button>
+              </div>
+
+              <div id="step-5" class="modal-panel hidden">
+                <h3>Parabéns!</h3>
+                <div
+                  id="congratulations-message"
+                  class="formula-display"
+                >
+                  <p class="ProvaP33">Você concluiu a prova do passo de indução. A fórmula é
+                  verdadeira para todos os números inteiros n maior ou igual a 2.
+                  </p>
+                  <p class="ProvaP33">Por favor, Clique no botão abaixo e avalie essa metodologia.</p>
+                  <div>
+                 <button
+                    id="avaliaçãoP3"
+                    onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScl3BiowD4RUjZAna2NEACEsEckfY8cYR11_8mJ1d0xfwjYew/viewform', '_blank')"
+                  >
+                    Questionário Avaliativo da Oficina
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <footer>
       &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática

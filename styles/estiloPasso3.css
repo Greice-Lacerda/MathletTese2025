@@ -1,371 +1,375 @@
 /* estiloPasso3.css */
 
 /* ========================================================================== */
-/* Estilos Comuns de Layout e Visibilidade */
+/* ESTILOS GERAIS E LAYOUT PRINCIPAL */
 /* ========================================================================== */
 
+/* Utilitário para ocultar elementos via JavaScript */
 .hidden {
   display: none !important;
 }
 
-.visible {
-  display: flex !important;
-}
-
-section {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  margin-top:60px;
-}
-
-/* ========================================================================== */
-/* Estilos para Fieldsets e Contêineres Principais */
-/* ========================================================================== */
-
+/* Container principal que agrupa os 3 passos iniciais */
 .Explorar11 {
-  /* Contêiner principal da prova, agora usando flexbox para as colunas */
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start; /* Alinha o conteúdo ao topo para melhor visualização */
+  align-items: stretch; /* Garante que todos os fieldsets tenham a mesma altura */
   gap: 20px;
   width: 95%;
   max-width: 1200px;
-  flex-wrap: wrap; /* Permite quebrar a linha em telas pequenas */
+  margin: 40px auto;
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas menores */
 }
 
+/* Estilo para cada coluna (Passo 1, 2 e 3) */
 .column-fieldset {
-  flex: 1;
-  min-width: 300px; /* Garante que as colunas não fiquem muito estreitas */
+  flex: 1; /* Permite que cresçam igualmente */
+  min-width: 320px; /* Largura mínima antes de quebrar a linha */
   border: 1px solid #ccc;
   border-radius: 15px;
-  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
-  margin: 10px auto;
-  padding: 20px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.4);
+  padding: 5px;
+  margin-top: 20px;
   display: flex;
-  height: 400px;
   flex-direction: column;
-  justify-content: space-between; /* Mantém o conteúdo espaçado verticalmente */
+  justify-content: space-between; /* Espaça o conteúdo verticalmente */
   text-align: center;
+  gap: 5px;
+  background-color: #fdfdfd;
+  height: 445px;
 }
 
 .Elegend {
-  font-size: 1.2em;
-  color: black;
-  text-shadow: 2px 2px 1px #0a0a0a62;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   text-align: center;
-  padding: 0 10px;
+  padding: 5px;
 }
 
-.summary-text, .intro-text {
+
+.intro-text {
   text-align: center;
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 1.3;
+  margin-bottom: 6px;
 }
 
-#Passo2NK {
-  width: 200px;
-  margin: -90px auto;
-  padding: 0;  
-  border-radius: 8px;
-  display: flex;
-  height: auto;
-  border: solid 2px rgba(255, 0, 0, 0.247);
+/* Imagens dentro dos fieldsets */
+.case-image {
+  padding: auto;
+  position: static;
+  margin-top: -90px;
 }
 
+.case-image2 {
+  padding: auto;
+  position: static;
+  margin-top: -50px;
+}
+
+#Passo2NK,
 #Passo22NK {
   width: 200px;
-  margin: -130px auto;
-  padding: 0;
-  display: flex;
+  height: 175px;
+  margin: 0 auto;
   border-radius: 8px;
-  height: auto;
-  border: solid 2px rgba(255, 0, 0, 0.247);
+  border: solid 2px rgba(220, 53, 69, 0.3);
 }
 
-#form2NK{
-  margin: -50px auto;
-  width: 300px;
-  border-radius: 10px;
-}
+/* ========================================================================== */
+/* SEÇÃO DA PROVA INTERATIVA (antigo modal) */
+/* ========================================================================== */
 
-#formN2{
-  width: 280px;
-  margin: -70px auto;
-  padding: 0 auto;
-  display: flex;
-  height: auto;
-  border: solid 2px rgba(255, 0, 0, 0.247);
-  border-radius: 10px;
-}
-
-.case-representation {
-  background-color: #f0f4f8;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 15px;
-  width: 90%;
-  max-width: 150px;
-  text-align: center;
-  font-style: italic;
-  color: #555;
-}
-
-/* Botão da página inicial */
-#start-proof-btn {
-  width: 220px;
-  height: 50px;
-  margin: auto;
-  font-size: 16px;
-  border: outset 4px #8ae1f3;
-  background: linear-gradient(
-    to right,
-    #010238,
-    #1618bd,
-    #208bf0,
-    #0ae6f6,
-    #9ff4f5
-  );
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
-  transition: all 0.3s ease-in-out;
-  border-radius: 10px;
-}
-
-#start-proof-btn:hover {
-  background: linear-gradient(
-    to right,
-    #d3d3ed,
-    #8082e5,
-    #083a6a,
-    #134245,
-    #001112
-  );
-  border: outset 4px #97a4a4;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-}
-
-
-/* Estilos do Modal (mantidos do código anterior) */
-
-.w3-modal {
+/* Container principal da prova, que começa oculto */
+#ProvaP3 {/*Conteiner principal ok não mexer.*/
   display: block;
+  overflow: hidden;
   position: fixed;
   z-index: 5;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
+  left: 130px;
+  top: 5px;
+  width: 1000px;
+  height: 485px;
+  border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.4);
   padding-top: 50px;
 }
 
-.w3-modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 90%;
-  max-width: 900px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  animation-duration: 0.4s;
+/* Invólucro do conteúdo da prova */
+.ProvaP31 { /*fundo do modal não mexer.*/
   border-radius: 10px;
-  animation-name: animatezoom;
+  width: 1000px;
+  height: 530px;
+  position: fixed;
+  left: 130px;
+  top: 6px;
+  background-color: #f8e0e0;
+  box-shadow: 10px 10px 6px #0e0d0d94;
 }
 
-@keyframes animatezoom {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
+/* Cabeçalho da prova */
+.ProvaP32 {
+  padding: 15px 25px;
+  background-color: #007bff;
+  color: white;
 }
 
-.desafio-titulo {
-  font-size: 1.5em;
-  font-weight: bold;
+.desafio-titulo31 {
   text-align: center;
+  font-size: 1.6em;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 20px auto;
 }
 
-.modal-body {
-  padding: 20px;
+/* Corpo da prova e painéis */
+.modal-body3 {
+  padding: 5px auto;
 }
 
-.modal-panel {
+.modal-panel3 { /* Configura o conteúdo dentro o modal*/
   display: flex;
+  margin: 100px 10px;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   width: 100%;
 }
 
-.formula-display {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 18px;
-  background-color: #f0f4f82b;
-  border: 1px dashed #208bf0;
+/* Parágrafos de texto dentro da prova */
+.ProvaP33,
+.ProvaP333,
+.ProvaP34 {
+  margin: 10px auto;
+  padding: 0px;
+  font-size: 19.5px;
+  line-height: 1.3;
+  max-width: 800px;
   text-align: center;
-  padding: 8px;
-  font-family: 'Times New Roman', Times, serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  margin: 0px auto;
-  box-shadow: 4px 4px 5px rgba(0, 0, 0);
-  text-shadow: 1.5px 1.5px 3px rgb(56, 17, 17);
+  text-shadow: 1.5px 1.5px 4px rgb(93, 90, 90);
+  color: #0e0d0d;
 }
 
-.formula-display1 {
-  width: 330px;
-  height: 50px;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 19px;
-  background-color: #f0f4f82b;
-  border: 1px dashed #208bf0;
-  text-align: center;
-  margin: 0 auto;
-  font-family: 'Times New Roman', Times, serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
+#step-2{
+  flex-direction: row;
+}
+
+/* Gráfico Plotly */
+#plot {
+  width: 80%;
+  max-width: 700px;
+  height: 300px;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+
+/* ========================================================================== */
+/* FÓRMULAS MATEMÁTICAS */
+/* ========================================================================== */
+
+/* Estilo base para todos os contêineres de fórmula */
+.formula-display{
+  font-family: "Times New Roman", Times, serif;
+  background-color: #f0f4f855;
+  border: 1px dashed #007bff;
   border-radius: 8px;
-  box-shadow: 4px 4px 5px rgba(0, 0, 0);
-  text-shadow: 1.5px 1.5px 3px rgb(56, 17, 17);
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 330px 20px;
+  position: fixed;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 300px;
+  min-width: 300px;
 }
 
-/* Container geral para a fração */
+.formula-display1{
+  font-family: "Times New Roman", Times, serif;
+  background-color: #f0f4f855;
+  border: 1px dashed #007bff;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px auto;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 285px;
+  min-width: 280px;
+}
+
+.formula-display2{
+  font-family: "Times New Roman", Times, serif;
+  background-color: #f0f4f855;
+  border: 1px dashed #007bff;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 285px;
+  min-width: 270px;
+}
+
+.formula-display:hover,
+.formula-display1:hover,
+.formula-display2:hover {
+  transform: scale(1.13);
+  background-color: black;
+  color:white;
+  border: solid 2px white;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste para MathML ser mais legível */
+math {
+  font-size: 15.5px;
+}
+
+/* Estilo para a fórmula em destaque no passo 3 */
+.formula-highlight {
+  font-size: 18px;
+  background-color: #e9ecef;
+  border-style: solid;
+  max-width: 600px;
+}
+
+/* Estilo para a fórmula algébrica maior no passo 4 */
+.formula-large-text {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.formula-com-delimitador {
+  border: 2px solid #007bff;
+  padding: 5px 15px;
+  border-radius: 8px;
+  background-color: #e7f3ff;
+}
+
+/* Estilos para a fração construída com CSS */
 .fraction-container {
   display: inline-flex;
   flex-direction: column;
   vertical-align: middle;
-  font-size: 14px;
   margin: 0 5px;
-  cursor: pointer; /* Adiciona o cursor de mãozinha para indicar interatividade */
-  transition: color 0.3s ease; /* Adiciona transição suave para a cor do texto */
 }
 
-/* --- EFEITO HOVER --- */
-.formula-display:hover,
-.formula-display1:hover{
-  transform: scale(1.15);
-  background-color: rgba(12, 0, 0, 0.393);
-  color: white;
-  border: 1.5px solid white;
-}
-
-/* Numerador */
 .numerator {
-  text-align: center;
-  line-height: 1.2;
   padding: 0 4px;
 }
 
-/* Denominador com a linha divisória */
 .denominator {
-  border-top: 1.5px solid black;
-  text-align: center;
-  line-height: 1.2;
+  border-top: 2px solid black;
   padding: 0 4px;
 }
 
-#plot {
-  width: 100%;
-  height: 400px;
-  max-width: 700px;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-}
+/* ========================================================================== */
+/* BOTÕES */
+/* ========================================================================== */
 
-.next-step-btn,
-#add-rectangle-btn {
-  width: 250px;
-  height: 50px;
-  margin: 10px;
-  border: outset 4px #4caf50;
-  background: linear-gradient(
-    to right,
-    #064108,
-    #09680e,
-    #56d25a,
-    #aff7b1,
-    #7a9c7d
-  );
+/* Botão principal para iniciar a prova */
+#start-proof-btn {
+  padding: 0 auto;
+  font-size: 15px;
+  height: 40px;
+  border-radius: 10px;
+  border: outset 4px #8ae1f3;
+  background: linear-gradient(to right, #010238, #1618bd, #208bf0);
   color: white;
   font-weight: bold;
+  margin: 0 auto;
   cursor: pointer;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   transition: all 0.3s ease-in-out;
+}
+
+#start-proof-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Botões de navegação da prova e de avaliação */
+.next-step-btn,
+#add-rectangle-btn,
+#avaliaçãoP3 {
+  padding: 12px 25px;
+  margin: 10px;
   border-radius: 10px;
+  border: outset 4px #4caf50;
+  background: linear-gradient(to right, #064108, #09680e, #4caf50);
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease-in-out;
+  min-width: 250px;
 }
 
 .next-step-btn:hover,
-#add-rectangle-btn:hover {
-  background: linear-gradient(
-    to right,
-    #6bc06e,
-    #9ed4a0,
-    #bee2be,
-    #d8ead8,
-    #f0f9f0
-  );
-  border: outset 4px #6bc06e;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+#add-rectangle-btn:hover,
+#avaliaçãoP3:hover {
   transform: scale(1.1);
-}
-
-.next-step-btn:active,
-#add-rectangle-btn:active {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  transform: scale(1);
-}
-
-.fechar-modal {
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  font-size: 24px;
-  cursor: pointer;
+  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.4);
+  border-color: #6bc06e;
 }
 
 /* ========================================================================== */
-/* Estilos para Scrollbar e Media Queries */
+/* RESPONSIVIDADE */
 /* ========================================================================== */
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f13c;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888888de;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #55555582;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .Explorar11 {
     flex-direction: column;
     align-items: center;
-    gap: 15px;
   }
+  .column-fieldset {
+    width: 90%;
+    max-width: 500px;
+    height: auto; /* Altura automática em telas menores */
+  }
+  .desafio-titulo31 {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 480px) {
+  .desafio-titulo31 {
+    font-size: 1.1em;
+  }
+
+  .next-step-btn,
+  #add-rectangle-btn,
+  #avaliaçãoP3 {
+    width: 90%;
+  }
+}
+
+/* Estilos para a barra de rolagem (opcional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

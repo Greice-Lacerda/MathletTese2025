@@ -1,184 +1,193 @@
 // Passo3.js
-// Este script guia o usuário através da prova por indução para n=k+1.
-// Ele visualiza a adição do (k+1)-ésimo retângulo e demonstra a equivalência das fórmulas.
 
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * Função auxiliar para calcular y = x^2.
+ */
+const parabola = (x) => (Array.isArray(x) ? x.map((val) => val * val) : x * x);
 
-    // Referências aos elementos HTML
-    const plotDiv = document.getElementById('plot');
-    const addRectangleBtn = document.getElementById('add-rectangle-btn');
-    const showSolutionBtn = document.getElementById('show-solution-btn');
-    const assumptionSection = document.getElementById('assumption-section');
-    const calculationSection = document.getElementById('calculation-section');
-    const solutionSection = document.getElementById('solution-section');
-    const congratulationsMessage = document.getElementById('congratulations-message');
-    const areaKFormulaSpan = document.getElementById('area-k-value');
-    const finalProofDiv = document.getElementById('final-proof');
+/**
+ * Gera o gráfico da hipótese de indução (Área(k)) usando Plotly.
+ * @param {number} k - O número de retângulos para a hipótese (padrão: 10).
+ */
+function generateInductionPlot(k = 35) {
+  const plotDiv = document.getElementById("plot");
+  const a = 0;
+  const b = 1;
 
-    // Constante para a visualização. Usamos um valor fixo para k para tornar o gráfico mais claro.
-    const kValue = 5;
+  const x_parabola = Array.from(
+    { length: 400 },
+    (_, i) => a + (i * (b - a)) / 399
+  );
+  const y_parabola = parabola(x_parabola);
 
-    // Fórmula para a área total de n retângulos
-    // Área(n) = (1/n³) * Σ(i²), onde i de 1 a n-1
-    // Simplificando, Área(n) = (n-1)(n)(2n-1) / (6n²)
-    function areaFormula(n) {
-        if (n <= 1) return 0;
-        return ((n - 1) * n * (2 * n - 1)) / (6 * n * n);
-    }
+  const x_rect = Array.from({ length: k + 1 }, (_, i) => a + (i * (b - a)) / k);
+  const y_rect = parabola(x_rect);
+  const bar_width = (b - a) / k;
 
-    // Calcula a área do i-ésimo retângulo
-    function calculateRectangleArea(i, n) {
-        const width = 1 / n;
-        const height = (i / n) * (i / n);
-        return width * height;
-    }
+  const traces = [
+    {
+      x: x_parabola,
+      y: y_parabola,
+      mode: "lines",
+      name: "Parábola y = x²",
+      line: { color: "black", width: 2 },
+    },
+    ...x_rect.slice(0, -1).map((xi, i) => ({
+      x: [xi],
+      y: [y_rect[i]],
+      type: "bar",
+      width: [bar_width],
+      name: `Retângulo ${i}`,
+      marker: {
+        color: "rgba(0, 123, 255, 0.6)",
+        line: { color: "black", width: 0.5 },
+      },
+      offset: 0,
+    })),
+  ];
 
-    // Função para gerar os dados do gráfico
-    function createPlotData(n) {
-        const xValues = [0];
-        const yValues = [0];
-        const rectangles = [];
-        const parabolaX = [];
-        const parabolaY = [];
+  const layout = {
+    width: plotDiv.offsetWidth * 0.89,
+    height: plotDiv.offsetHeight*0.8,
+    title: `Hipótese de Indução: Área(k) para k=${k}`,
+    showlegend: false,
+    barmode: "overlay",
+    bargap: 0,
+    xaxis: { range: [0, 1], title: "x" },
+    yaxis: { range: [0, 1], title: "y" },
+    margin: { l: 40, r: 20, t: 40, b: 40 },
+  };
 
-        // Pontos para a parábola y = x²
-        for (let i = 0; i <= 100; i++) {
-            const x = i / 100;
-            parabolaX.push(x);
-            parabolaY.push(x * x);
+  Plotly.newPlot(plotDiv, traces, layout);
+}
+
+/**
+ * Aciona o efeito de confete.
+ */
+function triggerConfetti() {
+  confetti({
+    particleCount: 150,
+    spread: 90,
+    origin: { y: 0.6 },
+  });
+}
+
+// ==========================================================================
+// Lógica Principal da Página
+// ==========================================================================
+document.addEventListener("DOMContentLoaded", () => {
+  const proofContainer = document.getElementById("ProvaP3");
+  const startBtn = document.getElementById("start-proof-btn");
+  const nextStepBtns = document.querySelectorAll(".next-step-btn");
+  const addRectangleBtn = document.getElementById("add-rectangle-btn");
+  const surveyBtn = document.getElementById("avaliaçãoP3"); // Referência para o botão de avaliação
+
+  startBtn.addEventListener("click", () => {
+    proofContainer.style.display = "block";
+    startBtn.style.display = "none";
+  });
+
+  nextStepBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const currentStep = e.target.closest(".modal-panel, .modal-panel3");
+      const nextStepId = `step-${e.target.dataset.step}`;
+      const nextStep = document.getElementById(nextStepId);
+
+      if (currentStep && nextStep) {
+        currentStep.classList.add("hidden");
+        nextStep.classList.remove("hidden");
+
+        if (nextStepId === "step-2") {
+          generateInductionPlot(35);
         }
-
-        // Criar os retângulos para o polígono inscrito
-        for (let i = 1; i < n + 1; i++) {
-            const x1 = (i - 1) / n;
-            const x2 = i / n;
-            const y1 = 0;
-            const y2 = ((i - 1) / n) * ((i - 1) / n);
-            
-            xValues.push(x1, x1, x2, x2);
-            yValues.push(y1, y2, y2, y1);
-            
-            rectangles.push({
-                x: [x1, x2, x2, x1, x1],
-                y: [0, y2, y2, 0, 0],
-                fill: 'tonexty',
-                mode: 'lines',
-                line: { color: 'blue', width: 1 },
-                fillcolor: 'rgba(32, 139, 240, 0.5)',
-                name: `Retângulo ${i}`
-            });
+        if (nextStepId === "step-5") {
+          triggerConfetti();
         }
+      }
+    });
+  });
 
-        const traces = [
-            {
-                x: parabolaX,
-                y: parabolaY,
-                mode: 'lines',
-                line: { color: 'red', width: 3 },
-                name: 'Parábola $y = x^2$'
-            }
-        ];
+  addRectangleBtn.addEventListener("click", () => {
+    const k = 35;
+    const n = k + 1;
+    const a = 0;
+    const b = 1;
+    const plotDiv = document.getElementById("plot");
 
-        // Adiciona os retângulos ao trace
-        rectangles.forEach(rect => traces.push(rect));
+    const bar_width_n = (b - a) / n;
 
-        return traces;
-    }
+    const x_parabola = Array.from(
+      { length: 400 },
+      (_, i) => a + (i * (b - a)) / 399
+    );
+    const y_parabola = parabola(x_parabola);
+    const parabolaTrace = {
+      x: x_parabola,
+      y: y_parabola,
+      mode: "lines",
+      name: "Parábola y = x²",
+      line: { color: "black", width: 2 },
+    };
 
-    // Função para renderizar o gráfico
-    function renderPlot(n, highlightLast = false) {
-        const traces = createPlotData(n);
-        const layout = {
-            title: `Área do Polígono para n = ${n}`,
-            xaxis: {
-                title: 'x',
-                range: [0, 1.1]
-            },
-            yaxis: {
-                title: 'y',
-                range: [0, 1.1]
-            },
-            showlegend: false
-        };
+    const x_rect_n = Array.from(
+      { length: n + 1 },
+      (_, i) => a + (i * (b - a)) / n
+    );
+    const y_rect_n = parabola(x_rect_n);
 
-        Plotly.newPlot(plotDiv, traces, layout);
+    const rectangleTraces_n = x_rect_n.slice(0, -1).map((xi, i) => {
+      const barColor =
+        i === k
+          ? "rgba(253, 126, 20, 0.8)"
+          : //highlight orange for new rectangle
+            "rgba(0, 123, 255, 0.6)";
 
-        // Opcionalmente, destaca o último retângulo
-        if (highlightLast) {
-            Plotly.restyle(plotDiv, {
-                'line.color': 'orange',
-                'fillcolor': 'rgba(255, 165, 0, 0.7)'
-            }, [n]);
-        }
-    }
-
-    // Função para mostrar a fórmula inicial de Área(k)
-    function showInitialState() {
-        const areaKValue = areaFormula(kValue).toFixed(5);
-        areaKFormulaSpan.textContent = `(${kValue}-1)k(2k-1) / (6k²) = ${areaKValue}`;
-        renderPlot(kValue);
-    }
-
-    // Manipulador do botão "Adicionar Retângulo"
-    addRectangleBtn.addEventListener('click', () => {
-        // Oculta o botão e revela a próxima seção
-        addRectangleBtn.classList.add('hidden');
-        calculationSection.classList.remove('hidden');
-
-        // Mostra o novo retângulo no gráfico
-        renderPlot(kValue + 1, true);
-
-        // Calcula a área do novo retângulo (k+1)-ésimo
-        const areaKPlus1Rect = calculateRectangleArea(kValue, kValue + 1).toFixed(5);
-        const formulaKPlus1Rect = `(${kValue}²) / (${kValue}+1)³`;
-
-        // Obtém a fórmula da área para k
-        const formulaAreaK = `(k-1)k(2k-1) / (6k²)`;
-        
-        // Atualiza a fórmula para a soma das áreas
-        const newFormula = `Área(k+1) = ${formulaAreaK} + ${formulaKPlus1Rect}`;
-        document.getElementById('area-k-plus-1-formula').innerHTML = `Área(k+1) = $Área(k) + Área_{k+1}$`;
-        
-        // Uma forma de mostrar a prova em texto simples
-        document.getElementById('area-k-plus-1-formula').innerHTML = `
-            Área(k+1) = Área(k) + Área do Retângulo ${kValue+1}
-            <br>
-            Área(k+1) ≈ ${areaFormula(kValue).toFixed(5)} + ${areaKPlus1Rect} = ${areaFormula(kValue+1).toFixed(5)}
-        `;
+      return {
+        x: [xi],
+        y: [y_rect_n[i]],
+        type: "bar",
+        width: [bar_width_n],
+        name: `Retângulo ${i + 1}`,
+        marker: {
+          color: barColor,
+          line: { color: "black", width: 0.5 },
+        },
+        offset: 0,
+      };
     });
 
-    // Manipulador do botão "Mostrar Solução"
-    showSolutionBtn.addEventListener('click', () => {
-        // Oculta o botão e revela a solução final e a mensagem de parabéns
-        showSolutionBtn.classList.add('hidden');
-        solutionSection.classList.remove('hidden');
-        congratulationsMessage.classList.remove('hidden');
+    const allTraces_n = [parabolaTrace, ...rectangleTraces_n];
 
-        // O passo de indução prova que a fórmula é válida para n = k+1
-        const formulaN = `(n-1)n(2n-1) / (6n²)`;
-        const formulaKPlus1 = `((k+1)-1)(k+1)(2(k+1)-1) / (6(k+1)²) = k(k+1)(2k+1) / (6(k+1)²)`;
+    const layout_n = {
+      width: plotDiv.offsetWidth * 0.98,
+      height: plotDiv.offsetHeight,
+      title: `Passo Indutivo: Área(k+1) para k+1=${n}`,
+      showlegend: false,
+      barmode: "overlay",
+      bargap: 0,
+      xaxis: { range: [0, 1], title: "x" },
+      yaxis: { range: [0, 1], title: "y" },
+      margin: { l: 40, r: 20, t: 40, b: 40 },
+    };
 
-        // Mostra a prova final
-        finalProofDiv.innerHTML = `
-            Vamos comparar a Área(k) + a área do novo retângulo com a fórmula para n = k+1:
-            <br><br>
-            A área do polígono para $k+1$ retângulos é ${areaFormula(kValue + 1).toFixed(5)}.
-            <br><br>
-            A fórmula para $n = k+1$ é $Área(k+1) = ${formulaKPlus1}$.
-            <br>
-            Isso é aproximadamente igual a ${areaFormula(kValue + 1).toFixed(5)}.
-            <br><br>
-            Como os valores são iguais, a fórmula é verdadeira para todos os valores de n!
-        `;
+    Plotly.newPlot("plot", allTraces_n, layout_n);
 
-        // Ativa a animação de confetes
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
-    });
+    addRectangleBtn.classList.add("hidden");
+    document.querySelector("#step-2 .next-step-btn").classList.remove("hidden");
+  });
 
-    // Inicia o processo quando a página carrega
-    showInitialState();
+  // --- NOVA LÓGICA PARA O BOTÃO DO QUESTIONÁRIO ---
+  surveyBtn.addEventListener("click", () => {
+    // 1. Abre o questionário em uma nova aba
+    const surveyUrl =
+      "https://docs.google.com/forms/d/e/1FAIpQLScl3BiowD4RUjZAna2NEACEsEckfY8cYR11_8mJ1d0xfwjYew/viewform";
+    window.open(surveyUrl, "_blank");
+
+    // 2. Esconde o container da prova (o "modal")
+    proofContainer.style.display = "none";
+
+    // 3. Redireciona a página atual para a página de resumo
+    // **ATENÇÃO:** Crie um arquivo chamado 'resumo.html' ou altere este nome!
+    window.location.href = "../pages/resumo.html";
+  });
 });
