@@ -1,0 +1,300 @@
+/* --- Configurações de estilo da Resumo Final Perfeita Não Mexer. */
+
+#ResuFin {
+  top:45px;
+  border-color: rgba(202, 248, 247, 0.2);
+  background-color: rgb(252, 252, 250, 0.2);
+  border-radius: 20px;
+  padding: 2px auto;
+  width: 85%;
+  height: 270px;
+  position: relative;
+  display: flexbox;
+  box-sizing: border-box;
+  box-shadow: #000 10px 10px 20px;
+}
+
+#ResuFin:hover {
+  transform: scale(1.05);
+  background-color: #0b818bc1;
+}
+
+#tbem{
+    font-size:24px;
+    line-height: 1.3;
+}
+
+p {
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.NegIndLegRes {
+  font-style: italic;
+}
+
+#ResuIma{
+  margin-top: 50px;
+  width: 350px;
+  height:340px;
+  border: double 8px rgba(159, 246, 237, 0.936);
+}
+
+.controlesResume {
+  width: 85%;
+  height: 70px;
+  flex-direction: row;
+  margin: 30px 17px;
+  padding: 5px auto;
+  background-color: transparent;
+  box-shadow: #000 10px 10px 20px;
+  border: 1px solid rgb(5, 44, 1, 0.5);
+  border-radius: 10px;
+}
+
+/* === Estilos dos Botões (Propriedades consolidadas) === */
+
+.controlesResume button {
+  width: 150px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 100px auto;
+  padding: 10px 5px auto;
+  font-size: 14px;
+  border-radius: 10px;
+  border: outset 6px #4caf50;
+  background: linear-gradient(
+    to right,
+    #064108,
+    #09680e,
+    #56d25a,
+    #aff7b1,
+    #7a9c7d
+  );
+  color: white;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
+}
+
+.controlesResume button:hover {
+  background: linear-gradient(
+    to right,
+    #6bc06e,
+    #9ed4a0,
+    #bee2be,
+    #d8ead8,
+    #f0f9f0
+  );
+  border: outset 6px #6bc06e;
+  scale: 1.1;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.controlesResume button:active {
+  transform: scale(0.95);
+}
+
+/* ================================================= */
+/* ESTILOS PARA O MODAL DE Resumo              */
+/* ================================================= */
+
+/* O fundo que cobre a tela inteira */
+#Resume-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 23, 52, 0.97); /* Cor de fundo escura e semi-transparente */
+  background-image: url('../img/Logo01.png'); /* Adicione sua imagem de fundo aqui */
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay; /* Efeito para mesclar a cor com a imagem */
+  z-index: 10000; /* Garante que o modal fique sobre todo o conteúdo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+/* A caixa de conteúdo no centro */
+.Resume-content {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  padding: 40px;
+  justify-content: center;
+  justify-content: space-between;
+  margin: 40px;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo da caixa para legibilidade */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-shadow:3px 3px 3px  #0ae6f6;
+  max-width: 90%;
+  width: 1000px;
+  height:450px;
+  border: solid 1px  rgba(4, 234, 255, 0.8);
+  box-shadow: 2.5px 2.5px 2px #0ae6f6;
+}
+
+.Resume-content:hover{
+  transform: scale(1);
+  box-shadow: inset 5px 5px 2px #0ae6f6;
+}
+
+/* Estilo para a logo dentro do modal */
+.Resume-logo {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 10px;
+  border: double 15px  rgba(4, 234, 255, 0.384);
+}
+
+/* Estilo para o título dentro do modal */
+#Hresume{
+  margin:10px;
+  font-size: 50px;
+  text-shadow: 3px 3px 5px rgba(4, 234, 255, 0.8);
+}
+
+#Presume {
+  font-size: 25px;
+  opacity: 0.9;
+}
+
+/* Estilo para o botão "Iniciar Oficina" */
+#resume-workshop-btn {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 50px; /* Botão arredondado */
+  border: 2px solid #0ae6f6;
+  background-color: transparent;
+  color: #0ae6f6;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 120px;
+}
+
+#resume-workshop-btn:hover {
+  background-color: #0ae6f6;
+  color: #0a1734;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(10, 230, 246, 0.5);
+}
+
+/* --- Estilo da página de Objetivos Perfeito--- */
+
+fieldset {
+  border-color: rgba(202, 248, 247, 0.2);
+  background-color: rgb(252, 252, 250, 0.2);
+  border-radius: 20px;  
+    margin: 2px 20px;
+    padding: 2px;
+  width: 95%;
+  height: 290px;
+  box-sizing: border-box;  
+  box-shadow: #000 10px 10px 20px;
+}
+
+legend {
+  font-style: italic;
+  font-size: 20px;
+  color: transparent;
+}
+
+.controles {
+  width: 95%;
+  height: 90px;
+  display: flex;
+  flex-direction: row; /* Correção da direção */
+  align-items: flex-start;
+  margin: 0 auto;
+  padding: 0 auto;
+  background-color: transparent;
+  box-shadow: #000 10px 10px 20px;
+  border: 1px solid rgb(5, 44, 1, 0.5);
+  border-radius: 10px;
+}
+
+/* === Estilos dos Botões (Propriedades consolidadas) === */
+.controles button {
+  width: 200px;
+  height: 50px;
+  align-items: center;
+    justify-content: center;
+    margin: 20px 25px auto;
+    padding: 10px 5px auto;
+  font-size: 16px;
+  border-radius: 10px;
+  border: outset 6px #4caf50;
+  background: linear-gradient(
+    to right,
+    #064108,
+    #09680e,
+    #56d25a,
+    #aff7b1,
+    #7a9c7d
+  );
+  color: white;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
+}
+
+.controles button:hover {
+  background: linear-gradient(
+    to right,
+    #6bc06e,
+    #9ed4a0,
+    #bee2be,
+    #d8ead8,
+    #f0f9f0
+  );
+  border: outset 6px #6bc06e;
+  scale: 1.1;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.controles button:active {
+  transform: scale(0.95);
+}
+
+/* Alternativa para um piscar mais abrupto */
+
+@keyframes piscar-seco {
+  50% {
+    visibility: hidden;
+  }
+}
+
+#ConLeg1 {
+  animation: piscar-seco 1s infinite;
+  animation: alternate;
+}
+
+/* Passo 1: Define a animação de piscar */
+@keyframes piscar {
+  0% {
+    opacity: 1; /* Totalmente visível no início */
+  }
+  50% {
+    opacity: 0; /* Totalmente invisível no meio da animação */
+  }
+  100% {
+    opacity: 1; /* Totalmente visível no final */
+  }
+}
+
+/* Passo 2: Aplica a animação ao seu elemento #Elengend1 */
+#ConLeg2 {
+  animation: piscar 2.5s infinite; /* Aplica a animação 'piscar', com duração de 2.5 segundos, repetindo infinitamente */
+}

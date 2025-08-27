@@ -8,83 +8,124 @@
     </title>
     <link rel="stylesheet" href="../styles/estiloDescricao.css" />
     <link rel="stylesheet" href="../styles/estilosComuns.css" />
+    <link rel="stylesheet" href="../styles/estiloResumo.css" />
     <script
       src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"
     ></script>
   </head>
   <body>
-    <header>
-      <div id="tit1">
-        <h1>Explorando o Princípio da Indução Matemática</h1>
-      </div>
-      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
-    </header>
-
-    <main>
-      <section>
+    <div id="Resume-modal">
+      <fieldset class="Resume-content">
         <div>
           <img
-            src="../img/LogoPagInicialClaro.png"
-            alt="Ilustração do Princípio da Indução Matemática"
+            src="../img/LogoPagInicial.png"
+            alt="Logo da Oficina"
+            class="Resume-logo"
           />
         </div>
+
         <div>
-          <fieldset>
-            <legend><h1 id="ConLeg1" id="ConLeg2">Exploração Concluída!</h1></legend>
+          <h1 id="Hresume" style="color: white">Exploração Concluída!</h1>
+          <p id="Presume" style="text-align: center">
+            O Princípio da Indução Matemática: Uma Abordagem Visual com Faixas de
+            Parábola
+          </p>
 
-            <p style="font-size: 1.2em">
-              Obrigado por explorar o Princípio da Indução Matemática conosco.
-            </p>
-            <p>
-              Esperamos que a abordagem visual tenha ajudado a solidificar seu
-              entendimento sobre como o passo indutivo garante que, se uma
-              propriedade é válida para um caso 'k', ela também se sustenta para
-              'k+1', formando uma corrente lógica infinita.
-            </p>
-            <p>
-              <strong
-                >Não se esqueça de responder ao questionário que abriu na outra
-                aba!</strong
-              >
-            </p>
-          </fieldset>
-          <br />
-          <div class="controles">
-            <button id="voltar" onclick="window.location.href='../index.html'">
-              Página Inicial
-            </button>
-            <button
-              id="teoria"
-              onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLScl3BiowD4RUjZAna2NEACEsEckfY8cYR11_8mJ1d0xfwjYew/viewform', '_blank');"
-            >
-              Avaliação da Oficina
-            </button>
-            <button
-              id="Sair"
-              onclick="window.location.href='https://www.google.com.br'"
-            >
-              Sair
-            </button>
-          </div>
+          <button id="resume-workshop-btn">Questionário Avaliativo</button>
         </div>
-      </section>
-    </main>
+      </fieldset>
+    </div>
 
-    <footer>
-      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
-    </footer>
+    <div id="resumeMain" style="visibility: hidden">
+      <header>
+        <div id="tit1">
+          <h1 id="Tit1">Explorando o Princípio da Indução Matemática</h1>
+        </div>
+        <div id="tit2">
+          <span id="Tit2"
+            >Uma Abordagem Visual com Faixas de Parábola</span
+          >
+        </div>
+      </header>
+
+      <main id="ResumoFinal">
+        <section>
+          <div>
+            <img
+              id="ResuIma"
+              src="../img/Logo1.png"
+              alt="Logo da Oficina"
+            />
+          </div>
+
+          <div>
+            <fieldset id="ResuFin">
+              <p id="tbem">
+                Nossa jornada de aprendizado sobre o Princípio da Indução
+                  Matemática termina aqui!
+            </p>
+              
+              <p>Agradecemos a sua participação!</p>
+
+              <p style="color:red; font-weight: bold;">Não esqueça de preencher o questionário!</p>
+
+              <p>
+                <b>DOUTORADO EM ENSINO DA MATEMÁTICA - PEMAT</b><br>
+                <b>PESQUISA EM ENSINO DA MATEMÁTICA</b><br>
+                <b>Orientadora:</b> <span class="NegIndLegRes">Márcia Fusaro</span><br>
+                <b>Orientanda:</b> <span class="NegIndLegRes">Greice Lacerda</span>
+              </p>
+            </fieldset>
+
+            <br>
+            <div class="controlesResume">
+              <button
+                id="Parer"
+                onclick="window.location.href='../index.html'"
+              >
+                Página Inicial
+              </button>
+              <button
+                id="Sair"
+                onclick="window.location.href='https://www.google.com.br'"
+              >
+                Sair
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução
+        Matemática
+      </footer>
+    </div>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        
-        // Confetes automáticos ao carregar a página
-        confetti({
-          particleCount: 500,
-          spread: 100,
-          origin: { y: 0.6 },
-          zIndex: 10000
-        });
+        const ResumeModal = document.getElementById("Resume-modal");
+        const mainContentResume = document.getElementById("resumeMain");
+        const resumeButton = document.getElementById("resume-workshop-btn");
 
+        resumeButton.addEventListener("click", () => {
+          // Abre o questionário em uma nova aba
+          window.open('https://forms.gle/TgVwTmSbAGRaXPhHA', '_blank');
+          
+          // Dispara os confetes
+          confetti({
+            particleCount: 200,
+            spread: 100,
+            origin: { y: 0.6 }
+          });
+
+          // Esconde o modal
+          ResumeModal.style.display = "none";
+          
+          // Mostra o conteúdo principal da página
+          // CORREÇÃO 3: Corrigido o nome da variável e o valor da propriedade 'visibility'
+          mainContentResume.style.visibility = "visible";
+        });
       });
     </script>
   </body>
