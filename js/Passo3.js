@@ -47,7 +47,7 @@ function generateInductionPlot(k = 35) {
   ];
 
   const layout = {
-    width: plotDiv.offsetWidth * 0.89,
+    width: plotDiv.offsetWidth * 0.5,
     height: plotDiv.offsetHeight*0.8,
     title: `Hipótese de Indução: Área(k) para k=${k}`,
     showlegend: false,

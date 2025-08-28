@@ -76,6 +76,11 @@ legend {
   transform: scale(0.95);
 }
 
+#DescObj:hover{
+  transform: scale(1.05);
+  background-color: #bee2be;
+}
+
 /* Alternativa para um piscar mais abrupto */
 
 @keyframes piscar-seco {

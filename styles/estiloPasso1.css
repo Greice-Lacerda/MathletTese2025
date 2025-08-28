@@ -113,10 +113,18 @@ section {
 }
 
 .Elegend1 {
+  font-size: 24px;
   margin: 2px;
   color: #032b04;
   text-shadow: 2px 2px 5px #0a0a0a;
   text-align: center;
+}
+
+#ElegendP1Lg1{
+  text-align: left;
+  font-size: 24px;
+  color: #032b04;
+  text-shadow: 2px 2px 5px #0a0a0a;
 }
 
 #Justific {
