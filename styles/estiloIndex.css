@@ -32,10 +32,6 @@ top: -1000px;
   margin-top: 50px;
 }
 
-#SubTitInd:hover{
-  transform: scale(1.1);
-}
-
 .controles {
   width: 770px;
   height: 90px;

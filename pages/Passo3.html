@@ -230,7 +230,7 @@
     </fieldset>
 
     
-        <div id="ProvaP3" class="ProvaP3" style="display:hidden";>
+        <div id="ProvaP3" class="ProvaP3" style="display:block";>
           <div class="ProvaP31">
             <header class="ProvaHP31">
             <h2 class="desafio-titulo31">Prova de Indução para n = k + 1</h2>
@@ -343,18 +343,16 @@
                 </button>
               </div>
 
-              <div id="step-2" class="modal-panel two-columns block">
-                <fieldset class="columnP3">
-                  <legend><h3>Construindo a Área(k + 1)</h3></legend>
-                  <p>
+              <div id="step-2" class="modal-panel two-columns hidden">
+                <div class="column">
+                  <h3>Construindo a Área(k + 1)</h3>
+                  <p class="ProvaP33">
                     Abaixo está a representação da <strong>Área(k)</strong>. Clique no botão
                     para recalcular a área para <strong>k+1</strong> retângulos. Observe como os retângulos
                     azuis se ajustam e o novo retângulo (laranja) é adicionado.
                   </p>
-                </fieldset>
-                
-                <fieldset class="columnP3">
-                  <legend>Gráfico Gerado</legend>
+                </div>
+                <div class="column">
                   <div id="plot"></div>
                   <button id="add-rectangle-btn">Adicionar (k + 1)-ésimo Retângulo</button>
                   <button class="next-step-btn hidden" data-step="3">

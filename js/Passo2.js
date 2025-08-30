@@ -9,7 +9,7 @@ import {
 import { generateTable } from "./TableP2.js";
 
 const desafioData = {};
-let isChallengeCompleted = false; // Variável de estado para o progresso
+let isChallengeCompleted = false; // NOVA VARIÁVEL: Variável de estado para o progresso
 
 /**
  * Habilita os botões principais da página após a conclusão dos desafios.
@@ -29,40 +29,42 @@ function enableMainButtons() {
 }
 
 /**
- * Exibe uma mensagem de erro na div específica e reproduz o som.
+ * Exibe uma mensagem de erro abaixo do elemento de entrada e reproduz o som.
  * @param {string} message - A mensagem de erro a ser exibida.
+ * @param {HTMLElement} inputElement - O elemento de entrada que causou o erro.
  */
-function displayError(message) {
-  const errorMessageElement = document.getElementById("RespostaQuestP2");
-  if (!errorMessageElement) {
-    console.error(
-      "Elemento de erro com ID 'RespostaQuestP2' não foi encontrado."
-    );
-    return;
-  }
-
+function displayError(message, inputElement) {
   const errorAudio = document.getElementById("error-audio");
   if (errorAudio) {
-    errorAudio.play().catch((e) => console.error("Erro ao tocar o áudio:", e));
+    errorAudio.play();
   }
 
+  // Remove qualquer mensagem de erro anterior para evitar duplicatas
+  const existingError = inputElement.nextElementSibling;
+  if (existingError && existingError.classList.contains("error-message")) {
+    existingError.remove();
+  }
+
+  // Cria um novo elemento para a mensagem de erro
+  const errorMessageElement = document.createElement("p");
   errorMessageElement.textContent = message;
-  errorMessageElement.style.display = "block"; // Torna a div visível
-}
+  errorMessageElement.classList.add("error-message");
+  errorMessageElement.style.color = "red";
+  errorMessageElement.style.marginTop = "15px";
 
-/**
- * Esconde a div de erro.
- */
-function hideError() {
-  const errorMessageElement = document.getElementById("RespostaQuestP2");
-  if (errorMessageElement) {
-    errorMessageElement.style.display = "none"; // Esconde a div
-    errorMessageElement.textContent = ""; // Limpa a mensagem
-  }
-}
+  // Insere o elemento logo após o input
+  inputElement.parentNode.insertBefore(
+    errorMessageElement,
+    inputElement.nextSibling
+  );
 
-// CORREÇÃO: A função 'validarEntrada()' foi removida.
-// Ela não era utilizada no fluxo do desafio e continha erros de escopo.
+  // Remove a mensagem após 3 segundos
+  setTimeout(() => {
+    if (errorMessageElement && errorMessageElement.parentNode) {
+      errorMessageElement.parentNode.removeChild(errorMessageElement);
+    }
+  }, 2500);
+}
 
 /**
  * Função para processar a resposta do usuário para o desafio de n = 2.
@@ -72,8 +74,10 @@ function handleConfirmN2() {
   const inputN = inputElement.value;
 
   if (parseInt(inputN, 10) !== 2) {
-    // CORREÇÃO: Argumento extra removido.
-    displayError("Resposta incorreta. Por favor, tente novamente.");
+    displayError(
+      "Resposta incorreta. Por favor, tente novamente.",
+      inputElement
+    );
     return;
   }
   mostrarConteudoModal(
@@ -90,8 +94,7 @@ function handleNextStepN3() {
   const areaInput = inputElement.value;
 
   if (parseFloat(areaInput) !== 0.125) {
-    // CORREÇÃO: Argumento extra removido.
-    displayError("Valor incorreto. Por favor, tente novamente.");
+    displayError("Valor incorreto. Por favor, tente novamente.", inputElement);
     return;
   }
   mostrarConteudoModal(
@@ -115,8 +118,10 @@ function handleConfirmN4() {
   const inputN4 = inputElement.value;
 
   if (parseInt(inputN4, 10) !== 3) {
-    // CORREÇÃO: Argumento extra removido.
-    displayError("Resposta incorreta. Por favor, tente novamente.");
+    displayError(
+      "Resposta incorreta. Por favor, tente novamente.",
+      inputElement
+    );
     return;
   }
   mostrarConteudoModal(
@@ -133,8 +138,7 @@ function handleNextStepN4() {
   const areaInput2 = inputElement.value;
 
   if (parseFloat(areaInput2) !== 0.219) {
-    // CORREÇÃO: Argumento extra removido.
-    displayError("Valor incorreto. Por favor, tente novamente.");
+    displayError("Valor incorreto. Por favor, tente novamente.", inputElement);
     return;
   }
   mostrarConteudoModal(
@@ -158,8 +162,10 @@ function handleConfirmN5() {
   const inputN5 = inputElement.value;
 
   if (parseInt(inputN5, 10) !== 4) {
-    // CORREÇÃO: Argumento extra removido.
-    displayError("Resposta incorreta. Por favor, tente novamente.");
+    displayError(
+      "Resposta incorreta. Por favor, tente novamente.",
+      inputElement
+    );
     return;
   }
   mostrarConteudoModal(
@@ -176,15 +182,14 @@ function handleNextStepN5() {
   const areaInput3 = inputElement.value;
 
   if (parseFloat(areaInput3) !== 0.24) {
-    // CORREÇÃO: Argumento extra removido.
-    displayError("Valor incorreto. Por favor, tente novamente.");
+    displayError("Valor incorreto. Por favor, tente novamente.", inputElement);
     return;
   }
   mostrarConteudoModal(
     "conteudo-verificacao3",
     "Verificação do Cálculo da área (n = 5)"
   );
-  isChallengeCompleted = true; // Define o estado como concluído
+  isChallengeCompleted = true; // ADIÇÃO: Define o estado como concluído
 }
 
 /**
@@ -207,7 +212,7 @@ function handleCloseVerificationAndEnableNext() {
 }
 
 /**
- * Lógica para o modal de erro quando o usuário tenta fechar.
+ * NOVA FUNÇÃO: Lógica para o modal de erro quando o usuário tenta fechar.
  */
 function handleCloseModal() {
   if (isChallengeCompleted) {
@@ -222,7 +227,7 @@ function handleCloseModal() {
 }
 
 /**
- * Recarrega a página.
+ * NOVA FUNÇÃO: Recarrega a página.
  */
 function reloadPage() {
   window.location.reload();
@@ -271,14 +276,15 @@ function generatePlot() {
   const inputElement = document.getElementById("n-value");
 
   if (isNaN(n) || n < 2) {
-    // CORREÇÃO: Argumento extra removido.
-    displayError("Por favor, insira um número inteiro maior ou igual a 2.");
+    displayError(
+      "Por favor, insira um número inteiro maior ou igual a 2.",
+      inputElement
+    );
     return;
   }
 
-  // O restante da função 'generatePlot' permanece o mesmo...
-  // (O código desta função não continha erros, apenas a chamada ao displayError)
-  tableContainer.innerHTML = "";
+  tableContainer.innerHTML = ""; // Limpa a tabela no início
+
   const a = 0;
   const b = 1;
   const x_parabola = Array.from(
@@ -286,12 +292,14 @@ function generatePlot() {
     (_, i) => a + (i * (b - a)) / 399
   );
   const y_parabola = parabola(x_parabola);
+
   let traces;
   let annotations;
   let tableBodyData = [];
   let totalArea = 0;
   const realTotalArea = (1 / 3).toFixed(8);
   let error = (realTotalArea - 0).toFixed(8);
+
   if (n >= 2) {
     const x_rect = Array.from(
       { length: n + 1 },
@@ -302,21 +310,27 @@ function generatePlot() {
     const area_values = x_rect
       .slice(0, -1)
       .map((xi, i) => bar_width * y_rect[i]);
+
     const cumulativeArea_values = [];
     let accumulated_numerator = 0;
     const formatted_area_terms = [];
     const cumulativeArea_string = [];
+
     x_rect.slice(0, -1).forEach((xi, i) => {
       const currentArea_numerator = i ** 2;
       const denominator = n ** 3;
       accumulated_numerator += currentArea_numerator;
+
       if (currentArea_numerator > 0) {
         formatted_area_terms.push(`(${formatAreaTerm(i, n)})`);
       }
+
       const current_cumulative_string = formatted_area_terms.join(" + ");
+
       cumulativeArea_string.push(current_cumulative_string);
       cumulativeArea_values.push(accumulated_numerator / denominator);
     });
+
     traces = [
       {
         x: x_parabola,
@@ -333,18 +347,23 @@ function generatePlot() {
         name: `Area_${i} = ${area_values[i].toFixed(8)}`,
         marker: {
           color: "rgba(0, 0, 255, 0.3)",
-          line: { color: "black", width: 0.5 },
+          line: {
+            color: "black",
+            width: 0.5,
+          },
         },
         offset: 0,
         showlegend: false,
       })),
     ];
+
     annotations =
       n <= 10
         ? x_rect.slice(0, -1).flatMap((xi, i) => {
             const widthText = `x<sub>${i}</sub> = ${i}/${n}`;
             const heightText = `y<sub>${i}</sub> = (${i}/${n})<sup>2</sup>`;
             const areaText = `A<sub>${i}</sub>`;
+
             return [
               {
                 x: xi + bar_width - 1 / n,
@@ -378,6 +397,7 @@ function generatePlot() {
             ];
           })
         : [];
+
     tableBodyData = x_rect.slice(0, -1).map((xi, i) => {
       const xFraction = formatFraction(i, n);
       const yFractionSquared = formatFraction(
@@ -388,13 +408,16 @@ function generatePlot() {
       const approxValue = cumulativeArea_values[i]
         ? cumulativeArea_values[i].toFixed(8)
         : "0";
+
       const contentString = `<div class="an-sum">A(${
         i + 1
       }) = ${accumulatedString}</div><div class="an-approx">A(${
         i + 1
       }) &asymp; ${approxValue}</div>`;
+
       return [i + 1, i, xFraction, yFractionSquared, contentString];
     });
+
     totalArea = cumulativeArea_values.pop().toFixed(8);
     error = (realTotalArea - totalArea).toFixed(8);
   } else {
@@ -411,6 +434,7 @@ function generatePlot() {
     totalArea = 0;
     error = (realTotalArea - totalArea).toFixed(8);
   }
+
   const layout = {
     title: "Parábola y = x²",
     annotations: annotations,
@@ -419,9 +443,16 @@ function generatePlot() {
     autosize: true,
     width: plotDiv.offsetWidth * 0.89,
     height: plotDiv.offsetHeight * 0.85,
-    margin: { l: 20, r: 20, t: 30, b: 20 },
+    margin: {
+      l: 20,
+      r: 20,
+      t: 30,
+      b: 20,
+    },
   };
+
   Plotly.newPlot("plot", traces, layout);
+
   if (n >= 2) {
     const table = document.createElement("table");
     const header = table.createTHead();
@@ -435,12 +466,14 @@ function generatePlot() {
         cell.innerHTML = `<b>${text}</b>`;
       }
     );
+
     const body = table.createTBody();
     tableBodyData.forEach((rowInfo) => {
       const row = body.insertRow();
       rowInfo.forEach((value, j) => {
         const cell = row.insertCell(j);
         cell.innerHTML = value;
+
         if (j === 2) {
           cell.style.textAlign = "left";
           cell.style.paddingLeft = "15px";
@@ -454,22 +487,26 @@ function generatePlot() {
         }
       });
     });
+
     const summaryData = [
       ["<u>COMPARAÇAO DAS ÁREAS", "<u>VALORES"],
       ["Área Real sob a Curva", realTotalArea],
       ["Área por Retângulos", totalArea],
       ["Erro", error],
     ];
+
     summaryData.forEach((rowInfo) => {
       const row = body.insertRow();
       const descriptionCell = row.insertCell();
       descriptionCell.innerHTML = `<strong>${rowInfo[0]}</strong>`;
       descriptionCell.colSpan = 4;
       descriptionCell.classList.add("summary-description");
+
       const valueCell = row.insertCell();
       valueCell.innerHTML = `<strong>${rowInfo[1]}</strong>`;
       valueCell.classList.add("summary-value", "an-cell");
     });
+
     tableContainer.appendChild(table);
   }
 }
@@ -489,15 +526,18 @@ function resetPage() {
 document.addEventListener("DOMContentLoaded", () => {
   const gerarGraficoBtn = document.getElementById("gerar-grafico");
   const limparPaginaBtn = document.getElementById("limpar-pagina");
-  const errorModal = document.getElementById("error-modal");
-  const confirmReloadBtn = document.getElementById("confirm-reload-btn");
+  const errorModal = document.getElementById("error-modal"); // ADIÇÃO: Referência ao novo modal de erro
+  const confirmReloadBtn = document.getElementById("confirm-reload-btn"); // ADIÇÃO: Referência ao botão de confirmação
 
-  // CORREÇÃO: Removida a habilitação prematura dos botões.
-  // Eles devem começar com o atributo 'disabled' no HTML e ser ativados
-  // apenas pela função 'enableMainButtons()' ao final do desafio.
+  if (gerarGraficoBtn) {
+    gerarGraficoBtn.disabled = false;
+  }
+  if (limparPaginaBtn) {
+    limparPaginaBtn.disabled = false;
+  }
 
   if (confirmReloadBtn) {
-    confirmReloadBtn.addEventListener("click", reloadPage);
+    confirmReloadBtn.addEventListener("click", reloadPage); // ADIÇÃO: Listener para recarregar a página
   }
 
   mostrarConteudoModal(
@@ -517,9 +557,10 @@ document.addEventListener("DOMContentLoaded", () => {
     handleNextStepFromVerification3: handleNextStepFromVerification3,
     enableMainButtons: enableMainButtons,
     handleCloseVerificationAndEnableNext: handleCloseVerificationAndEnableNext,
-    handleCloseModal: handleCloseModal,
+    handleCloseModal: handleCloseModal, // ADIÇÃO: Novo manipulador de fechamento
   });
 
+  // Adiciona os event listeners para os botões "Gerar Gráfico" e "Limpar"
   if (gerarGraficoBtn) {
     gerarGraficoBtn.addEventListener("click", generatePlot);
   }

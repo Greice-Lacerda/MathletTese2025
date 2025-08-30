@@ -164,32 +164,21 @@
 }
 
 /* Define o estilo para cada coluna */
-#ProvaGrfP3 {
+.column {
   flex: 1; /* Faz cada coluna ocupar um espaço igual */
-  margin: 100px auto;
   min-width: 300px; /* Largura mínima antes de quebrar a linha */
   display: flex;
-  padding: 2px;
-  flex-direction: collunm;
+  flex-direction: column;
   align-items: center; /* Centraliza o conteúdo da coluna */
   gap: 20px;
 }
 
-#ProvaGrfP3{
-  margin: 10px;
-  padding: 5px;
-  width: 350px;
-  flex-direction: row; /* Alinha os itens filhos lado a lado */
-  align-items: flex-start; /* Alinha o topo das colunas */
-  gap: 30px; /* Espaço entre as colunas */
-  flex-wrap: wrap;
-}
 /* Gráfico Plotly */
 #plot {
-  width: 400px;
-  max-width: 500px;
-  height: 100px;
-  margin: 0px auto;
+  width: 80%;
+  max-width: 700px;
+  height: 300px;
+  margin: 10px auto;
   border-radius: 10px;
 }
 
@@ -361,7 +350,7 @@ math {
 /* Ajuste de responsividade: em telas menores que 992px... */
 @media (max-width: 992px) {
   .two-columns {
-    flex-direction: row; /* ...as colunas voltam a ficar uma sobre a outra */
+    flex-direction: column; /* ...as colunas voltam a ficar uma sobre a outra */
     align-items: center;
   }
 
@@ -370,9 +359,9 @@ math {
     align-items: center;
   }
 
-  .columnP3{
-    width: 350px;
-    max-width: 350px;
+  .column-fieldset {
+    width: 90%;
+    max-width: 500px;
     height: auto; /* Altura automática em telas menores */
   }
 

@@ -108,7 +108,7 @@ h1 {
   text-shadow: 3px 3px 4px rgb(101, 100, 105);
 }
 
-h1:hover, #tit2:hover {
+h1:hover {
   transform: scale(1.1);
 }
 
