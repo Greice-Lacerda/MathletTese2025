@@ -514,6 +514,17 @@ th {
   margin-bottom: 20px;
 }
 
+.error-message{
+  border: solid 2px red;
+  top: 400px;
+  color:red;
+  font-weight: bold;
+  background-color: rgba(255, 0, 0, 0.094);
+  padding: 8px;
+  box-shadow: 5px 5px 3px #97a4a4;
+  position: fixed;
+}
+
 #parabola-img,
 #ParabolaDesafio,
 #ParabolaDesafio-4,

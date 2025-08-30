@@ -46,11 +46,9 @@ function displayError(message, inputElement) {
   }
 
   // Cria um novo elemento para a mensagem de erro
-  const errorMessageElement = document.createElement("p");
+  const errorMessageElement = document.createElement("div");
   errorMessageElement.textContent = message;
   errorMessageElement.classList.add("error-message");
-  errorMessageElement.style.color = "red";
-  errorMessageElement.style.marginTop = "15px";
 
   // Insere o elemento logo após o input
   inputElement.parentNode.insertBefore(
@@ -93,7 +91,7 @@ function handleNextStepN3() {
   const inputElement = document.getElementById("area-input");
   const areaInput = inputElement.value;
 
-  if (parseFloat(areaInput) !== 0.125) {
+  if (parseFloat(areaInput) !== 0.185) {
     displayError("Valor incorreto. Por favor, tente novamente.", inputElement);
     return;
   }
