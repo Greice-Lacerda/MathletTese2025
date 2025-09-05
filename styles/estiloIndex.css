@@ -177,3 +177,7 @@ top: -1000px;
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(10, 230, 246, 0.5);
 }
+
+#subtit2:hover{
+  transform: scale(1.1);
+}

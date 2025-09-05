@@ -1,13 +1,14 @@
-/* estiloPasso3.css Ajsutar as telas da exploração do gráfico em diante*/
+/* estiloPasso3.css */
 
-
+/* ========================================================================== */
 /* ESTILOS GERAIS E LAYOUT PRINCIPAL */
+/* ========================================================================== */
 
 .hidden {
   display: none !important;
 }
 
-/* Container principal que agrupa os 3 passos iniciais */
+/* Container que agrupa os 3 passos iniciais */
 .Explorar11 {
   display: flex;
   flex-direction: row;
@@ -17,25 +18,30 @@
   width: 95%;
   max-width: 1200px;
   margin: 40px auto;
-  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas menores */
+  flex-wrap: wrap; /* Permite quebrar a linha em telas menores */
 }
 
 /* Estilo para cada coluna (Passo 1, 2 e 3) */
 .column-fieldset {
   flex: 1; /* Permite que cresçam igualmente */
   min-width: 320px; /* Largura mínima antes de quebrar a linha */
+  height: 445px;
   border: 1px solid #ccc;
   border-radius: 15px;
   box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.4);
   padding: 5px;
   margin-top: 20px;
+  background-color: #fdfdfd2b;
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Espaça o conteúdo verticalmente */
   text-align: center;
   gap: 5px;
-  background-color: #fdfdfd;
-  height: 445px;
+}
+
+.column-fieldset:hover {
+  border: 1px solid #0829fb;
+  background-color: #44e8f488;
 }
 
 .Elegend {
@@ -48,7 +54,6 @@
   padding: 5px;
 }
 
-
 .intro-text {
   text-align: center;
   font-size: 17px;
@@ -58,13 +63,11 @@
 
 /* Imagens dentro dos fieldsets */
 .case-image {
-  padding: auto;
   position: static;
   margin-top: -90px;
 }
 
 .case-image2 {
-  padding: auto;
   position: static;
   margin-top: -50px;
 }
@@ -79,11 +82,18 @@
 }
 
 /* ========================================================================== */
-/* SEÇÃO DA PROVA INTERATIVA (antigo modal) */
+/* SEÇÃO DA PROVA INTERATIVA */
 /* ========================================================================== */
+#ProvaP3K-1{
+flex-direction: row;
+}
 
-/* Container principal da prova, que começa oculto */
-#ProvaP3 {/*Conteiner principal ok não mexer.*/
+#GrafP3,
+#BtnP3{
+  flex-direction: column;
+}
+
+#ProvaP3 {
   display: block;
   overflow: hidden;
   position: fixed;
@@ -91,17 +101,16 @@
   left: 130px;
   top: 5px;
   width: 1000px;
-  height: 485px;
+  height: 490px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.4);
   padding-top: 50px;
 }
 
-/* Invólucro do conteúdo da prova */
-.ProvaP31 { /*fundo do modal não mexer.*/
+.ProvaP31 {
   border-radius: 10px;
   width: 1000px;
-  height: 530px;
+  height: 540px;
   position: fixed;
   left: 130px;
   top: 6px;
@@ -109,7 +118,6 @@
   box-shadow: 10px 10px 6px #0e0d0d94;
 }
 
-/* Cabeçalho da prova */
 .ProvaP32 {
   padding: 15px 25px;
   background-color: #007bff;
@@ -123,12 +131,11 @@
   margin: 20px auto;
 }
 
-/* Corpo da prova e painéis */
 .modal-body3 {
-  padding: 5px auto;
+  padding: 5px 0;
 }
 
-.modal-panel3 { /* Configura o conteúdo dentro o modal*/
+.modal-panel3 {
   display: flex;
   margin: 100px 10px;
   flex-direction: column;
@@ -137,12 +144,33 @@
   width: 100%;
 }
 
-/* Parágrafos de texto dentro da prova */
 .ProvaP33,
 .ProvaP333,
 .ProvaP34 {
   margin: 10px auto;
-  padding: 0px;
+  padding: 0;
+  font-size: 19.5px;
+  line-height: 1.3;
+  max-width: 800px;
+  text-align: center;
+  text-shadow: 1.5px 1.5px 4px rgb(93, 90, 90);
+  color: #0e0d0d;
+}
+
+.ProvaP33_3{
+  margin: 80px auto;
+  padding: 0;
+  font-size: 19.5px;
+  line-height: 1.3;
+  max-width: 800px;
+  text-align: center;
+  text-shadow: 1.5px 1.5px 4px rgb(93, 90, 90);
+  color: #0e0d0d;
+}
+
+.ProvaP3-M3{
+margin: 65px auto;
+  padding: 0;
   font-size: 19.5px;
   line-height: 1.3;
   max-width: 800px;
@@ -152,28 +180,27 @@
 }
 
 /* ========================================================================== */
-/* ESTILOS PARA LAYOUT DE DUAS COLUNAS NOS PAINEIS */
+/* LAYOUT DE COLUNAS */
 /* ========================================================================== */
 
-/* Adicione esta classe ao .modal-panel que você quer dividir */
 .two-columns {
-  flex-direction: row; /* Alinha os itens filhos lado a lado */
-  align-items: flex-start; /* Alinha o topo das colunas */
-  gap: 30px; /* Espaço entre as colunas */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 30px;
   flex-wrap: wrap;
 }
 
-/* Define o estilo para cada coluna */
 .column {
-  flex: 1; /* Faz cada coluna ocupar um espaço igual */
-  min-width: 300px; /* Largura mínima antes de quebrar a linha */
+  flex: 1;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza o conteúdo da coluna */
+  align-items: center;
   gap: 20px;
 }
 
-/* Gráfico Plotly */
 #plot {
   width: 80%;
   max-width: 700px;
@@ -186,52 +213,39 @@
 /* FÓRMULAS MATEMÁTICAS */
 /* ========================================================================== */
 
-/* Estilo base para todos os contêineres de fórmula */
-.formula-display{
+/* Estilo base comum para todos os contêineres de fórmula */
+.formula-display,
+.formula-display1,
+.formula-display2 {
   font-family: "Times New Roman", Times, serif;
   background-color: #f0f4f855;
   border: 1px dashed #007bff;
   border-radius: 8px;
-  padding: 5px;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 330px 20px;
-  position: fixed;
-  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 300px;
-  min-width: 300px;
 }
 
-.formula-display1{
-  font-family: "Times New Roman", Times, serif;
-  background-color: #f0f4f855;
-  border: 1px dashed #007bff;
-  border-radius: 8px;
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.formula-display {
+  margin: 330px 20px;
+  padding: 5px;
+  width: 300px;
+  min-width: 300px;
+  position: fixed;
+}
+
+.formula-display1 {
   margin: 25px auto;
-  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 8px;
   width: 285px;
   min-width: 280px;
 }
 
-.formula-display2{
-  font-family: "Times New Roman", Times, serif;
-  background-color: #f0f4f855;
-  border: 1px dashed #007bff;
-  border-radius: 8px;
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.formula-display2 {
   margin: 20px auto;
-  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 15px;
   width: 285px;
   min-width: 270px;
 }
@@ -241,17 +255,15 @@
 .formula-display2:hover {
   transform: scale(1.13);
   background-color: black;
-  color:white;
+  color: white;
   border: solid 2px white;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Ajuste para MathML ser mais legível */
 math {
   font-size: 15.5px;
 }
 
-/* Estilo para a fórmula em destaque no passo 3 */
 .formula-highlight {
   font-size: 18px;
   background-color: #e9ecef;
@@ -259,7 +271,6 @@ math {
   max-width: 600px;
 }
 
-/* Estilo para a fórmula algébrica maior no passo 4 */
 .formula-large-text {
   font-size: 18px;
   display: flex;
@@ -274,7 +285,6 @@ math {
   background-color: #e7f3ff;
 }
 
-/* Estilos para a fração construída com CSS */
 .fraction-container {
   display: inline-flex;
   flex-direction: column;
@@ -295,94 +305,148 @@ math {
 /* BOTÕES */
 /* ========================================================================== */
 
-/* Botão principal para iniciar a prova */
-#start-proof-btn {
-  padding: 0 auto;
-  font-size: 15px;
+/* Estilo base comum para todos os botões principais */
+
+#numRectanglesInput{
+  width: 200px;
+  margin: 0 auto;
+  padding: 3px;
+  border-radius: 8px;
+}
+
+#numRectanglesInput:hover{
+  border:black double 3px;
+}
+
+#set-k-btn {
+  width: 200px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 8px;
+  border: outset 4px #8ae1f3;
+  background: linear-gradient(to right, #010238, #1618bd, #208bf0);
+  color: white;
+  cursor: pointer;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease-in-out;
+}
+
+#start-proof-btn,
+.next-step-btn,
+#add-rectangle-btn,
+#avaliaçãoP3{
   height: 40px;
   border-radius: 10px;
   border: outset 4px #8ae1f3;
   background: linear-gradient(to right, #010238, #1618bd, #208bf0);
   color: white;
   font-weight: bold;
-  margin: 0 auto;
+  font-size: 1em;
+  margin: 10px auto;
   cursor: pointer;
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   transition: all 0.3s ease-in-out;
 }
 
+/* Estilos específicos ou que sobrepõem a base */
+#start-proof-btn,
+.next-step-btn {
+  padding: 0;
+  font-size: 15px;
+}
+
+.next-step-btn,
+#add-rectangle-btn,
+#avaliaçãoP3{
+  padding: 12px;
+  min-width: 150px;
+}
+
+/* Efeitos Hover agrupados */
 #start-proof-btn:hover {
   transform: scale(1.15);
   box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* Botões de navegação da prova e de avaliação */
-.next-step-btn,
-#add-rectangle-btn,
-#avaliaçãoP3 {
-  padding: 12px 25px;
-  margin: 10px;
-  border-radius: 10px;
-  border: outset 4px #4caf50;
-  background: linear-gradient(to right, #064108, #09680e, #4caf50);
-  color: white;
-  font-weight: bold;
-  font-size: 1em;
-  cursor: pointer;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  transition: all 0.3s ease-in-out;
-  min-width: 250px;
-}
-
 .next-step-btn:hover,
 #add-rectangle-btn:hover,
-#avaliaçãoP3:hover {
+#avaliaçãoP3:hover,
+#set-k-btn:hover {
   transform: scale(1.1);
   box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.4);
-  border-color: #6bc06e;
+  border-color: #6ba4c0;
 }
 
 /* ========================================================================== */
-/* RESPONSIVIDADE */
+/* SEÇÃO DO GRÁFICO PERSONALIZADO */
 /* ========================================================================== */
-/* Ajuste de responsividade: em telas menores que 992px... */
-@media (max-width: 992px) {
-  .two-columns {
-    flex-direction: column; /* ...as colunas voltam a ficar uma sobre a outra */
-    align-items: center;
-  }
 
-  .Explorar11 {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .column-fieldset {
-    width: 90%;
-    max-width: 500px;
-    height: auto; /* Altura automática em telas menores */
-  }
-
-  .desafio-titulo31 {
-    font-size: 1.3em;
-  }
+#MenuGerarGrafico {
+  border: 1px solid rgba(241, 32, 32, 0.614);
+  box-shadow: 5px 5px 3px gray;
+  border-radius: 8px;
+  background-color: #9e87ef24;
+  width: 660px;
+  flex-direction: row;
+  justify-content: center;
+  height: 70px;
+  margin: 85px auto;
+  padding: 10px;
+  display: flex;
 }
 
-@media (max-width: 480px) {
-  .desafio-titulo31 {
-    font-size: 1.1em;
-  }
-
-  .next-step-btn,
-  #add-rectangle-btn,
-  #avaliaçãoP3 {
-    width: 90%;
-  }
+#GraficoGerado {
+  border: 1px solid rgba(241, 32, 32, 0.614);
+  box-shadow: 5px 5px 3px gray;
+  border-radius: 8px;
+  background-color: #9e87ef24;
+  width: 660px;
+  flex-direction: row;
+  justify-content: center;
+  height: 300px;
+  margin: -70px auto;
+  padding: 10px;
+  display: flex;
 }
 
-/* Estilos para a barra de rolagem (opcional) */
+.GrfM32 {
+  width: 600px;
+  height: auto;
+  margin:0 auto;
+  flex-direction: column;
+  padding: 2px;
+  gap: 5px;
+  border: 1px solid rgba(241, 10, 10, 0.811);
+  box-shadow: 5px 5px 3px gray;
+  border-radius: 10px;
+  background-color: #5c0af452;
+}
+
+#LadGrfP3 {
+  border: 1px solid rgba(241, 10, 10, 0.811);
+  box-shadow: 5px 5px 3px gray;
+  border-radius: 10px;
+  width: 100px;
+  height: 250px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#plotGrfM32 {
+  width: 600px;
+  height: 330px;
+  padding: 2px 0;
+  margin: 0 auto;
+}
+
+/* ========================================================================== */
+/* ESTILOS PARA BARRA DE ROLAGEM */
+/* ========================================================================== */
+
 ::-webkit-scrollbar {
   width: 8px;
 }

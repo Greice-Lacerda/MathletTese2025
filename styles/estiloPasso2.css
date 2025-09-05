@@ -22,7 +22,7 @@ section {
 /* ========================================================================== */
 
 fieldset {
-  border: 1px solid #ccc;
+  border: 1px solid #fa9b9b86;
   border-radius: 15px;
   box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
   margin: 1px;
@@ -30,7 +30,7 @@ fieldset {
   height: 325px; /* Mantém a altura fixa para os contêineres do gráfico e tabela */
 }
 
-.Elegend {
+.Elegend, legend {
   font-size: 1.2em;
   color: black;
   text-shadow: 2px 2px 1px #0a0a0a62;
@@ -92,6 +92,7 @@ label {
   font-size: 20px;
   font-weight: bold;
   padding: 0 5px;
+  
 }
 
 input[type="number"] {
@@ -143,6 +144,57 @@ button {
   border: outset 4px #97a4a4;
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
   transform: scale(1.1);
+}
+
+.FButn142{
+  width: 250px;
+  height: 360px;
+  margin: 5px;
+  background-color: #e8141413;
+}
+
+.FBtn14{
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  height: 180px;
+  margin: 8px auto;
+  background-color: #6c444417;
+}
+
+.FBtn14 button {
+  width: 150px;
+  height: 40px;
+  margin: 10px auto;
+  border: outset 4px #4caf50;
+  background: linear-gradient(
+    to right,
+    #064108,
+    #09680e,
+    #56d25a,
+    #aff7b1,
+    #7a9c7d
+  );
+  color: white;
+}
+
+.FBtn14 button:hover {
+  background: linear-gradient(
+    to right,
+    #6bc06e,
+    #9ed4a0,
+    #bee2be,
+    #d8ead8,
+    #f0f9f0
+  );
+  border: outset 4px #6bc06e;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.FBtn14 button:active {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transform: scale(1);
 }
 
 .Fexplorar14 button {
@@ -215,6 +267,71 @@ button {
   transform: scale(0.95);
 }
 
+#Verificar {
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(
+    to right,
+    #350202,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px auto;
+  gap: 10px;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
+  color: white;
+}
+
+#Verificar:hover {
+  transform: scale(1.1);
+  color: rgb(245, 245, 238);
+  filter: invert(599%) sepia(3%) saturate(30%) hue-rotate(270deg);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+#Verificar:active {
+  transform: scale(0.95);
+}
+
+#Instrucao {
+  width: 150px;
+  height: 40px;
+  margin: 10px;
+  border: outset 4px #8ae1f3;
+  background: linear-gradient(
+    to right,
+    #010238,
+    #1618bd,
+    #208bf0,
+    #0ae6f6,
+    #9ff4f5
+  );
+  color: white;
+}
+
+#Instrucao:hover {
+  transform: scale(1.1);
+  color: rgb(233, 249, 7);
+  filter: invert(599%) sepia(0%) saturate(50%) hue-rotate(270deg);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+  border: outset 4px #97a4a4;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+}
+
+#Instrucao:active {
+  transform: scale(0.95);
+}
 
 /* ========================================================================== */
 /* Estilos do Gráfico e Tabela */
@@ -225,7 +342,7 @@ button {
   width: 450px;
   max-width: 450px;
   max-height: 280px;
-  min-height: 275px;
+  min-height: 278px;
   background-color: #fff;
   border-radius: 10px;
   padding: 0 auto;
@@ -272,6 +389,7 @@ button {
 
 #tabela-container table {
   width: 100%; /* Garante que a tabela use o espaço disponível */
+  height: 100%;
   border-collapse: separate;
   border-spacing: 2px;
   text-align: center;
@@ -381,8 +499,9 @@ th {
 /* Estilo para as linhas de resumo de comparação */
 .summary-description {
   font-size: 13px; /* Tamanho da fonte reduzido */
-  text-align: left;
-  padding-left: 5px; /* Espaçamento reduzido */
+  text-align: left !important; /* Força o alinhamento à esquerda */
+  white-space: nowrap;
+  margin-left: 20px; /* Espaçamento reduzido */
   font-weight: bold;
   padding-top: 5px; /* Espaçamento reduzido */
 }
@@ -499,6 +618,7 @@ th {
 }
 
 .modal-column {
+  margin-top:45px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -509,20 +629,51 @@ th {
 }
 
 .modal-texto {
-  font-size: 1.2em;
+  width: 400px;
+  margin-top: -110px;
+  font-size: 1.3em;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  text-shadow: 3px 3px 8px #022325ae;
+}
+
+.modal-texto1 {
+  width: 500px;
+  margin-top: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-shadow: 3px 3px 8px #022325ae;
+}
+
+.modal-texto1:hover {
+  transform: scale(1.2);
+  border-radius: 8px;
+  position: fixed;
+  color:white;
+  z-index: 10;
+  justify-content: center;
+  border: 8px double rgb(236, 243, 236);
+  padding: 20px;
+ background: radial-gradient(circle at top left, hsla(190, 78%, 81%, 0.4), transparent 40%),
+              radial-gradient(circle at bottom right, hsla(280, 83%, 73%, 0.4), transparent 40%);
+  background-color: #0d1117; /* Um fundo escuro para destacar os gradientes */
+  background-size: 200% 200%;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.256);
+  animation: moveGradient 15s ease-in-out infinite;
+  box-shadow: 12px 12px 15px rgb(46, 46, 44);
 }
 
 .error-message{
   border: solid 2px red;
-  top: 400px;
+  font-size: 20px;
+  top: 380px;
   color:red;
   font-weight: bold;
   background-color: rgba(255, 0, 0, 0.094);
   padding: 8px;
   box-shadow: 5px 5px 3px #97a4a4;
   position: fixed;
+  border-radius: 10px;
 }
 
 #parabola-img,
@@ -533,6 +684,7 @@ th {
 #ParabolaDesafio-k {
   width: 250px;
   height: 250px;
+ margin-bottom: 15px;
   object-fit: contain;
 }
 
@@ -543,6 +695,7 @@ th {
 #ParabolaVerificacao-k{
   width: 340px;
   height: 300px;
+ margin-bottom: 15px;
   object-fit: contain;
   padding: 8px;
   border: solid 2px rgba(248, 33, 33, 0.452);
@@ -554,6 +707,7 @@ th {
   width: 450px;
   height: 300px;
   object-fit: cover;
+  top: 150px;
   margin-left: -65px;
   border: solid 2px rgba(248, 33, 33, 0.452);
 }
@@ -582,16 +736,40 @@ th {
   margin-left: -95px;
   margin-right: -95px;
   padding: 20px;
-  margin-top: 15px;
+  margin-top: 170px;
   height: auto;
   max-height: 400px;
+}
+
+.modal-column2{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 0px;
+  margin-right: 5px;
+  padding: 6px;
+  margin-top: 185px;
+  height: 420px;
+  max-height: 420px;
+}
+
+.modal-column3{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 0px;
+  margin-right: 5px;
+  padding: 6px;
+  margin-top: 185px;
+  height: 420px;
+  max-height: 420px;
 }
 
 /* Agrupando todos os seletores de botões em uma única classe para melhor manutenção */
 .modal-button {
   width: 180px;
   height: 40px;
-  margin: 15px auto;
+  margin: 10px auto;
   border: outset 4px #8ae1f3;
   background: linear-gradient(
     to right,
@@ -666,7 +844,6 @@ th {
 ::-webkit-scrollbar-thumb:hover {
   background: #55555582;
 }
-
 
 
 @media (max-width: 768px) {

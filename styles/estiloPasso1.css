@@ -231,7 +231,7 @@ section {
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
 }
 
-.F.FexplorarP114 button:active {
+.FexplorarP114 button:active {
   transform: scale(0.95);
 }
 
@@ -271,6 +271,7 @@ section {
 }
 
 /* === Estilos da Seção Principal e Layout === */
+
 #plot {
   width: 400px;
   min-width: 300px;

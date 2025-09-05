@@ -5,12 +5,18 @@
  */
 const parabola = (x) => (Array.isArray(x) ? x.map((val) => val * val) : x * x);
 
+// ==========================================================================
+// Variável de estado para o número de retângulos
+// ==========================================================================
+let k = 2;
+
 /**
  * Gera o gráfico da hipótese de indução (Área(k)) usando Plotly.
- * @param {number} k - O número de retângulos para a hipótese (padrão: 10).
+ * @param {number} numRectangles - O número de retângulos a ser exibido.
+ * @param {number} highlightIndex - O índice do retângulo a ser destacado (opcional, -1 para nenhum).
  */
-function generateInductionPlot(k = 35) {
-  const plotDiv = document.getElementById("plot");
+function generateInductionPlot(numRectangles, highlightIndex = -1) {
+  const plotDiv = document.getElementById("plotGrfM32");
   const a = 0;
   const b = 1;
 
@@ -20,9 +26,32 @@ function generateInductionPlot(k = 35) {
   );
   const y_parabola = parabola(x_parabola);
 
-  const x_rect = Array.from({ length: k + 1 }, (_, i) => a + (i * (b - a)) / k);
+  const bar_width = (b - a) / numRectangles;
+  const x_rect = Array.from(
+    { length: numRectangles + 1 },
+    (_, i) => a + (i * (b - a)) / numRectangles
+  );
   const y_rect = parabola(x_rect);
-  const bar_width = (b - a) / k;
+
+  const rectangleTraces = x_rect.slice(0, -1).map((xi, i) => {
+    const barColor =
+      i === highlightIndex
+        ? "rgba(253, 126, 20, 0.8)"
+        : "rgba(0, 123, 255, 0.6)";
+
+    return {
+      x: [xi],
+      y: [y_rect[i]],
+      type: "bar",
+      width: [bar_width],
+      name: `Retângulo ${i + 1}`,
+      marker: {
+        color: barColor,
+        line: { color: "black", width: 0.5 },
+      },
+      offset: 0,
+    };
+  });
 
   const traces = [
     {
@@ -32,24 +61,13 @@ function generateInductionPlot(k = 35) {
       name: "Parábola y = x²",
       line: { color: "black", width: 2 },
     },
-    ...x_rect.slice(0, -1).map((xi, i) => ({
-      x: [xi],
-      y: [y_rect[i]],
-      type: "bar",
-      width: [bar_width],
-      name: `Retângulo ${i}`,
-      marker: {
-        color: "rgba(0, 123, 255, 0.6)",
-        line: { color: "black", width: 0.5 },
-      },
-      offset: 0,
-    })),
+    ...rectangleTraces,
   ];
 
   const layout = {
     width: plotDiv.offsetWidth * 0.89,
-    height: plotDiv.offsetHeight*0.8,
-    title: `Hipótese de Indução: Área(k) para k=${k}`,
+    height: plotDiv.offsetHeight * 0.8,
+    title: `Área(k) com k=${numRectangles}`,
     showlegend: false,
     barmode: "overlay",
     bargap: 0,
@@ -66,7 +84,7 @@ function generateInductionPlot(k = 35) {
  */
 function triggerConfetti() {
   confetti({
-    particleCount: 150,
+    particleCount: 500,
     spread: 90,
     origin: { y: 0.6 },
   });
@@ -80,12 +98,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.getElementById("start-proof-btn");
   const nextStepBtns = document.querySelectorAll(".next-step-btn");
   const addRectangleBtn = document.getElementById("add-rectangle-btn");
-  const surveyBtn = document.getElementById("avaliaçãoP3"); // Referência para o botão de avaliação
+  const surveyBtn = document.getElementById("avaliaçãoP3");
+  const setKBtn = document.getElementById("set-k-btn");
+  const numRectanglesInput = document.getElementById("numRectanglesInput");
+  const step2Panel = document.getElementById("step-2");
 
+  // Esconde o container da prova no início, a menos que o HTML já tenha o estilo
+  // Se o seu HTML já esconde, pode remover esta linha.
+  proofContainer.classList.add("hidden");
+
+  // Evento de clique para o botão "Iniciar Prova" (agora ele mostra o primeiro passo)
   startBtn.addEventListener("click", () => {
-    proofContainer.style.display = "block";
-    startBtn.style.display = "none";
+    proofContainer.classList.remove("hidden");
+    startBtn.classList.add("hidden");
   });
+
+  // Evento de clique para o novo botão "Definir e Iniciar"
+  if (setKBtn) {
+    setKBtn.addEventListener("click", () => {
+      let newK = parseInt(numRectanglesInput.value);
+
+      if (isNaN(newK) || newK <= 0) {
+        alert(
+          "Por favor, insira um número de retângulos maior que 0."
+        );
+        return;
+      }
+      k = newK;
+      generateInductionPlot(k);
+      addRectangleBtn.classList.remove("hidden"); // Mostra o botão "Adicionar k+1"
+    });
+  }
 
   nextStepBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -96,98 +139,42 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentStep && nextStep) {
         currentStep.classList.add("hidden");
         nextStep.classList.remove("hidden");
+      }
 
-        if (nextStepId === "step-2") {
-          generateInductionPlot(35);
+      if (nextStepId === "step-2") {
+        // Exibe o campo de input e o botão para o usuário
+        const inputControls = step2Panel.querySelector(".input-controls");
+        if (inputControls) {
+          inputControls.classList.remove("hidden");
         }
-        if (nextStepId === "step-5") {
-          triggerConfetti();
-        }
+        // A geração do gráfico acontece no clique do setKBtn, não mais aqui
+      }
+
+      if (nextStepId === "step-5") {
+        triggerConfetti();
       }
     });
   });
 
+  // Lógica para o botão "Adicionar Retângulo" (k + 1)
   addRectangleBtn.addEventListener("click", () => {
-    const k = 35;
-    const n = k + 1;
-    const a = 0;
-    const b = 1;
-    const plotDiv = document.getElementById("plot");
+    k++; // Incrementa o valor de k
+    generateInductionPlot(k, k - 1); // Gera o gráfico com o novo k e destaca o último retângulo
 
-    const bar_width_n = (b - a) / n;
-
-    const x_parabola = Array.from(
-      { length: 400 },
-      (_, i) => a + (i * (b - a)) / 399
-    );
-    const y_parabola = parabola(x_parabola);
-    const parabolaTrace = {
-      x: x_parabola,
-      y: y_parabola,
-      mode: "lines",
-      name: "Parábola y = x²",
-      line: { color: "black", width: 2 },
-    };
-
-    const x_rect_n = Array.from(
-      { length: n + 1 },
-      (_, i) => a + (i * (b - a)) / n
-    );
-    const y_rect_n = parabola(x_rect_n);
-
-    const rectangleTraces_n = x_rect_n.slice(0, -1).map((xi, i) => {
-      const barColor =
-        i === k
-          ? "rgba(253, 126, 20, 0.8)"
-          : //highlight orange for new rectangle
-            "rgba(0, 123, 255, 0.6)";
-
-      return {
-        x: [xi],
-        y: [y_rect_n[i]],
-        type: "bar",
-        width: [bar_width_n],
-        name: `Retângulo ${i + 1}`,
-        marker: {
-          color: barColor,
-          line: { color: "black", width: 0.5 },
-        },
-        offset: 0,
-      };
-    });
-
-    const allTraces_n = [parabolaTrace, ...rectangleTraces_n];
-
-    const layout_n = {
-      width: plotDiv.offsetWidth * 0.98,
-      height: plotDiv.offsetHeight,
-      title: `Passo Indutivo: Área(k+1) para k+1=${n}`,
-      showlegend: false,
-      barmode: "overlay",
-      bargap: 0,
-      xaxis: { range: [0, 1], title: "x" },
-      yaxis: { range: [0, 1], title: "y" },
-      margin: { l: 40, r: 20, t: 40, b: 40 },
-    };
-
-    Plotly.newPlot("plot", allTraces_n, layout_n);
-
-    addRectangleBtn.classList.add("hidden");
-    document.querySelector("#step-2 .next-step-btn").classList.remove("hidden");
+    // O próximo botão só aparece após o primeiro clique para adicionar um retângulo
+    const nextStepBtn = step2Panel.querySelector(".next-step-btn");
+    if (nextStepBtn) {
+      nextStepBtn.classList.remove("hidden");
+    }
   });
 
-  // --- NOVA LÓGICA PARA O BOTÃO DO QUESTIONÁRIO ---
+  // Lógica para o botão do questionário
   surveyBtn.addEventListener("click", () => {
-    // 1. Abre o questionário em uma nova aba
     const surveyUrl =
       "https://docs.google.com/forms/d/e/1FAIpQLScl3BiowD4RUjZAna2NEACEsEckfY8cYR11_8mJ1d0xfwjYew/viewform";
     window.open(surveyUrl, "_blank");
 
-    // 2. Esconde o container da prova (o "modal")
     proofContainer.style.display = "none";
-
-    // 3. Redireciona a página atual para a página de resumo
-    // **ATENÇÃO:** Crie um arquivo chamado 'resumo.html' ou altere este nome!
     window.location.href = "../pages/resumo.html";
   });
 });
