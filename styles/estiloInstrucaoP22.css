@@ -1,0 +1,156 @@
+/* === Estilos da página Apresentação Teorica 2 do Passo 1 Perfeito. */
+
+strong {
+    color: #c0392b;
+}
+
+section {
+  gap: 5px;
+  position: relative;
+  top: 16px;
+  margin-left: 6px;
+  justify-content: flex-start;
+}
+
+#ProximaEtapa {
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(
+    to right,
+    #350202,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  width: 250px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 35px auto;
+  gap: 20px;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
+  color: white;
+}
+
+#ProximaEtapa:hover {
+  background: linear-gradient(
+    to right,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  cursor: pointer;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
+  transform: scale(1.2);
+}
+
+#ProximaEtapa:active {
+  background: linear-gradient(
+    to right,
+    #350202,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  box-shadow: inset 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 1.5px 1.5px 1px rgba(82, 65, 65, 0.9);
+  color: white;
+}
+
+.instrucP22 {
+  width: 400px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin:0 auto;
+  padding: 2px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+h3 {
+  color: #065809;
+  margin-top: 1px;
+  text-align: center;
+}
+
+.instrucP222{
+    line-height: 1.2;
+    margin-top:2px;
+    padding: 1px;
+}
+
+#ExplorarAp11 {
+  width: 1200px;
+  height: 440px;
+  display: flex;
+  flex-direction: row;
+  text-align: justify;
+  margin: 5px auto;
+  border-radius: 15px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}
+
+#ProximaEtapa {
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(
+    to right,
+    #350202,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  width: 250px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px auto;
+  gap: 20px;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
+  color: white;
+}
+
+#ProximaEtapa:hover {
+  background: linear-gradient(
+    to right,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  cursor: pointer;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
+  transform: scale(1.2);
+}
+
+#ProximaEtapa:active {
+  background: linear-gradient(
+    to right,
+    #350202,
+    #6b0505,
+    #e81414,
+    #f69605,
+    #daa96c,
+    #f6ad47
+  );
+  box-shadow: inset 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 1.5px 1.5px 1px rgba(82, 65, 65, 0.9);
+  color: white;
+}
+
+

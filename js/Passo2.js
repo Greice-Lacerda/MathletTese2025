@@ -1,18 +1,15 @@
 // Passo2.js
 
 // Importa as funções para gerenciar os modais
-import {
-  mostrarConteudoModal,
-  setupModalControls,
-  closeModal,
-} from "./botoesModal.js";
-import { generateTable } from "./TableP2.js";
+import { mostrarConteudoModal, closeModal } from "./botoesModal.js";
+// A importação da tabela foi removida pois a função generatePlot já cuida disso.
+// import { generateTable } from "./TableP2.js";
 
-const desafioData = {};
-let isChallengeCompleted = false; // NOVA VARIÁVEL: Variável de estado para o progresso
+let isChallengeCompleted = false; // Variável de estado para o progresso
 
 /**
- * Habilita os botões principais da página após a conclusão dos desafios.
+ * Habilita os botões principais da página e fecha o modal.
+ * Esta função é chamada ao final do desafio n=k.
  */
 function enableMainButtons() {
   const gerarGraficoBtn = document.getElementById("gerar-grafico");
@@ -25,6 +22,7 @@ function enableMainButtons() {
     limparPaginaBtn.disabled = false;
   }
 
+  // Fecha o modal ao concluir o último desafio interativo
   closeModal("modalP2");
 }
 
@@ -56,18 +54,19 @@ function displayError(message, inputElement) {
     inputElement.nextSibling
   );
 
-  // Remove a mensagem após 3 segundos
+  // Remove a mensagem após 2.5 segundos
   setTimeout(() => {
     if (errorMessageElement && errorMessageElement.parentNode) {
       errorMessageElement.parentNode.removeChild(errorMessageElement);
     }
-  }, 2500);
+  }, 3000);
 }
 
 /**
- * Função para processar a resposta do usuário para o desafio de n = 2.
+ * Função para processar a resposta do Desafio 1 (n = 3).
+ * A lógica verifica se o número de retângulos é 2 (n - 1).
  */
-function handleConfirmN2() {
+function handleConfirmN3() {
   const inputElement = document.getElementById("prompt-input");
   const inputN = inputElement.value;
 
@@ -85,9 +84,9 @@ function handleConfirmN2() {
 }
 
 /**
- * Função para validar o valor da área para n=3.
+ * Função para validar o valor da área para n = 3.
  */
-function handleNextStepN3() {
+function handleValidateAreaN3() {
   const inputElement = document.getElementById("area-input");
   const areaInput = inputElement.value;
 
@@ -102,14 +101,15 @@ function handleNextStepN3() {
 }
 
 /**
- * Função para avançar do conteúdo de verificação para o desafio n=4.
+ * Função para avançar da verificação de n = 3 para o desafio de n = 4.
  */
-function handleNextStepFromVerification() {
-  mostrarConteudoModal("conteudo-desafio2", "Desafios - Para n = 4");
+function handleNextStepFromVerification1() {
+  mostrarConteudoModal("conteudo-desafio2", "Desafios 2: n = 4");
 }
 
 /**
- * Função para processar a resposta do usuário para o desafio de n=4.
+ * Função para processar a resposta do Desafio 2 (n = 4).
+ * A lógica verifica se o número de retângulos é 3 (n-1).
  */
 function handleConfirmN4() {
   const inputElement = document.getElementById("prompt-input-2");
@@ -131,7 +131,7 @@ function handleConfirmN4() {
 /**
  * Função para validar o valor da área para n = 4.
  */
-function handleNextStepN4() {
+function handleValidateAreaN4() {
   const inputElement = document.getElementById("area-input-2");
   const areaInput2 = inputElement.value;
 
@@ -146,14 +146,15 @@ function handleNextStepN4() {
 }
 
 /**
- * Função para avançar do conteúdo de verificação para o desafio n = 5.
+ * Função para avançar da verificação de n=4 para o desafio n = 5.
  */
 function handleNextStepFromVerification2() {
-  mostrarConteudoModal("conteudo-desafio3", "Desafios - Para n = 5");
+  mostrarConteudoModal("conteudo-desafio3", "Desafio 3: n = 5");
 }
 
 /**
- * Função para processar a resposta do usuário para o desafio de n = 5.
+ * Função para processar a resposta do Desafio 3 (n = 5).
+ * A lógica verifica se o número de retângulos é 4 (n-1).
  */
 function handleConfirmN5() {
   const inputElement = document.getElementById("prompt-input-3");
@@ -175,7 +176,7 @@ function handleConfirmN5() {
 /**
  * Função para validar o valor da área para n = 5.
  */
-function handleNextStepN5() {
+function handleValidateAreaN5() {
   const inputElement = document.getElementById("area-input-3");
   const areaInput3 = inputElement.value;
 
@@ -187,14 +188,14 @@ function handleNextStepN5() {
     "conteudo-verificacao3",
     "Verificação do Cálculo da área (n = 5)"
   );
-  isChallengeCompleted = true; // ADIÇÃO: Define o estado como concluído
 }
 
 /**
- * Função para avançar do conteúdo de verificação para o desafio n = k.
+ * Função para avançar da verificação de n=5 para o desafio n = k.
  */
 function handleNextStepFromVerification3() {
-  mostrarConteudoModal("conteudo-desafio4", "Desafios - Para n = k");
+  isChallengeCompleted = true; // Marca que os desafios principais foram concluídos
+  mostrarConteudoModal("conteudo-desafio4", "Desafio 4: n = k");
 }
 
 /**
@@ -209,28 +210,6 @@ function handleCloseVerificationAndEnableNext() {
   }
 }
 
-/**
- * NOVA FUNÇÃO: Lógica para o modal de erro quando o usuário tenta fechar.
- */
-function handleCloseModal() {
-  if (isChallengeCompleted) {
-    closeModal("modalP2");
-  } else {
-    // Exibe o modal de erro
-    const errorModal = document.getElementById("error-modal");
-    if (errorModal) {
-      errorModal.classList.remove("hidden");
-    }
-  }
-}
-
-/**
- * NOVA FUNÇÃO: Recarrega a página.
- */
-function reloadPage() {
-  window.location.reload();
-}
-
 // ----------------------------------------------------------------------
 // Lógica para os botões "Gerar Gráfico" e "Limpar"
 // ----------------------------------------------------------------------
@@ -243,18 +222,6 @@ function formatFraction(numerator, denominator) {
             <span class="numerator">${numerator}</span>
             <span class="denominator">${denominator}</span>
             </span>`;
-}
-
-/**
- * Função auxiliar para formatar um termo da área (largura * altura).
- */
-function formatAreaTerm(i, n) {
-  const widthFraction = formatFraction(1, n);
-  const heightFraction = formatFraction(
-    `${i}<sup><small>2</small></sup>`,
-    `${n}<sup><small>2</small></sup>`
-  );
-  return `${widthFraction} x ${heightFraction}`;
 }
 
 /**
@@ -305,26 +272,29 @@ function generatePlot() {
     );
     const y_rect = parabola(x_rect);
     const bar_width = (b - a) / n;
-    const area_values = x_rect
-      .slice(0, -1)
-      .map((xi, i) => bar_width * y_rect[i]);
 
     const cumulativeArea_values = [];
     let accumulated_numerator = 0;
     const formatted_area_terms = [];
     const cumulativeArea_string = [];
 
-    x_rect.slice(0, -1).forEach((xi, i) => {
+    x_rect.slice(0, -1).forEach((_, i) => {
       const currentArea_numerator = i ** 2;
       const denominator = n ** 3;
       accumulated_numerator += currentArea_numerator;
 
       if (currentArea_numerator > 0) {
-        formatted_area_terms.push(`(${formatAreaTerm(i, n)})`);
+        const widthFraction = formatFraction(1, n);
+        const heightFraction = formatFraction(
+          `${i}<sup>2</sup>`,
+          `${n}<sup>2</sup>`
+        );
+        formatted_area_terms.push(
+          `(${widthFraction} &times; ${heightFraction})`
+        );
       }
 
       const current_cumulative_string = formatted_area_terms.join(" + ");
-
       cumulativeArea_string.push(current_cumulative_string);
       cumulativeArea_values.push(accumulated_numerator / denominator);
     });
@@ -342,13 +312,10 @@ function generatePlot() {
         y: [y_rect[i]],
         type: "bar",
         width: [bar_width],
-        name: `Area_${i} = ${area_values[i].toFixed(8)}`,
+        name: `Area_${i}`,
         marker: {
           color: "rgba(0, 0, 255, 0.3)",
-          line: {
-            color: "black",
-            width: 0.5,
-          },
+          line: { color: "black", width: 0.5 },
         },
         offset: 0,
         showlegend: false,
@@ -364,7 +331,7 @@ function generatePlot() {
 
             return [
               {
-                x: xi + bar_width - 1 / n,
+                x: xi + bar_width,
                 y: 0,
                 text: widthText,
                 showarrow: false,
@@ -396,23 +363,21 @@ function generatePlot() {
           })
         : [];
 
-    tableBodyData = x_rect.slice(0, -1).map((xi, i) => {
+    tableBodyData = x_rect.slice(0, -1).map((_, i) => {
       const xFraction = formatFraction(i, n);
       const yFractionSquared = formatFraction(
-        `${i}<sup><small>2</small></sup>`,
-        `${n}<sup><small>2</small></sup>`
+        `${i}<sup>2</sup>`,
+        `${n}<sup>2`
       );
       const accumulatedString = cumulativeArea_string[i] || "0";
       const approxValue = cumulativeArea_values[i]
         ? cumulativeArea_values[i].toFixed(8)
         : "0";
-
       const contentString = `<div class="an-sum">A(${
         i + 1
       }) = ${accumulatedString}</div><div class="an-approx">A(${
         i + 1
       }) &asymp; ${approxValue}</div>`;
-
       return [i + 1, i, xFraction, yFractionSquared, contentString];
     });
 
@@ -441,12 +406,7 @@ function generatePlot() {
     autosize: true,
     width: plotDiv.offsetWidth * 0.89,
     height: plotDiv.offsetHeight * 0.85,
-    margin: {
-      l: 20,
-      r: 20,
-      t: 30,
-      b: 20,
-    },
+    margin: { l: 20, r: 20, t: 30, b: 20 },
   };
 
   Plotly.newPlot("plot", traces, layout);
@@ -458,9 +418,7 @@ function generatePlot() {
     ["Partes", "Retângulos", "x<sub>i</sub>", "y<sub>i</sub>", "A(n)"].forEach(
       (text, index) => {
         const cell = headerRow.insertCell(index);
-        if (index === 4) {
-          cell.classList.add("an-column");
-        }
+        if (index === 4) cell.classList.add("an-column");
         cell.innerHTML = `<b>${text}</b>`;
       }
     );
@@ -471,12 +429,7 @@ function generatePlot() {
       rowInfo.forEach((value, j) => {
         const cell = row.insertCell(j);
         cell.innerHTML = value;
-
-        if (j === 2) {
-          cell.style.textAlign = "left";
-          cell.style.paddingLeft = "15px";
-          cell.style.paddingRight = "15px";
-        } else if (j === 3) {
+        if (j === 2 || j === 3) {
           cell.style.textAlign = "left";
           cell.style.paddingLeft = "15px";
           cell.style.paddingRight = "15px";
@@ -487,7 +440,7 @@ function generatePlot() {
     });
 
     const summaryData = [
-      ["<u>COMPARAÇAO DAS ÁREAS", "<u>VALORES"],
+      ["<u>COMPARAÇÃO DAS ÁREAS", "<u>VALORES"],
       ["Área Real sob a Curva", realTotalArea],
       ["Área por Retângulos", totalArea],
       ["Erro", error],
@@ -499,7 +452,6 @@ function generatePlot() {
       descriptionCell.innerHTML = `<strong>${rowInfo[0]}</strong>`;
       descriptionCell.colSpan = 4;
       descriptionCell.classList.add("summary-description");
-
       const valueCell = row.insertCell();
       valueCell.innerHTML = `<strong>${rowInfo[1]}</strong>`;
       valueCell.classList.add("summary-value", "an-cell");
@@ -510,7 +462,18 @@ function generatePlot() {
 }
 
 /**
- * Função para recarregar a página de forma eficiente.
+ * Limpa o valor de um campo de input específico.
+ * @param {string} inputId - O ID do elemento de input a ser limpo.
+ */
+function clearInput(inputId) {
+  const inputElement = document.getElementById(inputId);
+  if (inputElement) {
+    inputElement.value = ""; // Define o valor do input como vazio
+  }
+}
+
+/**
+ * Função para limpar o gráfico e a tabela, resetando o input.
  */
 function resetPage() {
   document.getElementById("n-value").value = "2";
@@ -519,50 +482,98 @@ function resetPage() {
 }
 
 /**
- * Inicializa a página.
+ * Adiciona todos os listeners de eventos quando o DOM estiver carregado.
  */
 document.addEventListener("DOMContentLoaded", () => {
-  const gerarGraficoBtn = document.getElementById("gerar-grafico");
-  const limparPaginaBtn = document.getElementById("limpar-pagina");
-  const errorModal = document.getElementById("error-modal"); // ADIÇÃO: Referência ao novo modal de erro
-  const confirmReloadBtn = document.getElementById("confirm-reload-btn"); // ADIÇÃO: Referência ao botão de confirmação
+  // ---- BOTÕES DA PÁGINA PRINCIPAL ----
+  document
+    .getElementById("gerar-grafico")
+    .addEventListener("click", generatePlot);
+  document.getElementById("limpar-pagina").addEventListener("click", resetPage);
+  document.getElementById("Verificar").addEventListener("click", () => {
+    // O botão "Verificar Resposta" da página principal mostra a verificação final para n=k
+    mostrarConteudoModal("conteudo-verificar", "Verificação para n = k");
+  });
 
-  if (gerarGraficoBtn) {
-    gerarGraficoBtn.disabled = false;
-  }
-  if (limparPaginaBtn) {
-    limparPaginaBtn.disabled = false;
+  // ---- BOTÕES DO MODAL ----
+
+  // Desafio 1 (n = 3)
+  document
+    .getElementById("prompt-ok-btn3")
+    .addEventListener("click", handleConfirmN3);
+  document
+    .getElementById("prompt-cancel-btn3")
+  document
+  .getElementById("prompt-cancel-btn3")
+  .addEventListener("click", () => clearInput("prompt-input"));
+  document
+    .getElementById("prompt-ok-btn33")
+    .addEventListener("click", handleValidateAreaN3);
+  document
+    .getElementById("prompt-cancel-btn33")
+    .addEventListener("click", () => clearInput("area-input"));
+  document
+    .getElementById("proximo-passo-btn3")
+    .addEventListener("click", handleNextStepFromVerification1);
+
+  // Desafio 2 (n = 4)
+  document
+    .getElementById("prompt-ok-btn4")
+    .addEventListener("click", handleConfirmN4);
+  document
+    .getElementById("prompt-cancel-btn4")
+    .addEventListener("click", () => clearInput("prompt-input-2"));
+  document
+    .getElementById("prompt-ok-btn44")
+    .addEventListener("click", handleValidateAreaN4);
+  document
+    .getElementById("prompt-cancel-btn44")
+    .addEventListener("click", () => clearInput("area-input-2"));
+  document
+    .getElementById("proximo-passo-btn-5")
+    .addEventListener("click", handleNextStepFromVerification2);
+
+  // Desafio 3 (n = 5)
+  document
+    .getElementById("prompt-ok-btn5")
+    .addEventListener("click", handleConfirmN5);
+  document
+    .getElementById("prompt-cancel-btn5")
+    .addEventListener("click", () => clearInput("prompt-input-3"));
+  document
+    .getElementById("prompt-ok-btn6")
+    .addEventListener("click", handleValidateAreaN5);
+  document
+    .getElementById("prompt-cancel-btn6")
+    .addEventListener("click", () => clearInput("area-input-3"));
+  document
+    .getElementById("proximo-passo-btn-7")
+    .addEventListener("click", handleNextStepFromVerification3);
+
+  // Desafio 4 (n = k) e Verificação Final
+  document
+    .getElementById("proximo-passo-btn5")
+    .addEventListener("click", enableMainButtons);
+  document
+    .getElementById("fecharVerificarBtn")
+    .addEventListener("click", handleCloseVerificationAndEnableNext);
+
+  // Botão 'x' para fechar o modal
+  const closeButton = document.querySelector(".fechar-modal");
+  if (closeButton) {
+    closeButton.addEventListener("click", () => {
+      // Só permite fechar o modal pelo 'x' após os desafios obrigatórios
+      if (isChallengeCompleted) {
+        closeModal("modalP2");
+      } else {
+        alert("Por favor, complete os desafios iniciais antes de fechar.");
+      }
+    });
   }
 
-  if (confirmReloadBtn) {
-    confirmReloadBtn.addEventListener("click", reloadPage); // ADIÇÃO: Listener para recarregar a página
-  }
-
+  // Inicia a página mostrando o primeiro desafio
   mostrarConteudoModal(
     "conteudo-desafio",
     "Desafios - Explorando o Princípio da Indução Matemática"
   );
-
-  setupModalControls({
-    handleConfirmN2: handleConfirmN2,
-    handleNextStepN3: handleNextStepN3,
-    handleNextStepFromVerification: handleNextStepFromVerification,
-    handleConfirmN4: handleConfirmN4,
-    handleNextStepN4: handleNextStepN4,
-    handleNextStepFromVerification2: handleNextStepFromVerification2,
-    handleConfirmN5: handleConfirmN5,
-    handleNextStepN5: handleNextStepN5,
-    handleNextStepFromVerification3: handleNextStepFromVerification3,
-    enableMainButtons: enableMainButtons,
-    handleCloseVerificationAndEnableNext: handleCloseVerificationAndEnableNext,
-    handleCloseModal: handleCloseModal, // ADIÇÃO: Novo manipulador de fechamento
-  });
-
-  // Adiciona os event listeners para os botões "Gerar Gráfico" e "Limpar"
-  if (gerarGraficoBtn) {
-    gerarGraficoBtn.addEventListener("click", generatePlot);
-  }
-  if (limparPaginaBtn) {
-    limparPaginaBtn.addEventListener("click", resetPage);
-  }
 });

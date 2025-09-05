@@ -31,102 +31,97 @@
             Parábola
           </p>
 
-          <button id="resume-workshop-btn">Questionário Avaliativo</button>
+          <button id="resume-workshop-btn-1">Encerrar Exploração</button>
         </div>
       </fieldset>
     </div>
 
     <div id="resumeMain" style="visibility: hidden">
-      <header>
-        <div id="tit1">
-          <h1 id="Tit1">Explorando o Princípio da Indução Matemática</h1>
-        </div>
-        <div id="tit2">
-          <span id="Tit2"
-            >Uma Abordagem Visual com Faixas de Parábola</span
-          >
-        </div>
-      </header>
-
-      <main id="ResumoFinal">
-        <section>
-          <div>
-            <img
-              id="ResuIma"
-              src="../img/Logo1.png"
-              alt="Logo da Oficina"
-            />
-          </div>
-
-          <div>
-            <fieldset id="ResuFin">
-              <p id="tbem">
-                Nossa jornada de aprendizado sobre o Princípio da Indução
-                  Matemática termina aqui!
-            </p>
-              
-              <p>Agradecemos a sua participação!</p>
-
-              <p style="color:red; font-weight: bold;">Não esqueça de preencher o questionário!</p>
-
+      <fieldset id="ResumeModal1">
+          <fieldset class="ResumeContent1">
+              <div>
+                <img
+                  id="ResuIma"
+                  src="../img/Logo1.png"
+                  alt="Logo da Oficina"
+                  class="Resume-logo"
+                />
+              </div>
+      
+              <div>
               <p>
-                <b>DOUTORADO EM ENSINO DA MATEMÁTICA - PEMAT</b><br>
-                <b>PESQUISA EM ENSINO DA MATEMÁTICA</b><br>
-                <b>Orientadora:</b> <span class="NegIndLegRes">Márcia Fusaro</span><br>
-                <b>Orientanda:</b> <span class="NegIndLegRes">Greice Lacerda</span>
-              </p>
-            </fieldset>
+                <h2>DOUTORADO EM ENSINO DA MATEMÁTICA - PEMAT</h2>
+                <h3>PESQUISA EM ENSINO DA MATEMÁTICA</h3>
+                <h4>Orientadora: <i>Márcia Maria Fusaro Pinto</i></h4>
+                <h4>Doutoranda:</b> <span class="NegIndLegRes">Greice Keli Silva Lacerda</span></h4>
+              
+              <p id="ResuFin1">Nossa jornada de aprendizado sobre o Princípio da Indução Matemática termina aqui!
+              <p id="ResuFin2">Agradecemos a sua participação!</p>
 
-            <br>
-            <div class="controlesResume">
-              <button
-                id="Parer"
-                onclick="window.location.href='../index.html'"
-              >
-                Página Inicial
-              </button>
-              <button
-                id="Sair"
-                onclick="window.location.href='https://www.google.com.br'"
-              >
-                Sair
-              </button>
-            </div>
-          </div>
-        </section>
-      </main>
+              <p id="ResuFin3" style="color:red; font-weight: bold;">Não esqueça de preencher o questionário!</p>
+              </div>
+        </fieldset>
 
-      <footer>
-        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução
-        Matemática
-      </footer>
+                <div id="resume-workshop-btn-2">
+                <button id="resume-workshop-btn2">Questionário Avaliativo
+                </button>
+                
+                <button id="Parer" onclick="window.location.href='../index.html'">Página Principal
+                </button>
+                </div>
+      </fieldset>
     </div>
+<audio id="aplausos-audio" src="../sons/aplausos.mp3" preload="auto"></audio>
+    
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Seleciona os elementos da página
+    const ResumeModal = document.getElementById("Resume-modal");
+    const mainContentResume = document.getElementById("resumeMain");
+    const resumeButton1 = document.getElementById("resume-workshop-btn-1");
+    const resumeButton2 = document.getElementById("resume-workshop-btn2");
+    const parerButton = document.getElementById("Parer");
+    const applauseSound = document.getElementById("aplausos-audio");
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const ResumeModal = document.getElementById("Resume-modal");
-        const mainContentResume = document.getElementById("resumeMain");
-        const resumeButton = document.getElementById("resume-workshop-btn");
+    // Adiciona o evento de clique para o primeiro botão
+    if (resumeButton1) {
+        resumeButton1.addEventListener("click", () => {
+            // Esconde o modal inicial
+            ResumeModal.style.display = "none";
+            
+            // Mostra o conteúdo principal da página
+            mainContentResume.style.visibility = "visible";
+            
+            // 🎯 CORREÇÃO: Dispara os confetes em uma camada superior
+            confetti({
+                particleCount: 500,
+                spread: 100,
+                origin: { y: 0.5 },
+                zIndex: 99999 // Garante que os confetes fiquem na frente de tudo
+            });
 
-        resumeButton.addEventListener("click", () => {
-          // Abre o questionário em uma nova aba
-          window.open('https://forms.gle/TgVwTmSbAGRaXPhHA', '_blank');
-          
-          // Dispara os confetes
-          confetti({
-            particleCount: 200,
-            spread: 100,
-            origin: { y: 0.6 }
-          });
-
-          // Esconde o modal
-          ResumeModal.style.display = "none";
-          
-          // Mostra o conteúdo principal da página
-          // CORREÇÃO 3: Corrigido o nome da variável e o valor da propriedade 'visibility'
-          mainContentResume.style.visibility = "visible";
+            // Toca o som de aplausos
+            if (applauseSound) {
+                applauseSound.currentTime = 0;
+                applauseSound.play();
+            }
         });
-      });
-    </script>
+    }
+
+    // Adiciona o evento de clique para o botão do questionário
+    if (resumeButton2) {
+        resumeButton2.addEventListener("click", () => {
+            window.open('https://forms.gle/TgVwTmSbAGRaXPhHA', '_blank');
+        });
+    }
+
+    // Adiciona a funcionalidade correta para o botão "Página Principal"
+    if (parerButton) {
+        parerButton.addEventListener("click", () => {
+              window.location.href='../index.html';
+        });
+    }
+});
+</script>
   </body>
 </html>

@@ -32,8 +32,14 @@ legend {
   border-radius: 10px;
 }
 
+#DescObj:hover{
+  transform: scale(1.06);
+  background-color: #bee2be;
+}
+
 /* === Estilos dos Botões (Propriedades consolidadas) === */
-.controles button {
+
+.controles button{
   width: 200px;
   height: 50px;
   align-items: center;
@@ -56,7 +62,7 @@ legend {
   text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
 }
 
-.controles button:hover {
+.controles button:hover{
   background: linear-gradient(
     to right,
     #6bc06e,
@@ -103,6 +109,7 @@ legend {
 }
 
 /* Passo 2: Aplica a animação ao seu elemento #Elengend1 */
+
 #ConLeg2 {
   animation: piscar 2.5s infinite; /* Aplica a animação 'piscar', com duração de 2.5 segundos, repetindo infinitamente */
 }
