@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Da Visualização à Formalização - Explorando a Indução Visualmente
+    </title>
+    <link rel="stylesheet" href="../styles/estiloInstrucaoP22.css" />
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+
+    <style>
+      .formula-display{
+        font-family: "Times New Roman", Times, serif;
+        text-shadow: 1px 1px 4px #010238a2;
+        background-color: #f0f4f892;
+        border: 1px dashed #007bff;
+        border-radius: 8px;
+        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .formula-display {
+          margin: 2px;
+          padding: 3px;
+          max-width: 350px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+      }
+
+     .instrucP222 {
+        font-size:17px;
+        text-align: justify;
+        line-weight:1.5;
+        margin: 5px auto;
+        padding: 3px auto;
+        width: 360px;
+      }
+
+      .formula-display:hover,
+      #ExplorarAp11:hover {
+        transform: scale(1);
+        background-color: rgba(254, 254, 254, 0.39);
+        box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.9);
+      }
+    </style>
+  
+  </head>
+    <body>
+    <header>
+      <div id="tit1">
+        <h1>Explorando o Princípio da Indução Matemática</h1>
+      </div>
+      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+    </header>
+    <main>
+      <section>
+        <fieldset id="ExplorarAp11">
+            <legend style="text-align: center;"><h2>Instruções</h2></legend>
+                <div class="instrucP22">
+                    
+                    <h3>O Passo Indutivo</h3>
+                    
+                    <p class="instrucP222"> Esta etppa é a mais importante do Princípio da Indução Matemática: <strong>o Passo Indutivo</strong>.
+                    </p>
+                    
+                    <p class="instrucP222"> O objetivo é provar que, se a nossa fórmula for válida para um caso genérico k <span style="color:red">(a hipótese de indução)</span>, ela também será válida para o caso seguinte, <span style="color:green">k + 1</span>.
+                    </p>
+                    
+                    <p class="instrucP222"> Essa etapa conecta a intuição visual do gráfico com a formalidade da expressão matemática.
+                    </p>
+
+                    <p class="instrucP222"> O painel central formaliza a ideia do gráfico em uma expressão matemática precisa e demonstra como <strong>A(k + 1)</strong> é construída a partir de <strong>A(k)</strong>.
+                    </p>
+
+                    </div>
+            
+                    <div class="instrucP22">
+                        
+                        <h3>A Tradução para a Matemática</h3>
+                        <br>
+
+                        <p class="instrucP222"> A equação principal demonstra como A(k + 1) = <span style="color: #007bff"> A(k)</span> +
+                        <span style="color: #fd7505ff"> Área do Novo Retângulo</span> pode ser expandida para a expressão:
+                        </p>
+
+                        <p class="instrucP222"><div class="formula-display"> A(k + 1) = <span style="color: #007bff;">  <math>
+                                <mfrac>
+                                  <mn>1</mn>
+                                  <msup>
+                                    <mi>k</mi>
+                                    <mn>3</mn>
+                                  </msup>
+                                </mfrac>
+                                <mo>&middot;</mo>
+                                <mrow>
+                                  <mo>[</mo>
+                                  <msup>
+                                    <mn>1</mn>
+                                    <mn>2</mn>
+                                  </msup>
+                                  <mo>+</mo>
+                                  <msup>
+                                    <mn>2</mn>
+                                    <mn>2</mn>
+                                  </msup>
+                                  <mo>+</mo>
+                                  <mo>...</mo>
+                                  <mo>+</mo>
+                                  <msup>
+                                    <mrow>
+                                      <mo>(</mo>
+                                      <mrow>
+                                        <mi>k</mi>
+                                        <mo>&minus;</mo>
+                                        <mn>1</mn>
+                                      </mrow>
+                                      <mo>)</mo>
+                                    </mrow>
+                                    <mn>2</mn>
+                                  </msup>
+                                  <mo>]</mo>
+                                </mrow>
+                              </math></span>
+                              +
+                              <span style="color: #fd7e14;"> <math>
+                                <mfrac>
+                                  <mn>1</mn>
+                                  <msup>
+                                    <mrow>
+                                      <mo>(</mo>
+                                      <mrow>
+                                        <mi>k</mi>
+                                        <mo>&plus;</mo>
+                                        <mn>1</mn>
+                                      </mrow>
+                                      <mo>)</mo>
+                                    </mrow>
+                                  </msup>
+                                </mfrac>
+                                <mo>&middot;</mo>
+                              <msup>
+                      <mrow>
+                        <mo>[</mo>
+                        <mfrac>
+                          <mrow>
+                            <mrow>
+                              <mo>(</mo>
+                              <mrow>
+                                <mi>k</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                              </mrow>
+                              <mo>)</mo>
+                            </mrow>
+                            <mo>&minus;</mo>
+                            <mn>1</mn>
+                          </mrow>
+                          <mrow>
+                            <mi>k</mi>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                          </mrow>
+                        </mfrac>
+                        <mo>]</mo>
+                      </mrow>
+                      <mn>2</mn>
+                    </msup>
+                  </math></span></div><p>
+                        
+                        <p class="instrucP222"> Nessa fórmula, a primeira parte é associada a fórmula da nossa <span style="color:blue">(a hipótese de indução)</span>.
+                        </p>
+                        
+                        <p class="instrucP222"> E, a segunda parte é a fórmula para calcular a <span style="color: #fd7505ff"> área do novo retângulo</span> adicionado.
+                        </p>
+                    </div>
+
+                    <div class="instrucP22">
+                        
+                        <h3>O Desafio Final: A Simplificação Algébrica</h3>
+                
+                        <p class="instrucP222">Como indicado pela última frase, <b>"Agora, o desafio é simplificar essa expressão."</b>
+                        </p>
+
+                        <p class="instrucP222">Este é o objetivo final de qualquer passo indutivo: trabalhar algebricamente a expressão combinada de <strong>A(k + 1)</strong> para provar que ela pode ser reescrita na mesma forma da fórmula original, mas com <span style="color:green">k + 1</span> no lugar de <span style="color:blue">k</span>.
+                        </p>
+
+                        <p class="instrucP222"><strong>Próximo Passo</strong>: Clique no botão <b>"Conclusão"</b> para ver a demonstração da simplificação algébrica e finalizar a prova.</p>
+                        <br>
+
+                        <button id="ProximaEtapa" onclick="window.close();">
+                            Fechar Instruções
+                        </button>
+                    </div>
+        </fieldset>
+      </section>
+    </main>
+    <footer>
+      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+  </body>
+</html>
+

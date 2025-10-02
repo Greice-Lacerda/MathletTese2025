@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Explorando a Indução Visualmente - Explorando o Princípio da Indução Matemática
+      Explorando o PIM - Explorando a Indução Visualmente
     </title>
     <link rel="stylesheet" href="../styles/estiloInstrucaoP22.css" />
     <link rel="stylesheet" href="../styles/estilosComuns.css" />
@@ -19,47 +19,70 @@
     <main>
       <section>
         <fieldset id="ExplorarAp11">
-            <legend style="text-align: center;"><h2>Instruções</h2></legend>
+            <legend style="text-align: center;"><h2>Instruções de Uso da Ferramenta Visual</h2></legend>
                 <div class="instrucP22">
-                    <h3>Ferramenta de exploração visual do PIM!</h3>
-                    <p class="instrucP222"> Esta página foi projetada para que você possa descobrir, de forma interativa, como a soma das áreas de retângulos pode nos ajudar a entender o PIM.</p>
-
-                    <p class="instrucP222">O objetivo principal é que você entenda a ideia por trás do PIM e das aproximação das áreas.</p>
-
-                    <p class="instrucP222">Siga os passos abaixo para aproveitar ao máximo e boa exploração!</p>
                     
-                    <p class="instrucP222"><strong>Passo 1:</strong> O ponto de partida da sua exploração é a caixa de texto <b>"Digite o valor de n: "</b>.</p>
+                    <h2>Menu Principal</h2>
                     
-                    <p class="instrucP222"><strong>Passo 2:</strong> Após escolher um valor para n, clique no botão azul <span style="color: blue; font-weight: bold;">"Gerar Gráfico"</span>.
+                    <p class="instrucP222">
+                    &bullet; <strong> Definição do PIM: </strong> Exibe a definição do PIM.
                     </p>
+
+                    <p class="instrucP222">
+                    &bullet; <strong> O Problema: </strong> Exibe o problema proposto.</p>
+
+                    <p class="instrucP222">
+                    &bullet; <strong> Instruções: </strong> Exibe o guia de uso das ferramentas.
+                    </p><br><br>
+
+                    <h2>Menu Gerar Gráfico</h2>
+
+                    <p class="instrucP222">
+                    &bullet; <strong> Número de partes: </strong> Digite um valor para n.
+                    </p>
+
+                    <p class="instrucP222">
+                    &bullet; <strong> Gerar Gráfico:</strong> Clique para desenhar o gráfico.
+                    </p>
+
                     </div>
             
                     <div class="instrucP22">
                         
-                        <p class="instrucP222">A ferramenta irá automaticamente desenhar no campo <b>"Gráfico"</b> a parábola e os n - 1 retângulos inscritos. E no campo <b>"Tabela"</b>, exibirá todos os cálculos detalhados, mostrando a área de cada retângulo individualmente e a soma total.</p>
+                        <h2>Menu Inserção</h2>
+                        <br>
 
-                        <p class="instrucP222"> <strong>Passo 3:</strong> Observe o gráfico e veja como a forma dos retângulos preenche a <b>área sob a curva</b>. Analise a tabela e compare a área total calculada com a área real sob a curva (que é aproximadamente 0.333...).
+                        <p class="instrucP222"> Depois de gerar o gráfico inicial, utilize estes botões para explorar o passo indutivo da demonstração:
                         </p>
+                        <br>
 
-                        <p class="instrucP222"><strong>Passo 4:</strong> Clique no botão <span style="color:blue; font-weight: bold;">"Limpar"</span> e tente novamente com outros valores de n.</p>
+                        <p class="instrucP222">
+                        &bullet; <strong> Adicionar Retângulo: </strong> Clique neste botão para adicionar os elementos visuais que compõem a soma ou a área relacionada à proposição para o números de partes (n) escolhido.
+                        </p>
+                        <br>
 
-                        <p class="instrucP222"><b> &bullet; O que acontece quando você usa um valor para n bem grande, como 50 ou 100 ou 1000?</b></p>
+                        <p class="instrucP222">
+                        &bullet; <strong> Próximo Passo: </strong> Após construir a visualização para um determinado números de partes, este botão provavelmente premitirá avançar na demonstração.
+                        </p>
+                        
                     </div>
 
                     <div class="instrucP22">
-                        <h3>Menu Lateral</h3>
+                        
+                        <h2>Exemplo de Fluxo de Uso:</h2>
                 
-                        <p class="instrucP222">O menu à direita oferece recursos adicionais para a sua jornada:</p>
+                        <ol style="font-size: 15px; line-height: 1.1;margin:2px auto;">
+                        <li> Comece clicando em <b>"O Problema"</b> para entender a fórmula que será demonstrada.</li>
+                        <br>
 
-                        <p class="instrucP222">&bullet; <strong>O Problema</strong>: Relembre o problema.</p>
-                        
-                        <p class="instrucP222">&bullet; <strong>Instruções</strong>: Guia de navegação da página.</p>
-                        
-                        <p class="instrucP222">&bullet; <strong>Verificar Resposta</strong>: Exibe a área para n = k.</p>
+                        <li> No campo <b>"Número de partes"</b>, digite 2.</li><br>
 
-                        <p class="instrucP222">&bullet; <strong>Próxima Etapa</strong>: Libera acesso ao Passo 3.</p>
+                        <li> Clique em <b>"Gerar Gráfico"</b> para ver a visualização do caso base (n = 2).</li><br>
                         
-                        <p class="instrucP222">&bullet; <strong>Sair</strong>: Encerra a exploração.</p>
+                        <li>Use os botões <b>"Adicionar Retângulo"</b> e "Próximo Passo" para ver a construção da prova.</li><br>
+                        
+                        <li>Para explorar mais, repita o processo inserindo valores maiores no campo <b>"Número de partes"</b> e observe como o padrão se comporta.</li>
+                        </ol><br>
 
                         <button id="ProximaEtapa" onclick="window.close();">
                             Fechar Instruções

@@ -1,5 +1,6 @@
-// Passo3.js
-
+/**
+ * Função auxiliar para calcular y = x^2.
+ */
 const parabola = (x) => (Array.isArray(x) ? x.map((val) => val * val) : x * x);
 
 // Variável de estado global para o número de retângulos.
@@ -119,8 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const setKBtn = document.getElementById("set-k-btn");
   const numRectanglesInput = document.getElementById("numRectanglesInput");
   const etapa1 = document.getElementById("etapa-1");
-  const etapa2 = document.getElementById("next-step-btn");
-   const etapa3 = document.getElementById("next-step-btn2");
+  const etapa2 = document.getElementById("etapa-2");
   const etapaFrom2Hab = document.getElementById("etapaFrom2");
   const btnFormalizar = document.getElementById("btn-formalizar");
   const btnConcluir = document.getElementById("btn-concluir");
@@ -155,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const termoIndutivo = `<span class="termo-indutivo">A<sub>${numTermos}</sub></span>`;
       corpoFormula = `<span class="termo-hipotese">(${termosHipoteseHTML})</span> + ${termoIndutivo}`;
       etapaFrom2Hab.classList.remove("hidden");
+      btnConcluir.classList.remove("hidden");
     } else {
       const termosHipotese = [];
       for (let i = 1; i < numTermos; i++) {
@@ -177,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (setKBtn) {
     setKBtn.addEventListener("click", () => {
       let newK = parseInt(numRectanglesInput.value);
-      if (isNaN(newK) || newK <= 0) {
+      if (isNaN(newK) || newK < 1) {
         alert("Por favor, insira um número maior ou igual a 1.");
         return;
       }
@@ -229,54 +230,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Estado Inicial da Página ---
   if (numRectanglesInput) {
     numRectanglesInput.value = "";
+      btnConcluir.classList.add("hidden");
   }
   // AJUSTE: Garante que o botão comece desabilitado, conforme solicitado.
   // (Para maior robustez, adicione também 'disabled' no seu arquivo HTML)
   addRectangleBtn.disabled = true;
-});
-
-// Adicione este código dentro do seu evento "DOMContentLoaded"
-
-document.addEventListener("DOMContentLoaded", () => {
-  // --- Início do código para o botão "Próximo Passo" ---
-
-  // 1. Seleciona os botões relevantes da página
-  const addRectangleBtn = document.getElementById('add-rectangle-btn');
-  const nextStepBtn = document.getElementById('next-step-btn2');
-  const generateGraphBtn = document.getElementById('set-k-btn');
-
-  // Garante que os botões existem antes de adicionar os eventos
-  if (!addRectangleBtn || !nextStepBtn || !generateGraphBtn) {
-    console.error("Um ou mais botões não foram encontrados no HTML.");
-    return;
-  }
-
-  // 2. Lógica para FAZER O BOTÃO APARECER
-  // Quando o usuário adiciona um retângulo...
-  addRectangleBtn.addEventListener('click', () => {
-    // ...o botão "Próximo Passo" é revelado.
-    console.log("Retângulo adicionado. Mostrando o botão 'Próximo Passo'.");
-    nextStepBtn.classList.remove('hidden');
-  });
-
-  // 3. Lógica para A AÇÃO DO BOTÃO
-  // Quando o usuário clica em "Próximo Passo"...
-  nextStepBtn.addEventListener('click', () => {
-    // ...ele é redirecionado para a próxima página da lição.
-    console.log("Botão 'Próximo Passo' clicado. Redirecionando...");
-    // Altere o link abaixo para o destino correto, se necessário.
-    window.location.href = "../pages/Passo33.html";
-  });
-  
-  // 4. Lógica para FAZER O BOTÃO DESAPARECER (Reset)
-  // Se o usuário gerar um novo gráfico...
-  generateGraphBtn.addEventListener('click', () => {
-    // ...o botão "Próximo Passo" é escondido novamente para reiniciar o fluxo.
-    console.log("Novo gráfico gerado. Escondendo o botão 'Próximo Passo'.");
-    nextStepBtn.classList.add('hidden');
-  });
-
-  // --- Fim do código para o botão "Próximo Passo" ---
-  
-  // (O resto do seu código, como a função generateInductionPlot, continua aqui)
+  btnConcluir.classList.add("hidden");
 });

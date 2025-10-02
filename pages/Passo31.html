@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Explorando a Prova do Passo de Indução Matemática
+    </title>
+
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+    <link rel="stylesheet" href="../styles/estiloPasso3.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Geist+Mono:wght@100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Parisienne&family=Playwrite+HR+Lijeva:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <script type="module" src="../js/Passo3.js"></script>
+  </head>
+  <body>
+    <header>
+      <div id="tit1">
+        <h1>Explorando o Princípio da Indução Matemática</h1>
+      </div>
+      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+    </header>
+
+    <main>
+      <section class="Explorar11">
+        <fieldset class="columnProvaP3_1">
+
+                <p class="ProvaP3_1">
+                  O objetivo aqui é provar que para todo n natural maior ou
+                  igual a 2, a área A(n) do polígono retangular inscrito na
+                  parábola y = x<sup>2</sup> no intervalo de [0, 1], pode ser
+                  expressa por:
+                </p>
+                <p class="ProvaP3_1">
+                  <math display="block" class="ProvaP3_1">
+                    <mi>A</mi>
+                    <mrow>
+                      <mo>(</mo>
+                      <mi>n</mi>
+                      <mo>)</mo>
+                    </mrow>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mn>1</mn>
+                      <msup>
+                        <mi>n</mi>
+                        <mn>3</mn>
+                      </msup>
+                    </mfrac>
+                    <mo>&middot;</mo>
+                    <mrow>
+                      <mo>[</mo>
+                      <msup>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                      </msup>
+                      <mo>+</mo>
+                      <msup>
+                        <mn>2</mn>
+                        <mn>2</mn>
+                      </msup>
+                      <mo>+</mo>
+                      <mo>...</mo>
+                      <mo>+</mo>
+                      <msup>
+                        <mrow>
+                          <mo>(</mo>
+                          <mrow>
+                            <mi>n</mi>
+                            <mo>&minus;</mo>
+                            <mn>1</mn>
+                          </mrow>
+                          <mo>)</mo>
+                        </mrow>
+                        <mn>2</mn>
+                      </msup>
+                      <mo>]</mo>
+                    </mrow>
+                  </math>
+                </p>
+                <p class="ProvaP3_1">
+                  Pela Hipótese de Indução, assumimos que a fórmula da área A(k)
+                  funciona para <strong>n = k</strong>, do seguinte modo:
+                </p>
+                <p class="ProvaP3_1">
+                  <math display="block" class="ProvaP3_1">
+                    <mi>A</mi>
+                    <mrow>
+                      <mo>(</mo>
+                      <mi>k</mi>
+                      <mo>)</mo>
+                    </mrow>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mn>1</mn>
+                      <msup>
+                        <mi>k</mi>
+                        <mn>3</mn>
+                      </msup>
+                    </mfrac>
+                    <mo>&middot;</mo>
+                    <mrow>
+                      <mo>[</mo>
+                      <msup>
+                        <mn>1</mn>
+                        <mn>2</mn>
+                      </msup>
+                      <mo>+</mo>
+                      <msup>
+                        <mn>2</mn>
+                        <mn>2</mn>
+                      </msup>
+                      <mo>+</mo>
+                      <mo>...</mo>
+                      <mo>+</mo>
+                      <msup>
+                        <mrow>
+                          <mo>(</mo>
+                          <mrow>
+                            <mi>k</mi>
+                            <mo>&minus;</mo>
+                            <mn>1</mn>
+                          </mrow>
+                          <mo>)</mo>
+                        </mrow>
+                        <mn>2</mn>
+                      </msup>
+                      <mo>]</mo>
+                    </mrow>
+                  </math>
+                </p>
+                <p class="ProvaP3_1">
+                  Nosso desafio é provar que A(k) também funciona para
+                  <strong>n = k + 1</strong>. Antes de usarmos a álgebra, vamos
+                  entender como isso funciona visualmente.
+                </p>
+                <div>
+                    
+                  <button class="next-step-btn1"  onclick="window.open('Passo3.html', '_self')">Voltar</button>
+
+                  <button class="next-step-btn" data-step="2" onclick="window.open('Passo32.html', '_self')">
+                      Começar a Visualização
+                    </button>
+                  </div>
+              </div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+  </body>
+</html>
