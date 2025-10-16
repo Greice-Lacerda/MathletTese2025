@@ -16,52 +16,58 @@
   <link rel="stylesheet" href="../styles/estiloPasso1.css" />
 </head>
 
-<body>
-  <main class="step-main-container">
-    <h1 class="visually-hidden">Exploração Interativa: Caso Base</h1>
+<body class="page-step1">
+  
+  <main>
+    <div class="exploration-panel">
+      <div class="main-content-grid">
 
-    <div class="main-grid">
-      <div class="column-graphics">
-        <h2>Gráfico e Tabela</h2>
-        <div class="graphics-content">
-          <img id="grafico-container" src="../img/ParabolaQuizz.jpg" alt="Parábola com retângulos para n=2" />
-          <img id="grafico-container2" class="hidden" src="../img/ParabolaQuizz2.jpg"
-            alt="Parábola com retângulos para n=3" />
-          <div id="table-container" class="hidden"></div>
+        <div class="column column-graphics">
+          <h2 class="column-title">Gráfico e Tabela</h2>
+          <div class="column-content">
+            <img id="grafico-container" src="../img/ParabolaQuizz.jpg" alt="Parábola com retângulos para n=2" />
+            <img id="grafico-container2" class="hidden" src="../img/ParabolaQuizz2.jpg"
+              alt="Parábola com retângulos para n=3" />
+            <div id="table-container" class="hidden"></div>
+          </div>
         </div>
+
+        <div class="column column-quiz">
+          <h2 class="column-title">Quizz</h2>
+          <div class="column-content">
+            <div id="perguntas"></div>
+            <div id="alternativas"></div>
+          </div>
+        </div>
+
+        <aside class="column column-menu">
+          <h2 class="column-title">Menu</h2>
+          <nav class="column-content">
+            <button id="voltarTeoria">O Problema</button>
+            <button id="Instrucao">Instruções</button>
+            <button id="Verificar">Definição do PIM</button>
+            <button id="Sair">Sair</button>
+          </nav>
+        </aside>
       </div>
 
-      <div class="column-quiz">
-        <h2>Quizz: Caso Base</h2>
-        <div id="perguntas"></div>
-        <div id="alternativas"></div>
+      <div class="messages-area">
         <div id="quiz-progress-container">
-          <div id="quiz-progress-bar" class="hidden"></div>
           <span id="quiz-progress-text"></span>
+          <div id="quiz-progress-bar-wrapper">
+            <div id="quiz-progress-bar" class="hidden"></div>
+          </div>
         </div>
-      </div>
-
-      <aside class="column-menu">
-        <h2>Menu</h2>
-        <nav>
-          <button id="problema-btn">O Problema</button>
-          <button id="instrucoes-btn">Instruções</button>
-          <button id="pim-btn">Definição do PIM</button>
-          <button id="sair-btn">Sair</button>
-        </nav>
-      </aside>
-    </div>
-
-    <div class="message-area">
-      <h2>Mensagens</h2>
-      <div id="Justific"></div>
-      <div class="action-buttons">
-        <button id="ProximaPerguntaBtn" class="hidden">Próxima Pergunta</button>
-        <div id="ProximaEtapa" class="hidden">
-          <button id="finalizarBtn">Finalizar Quizz</button>
-        </div>
-        <div id="RefazerQuizz" class="hidden">
-          <button id="refazerBtn">Reiniciar Quizz</button>
+        <h2 class="column-title">Mensagens</h2>
+        <div id="Justific" class="column-content"></div>
+        <div class="action-buttons">
+          <button id="ProximaPerguntaBtn" class="hidden">Próxima Pergunta</button>
+          <div id="ProximaEtapa" class="hidden">
+            <button id="finalizarBtn">Finalizar Quizz</button>
+          </div>
+          <div id="RefazerQuizz" class="hidden">
+            <button id="refazerBtn">Reiniciar Quizz</button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,195 +1,243 @@
 /* ========================================================================== */
-/* ESTILOS EXCLUSIVOS PARA A PÁGINA PASSO1.HTML (Layout Interativo)         */
+/* ESTILOS EXCLUSIVOS PARA A PÁGINA PASSO1.HTML (Painel de Exploração)      */
 /* ========================================================================== */
 
-/* 1. Reset e Configurações Globais da Página */
-header,
-footer {
-  display: none !important;
-}
-
-body {
-  /* Paleta de cores quentes */
-  background: linear-gradient(135deg, #4d2f1d, #6f4e37, #a67b5b, #c8a183);
-  font-family: 'Roboto Mono', monospace;
-  color: #fff;
+/* 1. Overrides para Layout de Tela Cheia */
+body.page-step1 {
+  grid-template-rows: min-content 1fr min-content;
   overflow: hidden;
-  /* Garante que não haja rolagem */
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
+body.page-step1 main {
+  padding: 1.5rem;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+  background-color: transparent;
 }
 
-/* 2. Layout Principal */
-.step-main-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-  height: 100vh;
-  /* Ocupa a tela inteira */
-  padding: 1rem;
-  align-items: center;
-  justify-content: center;
+/* 2. Layout do Painel Principal de Exploração */
+.exploration-panel {
+  width: 100wh;
+  height: 90vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1.5rem;
+  border-radius: 15px;
+  background-color: transparent;
 }
 
-.main-grid {
+.main-content-grid {
   display: grid;
   grid-template-columns: 1fr;
-  /* Padrão Mobile: empilhado */
-  gap: 1rem;
-  width: 100%;
-  flex-grow: 1;
-  /* Faz a grade ocupar o máximo de espaço vertical */
+  gap: 0.8rem;
+  padding: 0.8rem;
+  overflow: hidden;
+  background-color: #00111200;
+}
+
+/* 3. Estilo Geral das Colunas SEM ROLAGEM */
+.column {
+  background-color: rgba(48, 10, 10, 0.233);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
-/* 3. Estilo das Colunas */
-.column-graphics,
-.column-quiz,
-.column-menu,
-.message-area {
-  background-color: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 192, 128, 0.5);
-  border-radius: 15px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
-h2 {
-  color: #ffc080;
+.column-title {
+  color: #032b04;
+  text-shadow: 2px 2px 5px rgba(10, 10, 10, 0.5);
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   flex-shrink: 0;
+  font-size: clamp(1rem, 2.5vmin, 1.4rem);
 }
 
-/* Coluna de Gráficos */
-.graphics-content {
+.column-content {
+  flex-grow: 1;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 1rem;
+}
+
+/* (Estilos de .column-graphics, .column-quiz, .column-menu permanecem os mesmos) */
+.column-graphics .column-content {
+  align-items: center;
+}
+
+.column-graphics img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+#perguntas {
+  font-weight: bold;
+  text-align: justify;
+  font-size: clamp(0.8rem, 3vmin, 1rem);
+  margin-bottom: 1rem;
+  color: rgb(8, 0, 0);
+}
+
+#alternativas {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
   flex-grow: 1;
 }
 
-.graphics-content img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  border: 2px solid rgba(255, 192, 128, 0.5);
-  cursor: pointer;
-  /* Adiciona um cursor para indicar interatividade */
-  /* NOVO: Adiciona uma transição suave para o efeito de filtro */
-  transition: filter 0.3s ease-in-out;
-}
-
-/* NOVO: Aplica o filtro de inversão de cores no hover */
-.graphics-content img:hover {
-  filter: invert(1);
-}
-
-
-/* Coluna do Quizz */
 #alternativas button {
-  display: block;
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 0.5rem;
-  border-radius: 8px;
-  border: 2px solid #c8a183;
-  background-color: transparent;
-  color: #fff;
+  font-size: clamp(0.75rem, 2.5rem, 0.95rem);
+  background: transparent;
+  border: none;
+  color: rgb(14, 0, 0);
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 #alternativas button:hover {
-  background-color: #c8a183;
-  color: #4d2f1d;
+  transform: scale(1);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 }
 
-/* Coluna de Menu */
 .column-menu nav {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   justify-content: center;
-  flex-grow: 1;
+  gap: 25px;
 }
 
 .column-menu button {
-  padding: 1rem;
-  border-radius: 8px;
-  border: 2px solid #a67b5b;
-  background-color: transparent;
-  color: #ffc080;
-  font-weight: bold;
+  width: 98%;
+  flex-shrink: 0;
+  padding: 10px;
+  font-size: clamp(0.8rem, 1.8vmin, 1rem);
+  border-radius: 10px;
+  color: white;
   cursor: pointer;
-  transition: all 0.2s ease;
+  border: outset 4px #4caf50;
+  background: linear-gradient(to right, #064108, #09680e, #56d25a, #aff7b1);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
 }
 
 .column-menu button:hover {
-  background-color: #a67b5b;
-  color: #fff;
+  transform: scale(1);
+  background: linear-gradient(to right, #86f7f1, #35aef5, #2e0f57, #250133);
+  color: rgb(245, 245, 248);
+  border-color: #ece0e0;
+  box-shadow: 8px 8px 15px rgba(248, 247, 247, 0.5);
 }
 
-/* Área de Mensagens */
-.message-area {
+
+/* --- SEÇÃO MODIFICADA --- */
+/* 4. Área de Mensagens com Altura Fixa */
+.messages-area {
+  background-color: rgba(48, 10, 10, 0.233);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* MODIFICADO: Altura padrão automática para mobile */
+  height: auto;
+  min-height: 150px;
+  /* Garante um tamanho mínimo em telas pequenas */
+}
+
+#quiz-progress-container {
   width: 100%;
-  min-height: 100px;
-  flex-shrink: 0;
+  order: -1;
+}
+
+#quiz-progress-bar-wrapper {
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  height: 20px;
+}
+
+#quiz-progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: #4caf50;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+#quiz-progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+#Justific {
+  font-size: clamp(0.9rem, 2.2vmin, 1.1rem);
+  color: #001112;
+  font-weight: bold;
+  flex-grow: 1;
+  /* Permite que o texto preencha o espaço disponível */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* MODIFICADO: Permite rolagem interna APENAS para o texto, se necessário */
+  overflow-y: auto;
 }
 
 .action-buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .action-buttons button {
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  border: 2px solid #ffc080;
-  background-color: #a67b5b;
-  color: #fff;
+  padding: 10px 20px;
+  font-size: clamp(0.8rem, 1.8vmin, 1rem);
   font-weight: bold;
+  border-radius: 10px;
+  color: white;
   cursor: pointer;
-  transition: all 0.2s ease;
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(to right, #6b0505, #e81414, #f69605);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
 }
 
 .action-buttons button:hover {
-  background-color: #ffc080;
-  color: #4d2f1d;
+  transform: scale(1.05);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
 }
 
 
-/* 4. Responsividade */
+/* 5. Responsividade */
 @media (min-width: 1024px) {
-  .main-grid {
-    grid-template-columns: 1.2fr 1.5fr 1fr;
+  .main-content-grid {
+    grid-template-columns: 1fr 1.5fr 0.8fr;
   }
 
-  .message-area {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    right: 1rem;
-    width: auto;
-  }
-
-  .step-main-container {
-    padding-bottom: 150px;
+  /* --- MODIFICADO: Aplica a altura fixa apenas em telas maiores --- */
+  .messages-area {
+    height: 180px;
+    /* Altura fixa para desktops */
   }
 }
