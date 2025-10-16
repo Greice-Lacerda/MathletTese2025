@@ -66,8 +66,10 @@ section {
 }
 
 .instrucP22 {
-  width: 400px;
-  height: auto;
+  width: 490px;
+  max-width: 490px;
+  height: 570px;
+  min-height: 570px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,14 +86,14 @@ h3 {
 }
 
 .instrucP222{
-    line-height: 1.2;
+    line-height: 1.5;
     margin-top:2px;
     padding: 1px;
 }
 
 #ExplorarAp11 {
   width: 1200px;
-  height: 440px;
+  height: 580px;
   display: flex;
   flex-direction: row;
   text-align: justify;

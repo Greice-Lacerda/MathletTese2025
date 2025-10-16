@@ -1,115 +1,93 @@
-/* --- Estilo da página de Objetivos Perfeito--- */
+/* ========================================================================== */
+/* ESTILOS EXCLUSIVOS PARA A PÁGINA DESCRICAO.HTML                            */
+/* ========================================================================== */
 
-fieldset {
-  border-color: rgba(202, 248, 247, 0.2);
-  background-color: rgb(252, 252, 250, 0.2);
-  border-radius: 20px;  
-    margin: 2px 20px;
-    padding: 2px;
-  width: 95%;
-  height: 290px;
-  box-sizing: border-box;  
-  box-shadow: #000 10px 10px 20px;
-}
-
-legend {
-  font-style: italic;
-  font-size: 20px;
-  color: transparent;
-}
-
-.controles {
-  width: 95%;
-  height: 90px;
+/* 1. Ajuste do Layout Principal da Página */
+main {
   display: flex;
-  flex-direction: row; /* Correção da direção */
-  align-items: flex-start;
-  margin: 0 auto;
-  padding: 0 auto;
-  background-color: transparent;
-  box-shadow: #000 10px 10px 20px;
-  border: 1px solid rgb(5, 44, 1, 0.5);
-  border-radius: 10px;
-}
-
-#DescObj:hover{
-  transform: scale(1.06);
-  background-color: #bee2be;
-}
-
-/* === Estilos dos Botões (Propriedades consolidadas) === */
-
-.controles button{
-  width: 200px;
-  height: 50px;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-    justify-content: center;
-    margin: 20px 25px auto;
-    padding: 10px 5px auto;
-  font-size: 16px;
-  border-radius: 10px;
-  border: outset 6px #4caf50;
-  background: linear-gradient(
-    to right,
-    #064108,
-    #09680e,
-    #56d25a,
-    #aff7b1,
-    #7a9c7d
-  );
-  color: white;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
+  gap: 2rem;
+  padding: 1rem;
+  height: 100%;
 }
 
-.controles button:hover{
-  background: linear-gradient(
-    to right,
-    #6bc06e,
-    #9ed4a0,
-    #bee2be,
-    #d8ead8,
-    #f0f9f0
-  );
-  border: outset 6px #6bc06e;
-  scale: 1.1;
-  color: white;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+/* 2. Layout do Conteúdo em Duas Colunas */
+.description-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
 }
 
-.controles button:active {
-  transform: scale(0.95);
+.description-column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-/* Alternativa para um piscar mais abrupto */
+/* ========================================================================== */
+/* 3. NOVAS REGRAS: Moldura Circular e Espaçamento da Lista                   */
+/* ========================================================================== */
 
-@keyframes piscar-seco {
-  50% {
-    visibility: hidden;
+/* Estilo para a imagem com moldura circular */
+.description-column img {
+  width: 250px;   /* Define uma largura fixa */
+  height: 250px;  /* Altura igual à largura para formar um quadrado */
+  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+  border-radius: 50%; /* Transforma a moldura em um círculo perfeito */
+  border: 15px double var(--color-border); /* Usa a variável de cor do arquivo comum */
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo para criar espaçamento duplo entre os itens da lista */
+.welcome-text ul li {
+  margin-bottom: 0.8rem; /* Aumenta o espaço abaixo de cada item */
+  text-align: justify;
+}
+
+/* Remove a margem do último item para um alinhamento visual melhor */
+.welcome-text ul li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ========================================================================== */
+/* 4. Responsividade                                                        */
+/* ========================================================================== */
+
+/* A partir de 768px (tablets), muda para o layout de duas colunas lado a lado */
+@media (min-width: 768px) {
+  .description-content {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .description-column img {
+    width: 400px;
+    height: 270px;
   }
 }
 
-#ConLeg1 {
-  animation: piscar-seco 1s infinite;
-  animation: alternate;
-}
-
-/* Passo 1: Define a animação de piscar */
-@keyframes piscar {
-  0% {
-    opacity: 1; /* Totalmente visível no início */
-  }
-  50% {
-    opacity: 0; /* Totalmente invisível no meio da animação */
-  }
-  100% {
-    opacity: 1; /* Totalmente visível no final */
+/* Para telas maiores, podemos aumentar a imagem */
+@media (min-width: 1024px) {
+  .description-column img {
+    width: 320px;
+    height: 320px;
   }
 }
 
-/* Passo 2: Aplica a animação ao seu elemento #Elengend1 */
-
-#ConLeg2 {
-  animation: piscar 2.5s infinite; /* Aplica a animação 'piscar', com duração de 2.5 segundos, repetindo infinitamente */
+/* A estilização dos botões no .controls já é herdada de estilosComuns.css */
+* Estilo específico para botões de navegação/ação */
+#theory-btn {
+  background: linear-gradient(135deg, #010238, #208bf0);
+  border: 2px outset #8ae1f3;
+}
+#theory-btn {
+  background: linear-gradient(135deg, #002e00, #068531);
+  border-color: #d3f1cf;
 }

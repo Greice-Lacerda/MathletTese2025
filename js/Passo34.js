@@ -124,10 +124,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const etapa1 = document.getElementById("etapa-1");
   const etapa2 = document.getElementById("etapa-2");
   const etapaFrom2Hab = document.getElementById("etapaFrom2");
-  const btnFormalizar = document.getElementById("btn-formalizar");
-  const btnConcluir = document.getElementById("btn-concluir");
-  const plotDiv = document.getElementById("plotGrfM32");
-  const formulaContainer = document.getElementById("formula-dinamica");
+  const btnConcluir2 = document.getElementById("btn-concluir2");
+  const plotDiv = document.getElementById("plotGrfM32"); // CORREÇÃO: Declarado aqui
+  const formulaContainer = document.getElementById("formula-dinamica"); // CORREÇÃO: Declarado aqui
 
 
   // Função para renderizar a fórmula (seu código original, sem alterações)
@@ -159,6 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const termosHipoteseHTML = `${primeiroTermo} + ... + ${ultimoTermoHipotese}`;
       const termoIndutivo = `<span class="termo-indutivo">A<sub>${numTermos}</sub></span>`;
       corpoFormula = `<span class="termo-hipotese">(${termosHipoteseHTML})</span> + ${termoIndutivo}`;
+      etapaFrom2Hab.classList.remove("hidden");
+      btnConcluir2.classList.remove("hidden");
     } else {
       const termosHipotese = [];
       for (let i = 1; i < numTermos; i++) {
@@ -199,44 +200,14 @@ document.addEventListener("DOMContentLoaded", () => {
       generateInductionPlot(k, k - 1); // k-1 é o índice do último retângulo
       renderizarFormulaDinamica(k);
       numRectanglesInput.value = k;
-
-      if (k === 11) {
-        // Se k for exatamente 10, remove a classe 'hidden' do botão
-        btnFormalizar.classList.remove("hidden");
-      }
     });
   }
 
-  if (btnFormalizar) {
-    btnFormalizar.addEventListener("click", () => {
-
-      if (plotDiv && typeof Plotly !== "undefined") {
-        Plotly.purge(plotDiv);
-      }
-      if (formulaContainer) {
-        formulaContainer.innerHTML = "";
-      }
-      if (numRectanglesInput) {
-        numRectanglesInput.value = "";
-      }
-
-      k = 1;
-
-      // CORREÇÃO: Usa a variável 'etapaFrom2Hab' que foi declarada no topo.
-      if (etapaFrom2Hab) {
-        etapaFrom2Hab.classList.add("hidden");
-      }
-
-      if (etapa1) {
-        etapa1.classList.add("hidden");
-      }
-      
-      if (addRectangleBtn) {
-        addRectangleBtn.disabled = true;
-      }
+  if (btnConcluir2) {
+    btnConcluir2.addEventListener("click", () => {
+      window.location.href = "./Passo35.html";
     });
-  
-    }
+  }
 
   // --- Estado Inicial da Página ---
   function inicializarPagina() {
@@ -246,8 +217,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (addRectangleBtn) {
         addRectangleBtn.disabled = true;
       }
-      if (btnFormalizar) {
-        btnFormalizar.classList.add("hidden");
+      if (btnConcluir2) {
+        btnConcluir2.classList.add("hidden");
       }
       // Garante que o gráfico comece vazio
       if (plotDiv && typeof Plotly !== "undefined") {

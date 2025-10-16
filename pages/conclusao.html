@@ -1,321 +1,1352 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Formalização da Explorando do PIM
+        Da Visualização à Formalização - Explorando a Indução Visualmente
     </title>
     <link rel="stylesheet" href="../styles/estiloInstrucaoP22.css" />
     <link rel="stylesheet" href="../styles/estilosComuns.css" />
 
-    <style>
-      .formula-display{
-        font-family: "Times New Roman", Times, serif;
-        text-shadow: 1px 1px 4px #010238a2;
-        background-color: #f0f4f892;
-        border: 1px dashed #007bff;
-        border-radius: 8px;
-        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
+</head>
 
-      .formula-display {
-          margin: 2px;
-          padding: 3px;
-          max-width: 380px;
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-      }
-
-     .instrucP222 {
-        font-size:16px;
-        text-align: justify;
-        line-weight:1.2;
-        margin: 5px auto;
-        padding: 2px;
-        width: 400px;
-      }
-
-      .formula-display:hover,
-      #ExplorarAp11:hover {
-        transform: scale(1);
-        background-color: rgba(254, 254, 254, 0.39);
-        box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.9);
-      }
-
-      strong{
-       color: blue;
-      }
-
-      span{
-        margin: 2px;
-      }
-    </style>
-  
-  </head>
-    <body>
+<body>
     <header>
-      <div id="tit1">
-        <h1>Explorando o Princípio da Indução Matemática</h1>
-      </div>
-      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+        <div id="tit1">
+            <h1>Explorando o Princípio da Indução Matemática</h1>
+        </div>
+        <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
     </header>
     <main>
-      <section>
-        <fieldset id="ExplorarAp11">
-            <legend style="text-align: center;"><h2>Formalização da Explorando do PIM</h2></legend>
+        <section>
+            <fieldset id="ExplorarAp11">
+                <legend style="text-align: center;">
+                    <h2>Prova do Passo de Indução</h2>
+                </legend>
                 <div class="instrucP22">
-                    
+
+                    <h3>Área do K - 1 retângulos</h3>
+
                     <p class="instrucP222">
 
-                        <h2>Resumo da Jornada</h2>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            background-color: #f4f7f9;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        .main-title {
-            text-align: center;
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-        }
-        .column {
-            flex: 1;
-            min-width: 300px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            padding: 20px;
-            border-top: 5px solid #3498db;
-        }
-        .column h2 {
-            color: #3498db;
-            border-bottom: 1px solid #ecf0f1;
-            padding-bottom: 8px;
-            margin-top: 0;
-        }
-        p {
-            text-align: justify;
-        }
-        .formula-box {
-            background-color: #ecf0f1;
-            border-left: 5px solid;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 5px 5px 0;
-            overflow-x: auto;
-        }
-        .highlight-hypothesis {
-            border-left-color: #3498db; /* Azul para Hipótese */
-        }
-        .highlight-thesis {
-            border-left-color: #2ecc71; /* Verde para Tese */
-        }
-        .highlight-step {
-            border-left-color: #e67e22; /* Laranja para o Passo Chave */
-        }
-        .highlight-conclusion {
-            border-left-color: #9b59b6; /* Roxo para Conclusão */
-        }
-        strong {
-            color: #2c3e50;
-        }
-        math { 
-            font-size: 1.1em; 
-            padding: 5px;
-        }
-    </style>
-</head>
-<body>
+                        Por hipotese de indução, para todo k ≥ 2, a expresão a seguir é válida:
 
-    <h1 class="main-title">Resolvendo o Passo de Indução Detalhadamente</h1>
-    <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
-        O objetivo é provar, usando o <strong>Princípio da Indução Matemática</strong>, que a fórmula para a área A(k) é válida para todo k ≥ 2. O passo de indução consiste em demonstrar que, se a fórmula for verdadeira para k, ela também será verdadeira para k+1.
-    </p>
+                    <p class="instrucP222"><span style="color: #007bff;">A(k) =
+                            <math display="inline">
 
-    <div class="container">
-        <div class="column">
-            <h2>Etapa 1: Definir a Hipótese de Indução (P(k))</h2>
-            <p>
-                Primeiro, estabelecemos nossa <strong>Hipótese de Indução</strong>. Assumimos que a fórmula para a área A(k), representada pelos retângulos azuis, é verdadeira para um número k arbitrário.
-            </p>
-            <div class="formula-box highlight-hypothesis">
-                <strong>Hipótese P(k):</strong>
-                <math display="block">
-                    <mrow>
-                        <mi>A</mi><mo>(</mo><mi>k</mi><mo>)</mo>
-                        <mo>=</mo>
-                        <mfrac><mn>1</mn><msup><mi>k</mi><mn>3</mn></msup></mfrac>
-                        <mrow>
-                            <mo>[</mo>
-                            <msup><mn>1</mn><mn>2</mn></msup>
-                            <mo>+</mo><msup><mn>2</mn><mn>2</mn></msup>
-                            <mo>+</mo><mo>&cdots;</mo>
-                            <mo>+</mo><msup><mrow><mo>(</mo><mi>k</mi><mo>&minus;</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup>
-                            <mo>]</mo>
-                        </mrow>
-                    </mrow>
-                </math>
-            </div>
+                                <mrow>
+                                    <mfrac>
+                                        <mrow>
+                                            <mn>1</mn>
+                                        </mrow>
+                                        <mrow>
 
-            <h2>Etapa 2: Definir a Tese de Indução (P(k+1))</h2>
-            <p>
-                Em seguida, definimos nossa <strong>Tese de Indução</strong>. Esta é a fórmula que queremos provar que é verdadeira. Ela deve ter a mesma estrutura da hipótese, mas com k substituído por k+1.
-            </p>
-            <div class="formula-box highlight-thesis">
-                <strong>Tese P(k+1):</strong>
-                <math display="block">
-                    <mrow>
-                        <mi>A</mi><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo>
-                        <mo>=</mo>
-                        <mfrac><mn>1</mn><msup><mrow><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>3</mn></msup></mfrac>
-                        <mrow>
-                            <mo>[</mo>
-                            <msup><mn>1</mn><mn>2</mn></msup>
-                            <mo>+</mo><msup><mn>2</mn><mn>2</mn></msup>
-                            <mo>+</mo><mo>&cdots;</mo>
-                            <mo>+</mo><msup><mi>k</mi><mn>2</mn></msup>
-                            <mo>]</mo>
-                        </mrow>
-                    </mrow>
-                </math>
-            </div>
-        </div>
+                                            <msup>
+                                                <mi>k</mi>
+                                                <mrow>
+                                                    <mn>3</mn>
+                                                </mrow>
+                                            </msup>
+                                        </mrow>
+                                    </mfrac>
+                                </mrow>
 
-        <div class="column">
-            <h2>Etapa 3: Montar a Expressão para A(k+1)</h2>
-            <p>
-                Conforme a ferramenta visual, a área A(k+1) (azul + laranja) é a soma da área A(k) com a área do novo retângulo laranja.
-            </p>
-            <div class="formula-box highlight-step">
-                <math display="block">
-                    <mrow>
-                        <mi>A</mi><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo>
-                        <mo>=</mo>
-                        <mi>A</mi><mo>(</mo><mi>k</mi><mo>)</mo>
-                        <mo>+</mo>
-                        <mi>A</mi><mo>(</mo><mtext>novo retângulo</mtext><mo>)</mo>
-                    </mrow>
-                </math>
-            </div>
-            <p>
-                Substituímos a fórmula de A(k) e a área do novo retângulo, <math><mfrac><msup><mi>k</mi><mn>2</mn></msup><msup><mrow><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>3</mn></msup></mfrac></math>, para montar a expressão inicial da prova.
-            </p>
-            <div class="formula-box highlight-step">
-                 <math display="block">
-                    <mrow>
-                        <mi>A</mi><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo>
-                        <mo>=</mo>
-                        <mfenced>
+                                <mo>&middot;</mo>
+
+                                <mrow>
+                                    <mo>[</mo>
+                                    <msup>
+                                        <mn>1</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <mo>...</mo>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>&minus;</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>]</mo>
+                                </mrow>
+                            </math></span>
+                    </p>
+
+                    <p class="instrucP222">
+                        Manipulando essa expressão podemos reescrever a hipotese de indução do segunte modo:
+                    </p>
+
+                    <p class="instrucP222"> <span style="color: #007bff;">
+                            <math display="inline">
+                                <mrow>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mrow>
+                                            <mn>3</mn>
+                                        </mrow>
+                                    </msup>
+                                </mrow>
+
+                                <mo>&middot;</mo>
+
+                                <mo>A(k) = </mo>
+                                <mrow>
+                                    <mo>[</mo>
+                                    <msup>
+                                        <mn>1</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <mo>...</mo>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>&minus;</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>]</mo>
+                                </mrow>
+                           </math></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<i>i</i>)
+                    </p>
+
+                    <p class="instrucP222">
+                        Agora, usando a área <span style="color: #007bff;"> A(k)<sub>recalculada</sub></span> dos (k
+                        - 1) retangulos inscritos na parábola, teremos:
+                    </p>
+
+                    <div class="formula-display"><span style="color: #007bff;"><span style="color: #007bff;">
+                                A(k)<sub>recalculada</sub>
+                                = <math display="inline">
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mfrac>
+                                                <mrow>
+                                                    <mn>k</mn>
+                                                </mrow>
+                                                <mrow>
+
+                                                    <mi>k</mi>
+                                                    <mo>+</mo>
+                                                    <mn>1</mn>
+
+                                                </mrow>
+                                            </mfrac>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mrow>
+                                            <mn>3</mn>
+                                        </mrow>
+                                    </msup>
+
+                                    <mo>&middot;</mo>
+
+                                    <mrow>
+                                        <mo>A(k)</mo>
+                                    </mrow>
+                                </math></span>
+                    </div>
+
+                    <p class="instrucP222"> O objetivo é provar que, se a nossa fórmula for válida para um caso genérico
+                        k <span style="color:red">(a hipótese de indução)</span>, ela também será válida para o caso
+                        seguinte, <span style="color:green">k + 1</span>.
+                    </p>
+
+                </div>
+
+                <div class="instrucP22">
+
+                    <h3>A expressão ao adicionar um novo retângulo</h3>
+                    <br>
+
+                    <p class="instrucP222"> Essa etapa conecta a intuição visual do gráfico com a formalidade da
+                        expressão matemática. A equação principal deve demonstrar que <b>A(k + 1) =</b> <span
+                            style="color: #007bff">
+                            A(k)</span> +
+                        <span style="color: #fd7505ff"> A<sub>k + 1</sub> (Área do Novo Retângulo)</span> pode ser
+                        expandida para a expressão:
+                    </p>
+
+                    <p class="instrucP222">
+                        A(k + 1) = <span style="color: #007bff;"> <math display="inline">
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mn>k</mn>
+                                            </mrow>
+                                            <mrow>
+
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mrow>
+                                        <mn>3</mn>
+                                    </mrow>
+                                </msup>
+
+                                <mo>&middot;</mo>
+
+                                <mrow>
+                                    <mo>A(k)</mo>
+                                </mrow>
+                            </math></span>
+                        +
+                        &nbsp;<span style="color: #fd7e14;"> A<sub>k + 1</sub></span>
+
+                    <p class="instrucP222">
+                        A(k + 1) = <math display="inline">
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mn>k</mn>
+                                            </mrow>
+                                            <mrow>
+
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mrow>
+                                        <mn>3</mn>
+                                    </mrow>
+                                </msup>
+
+                                <mo>&middot;</mo>
+
+                                <mrow>
+                                    <mo>A(k)</mo>
+                                </mrow>
+                        </math>
+                        +
+                        <math display="inline">
+                        <mfrac>
+                                    <mrow>
+                                        <msup>
+                                            <mi>k</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                    <mrow>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mrow>
+                            </mfrac>
+                        </math>
+
+                    <p class="instrucP222">
+                        A(k + 1) =  <math display="inline">
+                                <mrow>
+                                    <mfrac>
+                                        <mrow>
+                                            <mn>1</mn>
+                                        </mrow>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mfrac>
+                                </mrow>
+
+                                <mo>&middot;</mo>
+
+                                <mrow>
+                                    <mo></mo>
+                                    <mrow>
+                                        <mo>[</mo>
+                                        <msup>
+                                            <mrow>
+                                                <mi>k</mi>
+                                            </mrow>
+                                            <mn>3</mn>
+                                        </msup>
+                                        <mrow>
+                                            <mo>A(k)</mo>
+                                        </mrow>
+                                    </mrow>
+                                </math>
+                                +
+                                <math display="inline">
+                                    <msup>
+                                        <mrow>
+                                            <mi>k</mi>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>]</mo>
+                            </math>
+                            </span>
+                    
+                        <p class="instrucP222">
+                            A(k + 1) = <math display="inline">
+                                <mrow>
+                                    <mfrac>
+                                        <mrow>
+                                            <mn>1</mn>
+                                        </mrow>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mfrac>
+                                </mrow>
+                        
+                                <mo>&middot;</mo>
+                                
+                                <mrow>
+                                    <mo></mo>
+                                    <mrow><mo>[</mo>
+                                        <mo>(</mo>
+                                        <msup>
+                                            <mn>1</mn>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mn>2</mn>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <mo>...</mo>
+                                        <mo>+</mo>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mrow>
+                                                    <mi>k</mi>
+                                                    <mo>&minus;</mo>
+                                                    <mn>1</mn>
+                                                </mrow>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </math>
+                            +
+                            <math display="inline">
+                                <msup>
+                                    <mrow>
+                                        <mi>k</mi>
+                                    </mrow>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>]</mo>
+                            </math></span>
+                            
+                        <p class="instrucP222">
+                        Usando a hipotese de indução (<i>i</i>), temos:
+                    
+                    <div class="formula-display">  <math display="inline"><mo>A(k + 1) =</mo>
                             <mrow>
-                                <mfrac><mn>1</mn><msup><mi>k</mi><mn>3</mn></msup></mfrac>
-                                <mfenced open="[" close="]"><mrow>
-                                    <msup><mn>1</mn><mn>2</mn></msup>
-                                    <mo>+</mo><mo>&cdots;</mo>
-                                    <mo>+</mo><msup><mrow><mo>(</mo><mi>k</mi><mo>&minus;</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup>
-                                </mrow></mfenced>
+                                <mfrac>
+                                    <mrow>
+                                        <mn>1</mn>
+                                    </mrow>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mfrac>
                             </mrow>
-                        </mfenced>
-                        <mo>+</mo>
-                        <mfrac><msup><mi>k</mi><mn>2</mn></msup><msup><mrow><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>3</mn></msup></mfrac>
-                    </mrow>
-                </math>
-            </div>
+                    
+                            <mo>&middot;</mo>
+                    
+                            <mrow>
+                                <mo></mo>
+                                <mrow>
+                                    <mo>[</mo>
+                                    <msup>
+                                        <mn>1</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <mo>...</mo>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>&minus;</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+                                </mrow>
+                            </mrow>
+                        </math>
+                        +
+                        <math display="inline">
+                            <msup>
+                                <mrow>
+                                    <mi>k</mi>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>]</mo>
+                        </math></span>
+                    </div>
+                    <p>
 
-            <h2>Etapa 4: Manipulação Algébrica (Baseada no Documento)</h2>
-            <p>
-                Vamos trabalhar a partir da Tese para mostrar que ela é consistente com a nossa configuração inicial.
-            </p>
-            <ol>
-                <li><strong>Comece com a Tese P(k+1):</strong>
-                    <div class="formula-box highlight-thesis">
-                        <math display="block">
-                           <mrow><mi>A</mi><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>=</mo><mfrac><mn>1</mn><msup><mrow><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>3</mn></msup></mfrac><mfenced open="[" close="]"><mrow><msup><mn>1</mn><mn>2</mn></msup><mo>+</mo><mo>&cdots;</mo><mo>+</mo><msup><mi>k</mi><mn>2</mn></msup></mrow></mfenced></mrow>
-                        </math>
-                    </div>
-                </li>
-                <li><strong>Separe o último termo da soma (k²):</strong>
-                    <div class="formula-box highlight-step">
-                        <math display="block">
-                            <mrow><mi>A</mi><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>=</mo><mfrac><mn>1</mn><msup><mrow><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>3</mn></msup></mfrac><mfenced><mrow><mfenced open="[" close="]"><mrow><msup><mn>1</mn><mn>2</mn></msup><mo>+</mo><mo>&cdots;</mo><mo>+</mo><msup><mrow><mo>(</mo><mi>k</mi><mo>&minus;</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup></mrow></mfenced><mo>+</mo><msup><mi>k</mi><mn>2</mn></msup></mrow></mfenced></mrow>
-                        </math>
-                    </div>
-                </li>
-                <li><strong>Use a Hipótese de Indução:</strong>
-                    <p>Sabemos que <math><mfenced open="[" close="]"><mrow><msup><mn>1</mn><mn>2</mn></msup><mo>+</mo><mo>&cdots;</mo><mo>+</mo><msup><mrow><mo>(</mo><mi>k</mi><mo>&minus;</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></msup></mrow></mfenced><mo>=</mo><msup><mi>k</mi><mn>3</mn></msup><mo>&middot;</mo><mi>A</mi><mo>(</mo><mi>k</mi><mo>)</mo></math>. Substituindo:</p>
-                    <div class="formula-box highlight-step">
-                        <math display="block">
-                            <mrow><mi>A</mi><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo><mo>=</mo><mfrac><mn>1</mn><msup><mrow><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>3</mn></msup></mfrac><mfenced><mrow><msup><mi>k</mi><mn>3</mn></msup><mi>A</mi><mo>(</mo><mi>k</mi><mo>)</mo><mo>+</mo><msup><mi>k</mi><mn>2</mn></msup></mrow></mfenced></mrow>
-                        </math>
-                    </div>
-                </li>
-            </ol>
-        </div>
+                    <p class="proof-step-text3" style="text-align:center; font-size: 26px;">
+                        A<sub>k + 1</sub>
+                        = <math display="inline" style="font-size: 24px;">
+                            <mfrac>
+                                <mrow>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                </mrow>
+                                <mrow>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mrow>
+                            </mfrac>
+                        </math></span>
+                    </p></span>
 
-        <div class="column">
-            <h2>Etapa 5: Conclusão</h2>
-            <p>
-                Ao distribuir o denominador na última expressão da Etapa 4, obtemos:
-            </p>
-            <div class="formula-box highlight-conclusion">
-                 <math display="block">
-                    <mrow>
-                        <mi>A</mi><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo>
-                        <mo>=</mo>
-                        <mfrac>
-                            <mrow><msup><mi>k</mi><mn>3</mn></msup><mi>A</mi><mo>(</mo><mi>k</mi><mo>)</mo></mrow>
-                            <msup><mrow><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>3</mn></msup>
-                        </mfrac>
-                        <mo>+</mo>
-                        <mfrac>
-                            <msup><mi>k</mi><mn>2</mn></msup>
-                            <msup><mrow><mo>(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>3</mn></msup>
-                        </mfrac>
-                    </mrow>
-                </math>
-            </div>
-            <p>
-                Esta manipulação demonstra que a Tese P(k+1) é algebricamente consistente com a construção de A(k+1) a partir da Hipótese P(k). Assim, provamos que se a fórmula é verdadeira para <strong>k</strong>, ela também é verdadeira para <strong>k+1</strong>.
-            </p>
-            <p>
-                Isso completa a prova do <strong>Passo Indutivo</strong>. Tendo também provado um Caso Base (por exemplo, para k=2), o <strong>Princípio da Indução Matemática</strong> nos garante que a fórmula para a área A(n) é válida para todo inteiro n ≥ 2.
-            </p>
+
+
+                    <p class="instrucP222">
+                    <div class="formula-display"> A(k + 1) = <span style="color: #007bff;"> <math display="inline">
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mn>k</mn>
+                                            </mrow>
+                                            <mrow>
+
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mrow>
+                                        <mn>3</mn>
+                                    </mrow>
+                                </msup>
+
+                                <mo>&middot;</mo>
+
+                                <mrow>
+                                    <mo>A(k)</mo>
+                                </mrow>
+                            </math></span>
+                        +
+                        <span style="color: #fd7e14;"> <math>
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>&plus;</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                    </msup>
+                                </mfrac>
+
+                                <mo>&middot;</mo>
+                                
+                                <msup>
+                                    <mrow>
+                                        <mo>[</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <mi>k</mi>
+                                                        <mo>+</mo>
+                                                        <mn>1</mn>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mo>&minus;</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>]</mo>
+                                    </mrow>
+                                    <mn>2</mn>
+                                </msup>
+                            </math></span>
+                    </div>
+                    <p>
+
+                    <p class="proof-step-text3" style="text-align:center; font-size: 26px;">
+                        A<sub>k + 1</sub>
+                        = <math display="inline" style="font-size: 24px;">
+                            <mfrac>
+                                <mrow>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                </mrow>
+                                <mrow>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mrow>
+                            </mfrac>
+                        </math></span>
+                    </p></span>
+
+                    <p class="instrucP222"> Nessa fórmula, a primeira parte é associada a fórmula da nossa <span
+                            style="color:blue">(a hipótese de indução)</span>.
+                    </p>
+
+                    <p class="instrucP222"> E, a segunda parte é a fórmula para calcular a <span
+                            style="color: #fd7505ff"> área do novo retângulo</span> adicionado.
+                    </p>
+                </div>
+
+                <div class="instrucP22">
+
+                    <h3>O Desafio Final: A Simplificação Algébrica</h3>
+
+                    <p class="instrucP222">Como indicado pela última frase, <b>"Agora, o desafio é simplificar essa
+                            expressão."</b>
+                    </p>
+
+                    <p class="instrucP222">Este é o objetivo final de qualquer passo indutivo: trabalhar algebricamente
+                        a expressão combinada de <strong>A(k + 1)</strong> para provar que ela pode ser reescrita na
+                        mesma forma da fórmula original, mas com <span style="color:green">k + 1</span> no lugar de
+                        <span style="color:blue">k</span>.
+                    </p>
+
+                    <p class="instrucP222"><strong>Próximo Passo</strong>: Clique no botão <b>"Conclusão"</b> para ver a
+                        demonstração da simplificação algébrica e finalizar a prova.</p>
+                    <br>
+
+                    <button id="ProximaEtapa" onclick="window.close();">
+                        Fechar Instruções
+                    </button>
+                </div>
+            </fieldset>
+        </section>
+    </main>
+    <footer>
+        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+</body>
+
+</html>
+
+<!--<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prova do Passo de Indução - Etapa Guiada</title>
+
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+    <link rel="stylesheet" href="../styles/estiloPasso35.css" />
+    <link rel="stylesheet" href="../styles/estiloConclusao" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script type="module" src="../js/conclusao.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="tit1">
+            <h1>Explorando o Princípio da Indução Matemática</h1>
         </div>
-    </div>
+        <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+    </header>
+
+    <main>
         
-        <div class="instruc22">
-          <button id="btn-finalizar">Finalizar Exploração</button>
+        <div class="mainLayout">
+
+            COLUNA ESQUERDA: GRÁFICO (FIXO)
+            <div class="colGrafico">
+                
+                <fieldset id="ColGrafConclusao">
+                    <legend></legend>
+
+                    <div id="plotConclusao">
+
+                        <p class="proofConclusao">
+                            
+                        </div>
+                    </div>
+                
+                </fieldset>
+
+            </div>
+
+            COLUNA CENTRAL: CONTEÚDO DINÂMICO E CONTROLES
+            <div class="secProva">
+
+                 Etapa 2: Traduzindo para Matemática (Escondido no Início)
+                <div id="etapaConclusao2">
+
+                    <fieldset id="etapa-22">
+                        <legend>Do visual para a Matemática</legend>
+                        <h1 class="main-title">Resolvendo o Passo de Indução Detalhadamente</h1>
+                        <p style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
+
+                        <div class="column">
+                            <h2>Etapa 3: Montar a Expressão para A(k+1)</h2>
+                            <p>
+                                Conforme a ferramenta visual, a área A(k+1) (azul + laranja) é a soma da área A(k)
+                                com a área do novo retângulo laranja.
+                            </p>
+                            <div class="formula-box highlight-step">
+                                <math display="block">
+                                    <mrow>
+                                        <mi>A</mi>
+                                        <mo>(</mo>
+                                        <mi>k</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>)</mo>
+                                        <mo>=</mo>
+                                        <mi>A</mi>
+                                        <mo>(</mo>
+                                        <mi>k</mi>
+                                        <mo>)</mo>
+                                        <mo>+</mo>
+                                        <mi>A</mi>
+                                        <mo>(</mo>
+                                        <mtext>novo retângulo</mtext>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </math>
+                            </div>
+                            <p>
+                                Substituímos a fórmula de A(k) e a área do novo retângulo, <math>
+                                    <mfrac>
+                                        <msup>
+                                            <mi>k</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mfrac>
+                                </math>, para montar a expressão inicial da prova.
+                            </p>
+                            <div class="formula-box highlight-step">
+                                <math display="block">
+                                    <mrow>
+                                        <mi>A</mi>
+                                        <mo>(</mo>
+                                        <mi>k</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>)</mo>
+                                        <mo>=</mo>
+                                        <mfenced>
+                                            <mrow>
+                                                <mfrac>
+                                                    <mn>1</mn>
+                                                    <msup>
+                                                        <mi>k</mi>
+                                                        <mn>3</mn>
+                                                    </msup>
+                                                </mfrac>
+                                                <mfenced open="[" close="]">
+                                                    <mrow>
+                                                        <msup>
+                                                            <mn>1</mn>
+                                                            <mn>2</mn>
+                                                        </msup>
+                                                        <mo>+</mo>
+                                                        <mo>&cdots;</mo>
+                                                        <mo>+</mo>
+                                                        <msup>
+                                                            <mrow>
+                                                                <mo>(</mo>
+                                                                <mi>k</mi>
+                                                                <mo>&minus;</mo>
+                                                                <mn>1</mn>
+                                                                <mo>)</mo>
+                                                            </mrow>
+                                                            <mn>2</mn>
+                                                        </msup>
+                                                    </mrow>
+                                                </mfenced>
+                                            </mrow>
+                                        </mfenced>
+                                        <mo>+</mo>
+                                        <mfrac>
+                                            <msup>
+                                                <mi>k</mi>
+                                                <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mi>k</mi>
+                                                    <mo>+</mo>
+                                                    <mn>1</mn>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mn>3</mn>
+                                            </msup>
+                                        </mfrac>
+                                    </mrow>
+                                </math>
+                            </div>
+
+                            <h2>Etapa 4: Manipulação Algébrica (Baseada no Documento)</h2>
+                            <p>
+                                Vamos trabalhar a partir da Tese para mostrar que ela é consistente com a nossa
+                                configuração inicial.
+                            </p>
+                            <ol>
+                                <li><strong>Comece com a Tese P(k+1):</strong>
+                                    <div class="formula-box highlight-thesis">
+                                        <math display="block">
+                                            <mrow>
+                                                <mi>A</mi>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                                <mo>=</mo>
+                                                <mfrac>
+                                                    <mn>1</mn>
+                                                    <msup>
+                                                        <mrow>
+                                                            <mo>(</mo>
+                                                            <mi>k</mi>
+                                                            <mo>+</mo>
+                                                            <mn>1</mn>
+                                                            <mo>)</mo>
+                                                        </mrow>
+                                                        <mn>3</mn>
+                                                    </msup>
+                                                </mfrac>
+                                                <mfenced open="[" close="]">
+                                                    <mrow>
+                                                        <msup>
+                                                            <mn>1</mn>
+                                                            <mn>2</mn>
+                                                        </msup>
+                                                        <mo>+</mo>
+                                                        <mo>&cdots;</mo>
+                                                        <mo>+</mo>
+                                                        <msup>
+                                                            <mi>k</mi>
+                                                            <mn>2</mn>
+                                                        </msup>
+                                                    </mrow>
+                                                </mfenced>
+                                            </mrow>
+                                        </math>
+                                    </div>
+                                </li>
+                                <li><strong>Separe o último termo da soma (k²):</strong>
+                                    <div class="formula-box highlight-step">
+                                        <math display="block">
+                                            <mrow>
+                                                <mi>A</mi>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                                <mo>=</mo>
+                                                <mfrac>
+                                                    <mn>1</mn>
+                                                    <msup>
+                                                        <mrow>
+                                                            <mo>(</mo>
+                                                            <mi>k</mi>
+                                                            <mo>+</mo>
+                                                            <mn>1</mn>
+                                                            <mo>)</mo>
+                                                        </mrow>
+                                                        <mn>3</mn>
+                                                    </msup>
+                                                </mfrac>
+                                                <mfenced>
+                                                    <mrow>
+                                                        <mfenced open="[" close="]">
+                                                            <mrow>
+                                                                <msup>
+                                                                    <mn>1</mn>
+                                                                    <mn>2</mn>
+                                                                </msup>
+                                                                <mo>+</mo>
+                                                                <mo>&cdots;</mo>
+                                                                <mo>+</mo>
+                                                                <msup>
+                                                                    <mrow>
+                                                                        <mo>(</mo>
+                                                                        <mi>k</mi>
+                                                                        <mo>&minus;</mo>
+                                                                        <mn>1</mn>
+                                                                        <mo>)</mo>
+                                                                    </mrow>
+                                                                    <mn>2</mn>
+                                                                </msup>
+                                                            </mrow>
+                                                        </mfenced>
+                                                        <mo>+</mo>
+                                                        <msup>
+                                                            <mi>k</mi>
+                                                            <mn>2</mn>
+                                                        </msup>
+                                                    </mrow>
+                                                </mfenced>
+                                            </mrow>
+                                        </math>
+                                    </div>
+                                </li>
+                                <li><strong>Use a Hipótese de Indução:</strong>
+                                    <p>Sabemos que <math>
+                                            <mfenced open="[" close="]">
+                                                <mrow>
+                                                    <msup>
+                                                        <mn>1</mn>
+                                                        <mn>2</mn>
+                                                    </msup>
+                                                    <mo>+</mo>
+                                                    <mo>&cdots;</mo>
+                                                    <mo>+</mo>
+                                                    <msup>
+                                                        <mrow>
+                                                            <mo>(</mo>
+                                                            <mi>k</mi>
+                                                            <mo>&minus;</mo>
+                                                            <mn>1</mn>
+                                                            <mo>)</mo>
+                                                        </mrow>
+                                                        <mn>2</mn>
+                                                    </msup>
+                                                </mrow>
+                                            </mfenced>
+                                            <mo>=</mo>
+                                            <msup>
+                                                <mi>k</mi>
+                                                <mn>3</mn>
+                                            </msup>
+                                            <mo>&middot;</mo>
+                                            <mi>A</mi>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>)</mo>
+                                        </math>. Substituindo:</p>
+                                    <div class="formula-box highlight-step">
+                                        <math display="block">
+                                            <mrow>
+                                                <mi>A</mi>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                                <mo>=</mo>
+                                                <mfrac>
+                                                    <mn>1</mn>
+                                                    <msup>
+                                                        <mrow>
+                                                            <mo>(</mo>
+                                                            <mi>k</mi>
+                                                            <mo>+</mo>
+                                                            <mn>1</mn>
+                                                            <mo>)</mo>
+                                                        </mrow>
+                                                        <mn>3</mn>
+                                                    </msup>
+                                                </mfrac>
+                                                <mfenced>
+                                                    <mrow>
+                                                        <msup>
+                                                            <mi>k</mi>
+                                                            <mn>3</mn>
+                                                        </msup>
+                                                        <mi>A</mi>
+                                                        <mo>(</mo>
+                                                        <mi>k</mi>
+                                                        <mo>)</mo>
+                                                        <mo>+</mo>
+                                                        <msup>
+                                                            <mi>k</mi>
+                                                            <mn>2</mn>
+                                                        </msup>
+                                                    </mrow>
+                                                </mfenced>
+                                            </mrow>
+                                        </math>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="column">
+                            <h2>Etapa 5: Conclusão</h2>
+                            <p>
+                                Ao distribuir o denominador na última expressão da Etapa 4, obtemos:
+                            </p>
+                            <div class="formula-box highlight-conclusion">
+                                <math display="block">
+                                    <mrow>
+                                        <mi>A</mi>
+                                        <mo>(</mo>
+                                        <mi>k</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>)</mo>
+                                        <mo>=</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <msup>
+                                                    <mi>k</mi>
+                                                    <mn>3</mn>
+                                                </msup>
+                                                <mi>A</mi>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <msup>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mi>k</mi>
+                                                    <mo>+</mo>
+                                                    <mn>1</mn>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mn>3</mn>
+                                            </msup>
+                                        </mfrac>
+                                        <mo>+</mo>
+                                        <mfrac>
+                                            <msup>
+                                                <mi>k</mi>
+                                                <mn>2</mn>
+                                            </msup>
+                                            <msup>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mi>k</mi>
+                                                    <mo>+</mo>
+                                                    <mn>1</mn>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mn>3</mn>
+                                            </msup>
+                                        </mfrac>
+                                    </mrow>
+                                </math>
+                            </div>
+                            <p>
+                                Esta manipulação demonstra que a Tese P(k+1) é algebricamente consistente com a
+                                construção de A(k+1) a partir da Hipótese P(k). Assim, provamos que se a fórmula é
+                                verdadeira para <strong>k</strong>, ela também é verdadeira para
+                                <strong>k+1</strong>.
+                            </p>
+                            <p>
+                                Isso completa a prova do <strong>Passo Indutivo</strong>. Tendo também provado um
+                                Caso Base (por exemplo, para k=2), o <strong>Princípio da Indução
+                                    Matemática</strong> nos garante que a fórmula para a área A(n) é válida para
+                                todo inteiro n ≥ 2.
+                            </p>
+                        </div>
+                </div>
+
+                <div class="BtnConclusao">
+                    <button id="btn-finalizar">Finalizar Exploração</button>
+                </div>
+                
+                <p class="proofConclusao">
+                    A fórmula da nossa hipótese de indução para A(k) depende da soma das áreas
+                    dos <span style="color: #007bff;">k - 1 retângulos azuis</span> (sem o degenerado) mais a área do
+                    <span style="color: #fd7e14;">novo retângulo laranja</span>. Ou seja, a área total é:
+                </p>
+
+                <div id="formula-dinamica"></div>
+
+                <div id="etapaFrom2" class="hidden">
+                    <p class="proof-step-text3">
+                        Observe que a área gerada pelos (k - 1) retângulos é recalculada todas as vezes que adicionamos
+                        um
+                        novo
+                        retângulo. Assim, recalculando A(k), temos:
+
+                    <div class="formula-display33">
+
+                        <p class="proof-step-text3">A(k)<sub>recalculada</sub> = <span style="color: #007bff;">
+                                A<sub>1</sub> +
+                                A<sub>2</sub> +
+                                A<sub>3</sub> + A<sub>4</sub> + A<sub>5</sub> + A<sub>6</sub> + ... + A<sub>k -
+                                    1</sub></span></p>
+
+
+                        <p class="proof-step-text3">A(k)<sub>recalculada</sub> = </p>
+
+                        <p class="proof-step-text3"><span style="color: #007bff;">
+                                <math display="inline">
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mrow>
+
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mo>&middot;</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mfrac>
+                                                <mrow>
+                                                    <mn>1</mn>
+                                                </mrow>
+                                                <mrow>
+
+                                                    <mi>k</mi>
+                                                    <mo>+</mo>
+                                                    <mn>1</mn>
+
+                                                </mrow>
+                                            </mfrac>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mrow>
+                                            <mn>2</mn>
+                                        </mrow>
+                                    </msup>
+
+                                    <mo>+</mo>
+
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mrow>
+
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>)</mo>
+                                    </mrow>
+
+                                    <mo>&middot;</mo>
+
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mfrac>
+                                                <mrow>
+                                                    <mn>2</mn>
+                                                </mrow>
+                                                <mrow>
+
+                                                    <mi>k</mi>
+                                                    <mo>+</mo>
+                                                    <mn>1</mn>
+
+                                                </mrow>
+                                            </mfrac>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mrow>
+                                            <mn>2</mn>
+                                        </mrow>
+                                    </msup>
+
+                                    <mo>+</mo>
+                                    <mo>...</mo>
+                                    <mo>+</mo>
+
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mrow>
+
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>)</mo>
+                                    </mrow>
+
+                                    <mo>&middot;</mo>
+
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mfrac>
+                                                <mrow>
+                                                    <mn>k - 1</mn>
+                                                </mrow>
+                                                <mrow>
+
+                                                    <mi>k</mi>
+                                                    <mo>+</mo>
+                                                    <mn>1</mn>
+
+                                                </mrow>
+                                            </mfrac>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mrow>
+                                            <mn>2</mn>
+                                        </mrow>
+                                    </msup>
+                                </math>
+                            </span>
+                        </p>
+
+                        <div class="formula-display3">
+                            <p class="proof-step-text3">A(k)<sub>recalculada</sub>
+                                = <span style="color: #007bff;"><math display="inline">
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mfrac>
+                                                    <mrow>
+                                                        <mn>1</mn>
+                                                    </mrow>
+                                                    <mrow>
+
+                                                        <mi>k</mi>
+                                                        <mo>+</mo>
+                                                        <mn>1</mn>
+
+                                                    </mrow>
+                                                </mfrac>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mrow>
+                                                <mn>3</mn>
+                                            </mrow>
+                                        </msup>
+
+                                        <mo>&middot;</mo>
+                                        <mrow>
+                                            <mo>[</mo>
+                                            <msup>
+                                                <mn>1</mn>
+                                                <mn>2</mn>
+                                            </msup>
+                                            <mo>+</mo>
+                                            <msup>
+                                                <mn>2</mn>
+                                                <mn>2</mn>
+                                            </msup>
+                                            <mo>+</mo>
+                                            <mo>...</mo>
+                                            <mo>+</mo>
+                                            <msup>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <mi>k</mi>
+                                                        <mo>&minus;</mo>
+                                                        <mn>1</mn>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mn>2</mn>
+                                            </msup>
+                                            <mo>]</mo>
+                                        </mrow>
+                                    </math></span>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="proof-step-text3">
+                        Agora, o desafio é calcular a área do novo retângulo.
+                    </p>
+                </div>
+                </fieldset>
+
+            </div>
+        
+            COLUNA DIREITA: MENU PRINCIPAL (FIXO) 
+            <div class="colControles">
+
+                <fieldset>
+                    <legend>Menu</legend>
+
+                    <button id="PimP33" onclick="window.open('./apresentacaoTeorica2.html', '_blank')">
+                        Definição do PIM
+                    </button>
+
+                    <button id="PimP33" onclick="window.open('./Problema2.html', '_blank')">
+                        O Problema
+                    </button>
+
+                    <button id="PimP33" onclick="window.open('./instrucaoP24.html', '_blank')">
+                        Instruções
+                    </button>
+
+                    Controles do Gráfico (Sempre visíveis na coluna central) 
+                    <div id="gerarConclusao">
+
+                        <fieldset>
+
+                            <legend>Controles do Gráfico</legend>
+
+                            <input type="number" id="numRectanglesInput" min="1" placeholder="Inserir valor" />
+
+                            <button id="set-k-btn">Gerar Gráfico</button>
+
+                            <button id="add-rectangle-btn" disabled>Adicionar Retângulo</button>
+
+                            <button id="btn-concluir2" class="display hidden">Nova Área</button>
+
+                        </fieldset>
+
+                    </div>
+
+                </fieldset>
+
+            </div>
         </div>
-      </section>
+
     </main>
 
     <footer>
-      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
     </footer>
 
-    <script>
-      // Script simples para esta página
-      document.addEventListener("DOMContentLoaded", () => {
-        const btnFinalizar = document.getElementById("btn-finalizar");
-        if (btnFinalizar) {
-          btnFinalizar.addEventListener("click", () => {
-            // Redireciona para a página de resumo final do seu projeto
-            window.location.href = "./resumo.html";
-          });
-        }
-      });
-    </script>
-  </body>
-</html>
+</body>
+
+</html

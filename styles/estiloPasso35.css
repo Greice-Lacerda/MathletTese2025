@@ -220,9 +220,17 @@ button,
 
 .proof-step-text{
     font-size: 20px;
-    line-height: 1.5;
+    line-height: 1.8;
     padding: 10px;
-    margin: 10px auto;
+    margin: 15px auto;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.PassoP35{
+    font-size: 18px;
+    line-height: 1.5;
+    padding-left: 50px;
+    margin: 15px auto;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
 }
 
@@ -236,7 +244,7 @@ button,
 
 .proof-step-text3{
     font-size: 20px;
-    line-height: 1.1;
+    line-height: 1.5;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
 
 }

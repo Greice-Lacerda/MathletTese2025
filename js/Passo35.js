@@ -1,26 +1,8 @@
-/**
- * Função auxiliar para calcular y = x^2.
- */
+
 const parabola = (x) => (Array.isArray(x) ? x.map((val) => val * val) : x * x);
 
-/**
- * Função placeholder para applyShadows.
- * A função original deve ser implementada para que o efeito de sombra funcione.
- * Esta versão evita erros de "função não definida".
- */
-function applyShadows(plotDiv, highlightIndex) {
-  // console.log("Função applyShadows chamada para o índice:", highlightIndex);
-  // Implemente sua lógica de sombra aqui.
-}
+let k = 2; // Começa com 2 retângulos (1 área não degenerada)
 
-// Variável de estado global para o número de retângulos.
-let k = 1;
-
-/**
- * Gera o gráfico da hipótese de indução (Área(k)) usando Plotly.
- * @param {number} numRectangles - O número de retângulos a ser exibido.
- * @param {number} highlightIndex - O índice do retângulo a ser destacado (opcional, -1 para nenhum).
- */
 function generateInductionPlot(numRectangles, highlightIndex = -1) {
   const plotDiv = document.getElementById("plotGrfM32");
   if (!plotDiv) return;
@@ -124,60 +106,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const etapa1 = document.getElementById("etapa-1");
   const etapa2 = document.getElementById("etapa-2");
   const etapaFrom2Hab = document.getElementById("etapaFrom2");
-  const btnFormalizar = document.getElementById("btn-formalizar");
-  const btnConcluir = document.getElementById("btn-concluir");
+  const btnConcluir2 = document.getElementById("btn-concluir2");
   const plotDiv = document.getElementById("plotGrfM32");
   const formulaContainer = document.getElementById("formula-dinamica");
 
-
-  // Função para renderizar a fórmula (seu código original, sem alterações)
-  function renderizarFormulaDinamica(k_partitions) {
-    const formulaContainer = document.getElementById("formula-dinamica");
-    if (!formulaContainer) return;
-    if (k_partitions === 1) {
-      formulaContainer.innerHTML =
-        'A(1) = <span style="color: blue;">0</span> (<span style="color: green;">retângulo degenerado</span>)';
-      return;
-    }
-    if (k_partitions === 2) {
-      formulaContainer.innerHTML =
-        'A(2) = <span style="color: blue;">A<sub>1</sub></span> + <span style="color: orange;">0</span> = <span style="color: blue;">A<sub>1</sub></span>';
-      return;
-    }
-    formulaContainer.innerHTML = "";
-    const numTermos = k_partitions - 1;
-    if (numTermos <= 0) return;
-    const prefixoFormula = `A(${
-      numTermos + 1
-    }) = A(<span style="color:blue;">(${numTermos})</span> + 1) = `;
-    let corpoFormula = "";
-    if (k_partitions > 10) {
-      const primeiroTermo = `<span class="termo-hipotese">A<sub>1</sub></span>`;
-      const ultimoTermoHipotese = `<span class="termo-hipotese">A<sub>${
-        numTermos - 1
-      }</sub></span>`;
-      const termosHipoteseHTML = `${primeiroTermo} + ... + ${ultimoTermoHipotese}`;
-      const termoIndutivo = `<span class="termo-indutivo">A<sub>${numTermos}</sub></span>`;
-      corpoFormula = `<span class="termo-hipotese">(${termosHipoteseHTML})</span> + ${termoIndutivo}`;
-    } else {
-      const termosHipotese = [];
-      for (let i = 1; i < numTermos; i++) {
-        termosHipotese.push(
-          `<span class="termo-hipotese">A<sub>${i}</sub></span>`
-        );
-      }
-      const termoIndutivo = `<span class="termo-indutivo">A<sub>${numTermos}</sub></span>`;
-      if (termosHipotese.length > 0) {
-        corpoFormula = `<span class="termo-hipotese">(${termosHipotese.join(
-          " + "
-        )})</span> + ${termoIndutivo}`;
-      }
-    }
-    formulaContainer.innerHTML = prefixoFormula + corpoFormula;
-  }
-
   // --- Eventos de clique ---
-
   if (setKBtn) {
     setKBtn.addEventListener("click", () => {
       let newK = parseInt(numRectanglesInput.value);
@@ -199,44 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
       generateInductionPlot(k, k - 1); // k-1 é o índice do último retângulo
       renderizarFormulaDinamica(k);
       numRectanglesInput.value = k;
-
-      if (k === 11) {
-        // Se k for exatamente 10, remove a classe 'hidden' do botão
-        btnFormalizar.classList.remove("hidden");
-      }
     });
   }
 
-  if (btnFormalizar) {
-    btnFormalizar.addEventListener("click", () => {
-
-      if (plotDiv && typeof Plotly !== "undefined") {
-        Plotly.purge(plotDiv);
-      }
-      if (formulaContainer) {
-        formulaContainer.innerHTML = "";
-      }
-      if (numRectanglesInput) {
-        numRectanglesInput.value = "";
-      }
-
-      k = 1;
-
-      // CORREÇÃO: Usa a variável 'etapaFrom2Hab' que foi declarada no topo.
-      if (etapaFrom2Hab) {
-        etapaFrom2Hab.classList.add("hidden");
-      }
-
-      if (etapa1) {
-        etapa1.classList.add("hidden");
-      }
-      
-      if (addRectangleBtn) {
-        addRectangleBtn.disabled = true;
-      }
+  if (btnConcluir2) {
+    btnConcluir2.addEventListener("click", () => {
+      window.location.href = "./conclusao.html";
     });
-  
-    }
+  }
 
   // --- Estado Inicial da Página ---
   function inicializarPagina() {
@@ -244,10 +147,10 @@ document.addEventListener("DOMContentLoaded", () => {
         numRectanglesInput.value === 3;
       }
       if (addRectangleBtn) {
-        addRectangleBtn.disabled = true;
+        addRectangleBtn.disabled = false;
       }
-      if (btnFormalizar) {
-        btnFormalizar.classList.add("hidden");
+      if (btnConcluir2) {
+        btnConcluir2.classList.remove("hidden");
       }
       // Garante que o gráfico comece vazio
       if (plotDiv && typeof Plotly !== "undefined") {

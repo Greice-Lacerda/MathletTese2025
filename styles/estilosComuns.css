@@ -1,25 +1,56 @@
 /* Importação das fontes - DEVE estar no topo do arquivo */
 @import url("https://fonts.googleapis.com/css2?family=Gill+Sans&family=Handlee&family=Monsieur+La+Doulaise&family=Archivo+Black&display=swap");
 
-/* === Configurações Gerais de todas as páginas Perfeito === */
+/* ========================================================================== */
+/* 1. Reset Básico e Variáveis CSS (Custom Properties)                        */
+/* ========================================================================== */
+
+:root {
+  /* Cores */
+  --color-primary-dark: rgba(8, 2, 93, 0.936);
+  --color-text-shadow: rgb(101, 100, 105);
+  --color-subtitle: rgba(3, 7, 252, 0.6);
+  --color-subtitle-shadow: rgb(100, 98, 124);
+  --color-footer-text: black;
+  --color-border: #040111;
+
+  /* Gradientes */
+  --gradient-main: linear-gradient(
+    to right, #ff5f6d, #ffc371, #fff8ba, #b5e8a6, #7ac5c1
+  );
+
+  /* Fontes */
+  --font-primary: "Times New Roman", Times, serif;
+  --font-title: "Archivo Black", sans-serif;
+  --font-subtitle: "Handlee", cursive;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========================================================================== */
+/* 2. Estilos Globais e Layout de Tela Cheia                                  */
+/* ========================================================================== */
 
 html {
-  width: 100%;
-  height: 100%;
-  margin-top: 1px;
+  font-size: 16px; /* Define a base para a unidade rem */
 }
 
 body {
-  margin-bottom: 2px;
-  margin-top: 1px;
-  font-family: "Times New Roman", Times, serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-clip: padding-box;
-  padding: 5px;
-  overflow: hidden;
+  min-height: 100vh; /* Garante que o corpo ocupe 100% da altura da tela */
+  font-family: var(--font-primary);
   line-height: 1.6;
+  color: #333;
+  
+  /* Layout de Grid para estrutura de página inteira (Header, Main, Footer) */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -28,9 +59,10 @@ body::before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.28;
-  position: absolute;
-  margin: auto;
+  opacity: 0.25;
+  
+  /* Posição fixa para cobrir a tela inteira, mesmo com scroll */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -38,964 +70,293 @@ body::before {
   z-index: -1;
 }
 
-/* === Estilos do Cabeçalho e Títulos === */
-header {
-  top: 0px;
-  height: 82px;
-  position: absolute;
-  padding: 0;
-  text-align: center;
-  align-items: center;
-  margin: 0;
-  width: 100%;
-  box-shadow: 2px 2px 10px #000;
-  background: linear-gradient(
-    to right,
-    #ff5f6d,
-    /* Vermelho Coral */ #ffc371,
-    /* Laranja Pêssego */ #fff8ba,
-    /* Amarelo Suave */ #b5e8a6,
-    /* Verde Menta */ #7ac5c1 /* Azul Turquesa */
-  );
-}
+/* ========================================================================== */
+/* 3. Estilos de Layout (Header, Main, Footer, Section)                      */
+/* ========================================================================== */
 
-header:hover {
-  box-shadow: 10px 10px 10px rgba(255, 255, 255, 1);
+.main-header {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: var(--gradient-main);
+  z-index: 10;
+
+  /* NOVO: Adicionado Flexbox para centralização perfeita */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
   width: 100%;
-  height:510px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-section {
+  display: flex;
+  flex-direction: column; /* Padrão Mobile-first */
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.intro-image-container,
+.intro-text-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
 }
 
-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 30px auto;
-  padding: 25px auto;
-}
-
-#tit1 {
-  position: relative;
-  width: 100%;
-  font-style: italic;
-  background-color: transparent;
-}
-
-#tit2 {
-  position: relative;
-  top: -20px;
-  font-size: 28px;
-  color: rgb(3, 7, 252, 0.6);
-  text-shadow: 2px 2px 2px rgb(100, 98, 124);
-  font-family: "Handlee", cursive;
-  font-style: italic;
-  background-color: transparent;
-  z-index: 2;
-}
-
-h1 {
-  width: 100%;
-  margin: 0;
-  font-size: 40px;
-  padding: 0;
-  color: rgba(8, 2, 93, 0.936);
-  text-shadow: 3px 3px 4px rgb(101, 100, 105);
-}
-
-h1:hover {
-  transform: scale(1.1);
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Archivo Black", sans-serif;
-  text-shadow: 6px 6px 5px rgb(249, 248, 248);
-}
-
-/* === Estilos do Rodapé === */
 footer {
   width: 100%;
-  position: static;
-  bottom: 0;
-  background: linear-gradient(
-    to right,
-    #ff5f6d,
-    /* Vermelho Coral */ #ffc371,
-    /* Laranja Pêssego */ #fff8ba,
-    /* Amarelo Suave */ #b5e8a6,
-    /* Verde Menta */ #7ac5c1 /* Azul Turquesa */
-  );
-  color: black;
-  font-size: 18px;
-  height: 28px;
+  padding: 0.75rem 1rem;
   text-align: center;
-  text-shadow: 2px 2px 1px rgb(151, 137, 137);
+  color: var(--color-footer-text);
+  background: var(--gradient-main);
+  font-size: 1rem;
+  text-shadow: 1px 1px 2px rgba(151, 137, 137, 0.8);
 }
 
-footer:hover {
-  transform: scale(1.1);
-  box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 1);
-  border-radius: 10%;
+/* ========================================================================== */
+/* 4. Estilos de Componentes (Títulos, Parágrafos, Imagens, Botões)           */
+/* ========================================================================== */
+
+h1, .h1-style {
+  font-size: 1.8rem;
+  color: var(--color-primary-dark);
+  text-shadow: 2px 2px 3px var(--color-text-shadow);
+  transition: transform 0.3s ease;
+}
+h1:hover, .h1-style:hover {
+  transform: scale(1.05);
 }
 
-/* Texto especial */
-#tbem {
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
-  color: transparent;
-  background-clip: text;
-  background-color: hsl(34, 53%, 82%);
-  background-image: repeating-linear-gradient(
-    45deg,
-    #0a0909 10%,
-    #2746aa 20%,
-    #2d2950 30%,
-    #10495a 40%,
-    #6314f7 50%,
-    #37094a 60%,
-    #310329 70%,
-    #250417 80%,
-    #022330 90%
-  );
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  text-shadow: 3px 3px 3px #f9f8f8;
+  margin-bottom: 1rem;
+}
+
+#main-subtitle {
+  font-size: 1.3rem;
+  font-family: var(--font-subtitle);
+  color: var(--color-subtitle);
+  text-shadow: 1px 1px 2px var(--color-subtitle-shadow);
+  font-style: italic;
+  margin-top: -0.5rem;
 }
 
 p {
-  width: 90%;
+  max-width: 65ch; /* Limita a largura para melhor legibilidade */
   text-align: justify;
-  text-indent: 32px; /* 2rem convertidos para px */
-  margin: 15px auto;
-  font-size: 16px;
-  padding: 2px;
-  line-height: 1.5;
+  text-indent: 2rem;
+  margin-bottom: 1rem;
 }
 
-img {
-  width: 370px;
+#intro-image {
+  width: 100%;
+  max-width: 280px; /* Tamanho base para mobile */
   height: auto;
-  margin: 60px 20px 30px;
   border-radius: 40px;
-  border: 20px double #040111;
-  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.8);
+  border: 15px double var(--color-border);
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+#intro-image:hover {
+  transform: scale(1.03);
+  box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.6);
 }
 
-img:hover {
-  border: inset 20px #f8f7f5;
-  transform: scale(1);
-  margin: 60px 20px 30px;
-  filter: invert(999%) sepia(0%) saturate(5%) hue-rotate(270deg);
-  box-shadow: #000 25px 20px 15px;
+.controls {
+  display: flex;
+  gap: 1.5rem; /* Espaçamento entre os botões */
+  margin-top: 1.5rem;
+  flex-wrap: wrap; /* Permite que os botões quebrem a linha em telas pequenas */
+  justify-content: center;
 }
 
-/* === Media Queries para Responsividade === */
-@media (max-width: 768px) {
-  html {
-    width: 100%;
-    margin: 0;
-    overflow-x: hidden;
-  }
-
-  
-  body {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    flex-direction: column;
-    text-align: center;
-    overflow-x: hidden;
-    overflow-y: auto;
-    /*
-     * Removi as propriedades background-image, background-size, etc.
-     * Elas devem ser aplicadas ao body::before para funcionar com a opacidade.
-     */
-  }
-
-  header {
-    position: relative;
-    height: auto;
-    width: 100%;
-    margin: 0;
-  }
-
-  h1 {
-    font-size: 1.6rem;
-    line-height: 1.2;
-    margin: 5px 0;
-    text-align: center;
-    padding: 0 10px;
-  }
-
-  #tit2 {
-    font-size: 1.2rem;
-    line-height: 1.2;
-    margin: 8px 0;
-    text-align: center;
-    padding: 0 15px;
-  }
-
-  main {
-    width: 100%;
-    padding: 15px;
-  }
-
-  section {
-    width: 100%;
-    height: auto;
-    flex-direction: column;
-    align-items: center;
-    margin: 1px 2px;
-    padding: 1px;
-  }
-
-    body::before {
-    content: "";
-    background-image: url("../img/Logo01.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.28;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-  }
-
-  /* Este código ajusta o tamanho da imagem dentro da div (a imagem do conteúdo) */
-  img {
-    width: 150px; /* Reduz a largura da imagem para 250 pixels */
-    height: auto; /* Mantém a proporção da imagem */
-    margin: 6px 20px 3px;
-    border-radius: 40px;
-    border: 20px double #040111;
-    box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.8);
-  }
-
-  fieldset,
-  div {
-    width: 95%;
-    margin: 1px auto;
-    padding: 1px auto;
-  }
-
-  legend,
-  button {
-    font-size: 14px;
-  }
-
-  p {
-    text-align: justify;
-    padding: 0 5px;
-    font-size: 14px;
-  }
-
-  .controles,
-  .controles button {
-    padding: 0;
-    font-size: 13px;
-  }
-
-  footer {
-    position: relative;
-    width: 100%;
-    height: auto;
-    font-size: 16px;
-    padding: 10px 0;
-    bottom: 0;
-  }
+button {
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+button:active {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* estiloPasso3.css */
+/* Estilo específico para botões de navegação/ação */
+#objectives-btn, #exit-btn, #back-btn {
+  background: linear-gradient(135deg, #010238, #208bf0);
+  border: 2px outset #8ae1f3;
+}
+#exit-btn {
+  background: linear-gradient(135deg, #6e0e0e, #c0392b);
+  border-color: #f5b7b1;
+}
 
 /* ========================================================================== */
-/* Estilos Comuns de Layout e Visibilidade */
+/* 5. Classes Utilitárias e Aviso de Orientação                               */
 /* ========================================================================== */
 
 .hidden {
   display: none !important;
 }
 
-.visible {
-  display: flex !important;
-}
-
-/* === Estilos Globais e do Corpo da Página === */
-html {
-  width: 100%;
-  height: 100%;
-  margin-top: 1px;
-}
-
-body {
-  margin-bottom: 2px;
-  margin-top: 1px;
-  font-family: "Times New Roman", Times, serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-clip: padding-box;
-  padding: 5px;
-  overflow-x: hidden; /* Permite a rolagem vertical, mas esconde a horizontal */
-  line-height: 1.6;
-}
-
-body::before {
-  content: "";
-  background-image: url("../img/Logo01.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.28;
-  position: absolute;
-  margin: auto;
+#orientation-warning {
+  display: none; /* Oculto por padrão */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-}
-
-/* === Estilos do Cabeçalho e Títulos === */
-header {
-  top: 0px;
-  height: 82px;
-  position: absolute;
-  padding: 0;
-  text-align: center;
-  align-items: center;
-  margin: 0;
-  width: 100%;
-  box-shadow: 2px 2px 10px #000;
-  background: linear-gradient(
-    to right,
-    #ff5f6d,
-    /* Vermelho Coral */ #ffc371,
-    /* Laranja Pêssego */ #fff8ba,
-    /* Amarelo Suave */ #b5e8a6,
-    /* Verde Menta */ #7ac5c1 /* Azul Turquesa */
-  );
-}
-
-header:hover {
-  box-shadow: 10px 10px 10px rgba(255, 255, 255, 1);
-}
-
-main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 30px auto;
-  padding: 25px auto;
-}
-
-#tit1 {
-  position: relative;
-  width: 100%;
-  font-style: italic;
-  background-color: transparent;
-}
-
-#tit2 {
-  position: relative;
-  top: -20px;
-  font-size: 28px;
-  color: rgb(3, 7, 252, 0.6);
-  text-shadow: 2px 2px 2px rgb(100, 98, 124);
-  font-family: "Handlee", cursive;
-  font-style: italic;
-  background-color: transparent;
-  z-index: 2;
-}
-
-h1 {
-  width: 100%;
-  margin: 0;
-  font-size: 40px;
-  padding: 0;
-  color: rgba(8, 2, 93, 0.936);
-  text-shadow: 3px 3px 4px rgb(101, 100, 105);
-}
-
-h1:hover, #tit2:hover{
-  transform: scale(1.1);
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Archivo Black", sans-serif;
-  text-shadow: 6px 6px 5px rgb(249, 248, 248);
-}
-
-/* === Estilos do Rodapé === */
-footer {
-  width: 100%;
-  position: absolute;
-  bottom: 1px;
-  background: linear-gradient(
-    to right,
-    #ff5f6d,
-    /* Vermelho Coral */ #ffc371,
-    /* Laranja Pêssego */ #fff8ba,
-    /* Amarelo Suave */ #b5e8a6,
-    /* Verde Menta */ #7ac5c1 /* Azul Turquesa */
-  );
-  color: black;
-  font-size: 18px;
-  height: 28px;
-  text-align: center;
-  text-shadow: 2px 2px 1px rgb(151, 137, 137);
-}
-
-footer:hover {
-  transform: scale(1.1);
-  box-shadow: inset 5px 5px 10px rgba(255, 255, 255, 1);
-  border-radius: 10%;
-}
-
-/* Texto especial */
-#tbem {
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
-  color: transparent;
-  background-clip: text;
-  background-color: hsl(34, 53%, 82%);
-  background-image: repeating-linear-gradient(
-    45deg,
-    #0a0909 10%,
-    #2746aa 20%,
-    #2d2950 30%,
-    #10495a 40%,
-    #6314f7 50%,
-    #37094a 60%,
-    #310329 70%,
-    #250417 80%,
-    #022330 90%
-  );
-}
-
-p {
-  width: 90%;
-  text-align: justify;
-  text-indent: 32px;
-  margin: 15px auto;
-  font-size: 16px;
-  padding: 2px;
-  line-height: 1.5;
-}
-
-img {
-  width: 370px;
-  height: auto;
-  margin: 60px 20px 30px;
-  border-radius: 40px;
-  border: 20px double #040111;
-  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.8);
-}
-
-img:hover {
-  border: inset 20px #f8f7f5;
-  transform: scale(1);
-  margin: 60px 20px 30px;
-  filter: invert(999%) sepia(0%) saturate(5%) hue-rotate(270deg);
-  box-shadow: #000 25px 20px 15px;
-}
-
-/* === Estilos para Fieldsets e Contêineres Principais === */
-
-.column-fieldset {
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
-  margin: 10px;
-  padding: 20px;
-  width: 90%;
-  max-width: 500px;
-  flex-direction: column;
-}
-
-.Elegend {
-  font-size: 1.2em;
-  color: black;
-  text-shadow: 2px 2px 1px #0a0a0a62;
-  text-align: center;
-  padding: 0 10px;
-}
-
-.Explorar11 {
-  /* Contêiner principal da prova */
-  display: flex;
-  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  z-index: 9999;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  height: auto;
-  margin: 58px 0 0 0;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.5rem;
 }
 
-.Fexplorar14 {
-  /* Contêiner do menu */
-  width: 170px;
-  height: auto; /* Alterado para altura automática */
+/* Mostra o aviso em telas pequenas na orientação retrato */
+@media screen and (max-width: 800px) and (orientation: portrait) {
+  #orientation-warning {
+    display: flex;
+  }
+}
+
+/* ========================================================================== */
+/* 6. Media Queries para Responsividade (Mobile-First)                        */
+/* ========================================================================== */
+
+/* Estilos para Tablet */
+@media (min-width: 768px) {
+  h1, .h1-style {
+    font-size: 2.5rem;
+  }
+  #main-subtitle {
+    font-size: 1.5rem;
+  }
+  .intro-section {
+    flex-direction: row; /* Layout lado a lado em telas maiores */
+    align-items: flex-start;
+    text-align: left;
+  }
+  .intro-image-container,
+  .intro-text-container {
+    flex: 1; /* Faz com que ambos os contêineres ocupem espaço igual */
+  }
+  #intro-image {
+    max-width: 350px;
+  }
+}
+
+/* Estilos para Desktop e Telas Maiores */
+@media (min-width: 1024px) {
+  main {
+    padding: 2rem 3rem;
+  }
+  #intro-image {
+    max-width: 400px;
+  }
+  p {
+    font-size: 1.1rem;
+  }
+}
+
+/* ========================================================================== */
+/* ESTILOS EXCLUSIVOS PARA A PÁGINA DESCRICAO.HTML                            */
+/* ========================================================================== */
+
+/* 1. Ajuste do Layout Principal da Página */
+/* Força o <main> a usar todo o espaço vertical disponível e a centralizar seu conteúdo */
+main {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center; /* Centraliza o conteúdo verticalmente */
   align-items: center;
-  margin: 20px 0; /* Adicionado margem para espaçamento */
+  gap: 2rem; /* Espaço entre o conteúdo e os botões */
+  padding: 1rem;
+  height: 100%; /* Garante que o main ocupe todo o espaço da célula do grid do body */
 }
 
-/* ========================================================================== */
-/* Estilos para Entradas e Botões */
-/* ========================================================================== */
-
-label {
-  font-size: 20px;
-  font-weight: bold;
-  padding: 0 5px;
-}
-
-input[type="number"] {
-  width: 220px;
-  height: 30px;
-  font-size: 15px;
-  border-radius: 50px;
-  border: 2px solid #ccc;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0);
-  text-align: center;
-}
-
-/* Botões da página */
-
-button {
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  border-radius: 10px;
-}
-
-.Explorar11 button {
-  width: 220px;
-  height: 40px;
-  margin: 10px;
-  border: outset 4px #8ae1f3;
-  background: linear-gradient(
-    to right,
-    #010238,
-    #1618bd,
-    #208bf0,
-    #0ae6f6,
-    #9ff4f5
-  );
-  color: white;
-}
-
-.Explorar11 button:hover {
-  background: linear-gradient(
-    to right,
-    #d3d3ed,
-    #8082e5,
-    #083a6a,
-    #134245,
-    #001112
-  );
-  border: outset 4px #97a4a4;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-}
-
-.Fexplorar14 button {
-  width: 150px;
-  height: 40px;
-  margin: 10px auto;
-  border: outset 4px #4caf50;
-  background: linear-gradient(
-    to right,
-    #064108,
-    #09680e,
-    #56d25a,
-    #aff7b1,
-    #7a9c7d
-  );
-  color: white;
-}
-
-.Fexplorar14 button:hover {
-  background: linear-gradient(
-    to right,
-    #6bc06e,
-    #9ed4a0,
-    #bee2be,
-    #d8ead8,
-    #f0f9f0
-  );
-  border: outset 4px #6bc06e;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-}
-
-.Fexplorar14 button:active {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  transform: scale(1);
-}
-
-/*========================================================================== */
-/* Estilos para a Prova Interativa */
-/* ========================================================================== */
-
-#proof-container {
+/* 2. Layout do Conteúdo em Duas Colunas */
+/* Este é o contêiner que segura a imagem e o texto */
+.description-content {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  flex-direction: column; /* Padrão Mobile: empilhado */
+  align-items: center;
+  gap: 2rem;
   width: 100%;
 }
 
-#proof-container h3 {
-  color: #010238;
-  border-bottom: 2px solid #208bf0;
-  padding-bottom: 5px;
-}
-
-.formula-display {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 1.2em;
-  background-color: #f0f4f8;
-  border: 1px dashed #208bf0;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  margin: 10px 0;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-#congratulations-message {
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #064108;
-  background-color: #e6ffec;
-  border: 2px solid #56d25a;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Estilos do Gráfico */
-#plot {
+/* Define as colunas individuais */
+.description-column {
+  flex: 1; /* Permite que as colunas cresçam e encolham */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 400px;
-  max-width: 800px;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
 }
 
-/* ========================================================================== */
-/* Estilos para Scrollbar e Media Queries */
-/* ========================================================================== */
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+.description-column img {
+  max-width: 300px; /* Limita o tamanho da imagem para não dominar a tela */
+  height: auto;
 }
 
-::-webkit-scrollbar-track {
-  background: #f1f1f13c;
-  border-radius: 10px;
-}
+/* 3. Responsividade */
 
-::-webkit-scrollbar-thumb {
-  background: #888888de;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #55555582;
-}
-
-@media (max-width: 414px){
-
-  html{
-    overflow-y: auto;
-    overflow-x: hidden;
+/* A partir de 768px (tablets), muda para o layout de duas colunas lado a lado */
+@media (min-width: 768px) {
+  .description-content {
+    flex-direction: row; /* Colunas lado a lado */
+    align-items: stretch; /* Faz as colunas terem a mesma altura */
   }
 
-  body::before {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.28;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 125%;
-  z-index: -1;
-    }
-  
-  section {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    gap: 2px;
-  }
-
-  header{
-    width: 460px;
-    justify-content: center;
-  }
-
-  #Tit1, #Tit2{
-    font-size: 14px;
-    margin: 20px 15px 0 0;
-    align-items: left;
-    
-  }
-
-  #IndIma{
-    width: 220px;
-    margin: 60px auto;
-  }
-
-  #IndFil{
-    width: 330px;
-    height: auto;
-    margin: -50px 5px;
-    padding: 14px;
-  }
-
-  p {
-    font-size: 14px;
-    width: 100%;
-  }
-
-  .controles {
-    width: 330px;
-    height: 60px;
-    margin: 0 auto;
-    margin-left: -5px;
-  }
-
-  .controles button {
-    width: 90px;
-    height: 40px;
-    font-size: 12px;
-    margin: 2px 50px 2px 2px;
-    padding: 2px;
-  }
-
-footer {
-    /* Centraliza o texto */
-    text-align: center;
-    font-size: 12px;
-    position: fixed;
-    height: 25px;
-    bottom: 5px;
-    left: 0;
-}
-}
-
-@media (min-width: 415px) and (max-width: 640px) {
-
-  html{
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  body::before {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.28;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 145%;
-  z-index: -1;
-    }
-  
-  section {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  header{
-    /* Centraliza o texto */
-    width: 100%;
-    position: static;
-    justify-content: left;
-    height: 80px;
-    top: 5px;
-}
-  
-  #Tit1, #tit2{
-    width: 500px;
-    font-size: 16px;
-    margin: 20px 15px;
-    padding: 0;
-  }
-
-  #IndIma{
-    width: 320px;
-    margin-left: -80px;
-  }
-
-  #IndFil{
-    width: 400px;
-    height: auto;
-    margin: 2px 10px;
-    padding: 20px;
-  }
-
-  p {
-    font-size: 14px;
-    width: 100%;
-  }
-
-  .controles {
-    width: 400px;
-    height: 80px;
-    margin: 0 2px 15px 0;
-    justify-content: center;
-    padding: 2px;
-  }
-
-  .controles button {
-    width: 120px;
-    height: 40px;
-    margin: 15px auto;
-    padding: 2px auto;
-  }
-
-footer {
-    /* Centraliza o texto */
-    text-align: center;
-    font-size: 14px;
-    position: static;
-    height: 50px;
-    bottom: 5px;
-    margin: 0 auto;
-    left: -100px;
+  .description-column img {
+    max-width: 350px;
   }
 }
 
-@media (min-width: 641px) and (max-width: 1007px) {
-
-  html{
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  body::before {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.28;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: -1;
-    }
-  
-  section {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  header{
-    /* Centraliza o texto */
-    width: 100%;
-    align-items: center;
-    position: fixed;
-    justify-content: center;
-    height: 80px;
-    top: 5px;
-}
-  
-  #Tit1, #tit2{
-    width: 500px;
-    font-size: 16px;
-    margin: 20px 15px;
-    padding: 0;
-  }
-
-  #IndIma{
-    width: 320px;
-    margin-left: -180px;
-  }
-
-  #IndFil{
-    width: 400px;
-    height: auto;
-    margin: 2px 10px;
-    padding: 20px;
-  }
-
-  p {
-    font-size: 14px;
-    width: 100%;
-  }
-
-  .controles {
-    width: 400px;
-    height: 80px;
-    margin: 0 2px 15px 0;
-    justify-content: center;
-    padding: 2px;
-  }
-
-  .controles button {
-    width: 120px;
-    height: 40px;
-    margin: 15px auto;
-    padding: 2px auto;
-  }
-
-footer {
-    /* Centraliza o texto */
-    position: absolute;
-    height: 50px;
-    bottom: 0;
+/* Para telas maiores, podemos aumentar a imagem */
+@media (min-width: 1024px) {
+  .description-column img {
+    max-width: 400px;
   }
 }
+
+
+/* Adicionar esta regra ao estilosComuns.css */
+.welcome-text {
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.welcome-text:hover {
+  transform: scale(1.02);
+  background-color: rgba(190, 226, 190, 0.6);
+}
+

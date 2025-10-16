@@ -1,97 +1,6 @@
-/* --- Configurações de estilo da index Perfeito --- */
-
-main{
-top: -1000px;
-}
-
-#IndFil {
-  border-color: rgba(202, 248, 247, 0.2);
-  background-color: rgb(252, 252, 250, 0.2);
-  border-radius: 20px;
-  padding: 2px;
-  width: 95%;
-  height: 290px;
-  position: relative;
-  display: flexbox;
-  box-sizing: border-box;
-  box-shadow: #000 10px 10px 20px;
-}
-
-#IndFil:hover {
-  transform: scale(1.05);
-  background-color: #bee2be;
-}
-
-#IndLeg {
-  font-style: italic;
-  font-size: 20px;
-  color: transparent;
-}
-
-#IndIma{
-  margin-top: 50px;
-}
-
-.controles {
-  width: 770px;
-  height: 90px;
-  margin-top: -40px;
-  flex-direction: row;
-  padding: auto;
-  background-color: transparent;
-  box-shadow: #000 10px 10px 20px;
-  border: 1px solid rgb(5, 44, 1, 0.5);
-  border-radius: 10px;
-}
-
-/* === Estilos dos Botões (Propriedades consolidadas) === */
-
-.controles button {
-  width: 250px;
-  height: 50px;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 60px auto;
-  padding: 10px 5px auto;
-  font-size: 18px;
-  border-radius: 10px;
-  border: outset 6px #4caf50;
-  background: linear-gradient(
-    to right,
-    #064108,
-    #09680e,
-    #56d25a,
-    #aff7b1,
-    #7a9c7d
-  );
-  color: white;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
-}
-
-.controles button:hover {
-  background: linear-gradient(
-    to right,
-    #6bc06e,
-    #9ed4a0,
-    #bee2be,
-    #d8ead8,
-    #f0f9f0
-  );
-  border: outset 6px #6bc06e;
-  scale: 1.1;
-  color: white;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-}
-
-.controles button:active {
-  transform: scale(0.95);
-}
-
-/* ================================================= */
-/* ESTILOS PARA O MODAL DE BOAS-VINDAS               */
-/* ================================================= */
+/* ========================================================================== */
+/* ESTILOS EXCLUSIVOS PARA A PÁGINA DE ENTRADA (INDEX.HTML)                   */
+/* ========================================================================== */
 
 /* O fundo que cobre a tela inteira */
 #welcome-modal {
@@ -100,77 +9,81 @@ top: -1000px;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(10, 23, 52, 0.97); /* Cor de fundo escura e semi-transparente */
-  background-image: url('../img/ImgPagInicial.jpg'); /* Adicione sua imagem de fundo aqui */
+  background-color: rgba(10, 23, 52, 0.97);
+  background-image: url('../img/ImgPagInicial.jpg');
   background-size: cover;
   background-position: center;
-  background-blend-mode: overlay; /* Efeito para mesclar a cor com a imagem */
-  z-index: 10000; /* Garante que o modal fique sobre todo o conteúdo */
+  background-blend-mode: overlay;
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
   text-align: center;
+  padding: 1rem;
 }
 
 /* A caixa de conteúdo no centro */
 .modal-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* Padrão Mobile: empilhado */
   align-items: center;
-  gap: 15px;
-  padding: 40px;
-  justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo da caixa para legibilidade */
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  text-shadow:3px 3px 3px  #0ae6f6;
-  max-width: 90%;
-  width: 1200px;
-  height:400px;
-  border: solid 1px  rgba(4, 234, 255, 0.8);
-  box-shadow: 2.5px 2.5px 2px #0ae6f6;
-}
-
-.modal-content:hover{
-  transform: scale(1);
-  box-shadow: inset 3px 3px 2px #0ae6f6;
+  border: 1px solid rgba(10, 230, 246, 0.8);
+  box-shadow: 0 0 25px rgba(10, 230, 246, 0.5);
+  max-width: 95%;
+  width: 600px; /* Largura máxima para legibilidade em telas maiores */
+  color: white;
 }
 
 /* Estilo para a logo dentro do modal */
 .modal-logo {
-  width: 300px;
+  width: 150px; /* Tamanho reduzido para mobile */
   height: auto;
-  margin-bottom: 10px;
-  border: double 15px  rgba(4, 234, 255, 0.384);
+  border: 10px double rgba(10, 230, 246, 0.4);
+  border-radius: 50%;
 }
 
-/* Estilo para o título dentro do modal */
-.modal-content h1{
-  margin:40px 10px;
-  font-size: 2.5em;
-  text-shadow: 3px 3px 5px rgba(4, 234, 255, 0.8);
+/* Agrupador para o texto do modal */
+.modal-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.modal-content p {
-  font-size: 1.5em;
+#modal-title {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(10, 230, 246, 0.7);
+}
+
+.modal-subtitle {
+  font-size: 1.2rem;
+  text-indent: 0; /* Remove o recuo do parágrafo padrão */
+  max-width: 100%;
   opacity: 0.9;
+  text-shadow: 1px 1px 3px rgba(10, 230, 246, 0.7);
+  transition: transform 0.3s ease;
+}
+.modal-subtitle:hover {
+  transform: scale(1.05);
 }
 
 /* Estilo para o botão "Iniciar Oficina" */
 #start-workshop-btn {
-  font-size: 1.2em;
+  font-size: 1.1rem;
   font-weight: bold;
-  padding: 15px 30px;
-  border-radius: 50px; /* Botão arredondado */
+  padding: 0.8rem 1.6rem;
+  border-radius: 50px;
   border: 2px solid #0ae6f6;
   background-color: transparent;
   color: #0ae6f6;
-  cursor: pointer;
+  margin-top: 1.5rem;
   transition: all 0.3s ease;
-  margin-top: 120px;
 }
-
 #start-workshop-btn:hover {
   background-color: #0ae6f6;
   color: #0a1734;
@@ -178,6 +91,23 @@ top: -1000px;
   box-shadow: 0 0 20px rgba(10, 230, 246, 0.5);
 }
 
-#subtit2:hover{
-  transform: scale(1.1);
+/* Media Query para o modal em telas maiores */
+@media (min-width: 768px) {
+  .modal-content {
+    flex-direction: row;
+    width: 900px;
+    padding: 2.5rem;
+  }
+  .modal-logo {
+    width: 250px;
+  }
+  .modal-text {
+    align-items: center;
+  }
+  #modal-title {
+    font-size: 2.5rem;
+  }
+  .modal-subtitle {
+    font-size: 1.5rem;
+  }
 }

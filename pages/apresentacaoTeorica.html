@@ -1,68 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      O conceito do PIM - Explorando o Princípio da Indução Matemática
-    </title>
-    <link rel="stylesheet" href="../styles/estiloDescricao.css" />
-    <link rel="stylesheet" href="../styles/estilosComuns.css" />
-    <link rel="stylesheet" href="../styles/estiloApresentacao.css" />
-  </head>
-  <body>
-    <header>
-      <div id="tit1">
-        <h1>Explorando o Princípio da Indução Matemática</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    O Conceito do PIM - Explorando o Princípio da Indução Matemática
+  </title>
+  <link rel="stylesheet" href="../styles/estilosComuns.css" />
+  <link rel="stylesheet" href="../styles/estiloApresentacao.css" />
+</head>
+
+<body>
+  <header class="main-header">
+    <h1 id="main-title">Explorando o Princípio da Indução Matemática</h1>
+    <p id="main-subtitle">Uma Abordagem Visual com Faixas de Parábola</p>
+  </header>
+
+  <main>
+    <div class="theory-content">
+      <div class="theory-column">
+        <article class="theory-box">
+          <p>
+            O <strong><u>Princípio da Indução Matemática (PIM)</u></strong> é um método de prova
+            utilizado para demonstrar que uma afirmação <code>P(n)</code> é verdadeira para
+            todos os números inteiros <code>n</code> a partir de um valor inicial <code>n<sub>0</sub></code>.
+          </p>
+          <p>O princípio é baseado nas seguintes etapas:</p>
+
+          <ol class="steps-list">
+            <li>
+              <strong><u>Caso Base:</u></strong> Provar que a afirmação <code>P(n)</code> é verdadeira para um valor
+              inicial <code>n<sub>0</sub></code>.
+            </li>
+          </ol>
+        </article>
       </div>
-      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
-    </header>
 
-    <main>
-        <section class="apresentacao">
-            <div>            
-            <fieldset class="Fapresentacao">
-            <br/>
-                <p class="apresentacao"> 
-                    O <u><strong>Princípio da Indução Matemática (PIM)</u></strong> é um método de prova
-                    utilizado para demonstrar que uma afirmação P(n) é verdadeira para
-                    todos os números inteiros n a partir de um valor inicial n<sub>0</sub>.       
-                    O princípio é baseado em três etapas: 
-                    <br/><br/></p>
+      <div class="theory-column">
+        <article class="theory-box">
+          <ol class="steps-list" start="2">
+            <li>
+              <strong><u>Hipótese de Indução:</u></strong> Assume-se que a afirmação <code>P(k)</code> é
+              verdadeira para um número inteiro arbitrário <code>k ≥ n<sub>0</sub></code>.
+            </li>
+            <li>
+              <strong><u>Passo Indutivo:</u></strong> Provar que, se <code>P(k)</code> é verdadeira, então
+              <code>P(k + 1)</code> também é verdadeira.
+            </li>
+          </ol>
+          <p>
+            Se essas condições forem satisfeitas, a afirmação <code>P(n)</code> é considerada
+            verdadeira para todos os inteiros a partir de <code>n<sub>0</sub></code>.
+          </p>
+        </article>
+      </div>
+    </div>
 
-                    <p class="apresentacao">1. <u><strong>Caso Base:</strong></u> Provar que a afirmação P(n) é verdadeira para um valor
-                    inicial n<sub>0</sub>.</p>
-                
-            </fieldset>
-            </div>
-        
-            <div>
-            <fieldset class="Fapresentacao">
-                <br/>
-                <p class="apresentacao">  
-                    2. <u><strong>Passo de Indução:</strong></u> Assume-se que a afirmação P(k) é
-                    verdadeira para um número inteiro arbitrário k ≥ n<sub>0</sub>.
-                </p>
+    <div class="controls">
+      <button id="back-objective-btn" onclick="window.location.href='./descricao.html'">Voltar</button>
+      <button id="problem-btn" onclick="window.location.href='./Problema1.html'">O Problema</button>
+      <button id="exit-btn" onclick="exitApp()">Sair</button>
+    </div>
+  </main>
 
-                <p class="apresentacao"> 
-                    3. <u><strong>Prova do Passo de Indução:</strong></u> Provar que, se P(k) é verdadeira, então P(k + 1) também é verdadeira.
-                </p>
+  <footer>
+    &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+  </footer>
 
-                <p class="apresentacao">     
-                Se essas condições forem satisfeitas, a afirmação P(n) é considerada verdadeira para todos os inteiros a partir de n<sub>0</sub>. 
-                </p>          
-            </fieldset>          
-      </section>
-      <br />
-          <div class="Fcontroles">
-            <button id="voltarObjetivo" onclick="window.location.href='./descricao.html'">Voltar</button>
-            <button id="Problema" onclick="window.location.href='./Problema1.html'">O Problema</button>
-            <button id="Sair" onclick="window.location.href='https://www.google.com.br'">Sair</button>
-          </div>
-    </main>
+  <div id="orientation-warning">
+    <p>Para uma melhor experiência, por favor, gire seu dispositivo para a posição de paisagem (horizontal).</p>
+  </div>
 
-    <footer>
-      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
-    </footer>
-  </body>
+  <script>
+    function exitApp() {
+      if (document.fullscreenElement && document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+      window.location.href = 'https://www.google.com.br';
+    }
+  </script>
+</body>
+
 </html>

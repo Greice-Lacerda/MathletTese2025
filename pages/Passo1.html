@@ -1,104 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Caso Base - Explorando o Princípio da Indução Matemática
-    </title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Geist+Mono:wght@100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Parisienne&family=Playwrite+HR+Lijeva:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-        <link rel="stylesheet" href="../styles/estiloPasso1.css" />
-        <link rel="stylesheet" href="../styles/estilosComuns.css" />
-  </head>
-  <body>
-    <header>
-      <div id="tit1">
-        <h1>Explorando o Princípio da Indução Matemática</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    Caso Base - Explorando o Princípio da Indução Matemática
+  </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="../styles/estilosComuns.css" />
+  <link rel="stylesheet" href="../styles/estiloPasso1.css" />
+</head>
+
+<body>
+  <main class="step-main-container">
+    <h1 class="visually-hidden">Exploração Interativa: Caso Base</h1>
+
+    <div class="main-grid">
+      <div class="column-graphics">
+        <h2>Gráfico e Tabela</h2>
+        <div class="graphics-content">
+          <img id="grafico-container" src="../img/ParabolaQuizz.jpg" alt="Parábola com retângulos para n=2" />
+          <img id="grafico-container2" class="hidden" src="../img/ParabolaQuizz2.jpg"
+            alt="Parábola com retângulos para n=3" />
+          <div id="table-container" class="hidden"></div>
+        </div>
       </div>
-      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
-    </header>
 
-    <main>
-      <section>
-        <fieldset class="grafico-container">
-          <legend class="Elegend1">Gráfico e Tabela</legend>
-          <img
-            id="grafico-container"
-            src="../img/ParabolaQuizz.jpg"
-            alt="Parabola1"
-          />
-          <img
-            id="grafico-container2"
-            style="display: none"
-            src="../img/ParabolaQuizz2.jpg"
-            alt="Parabola2"
-          />
-          <div id="table-container" style="display: none"></div>
-        </fieldset>
+      <div class="column-quiz">
+        <h2>Quizz: Caso Base</h2>
+        <div id="perguntas"></div>
+        <div id="alternativas"></div>
+        <div id="quiz-progress-container">
+          <div id="quiz-progress-bar" class="hidden"></div>
+          <span id="quiz-progress-text"></span>
+        </div>
+      </div>
 
-        <fieldset id="Perguntas1">
-          <legend class="Elegend1">Quizz</legend>
-          <div id="perguntas"></div>
-          <div id="alternativas"></div>
-          <div id="quiz-progress-container">
-            <div id="quiz-progress-bar" style="display: none"></div>
-            <span id="quiz-progress-text"></span>
-          </div>
-        </fieldset>
+      <aside class="column-menu">
+        <h2>Menu</h2>
+        <nav>
+          <button id="problema-btn">O Problema</button>
+          <button id="instrucoes-btn">Instruções</button>
+          <button id="pim-btn">Definição do PIM</button>
+          <button id="sair-btn">Sair</button>
+        </nav>
+      </aside>
+    </div>
 
-        <fieldset class="FexplorarP114">
-          <legend class="Elegend1">Menu</legend>
-          <button
-            id="voltarTeoria" onclick="window.open('./Problema2.html', '_blank');"
-          >
-            O Problema
-          </button>
+    <div class="message-area">
+      <h2>Mensagens</h2>
+      <div id="Justific"></div>
+      <div class="action-buttons">
+        <button id="ProximaPerguntaBtn" class="hidden">Próxima Pergunta</button>
+        <div id="ProximaEtapa" class="hidden">
+          <button id="finalizarBtn">Finalizar Quizz</button>
+        </div>
+        <div id="RefazerQuizz" class="hidden">
+          <button id="refazerBtn">Reiniciar Quizz</button>
+        </div>
+      </div>
+    </div>
+  </main>
 
-          <button
-            id="Instrucao"
-            onclick="window.open('./instrucao.html', '_blank');"
-          >
-            Instruções
-          </button>
+  <div id="orientation-warning">
+    <p>Para uma melhor experiência, por favor, gire seu dispositivo para a posição de paisagem (horizontal).</p>
+  </div>
 
-          <button
-            id="Verificar"
-            onclick="window.open('./apresentacaoTeorica2.html', '_blank');"
-          >
-            Definição do PIM
-          </button>
+  <script src="../js/Passo1.js" type="module"></script>
+</body>
 
-          <button
-            id="Sair"
-            onclick="window.location.href='https://www.google.com.br'"
-          >
-            Sair
-          </button>
-        </fieldset>
-
-        <fieldset id="Explorar11">
-          <legend class="Elegend1">Mensagens</legend>
-          <div id="Justific"></div>
-          <button id="ProximaPerguntaBtn" style="display: none">
-            Próxima Pergunta
-          </button>
-
-          <div id="ProximaEtapa" style="display: none">
-            <button id="finalizarBtn">Finalizar Quizz</button>
-          </div>
-
-          <div id="RefazerQuizz" style="display: none">
-            <button id="refazerBtn">Reiniciar Quizz</button>
-          </div>
-        </fieldset>
-      </section>
-    </main>
-    <script src="../js/Passo1.js" type="module"></script>
-    <footer>
-      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
-    </footer>
-  </body>
 </html>

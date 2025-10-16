@@ -1,350 +1,195 @@
-/* === Estilos Da Pagina Passo 1 Perfeito === */
+/* ========================================================================== */
+/* ESTILOS EXCLUSIVOS PARA A PÁGINA PASSO1.HTML (Layout Interativo)         */
+/* ========================================================================== */
 
-#Explorar11 {
-  width: 1185px;
-  height: 120px;
-  position: fixed;
-  margin-top: 300px;
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  border-radius: 15px;
-  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+/* 1. Reset e Configurações Globais da Página */
+header,
+footer {
+  display: none !important;
 }
 
-#Explorar11:hover {
-  transform: scale(1.04);
-  background-color: #bee2be;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+body {
+  /* Paleta de cores quentes */
+  background: linear-gradient(135deg, #4d2f1d, #6f4e37, #a67b5b, #c8a183);
+  font-family: 'Roboto Mono', monospace;
+  color: #fff;
+  overflow: hidden;
+  /* Garante que não haja rolagem */
 }
 
-#grafico-container {
-  width: 90%;
-  height: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border: 2px solid rgba(128, 128, 128, 0.728);
-  border-radius: 20px;
-  box-shadow: inset 6px 6px 8px rgba(0, 0, 0, 0.8);
-}
-
-#grafico-container2 {
-  width: 90%;
-  height: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border: 2px solid rgba(128, 128, 128, 0.728);
-  border-radius: 20px;
-  box-shadow: inset 6px 6px 8px rgba(0, 0, 0, 0.8);
-}
-
-section {
-  gap: 15px;
-  position: relative;
-  top: 36px;
-  margin-left: 6px;
-  justify-content: flex-start;
-}
-
-.grafico-container {
-  width: 400px;
-  height: 300px;
-  position: relative;
-  margin-bottom: 150px;
-  flex-direction: column;
-  box-sizing: border-box;
-  text-align: center;
-  border-radius: 20px;
-  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
-}
-
-#Perguntas1 {
-  width: 600px;
-  height: 300px;
-  position: relative;
-  margin-bottom: 150px;
-  flex-direction: column;
-  box-sizing: border-box;
-  text-align: justify;
-  padding: 0 15px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 18px;
-  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
-}
-
-#Perguntas1:hover {
-  transform: scale(1.05);
-  background-color: #bee2be;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-}
-
-#alternativas {
-  width: 100%;
-  height: 160px;
-  margin: 5px 0 0 0;
-  flex-direction: column;
-  text-align: left;
-}
-
-.alternativa-btn {
-  /* Estilos padrão do botão */
-  margin: 10px 0;
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
   border: 0;
-  font-size: 16px;
-  font-family: "Times New Roman", Times, serif;
-  background: transparent;
-  font-weight: bold;
-  flex-direction: row;
-  color: black;
-  cursor: pointer;
+}
+
+/* 2. Layout Principal */
+.step-main-container {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-.alternativa-btn:hover {
-  /* Estilos para o estado 'hover' */
-  transform: scale(1.05);
-  color: white;
-  border-radius: 5px;
-  box-shadow: inset 20px 20px 10px rgba(0, 0, 0, 0.614);
-}
-
-.Elegend1 {
-  margin: 2px;
-  color: #032b04;
-  text-shadow: 2px 2px 5px #0a0a0a;
-  text-align: center;
-}
-
-#Justific {
-  width: 980px;
-  height: 95px;
-  margin: 0 auto;
-  flex-direction: row;
-  box-sizing: border-box;
-  padding: 0 auto;
-  line-height: 0.5;
-  font-size: 19px;
-  color: #001112;
-  font-weight: bold;
-  background-color: #00111200;
-}
-
-/* === Estilos dos Botões (Propriedades consolidadas) === */
-
-#ProximaEtapa button,
-#ProximaPerguntaBtn,
-#finalizarBtn,
-#refazerBtn {
-  border: outset 4px #f0a8a8;
-  background: linear-gradient(
-    to right,
-    #350202,
-    #6b0505,
-    #e81414,
-    #f69605,
-    #daa96c,
-    #f6ad47
-  );
-  width: 180px;
-  height: 50px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  margin: 10px auto;
-  gap: 10px;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
-  color: white;
-}
-
-#ProximaEtapa button:hover,
-#ProximaPerguntaBtn:hover,
-#finalizarBtn:hover,
-#refazerBtn:hover {
-  transform: scale(1.1);
-  color: rgb(124, 249, 7);
-  filter: invert(599%) sepia(0%) saturate(50%) hue-rotate(270deg);
-  transition: all 0.3s ease-in-out;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-}
-
-#ProximaEtapa button:active,
-#ProximaPerguntaBtn:active,
-#finalizarBtn:active,
-#refazerBtn:active {
-  transform: scale(0.95);
-}
-
-.FexplorarP114 {
-  width: 160px;
-  height: 300px;
-  position: relative;
-  margin: 15px auto;
-  bottom: 75px;
   flex-direction: column;
-  box-sizing: border-box;
-  text-align: center;
-  border-radius: 20px;
-  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
-}
-
-.FexplorarP114 button {
-  width: 140px;
-  height: 40px;
+  gap: 1rem;
+  width: 100%;
+  height: 100vh;
+  /* Ocupa a tela inteira */
+  padding: 1rem;
   align-items: center;
   justify-content: center;
-  margin: 10px auto;
-  padding: 8px;
-  font-size: 14px;
-  border-radius: 10px;
-  border: outset 4px #4caf50;
-  background: linear-gradient(
-    to right,
-    #064108,
-    #09680e,
-    #56d25a,
-    #aff7b1,
-    #7a9c7d
-  );
-  color: white;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
 }
 
-.FexplorarP114 button:hover {
-  background: linear-gradient(
-    to right,
-    #6bc06e,
-    #9ed4a0,
-    #bee2be,
-    #d8ead8,
-    #f0f9f0
-  );
-  border: outset 4px #6bc06e;
-  transform: scale(1.1);
-  color: white;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-}
-
-.FexplorarP114 button:active {
-  transform: scale(0.95);
-}
-
-#quiz-progress-container {
-  width: 560px;
-  height: 10px;
-  background-color: #e0e0e0;
-  border-radius: 10px;
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Padrão Mobile: empilhado */
+  gap: 1rem;
+  width: 100%;
+  flex-grow: 1;
+  /* Faz a grade ocupar o máximo de espaço vertical */
   overflow: hidden;
-  margin: 8px auto;
-  position: fixed; /* ADICIONE ESTA LINHA */
 }
 
-#quiz-progress-bar {
-  height: 100%;
-  width: 0%;
-  background-color: #4caf50;
-  transition: width 0.5s ease-in-out;
-  border-radius: 10px;
+/* 3. Estilo das Colunas */
+.column-graphics,
+.column-quiz,
+.column-menu,
+.message-area {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 192, 128, 0.5);
+  border-radius: 15px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
-#quiz-progress-text {
-  /* ADICIONE ESTE NOVO BLOCO */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: black; /* Escolha uma cor visível */
-  font-size: 10px;
-  font-weight: bold;
+h2 {
+  color: #ffc080;
+  text-align: center;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
-#ProximaPerguntaBtn {
-  /* Estilizado para ter a mesma aparência do botão 'Finalizar' */
-  margin-top: 20px;
+/* Coluna de Gráficos */
+.graphics-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.graphics-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 192, 128, 0.5);
+  cursor: pointer;
+  /* Adiciona um cursor para indicar interatividade */
+  /* NOVO: Adiciona uma transição suave para o efeito de filtro */
+  transition: filter 0.3s ease-in-out;
+}
+
+/* NOVO: Aplica o filtro de inversão de cores no hover */
+.graphics-content img:hover {
+  filter: invert(1);
+}
+
+
+/* Coluna do Quizz */
+#alternativas button {
   display: block;
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  border: 2px solid #c8a183;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* === Estilos da Seção Principal e Layout === */
-
-#plot {
-  width: 400px;
-  min-width: 300px;
-  height: 330px;
-  max-height: 340px;
-  box-sizing: border-box;
-  margin: 0 auto;
-  padding: 0 auto;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
+#alternativas button:hover {
+  background-color: #c8a183;
+  color: #4d2f1d;
 }
 
-/* === Media Queries para Responsividade === */
-@media (max-width: 768px) {
-  /* Ajusta o contêiner geral do HTML */
-  html,
-  body {
-    width: 95%;
-    overflow-x: hidden;
-    height: auto;
+/* Coluna de Menu */
+.column-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.column-menu button {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 2px solid #a67b5b;
+  background-color: transparent;
+  color: #ffc080;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.column-menu button:hover {
+  background-color: #a67b5b;
+  color: #fff;
+}
+
+/* Área de Mensagens */
+.message-area {
+  width: 100%;
+  min-height: 100px;
+  flex-shrink: 0;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.action-buttons button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: 2px solid #ffc080;
+  background-color: #a67b5b;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-buttons button:hover {
+  background-color: #ffc080;
+  color: #4d2f1d;
+}
+
+
+/* 4. Responsividade */
+@media (min-width: 1024px) {
+  .main-grid {
+    grid-template-columns: 1.2fr 1.5fr 1fr;
   }
 
-  /* Contêiner principal, ajustado para ocupar espaço e centralizar */
-  #Explorar11,
-  .Fexplorar14,
-  #Justific,
-  #ProximaEtapa,
-  #RefazerQuizz {
-    width: 90%;
-    margin: 0 2px; /* Centraliza o elemento e adiciona uma margem */
-    height: auto; /* Altura flexível para se ajustar ao conteúdo */
-    display: flex;
-    flex-direction: row; /* Organiza os itens em coluna */
-    position: relative;
-    font-size: small;
-    padding: 0 5px; /* Adiciona um espaçamento interno */
+  .message-area {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
   }
 
-  #Explorar11 button,
-  .Fexplorar14 button {
-    width: 90px;
-    height: 45px; /* Ajusta a altura do botão */
-    margin: 0 2px 6px 25px;
-    padding: 0 auto; /* Adiciona um espaçamento interno */
-    font-size: small;
-  }
-
-  /* Gráfico: Posição fixa e margens absolutas removidas */
-  .grafico-container {
-    display: none;
-  }
-
-  /* Seções: Removido o overflow para permitir a rolagem natural */
-  section {
-    gap: 1px;
-    top: auto;
-    padding: 0 1px 0 1px; /* Adiciona um espaçamento interno */
-  }
-
-  /* Seção de perguntas: Posição fixa removida */
-  #Perguntas1 {
-    width: 90%;
-    height: auto;
-    margin: 0px 1px 2px 1px; /* Margens ajustadas para espaçamento */
-    flex-direction: column;
-    line-height: 1.2;
-    display: flex; /* Display corrigido para flex */
-    position: relative; /* Posição relativa, o que permite que o elemento flua */
-    padding: 0 1px 0 1px; /* Adiciona um espaçamento interno */
-    bottom: auto; /* Posição inferior removida */
-  }
-
-  #alternativas {
-    flex-direction: column;
-    gap: 3px; /* Espaçamento entre as alternativas */
+  .step-main-container {
+    padding-bottom: 150px;
   }
 }

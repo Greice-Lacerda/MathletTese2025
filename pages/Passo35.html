@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prova do Passo de Indução - Etapa Guiada</title>
+
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+    <link rel="stylesheet" href="../styles/estiloPasso35.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script type="module" src="../js/Passo35.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="tit1">
+            <h1>Explorando o Princípio da Indução Matemática</h1>
+        </div>
+        <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+    </header>
+
+    <main>
+        <div class="main-layout">
+
+            <!-- COLUNA ESQUERDA: GRÁFICO (FIXO) -->
+            <div class="coluna-grafico">
+                
+                <fieldset id="ColGraf1">
+                    <legend>Visualização Gráfica</legend>
+                    <div id="plotGrfM32"></div>
+                </fieldset>
+            
+            </div>
+
+            <div id="etapa-2">
+
+                <fieldset id="etapa-22">
+                    <legend>Do visual para a Matemática</legend>
+
+                    <p class="proof-step-text3">
+                        Vamos considerar agora, apenas o novo retãngulo inserido. A área desse <span
+                            style="color: #fd7e14;">novo
+                            retângulo</span>, será calculada da seguinte forma:
+                    </p>
+
+                    <p class="PassoP35">
+                        &bullet; A nova base é gerada pela divisão do intervalo em (k + 1) partes;
+                    </p>
+
+                    <p class="PassoP35">
+                        &bullet; A altura será calculada pela função y = x<sup>2</sup> no extremo k do intervalo.
+                    </p>
+
+                    <p class="proof-step-text3">
+                        Assim, a área <span style="color: #fd7e14;">A<sub>k + 1 </sub>(área do novo
+                            retângulo)</span> pode ser representada pela expressão:
+                    </p>
+
+                    <p class="proof-step-text3" style="text-align:center;">
+                        <span style="color: #ff8800;">A<sub>k + 1</sub>
+                            = <math display="inline">
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mfrac>
+                                        <mrow>
+                                            <mn>1</mn>
+                                        </mrow>
+                                        <mrow>
+
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+
+                                        </mrow>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+
+                                <mo>&middot;</mo>
+                                <msup>
+                                    <mrow>
+                                        <mo>[</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mn>(k − 1) + 1</mn>
+                                            </mrow>
+                                            <mrow>
+
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>]</mo>
+                                    </mrow>
+                                    <mrow>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msup>
+
+                                <mo>=</mo>
+
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mfrac>
+                                        <mrow>
+                                            <mn>1</mn>
+                                        </mrow>
+                                        <mrow>
+
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+
+                                        </mrow>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+
+                                <mo>&middot;</mo>
+                                <msup>
+                                    <mrow>
+                                        <mo>[</mo>
+                                        <mfrac>
+                                            <mrow>
+                                                <mn>k</mn>
+                                            </mrow>
+                                            <mrow>
+
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>]</mo>
+                                    </mrow>
+                                    <mrow>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msup>
+                            </math></span>
+                    </p>
+
+                    <p class="proof-step-text3">
+                        Logo, temos:
+                    </p>
+
+                    <div class="formula-display3">
+                        <p class="proof-step-text3" style="text-align:center; font-size: 26px;">
+                            A<sub>k + 1</sub>
+                            = <math display="inline" style="font-size: 24px;">
+                                <mfrac>
+                                    <mrow>
+                                        <msup>
+                                            <mi>k</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </mrow>
+                                    <mrow>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mrow>
+                                </mfrac>
+                            </math></span>
+                        </p></span>
+                    </div>
+                    
+                    <p class="proof-step-text3" style="text-align:center;">
+                        Agora, vamos prosseguir para a prova do passo de indução?
+                    </p>
+                </fieldset>
+            
+            </div>
+
+        <!-- COLUNA DIREITA: MENU PRINCIPAL (FIXO) -->
+        <div class="coluna-controles">
+
+            <fieldset>
+                <legend>Menu</legend>
+
+                <button id="PimP33" onclick="window.open('./apresentacaoTeorica2.html', '_blank')">
+                    Definição do PIM
+                </button>
+
+                <button id="PimP33" onclick="window.open('./Problema2.html', '_blank')">
+                    O Problema
+                </button>
+
+                <button id="PimP33" onclick="window.open('./instrucaoP24.html', '_blank')">
+                    Instruções
+                </button>
+
+                <!-- Controles do Gráfico (Sempre visíveis na coluna central) -->
+                <div id="gerar-grafico">
+
+                    <fieldset>
+
+                        <legend>Controles do Gráfico</legend>
+
+                        <input type="number" id="numRectanglesInput" min="1" placeholder="0" />
+
+                        <button id="set-k-btn">Gerar Gráfico</button>
+
+                        <button id="add-rectangle-btn" disabled>Adicionar Retângulo</button>
+
+                        <button id="btn-concluir2" class="display hidden">Nova Área</button>
+
+                    </fieldset>
+
+                </div>
+
+            </fieldset>
+
+        </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+
+</body>
+
+</html

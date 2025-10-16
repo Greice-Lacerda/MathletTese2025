@@ -1,205 +1,121 @@
-/* --- Estilo da página Descrição do Problema de Investigação Perfeito --- */
+/* ========================================================================== */
+/* ESTILOS EXCLUSIVOS PARA A PÁGINA PROBLEMA1.HTML (Layout de 3 Colunas)    */
+/* ========================================================================== */
 
-.Prob1 {
-  flex-direction: row;
-  border-color: rgba(202, 248, 247, 0.2);
-  background-color: rgb(252, 252, 250, 0.2);
-  border-radius: 20px;
-  margin: 45px 0 0 0;
-  padding: 5px 0 0 0;
-  width: 430px;
-  height: 320px;
-  box-sizing: border-box;
-  box-shadow: #000 10px 10px 20px;
+/* 1. Layout Principal da Página */
+main {
+  justify-content: center;
+  gap: 1.5rem; /* Espaço entre o conteúdo e os botões */
 }
 
-.Prob1:hover {
-  transform: scale(1.3);
-  margin: 85px 0 0 -80px;
-  background-color: #bee2be;
-}
-
-#pProb {
-  font-size: 14px;
-}
-
-#recuo{
-    margin:-40px 0 0 0;
-}
-
-.pProb {
-  font-size: 13px;
-  margin: -5px 0;
-  padding: 0 25px 0px 40px;
-  text-align: justify;
-  line-height: 2;
-}
-
-#Parabola {
-  border: 6px solid rgb(46, 43, 43);
-  border-radius: 20px;
-  width: 300px;  
-  height: 310px;
-  margin: 55px 0 0 0;
-  padding: 2px 0 0 0;
-}
-
-section{
-    gap: 20px;
-}
-
-.controles {
-  width: 1200px;
-  height: 60px;
+/* 2. Layout do Conteúdo em Três Colunas */
+.problem-content-3col {
   display: flex;
-  justify-content: center;
-  flex-direction: row; /* Correção da direção */
-  align-items: flex-start;  
-  margin: -50px;
-  padding: 0 auto;
-  background-color: transparent;
-  box-shadow: #000 10px 10px 20px;
-  border: 1px solid rgb(5, 44, 1, 0.5);
-  border-radius: 10px;
-}
-
-/* === Estilos dos Botões (Propriedades consolidadas) === */
-.controles button {
-  width: 200px;
-  height: 50px;
+  flex-direction: column; /* Padrão Mobile: empilhado */
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1400px; /* Aumenta a largura máxima para acomodar 3 colunas */
   align-items: center;
-  justify-content: center;
-  margin: 5px 65px auto;
-  padding: 5px auto;
-  font-size: 18px;
-  border-radius: 10px;
-  border: outset 6px #4caf50;
-  background: linear-gradient(
-    to right,
-    #064108,
-    #09680e,
-    #56d25a,
-    #aff7b1,
-    #7a9c7d
-  );
-  color: white;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
 }
 
-.controles button:hover {
-  background: linear-gradient(
-    to right,
-    #6bc06e,
-    #9ed4a0,
-    #bee2be,
-    #d8ead8,
-    #f0f9f0
-  );
-  border: outset 6px #6bc06e;
-  scale: 1.1;
-  color: white;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-}
-
-.controles button:active {
-  transform: scale(0.95);
-}
-
-.formula {
-  width: 250px;
-  font-size: 17px;
-  font-family: "Times New Roman", serif;
-  text-align: center;
-  font-weight: bold;
-  margin: 0 0 -15px 100px;
-  border: #000 solid;
-}
-
-.subscript {
-  vertical-align: sup;
-}
-
-.line {
-  display: block;
-  width: 15px; /* Limita a largura da linha a 50% do contêiner */
-  margin: 0  0 0 2px; /* Centraliza a linha */
-  border-top: 1px solid black;
-}
-
-/* Container geral para a fração */
-.fraction-container {
-  display: inline-flex;
+.problem-column {
+  flex: 1; /* Permite que as colunas cresçam e dividam o espaço */
+  width: 100%;
+  display: flex;
   flex-direction: column;
-  vertical-align: middle;
 }
 
-/* Numerador */
-.numerator {
+/* 3. Estilo das Colunas Específicas */
+.image-column {
+  justify-content: center;
+  align-items: center;
+}
+
+.image-column figure {
+  margin: 0;
   text-align: center;
 }
 
-/* Denominador com a linha divisória */
-.denominator {
+.image-column img {
+  border: 8px solid #2e2b2b;
+  border-radius: 20px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4);
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+}
+
+.image-column figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #555;
+}
+
+.problem-box {
+  background-color: rgba(252, 252, 250, 0.3);
+  border: 1px solid rgba(202, 248, 247, 0.5);
+  border-radius: 20px;
+  padding: 1.2rem;
+  height: 100%; /* Faz a caixa de texto ocupar toda a altura da coluna */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  font-size: 0.95rem; /* Ajusta o tamanho da fonte para caber melhor */
+}
+
+.problem-box:hover {
+  background-color: rgba(190, 226, 190, 0.6);
+}
+
+.formula-display {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px dashed var(--color-primary-dark);
+  border-radius: 10px;
+  padding: 0.8rem;
   text-align: center;
+  margin: 1rem 0;
+  font-size: 1em;
 }
 
-/* === Media Queries para Responsividade === */
-@media (max-width: 768px) {
-  .Prob1 {
-    width: 100%;
-    height: auto;
-    font-size: 14px;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    padding: 0 auto;
-  }
-
-.Prob1:hover {
-  transform: scale(1.03);
-  margin: 0 auto;
-  padding: 0 auto;
-  background-color: #bee2be;
+.definitions-list {
+  list-style-type: ' ➤ ';
+  padding-left: 1.2rem;
+  margin: 1rem 0;
 }
 
-#recuo{
-    margin:8px 0 0 0;
+.definitions-list li {
+  margin-bottom: 0.8rem;
 }
 
-.pProb:hover {
-    transform: scale(1.2); 
-    font-size: 14px;   
-    margin: 10px 60px auto;
-    padding: 15px auto;
+.problem-text.challenge {
+  margin-top: 1.5rem;
+  font-weight: bold;
+  background-color: rgba(255, 248, 225, 0.7);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 5px solid var(--color-subtitle);
 }
 
-  #Parabola {
-    width: 300px;
-    height: auto;
-    margin: 8px;
-    padding: 2px;
-  }
+/* ========================================================================== */
+/* 4. Responsividade                                                        */
+/* ========================================================================== */
 
-.controles {
-    width: 100%;
-    height: auto;
-    position: relative;
-    margin: 35px auto;
-    padding: 5px auto;
-  }
-
-  .controles button {
-    width: 130px;
-    margin: 15px auto;
-    padding: 5px auto;
-    font-size: 13px;
-  }
-
-  #pProb:hover{ 
-    transform: scale(1.1); 
-    font-size: 16px;
+/* A partir de 1024px, muda para o layout de três colunas lado a lado */
+@media (min-width: 1024px) {
+  .problem-content-3col {
+    flex-direction: row; /* Colunas lado a lado */
+    align-items: stretch; /* Faz as colunas terem a mesma altura */
   }
 }
 
+/* Os estilos dos botões em .controls são herdados de estilosComuns.css */
+/* Estilo específico para botões de navegação/ação */
+#start-exploration-btn {
+  background: linear-gradient(135deg, #010238, #208bf0);
+  border: 2px outset #8ae1f3;
+}
+
+#start-exploration-btn{
+  background: linear-gradient(135deg, #036e27f5, #77f551);
+  border: 2px outset #f3f5f1;
+}
