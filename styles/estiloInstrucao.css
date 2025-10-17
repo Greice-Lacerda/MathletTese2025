@@ -1,196 +1,124 @@
-/* === Instruções do Passo 1 Perfeito === */
+/* === Estilos Específicos para a Página de Instruções === */
 
+/* 1. Contêiner Principal */
 #ExplorarIn11 {
-  width: 1200px;
-  height: 435px;
   display: flex;
-  flex-direction: row;
-  text-align: justify;
-  margin: 10px auto;
+  width: 100%;
+  max-width: 1200px;
+  /* Limita a largura máxima em telas grandes */
+  margin: 0.1rem auto;
+  /* Centraliza e adiciona espaço vertical */
   border-radius: 15px;
   box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+  padding: 0.8rem;
+  box-sizing: border-box;
+
+  /* Abordagem Mobile-First: O padrão é uma coluna */
+  flex-direction: column;
+  gap: 1.5rem;
+  /* Espaçamento entre as seções */
 }
 
-section {
-  gap: 5px;
-  position: relative;
-  top: 16px;
-  margin-left: 6px;
-  justify-content: flex-start;
-}
-
-.Elegend1 {
-  margin: 0 2px;
-  color: #032b04;
-  text-shadow: 2px 2px 5px #0a0a0a;
-  text-align: center;
-}
-
-#ProximaEtapa {
-  border: outset 4px #f0a8a8;
-  background: linear-gradient(
-    to right,
-    #350202,
-    #6b0505,
-    #e81414,
-    #f69605,
-    #daa96c,
-    #f6ad47
-  );
-  width: 250px;
-  height: 60px;
-  border-radius: 10px;
-  padding: 15px;
-  font-size: 16px;
-  font-weight: bold;
-  margin: 40px auto;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
-  color: white;
-}
-
-#ProximaEtapa:hover {
-  background: linear-gradient(
-    to right,
-    #6b0505,
-    #e81414,
-    #f69605,
-    #daa96c,
-    #f6ad47
-  );
-  cursor: pointer;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
-  transform: scale(1.2);
-}
-
-#ProximaEtapa:active {
-  background: linear-gradient(
-    to right,
-    #350202,
-    #6b0505,
-    #e81414,
-    #f69605,
-    #daa96c,
-    #f6ad47
-  );
-  box-shadow: inset 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 1.5px 1.5px 1px rgba(82, 65, 65, 0.9);
-  color: white;
-}
-
-.instrucIn1 {
-  width: 300px;
-  height: auto;
+/* 2. Colunas de Instrução (Estilos Consolidados) */
+.instrucIn1,
+.instrucIn2,
+.instrucIn3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
-  padding: 2px;
+  text-align: justify;
+  width: 100%;
+  /* Ocupa toda a largura disponível no mobile */
+}
+
+/* Ajustes finos de texto e espaçamento mantidos do original */
+.instrucIn1 {
   font-size: 14px;
   line-height: 1.1;
 }
 
-#Im11{
+.instrucIn2,
+.instrucIn3 {
+  font-size: 15px;
+  line-height: 1.1;
+}
+
+/* 3. Componentes Específicos */
+.Elegend1 {
+  color: #032b04;
+  text-shadow: 2px 2px 5px #0a0a0a;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  /* Adicionado para consistência */
+}
+
+#Im11 {
   width: 150px;
   height: 130px;
   margin: 0 auto;
   border: solid 4px rgba(120, 102, 102, 0.534);
   padding: 4px;
   border-radius: 8px;
+  box-sizing: border-box;
 }
 
-.instrucIn2 {
-  width: 420px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0px auto;
-  padding: 2px;
-  font-size: 15px;
-  line-height: 1.3;
+#ProximaEtapa {
+  /* Estilos do botão são mantidos, mas com layout flexível */
+  display: block;
+  width: 250px;
+  max-width: 100%;
+  /* Garante que não ultrapasse a tela */
+  height: 40px;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 6rem;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
+  color: white;
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(to right, #350202, #6b0505, #e81414, #f69605, #daa96c, #f6ad47);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-.instrucIn3 {
-  width: 400px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px auto;
-  padding: 2px;
-  font-size: 15px;
-  line-height: 1.3;
+#ProximaEtapa:hover {
+  background: linear-gradient(to right, #6b0505, #e81414, #f69605, #daa96c, #f6ad47);
+  transform: scale(1.1);
+  /* Reduzido para uma animação mais sutil */
 }
 
-h2 {
-  color: #032b04;
-  text-shadow: 2px 2px 5px #0a0a0a;
-  margin: 6px 0;
-  text-align: center;
+#ProximaEtapa:active {
+  background: linear-gradient(to right, #350202, #6b0505, #e81414, #f69605, #daa96c, #f6ad47);
+  box-shadow: inset 5px 5px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: 1.5px 1.5px 1px rgba(82, 65, 65, 0.9);
+  transform: scale(1);
 }
 
-ul, li {
-  margin: 4px 8px 4px 0;
-  padding: 5px; /
-}
 
-/* === Media Queries para Responsividade === */
-@media (max-width: 768px) {
-  /* Ajusta o contêiner geral do HTML */
-  html,
-  body {
-    width: 90%;
-    overflow-x: hidden;
-    height: auto;
+/* === Media Query para Telas Maiores (Desktop) === */
+@media (min-width: 1024px) {
+  #ExplorarIn11 {
+    /* Altera a direção para linha em telas grandes */
+    flex-direction: row;
+    justify-content: space-around;
+    /* Distribui o espaço */
+    align-items: flex-start;
+    /* Alinha os itens no topo */
+    gap: 0.5rem;
   }
 
-  /* Contêiner principal, ajustado para ocupar espaço e centralizar */
-  #Explorar11 {
-    width: 93%;
-    height: 820px; /* Altura flexível para se ajustar ao conteúdo */
-    display: flex;
-    flex-direction: column; /* Organiza os itens em coluna */
-    position: relative;
-    padding: 5px 10px 5px 10px; /* Adiciona um espaçamento interno */
-    margin: 5px 40px 5px 40px;
+  /* Define larguras proporcionais para as colunas no desktop */
+  .instrucIn1 {
+    width: 25%;
   }
 
-  /* Seções: Removido o overflow para permitir a rolagem natural */
-  section {
-    gap: 5px;
-    top: 1px;
-    padding: 0 1px 0 1px; /* Adiciona um espaçamento interno */
-    overflow-y: hidden;
-    overflow-x: hidden;
+  .instrucIn2 {
+    width: 35%;
   }
 
-  #ProximaEtapa {
-    margin-top: 30px;
-    margin-right: 30px;
-    margin-bottom: 1px;
-    gap: 5px;
-    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-    text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
-    color: white;
-  }
-
-  .instruc1,
-  .instruc2,
-  .instruc3 {
-    width: 95%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 10px 0 20px;
-    font-size: 16px;
-  }
-
-  ul {
-    list-style-type: disc;
-    margin: 0;
-    padding: 0px 30px 0 20px; /* Adiciona espaçamento à esquerda */
+  .instrucIn3 {
+    width: 33%;
   }
 }

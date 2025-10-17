@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    Descrição do Problema - Explorando o Princípio da Indução Matemática
+  </title>
+  <link rel="stylesheet" href="../styles/estiloProb1.css" />
+  <link rel="stylesheet" href="../styles/estilosComuns.css" />
+</head>
+
+<body>
+  <header class="main-header">
+    <h1 id="main-title">Explorando o Princípio da Indução Matemática</h1>
+    <p id="main-subtitle">Uma Abordagem Visual com Faixas de Parábola</p>
+  </header>
+
+  <main>
+    <div class="problem-content-3col">
+      <div class="problem-column image-column">
+        <figure><figcaption>Ilustração da faixa da parábola.</figcaption>
+          <img id="Parabola" src="../img/Parabola.jpg" alt="Parábola y=x^2 com polígonos retangulares inscritos" />
+        </figure>
+          <button id="ProbPas1" onclick="window.close();">
+                Fechar
+            </button>
+      </div>
+
+      <div class="problem-column text-column">
+        <article class="problem-box">
+          <p class="problem-text">
+            A área do polígono retangular, conforme Lima (2000), é dada pela expressão:
+          </p>
+          <div class="formula-display">
+            <strong><code>P<sub>n</sub></code> = <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mfrac>
+                  <mrow>
+                    <mn>1</mn>
+                  </mrow>
+                  <mrow>
+                    <msup>
+                      <mi>n</mi>
+                      <mn>3</mn>
+                    </msup>
+                  </mrow>
+                </mfrac>
+              </math> &sdot; [1<sup>2</sup> + 2<sup>2</sup> + 3<sup>2</sup> + &ctdot; + (n &minus; 1)<sup>2</sup>]</strong>
+          </div>
+          <p class="problem-text">Onde:</p>
+          <ul class="definitions-list">
+            <li><strong>n</strong> é o número de subintervalos.</li>
+            <li>O <strong>polígono</strong> é formado pelos <strong>n &minus; 1</strong> retângulos.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="problem-column text-column">
+        <article class="problem-box">
+          <p class="problem-text">Características da área construída:</p>
+          <ul class="definitions-list">
+            <li>Largura (Δx) = <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mfrac>
+                  <mn>1</mn>
+                  <mi>n</mi>
+                </mfrac>
+              </math>.</li>
+            <li>Alturas (y<sub>i</sub>) dadas por <code>y = x<sup>2</sup></code>.</li>
+            <li>Área total A(n) é a soma das áreas.</li>
+          </ul>
+          <p class="problem-text challenge">
+            <strong>Desafio:</strong> Demonstre, via PIM, que a área do polígono é a fórmula apresentada.
+          </p>
+        </article>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+  </footer>
+
+  <div id="orientation-warning">
+    <p>Para uma melhor experiência, por favor, gire seu dispositivo para a posição de paisagem (horizontal).</p>
+  </div>
+
+  <script>
+    function exitApp() {
+      if (document.fullscreenElement && document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+      window.location.href = 'https://www.google.com.br';
+    }
+  </script>
+</body>
+
+</html>

@@ -4,71 +4,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-    Caso Base - Explorando o Princípio da Indução Matemática
-  </title>
+  <title>Caso Base - Explorando o Princípio da Indução Matemática</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-    rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
   <link rel="stylesheet" href="../styles/estilosComuns.css" />
   <link rel="stylesheet" href="../styles/estiloPasso1.css" />
 </head>
 
 <body class="page-step1">
-  
+
   <main>
     <div class="exploration-panel">
       <div class="main-content-grid">
 
-        <div class="column column-graphics">
+        <section class="column column-graphics">
           <h2 class="column-title">Gráfico e Tabela</h2>
           <div class="column-content">
-            <img id="grafico-container" src="../img/ParabolaQuizz.jpg" alt="Parábola com retângulos para n=2" />
-            <img id="grafico-container2" class="hidden" src="../img/ParabolaQuizz2.jpg"
+            <img id="grafico-parabola-n2" src="../img/ParabolaQuizz.jpg" alt="Parábola com retângulos para n=2" />
+            <img id="grafico-parabola-n3" class="hidden" src="../img/GraficoPassoN2.jpg"
               alt="Parábola com retângulos para n=3" />
             <div id="table-container" class="hidden"></div>
           </div>
-        </div>
+        </section>
 
-        <div class="column column-quiz">
+        <section class="column column-quiz">
           <h2 class="column-title">Quizz</h2>
           <div class="column-content">
             <div id="perguntas"></div>
             <div id="alternativas"></div>
           </div>
-        </div>
+        </section>
 
         <aside class="column column-menu">
           <h2 class="column-title">Menu</h2>
-          <nav class="column-content">
+          <nav class="column-content nav-buttons">
             <button id="voltarTeoria">O Problema</button>
             <button id="Instrucao">Instruções</button>
             <button id="Verificar">Definição do PIM</button>
             <button id="Sair">Sair</button>
+            <button id="ProximaPerguntaBtn" class="action-buttons block hidden">Próxima Pergunta</button>
+            <button id="finalizarBtn" class="action-buttons block hidden">Prosseguir (Passo 2)</button>
+            <button id="refazerBtn" class="action-buttons block hidden">Reiniciar Quizz</button>
           </nav>
         </aside>
-      </div>
 
-      <div class="messages-area">
-        <div id="quiz-progress-container">
-          <span id="quiz-progress-text"></span>
-          <div id="quiz-progress-bar-wrapper">
-            <div id="quiz-progress-bar" class="hidden"></div>
+        <div class="messages-area">
+          <div id="quiz-progress-container">
+            <div id="quiz-progress-bar-wrapper">
+              <div id="quiz-progress-bar" class="hidden"></div>
+              <span id="quiz-progress-text" aria-live="polite"></span>
+            </div>
           </div>
+          <div id="Justific" class="column-content" aria-live="polite"></div>
         </div>
-        <h2 class="column-title">Mensagens</h2>
-        <div id="Justific" class="column-content"></div>
-        <div class="action-buttons">
-          <button id="ProximaPerguntaBtn" class="hidden">Próxima Pergunta</button>
-          <div id="ProximaEtapa" class="hidden">
-            <button id="finalizarBtn">Finalizar Quizz</button>
-          </div>
-          <div id="RefazerQuizz" class="hidden">
-            <button id="refazerBtn">Reiniciar Quizz</button>
-          </div>
-        </div>
+
       </div>
     </div>
   </main>
