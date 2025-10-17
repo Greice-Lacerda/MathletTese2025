@@ -60,6 +60,19 @@ main {
 /* 4. Responsividade                                                        */
 /* ========================================================================== */
 
+/* ========================================================================== */
+/* 5. Responsividade                                                        */
+/* ========================================================================== */
+/* telas menores que tablets */
+
+@media (max-width: 767px) {
+  .welcome-text ul li {
+      margin-left: 0.8rem;
+      /* Aumenta o espaço abaixo de cada item */
+      text-align: justify;
+    }
+}
+
 /* A partir de 768px (tablets), muda para o layout de duas colunas lado a lado */
 @media (min-width: 768px) {
   .description-content {

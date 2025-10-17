@@ -40,7 +40,7 @@
 
 /* Estilo para a logo dentro do modal */
 .modal-logo {
-  width: 150px; /* Tamanho reduzido para mobile */
+  width: 200px; /* Tamanho reduzido para mobile */
   height: auto;
   border: 10px double rgba(10, 230, 246, 0.4);
   border-radius: 50%;
@@ -51,13 +51,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 #modal-title {
   font-size: 1.8rem;
+  color: blue;
   line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(10, 230, 246, 0.7);
+  text-shadow: 2px 2px 4px rgba(253, 253, 253, 0.342);
 }
 
 .modal-subtitle {
@@ -89,6 +90,30 @@
   color: #0a1734;
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(10, 230, 246, 0.5);
+}
+
+/* Media Query para o modal em telas maiores */
+@media (max-width: 767px) {
+  .modal-content {
+    flex-direction: row;
+    width: 600px;
+  }
+
+  .modal-logo {
+    width: 150px;
+  }
+
+  .modal-text {
+    align-items: center;
+  }
+
+  #modal-title {
+    font-size:rem;
+  }
+
+  .modal-subtitle {
+    font-size: 1rem;
+  }
 }
 
 /* Media Query para o modal em telas maiores */

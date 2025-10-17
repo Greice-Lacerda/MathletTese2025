@@ -74,6 +74,13 @@
 /* ========================================================================== */
 /* 5. Responsividade                                                        */
 /* ========================================================================== */
+/* telas menores que tablets */
+
+@media (max-width: 767px) {
+  .theory-box {
+    left: 5rem;
+  }
+}
 
 /* A partir de 768px (tablets), muda para o layout de duas colunas lado a lado */
 @media (min-width: 768px) {
@@ -91,6 +98,10 @@
 
 #problem-btn{
   background: linear-gradient(135deg, #036e27f5, #77f551);
-  border: 2px outset #f3f5f1;
+  border: 2px outset #53f33e;
 }
 
+#exit-btn {
+  background: linear-gradient(135deg, #6e0e0e, #c0392b);
+  border-color: #f5b7b1;
+}

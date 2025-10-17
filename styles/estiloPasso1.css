@@ -211,20 +211,20 @@ main {
 /* AJUSTE: Posiciona o primeiro botão de ação na parte inferior do menu */
 #ProximaPerguntaBtn,
 #finalizarBtn,
-#refazerBtn{
-    margin-top: auto;
-    border: outset 4px #f2c4a6;
-    background: linear-gradient(to right, #fb0404, #dd980e, #ddef5b);
-    color: white;
-    font-weight: bold;
-    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-    transition: all 0.3s ease-in-out;
-  }
+#refazerBtn {
+  margin-top: auto;
+  border: outset 4px #f2c4a6;
+  background: linear-gradient(to right, #fb0404, #dd980e, #ddef5b);
+  color: white;
+  font-weight: bold;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease-in-out;
+}
 
 #ProximaPerguntaBtn:hover,
 #finalizarBtn:hover,
-#refazerBtn:hover{
+#refazerBtn:hover {
   background: var(--gradiente-nav-hover);
 }
 
@@ -292,7 +292,7 @@ main {
   max-width: 100%;
   font-size: clamp(1.2rem, 3vmin, 1.5rem);
   /* AJUSTE: Define a largura e centraliza o bloco */
-  
+
 }
 
 .feedback-title.success {
@@ -331,6 +331,138 @@ main {
   opacity: 0.9;
 }
 
+@media (max-width: 767px) {
+
+  /* celulares */
+  .main-content-grid {
+    grid-template-columns: 2fr 5fr 2fr;
+    grid-template-rows: 6fr auto;
+    grid-template-areas:
+      "graphics quiz menu"
+      "messages messages menu";
+  }
+
+  #alternativas,
+  .feedback-title,
+  .feedback-content,
+  .quiz-question-title,
+  .feedback-title.success,
+  .feedback-title.error,
+  .quiz-question-reminder,
+  .column-content,
+  #quiz-progress-text {
+    font-size: 0.6rem;
+    line-height: 1;
+    gap: 2px;
+  }
+
+  .column-title {
+    display: none;
+  }
+
+  #perguntas,
+  #Justific {
+    margin-top: 2px;
+    font-size: 0.6rem;
+    line-height: 1;
+  }
+
+  #alternativas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* 1. Cria duas colunas de tamanho igual */
+    gap: 2px;
+    /* 2. Define um espaço entre os botões */
+
+    /* Reseta a direção flex, pois agora usamos grid */
+    flex-direction: unset;
+  }
+
+  /* Opcional, mas recomendado para um visual mais limpo na grade */
+  #alternativas button {
+    width: 100%;
+    /* Faz o botão ocupar toda a largura da sua coluna */
+    text-align: left;
+    /* Centraliza o texto, que fica melhor no formato de grade */
+  }
+
+  #quiz-progress-bar-wrapper,
+  #quiz-progress-text {
+    font-size: 0.5rem;
+    height: 8px;
+  }
+
+
+  .alternativa-btn {
+    font-size: 0.6rem;
+    gap: 2px;
+  }
+
+  .messages-area {
+    width: 100%;
+    height: 4rem;
+    line-height: 0.3rem;
+  }
+
+  .column-graphics {
+    width: 100%;
+    height: auto;
+  }
+
+  .column-quiz {
+    width: 100%;
+    height: auto;
+  }
+
+  .column-menu {
+    width: 100%;
+    height: auto;
+  }
+
+  .messages-area {
+    height: auto;
+    /* Permite que a altura se ajuste ao conteúdo */
+    min-height: 5rem;
+    /* Garante uma altura mínima */
+  }
+
+  /* As colunas agora se ajustam automaticamente, não precisam de width/height */
+
+  /* --- AJUSTES DE USABILIDADE NOS BOTÕES --- */
+  .nav-buttons button {
+    padding: 3.5px;
+    /* Padding razoável para toque */
+    font-size: 0.7rem;
+    /* Fonte legível em telas pequenas */
+    border-width: 2px;
+    width: 95%;
+    /* Ocupa a largura da coluna de menu */
+    margin-bottom: 6px;
+  }
+
+  /* CORREÇÃO UX: O botão deve crescer sutilmente, não encolher */
+  .nav-buttons button:hover,
+  .nav-buttons button:focus-visible {
+    transform: scale(1);
+    /* Efeito de crescimento sutil */
+  }
+
+  /* MELHORIA: Estiliza os botões de ação de forma consistente e centralizada */
+  .action-buttons {
+    margin-top: auto;
+    /* Mantém o alinhamento na base do menu flex */
+    border: outset 1px #f2c4a6;
+    /* Borda mais sutil para mobile */
+    background: linear-gradient(to right, #fb0404, #dd980e, #ddef5b);
+  }
+
+  .action-buttons:hover,
+  .action-buttons:focus-visible {
+    /* Herda o transform: scale(1.05) do .nav-buttons button:hover e aplica o novo fundo */
+    background: var(--gradiente-action-hover);
+  }
+}
+
 /* 7. RESPONSIVIDADE E TELA CHEIA */
 #orientation-warning {
   display: none;
@@ -347,6 +479,18 @@ main {
   text-align: center;
   padding: 20px;
   font-size: 1.2rem;
+}
+
+@media (max-width: 800px) and (orientation: portrait) {
+
+  /* AVISO DE ORIENTAÇÃO */
+  main {
+    display: none;
+  }
+
+  #orientation-warning {
+    display: flex;
+  }
 }
 
 @media (min-width: 768px) {
@@ -370,17 +514,5 @@ main {
     grid-template-areas:
       "graphics quiz menu"
       "messages messages menu";
-  }
-}
-
-@media (max-width: 768px) and (orientation: portrait) {
-
-  /* AVISO DE ORIENTAÇÃO */
-  main {
-    display: none;
-  }
-
-  #orientation-warning {
-    display: flex;
   }
 }
