@@ -1,880 +1,245 @@
-/* Estilos para a etapa Passo2.css Perfeito*/
+/* ========================================================== */
+/* ESTILOS ESPECÍFICOS PARA A PÁGINA PASSO2                   */
+/* ========================================================== */
 
-.hidden {
-  display: none !important;
-}
-
-.visible {
-  display: flex !important;
-}
-
-section {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
+/* 1. LAYOUT PRINCIPAL DA PÁGINA (MOBILE-FIRST) */
+.main-grid-container {
+  display: grid;
   width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  /* Uma coluna por padrão */
+  grid-template-areas:
+    "controls"
+    "graph"
+    "table"
+    "menu";
 }
 
-/* ========================================================================== */
-/* Estilos para Fieldsets e Contêineres Principais */
-/* ========================================================================== */
-
-fieldset {
+.grid-item {
   border: 1px solid #fa9b9b86;
   border-radius: 15px;
   box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
-  margin: 1px;
-  padding: 2px;
-  height: 325px; /* Mantém a altura fixa para os contêineres do gráfico e tabela */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.Elegend, legend {
+/* Mapeamento das áreas do grid */
+#controls-section {
+  grid-area: controls;
+}
+
+#graph-section {
+  grid-area: graph;
+}
+
+#table-section {
+  grid-area: table;
+}
+
+#menu-section {
+  grid-area: menu;
+}
+
+.section-title {
   font-size: 1.2em;
   color: black;
   text-shadow: 2px 2px 1px #0a0a0a62;
   text-align: center;
-  padding: 0;
+  margin: 0 0 1rem 0;
 }
 
-.Explorar11 {
-  /* Contêiner para input e botões */
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  width: 90%;
-  max-width: 1000px;
-  height: 80px; /* Altura flexível */
-  padding: 6px;
-  margin: 56px 0 0 0;
-}
-
-#Explorar12 {
-  /* Contêiner do gráfico */
-  width: 500px;
-  height: 327px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#Explorar13 {
-  /* Contêiner da tabela */
-  width: 450px;
-  height: 320px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-}
-
-.Fexplorar14 {
-  /* Contêiner do menu */
-  width: 170px;
-  height: 320px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 3px;
-}
-
-/* ========================================================================== */
-/* Estilos de Entradas e Botões */
-/* ========================================================================== */
-
-label {
-  font-size: 20px;
-  font-weight: bold;
-  padding: 0 5px;
-  
-}
-
-input[type="number"] {
-  width: 220px;
-  height: 30px;
-  font-size: 15px;
-  border-radius: 50px;
-  border: 2px solid #ccc;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0);
-  text-align: center;
-}
-
-/*Botoes da pagina*/
-
-button {
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
-  transition: all 0.3s ease-in-out;
+.content-container {
+  flex-grow: 1;
+  /* Faz o conteúdo ocupar o espaço disponível */
+  min-height: 300px;
+  background-color: white;
   border-radius: 10px;
+  overflow: auto;
+  /* Adiciona rolagem interna se necessário */
 }
 
-.Explorar11 button {
-  width: 180px;
-  height: 40px;
-  margin: 10px;
+/* 2. ESTILOS DOS COMPONENTES DA PÁGINA */
+#controls-section .controls-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+#controls-section label {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+#controls-section button {
+  width: 100%;
   border: outset 4px #8ae1f3;
-  background: linear-gradient(
-    to right,
-    #010238,
-    #1618bd,
-    #208bf0,
-    #0ae6f6,
-    #9ff4f5
-  );
-  color: white;
+  background: linear-gradient(to right, #010238, #1618bd, #208bf0, #0ae6f6, #9ff4f5);
 }
 
-.Explorar11 button:hover {
-  background: linear-gradient(
-    to right,
-    #d3d3ed,
-    #8082e5,
-    #083a6a,
-    #134245,
-    #001112
-  );
-  border: outset 4px #97a4a4;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-}
-
-.FButn142{
-  width: 250px;
-  height: 360px;
-  margin: 5px;
-  background-color: #e8141413;
-}
-
-.FBtn14{
+#menu-section .menu-buttons {
   display: flex;
   flex-direction: column;
-  width: 220px;
-  height: 180px;
-  margin: 8px auto;
-  background-color: #6c444417;
-}
-
-.FBtn14 button {
-  width: 150px;
-  height: 40px;
-  margin: 10px auto;
-  border: outset 4px #4caf50;
-  background: linear-gradient(
-    to right,
-    #064108,
-    #09680e,
-    #56d25a,
-    #aff7b1,
-    #7a9c7d
-  );
-  color: white;
-}
-
-.FBtn14 button:hover {
-  background: linear-gradient(
-    to right,
-    #6bc06e,
-    #9ed4a0,
-    #bee2be,
-    #d8ead8,
-    #f0f9f0
-  );
-  border: outset 4px #6bc06e;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-}
-
-.FBtn14 button:active {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  transform: scale(1);
-}
-
-.Fexplorar14 button {
-  width: 150px;
-  height: 40px;
-  margin: 15px auto;
-  border: outset 4px #4caf50;
-  background: linear-gradient(
-    to right,
-    #064108,
-    #09680e,
-    #56d25a,
-    #aff7b1,
-    #7a9c7d
-  );
-  color: white;
-}
-
-.Fexplorar14 button:hover {
-  background: linear-gradient(
-    to right,
-    #6bc06e,
-    #9ed4a0,
-    #bee2be,
-    #d8ead8,
-    #f0f9f0
-  );
-  border: outset 4px #6bc06e;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-}
-
-.Fexplorar14 button:active {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  transform: scale(1);
-}
-
-#ProximaEtapa {
-  border: outset 4px #f0a8a8;
-  background: linear-gradient(
-    to right,
-    #350202,
-    #6b0505,
-    #e81414,
-    #f69605,
-    #daa96c,
-    #f6ad47
-  );
-  width: 150px;
-  height: 40px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  margin: 10px auto;
-  gap: 10px;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
-  color: white;
-}
-
-#ProximaEtapa:hover {
-  transform: scale(1.1);
-  color: rgb(124, 249, 7);
-  filter: invert(599%) sepia(0%) saturate(50%) hue-rotate(270deg);
-  transition: all 0.3s ease-in-out;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-}
-
-#ProximaEtapa:active {
-  transform: scale(0.95);
-}
-
-#Verificar {
-  border: outset 4px #f0a8a8;
-  background: linear-gradient(
-    to right,
-    #350202,
-    #6b0505,
-    #e81414,
-    #f69605,
-    #daa96c,
-    #f6ad47
-  );
-  width: 150px;
-  height: 40px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  margin: 10px auto;
-  gap: 10px;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(82, 65, 65, 0.9);
-  color: white;
-}
-
-#Verificar:hover {
-  transform: scale(1.1);
-  color: rgb(245, 245, 238);
-  filter: invert(599%) sepia(3%) saturate(30%) hue-rotate(270deg);
-  transition: all 0.3s ease-in-out;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-}
-
-#Verificar:active {
-  transform: scale(0.95);
-}
-
-#Instrucao {
-  width: 150px;
-  height: 40px;
-  margin: 10px;
-  border: outset 4px #8ae1f3;
-  background: linear-gradient(
-    to right,
-    #010238,
-    #1618bd,
-    #208bf0,
-    #0ae6f6,
-    #9ff4f5
-  );
-  color: white;
-}
-
-#Instrucao:hover {
-  transform: scale(1.1);
-  color: rgb(233, 249, 7);
-  filter: invert(599%) sepia(0%) saturate(50%) hue-rotate(270deg);
-  transition: all 0.3s ease-in-out;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-  border: outset 4px #97a4a4;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-}
-
-#Instrucao:active {
-  transform: scale(0.95);
-}
-
-/* ========================================================================== */
-/* Estilos do Gráfico e Tabela */
-/* ========================================================================== */
-
-#plot,
-#tabela-container {
-  width: 450px;
-  max-width: 450px;
-  max-height: 280px;
-  min-height: 278px;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 0 auto;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-  margin: 0 auto; /* Centraliza o elemento */
-}
-
-#Explorar13:hover{
-  width: 600px;
-  height: 380px;
-  max-width: 10%;
-  max-height: 62%;
-  overflow: hidden;
-  position: absolute;
-  top:80px;
-  background-color: #fff;
-  transform: scale(1.5);
-  transition-duration: 0.5s;
-  z-index: 7;
-}
-
-#tabela-container:hover {
-  width: 850px;
-  height: 400px;
-  max-width: 90%;
-  max-height: 90%;
-  margin-top:10px;
-  overflow-y: auto;
-  overflow-x: auto;
-}
-
-#plot:hover{
-  width: 800px;
-  height: 380px;
-  overflow: hidden;
-  position: absolute;
-  margin-left:700px;
-  justify-content: center;
-  top:120px;
-  transform: scale(1.6);
-  transition-duration: 0.5s;
-  z-index: 10;
-}
-
-#tabela-container table {
-  width: 100%; /* Garante que a tabela use o espaço disponível */
+  gap: 1rem;
   height: 100%;
-  border-collapse: separate;
-  border-spacing: 2px;
-  text-align: center;
-  font-size: 14px; /* Tamanho da fonte ajustado */
 }
 
-#tabela-container th,
-#tabela-container td {
-  border: 1px solid #ccc;
-  padding: 4px; /* Espaçamento reduzido */
-  text-align: center;
+#menu-section #ProximaEtapa,
+#menu-section #Verificar {
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(to right, #350202, #6b0505, #e81414, #f69605);
 }
 
-#tabela-container th {
-  background-color: lightblue;
-  border: 1px solid darkblue;
-  color: brown;
-  border-radius: 5px;
+#menu-section #Instrucao,
+#menu-section #voltarTeoria,
+#menu-section #Sair {
+  border: outset 4px #4caf50;
+  background: linear-gradient(to right, #064108, #09680e, #56d25a, #aff7b1);
 }
 
-#tabela-container td {
-  border-bottom: 1px solid lightgray;
-  box-shadow: 1px 1px 26px rgba(0, 0, 0, 0.1);
-}
-
-/* ========================================================================== */
-/* Estilos do Modal (Desafio) */
-/* ========================================================================== */
-
-.w3-modal {
-  display: block;
+/* 3. ESTILOS DO MODAL */
+.modal-overlay {
   position: fixed;
-  z-index: 5;
+  z-index: 100;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding-top: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-table {
-  border-collapse: separate;
-  border-spacing: 2px;
-  text-align: center;
-  font-size: 14px; /* Tamanho da fonte ajustado */
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
-}
-
-td {
-  border-bottom: 1px solid lightgray;
-  padding: 2px;
-  line-height: 1.2;
-  box-shadow: 1px 1px 26px rgba(0, 0, 0, 0.1);
-}
-
-th {
-  background-color: lightblue;
-  border: 1px solid darkblue;
-  color: brown;
-  padding: 2px;
-  border-radius: 5px;
-}
-
-/* Container geral para a fração */
-.fraction-container {
-  display: inline-flex;
+.modal-content {
+  background-color: #fefefe;
+  width: 95%;
+  max-width: 1200px;
+  max-height: 95vh;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
   flex-direction: column;
-  vertical-align: middle;
-  font-size: 14px; /* Tamanho da fonte ajustado */
-  margin: 2px auto;
-}
-
-/* Numerador */
-.numerator {
-  text-align: center;
-  line-height: 1;
-}
-
-/* Denominador com a linha divisória */
-.denominator {
-  border-top: 1px solid black;
-  text-align: center;
-  line-height: 1;
-}
-
-/* Estilo para a coluna A(n) e seus valores */
-.an-column {
-  text-align: left !important; /* Força o alinhamento à esquerda */
-  padding-left: 5px; /* Espaçamento reduzido */
-}
-
-.an-cell {
-  text-align: left;
-  padding-left: 5px; /* Espaçamento reduzido */
-}
-
-/* Estilo para a string da soma e valor de aproximação dentro da célula */
-.an-sum,
-.an-approx {
-  text-align: left !important; /* Força o alinhamento à esquerda */
-  white-space: nowrap;
-  font-size: 13px; /* Tamanho da fonte reduzido para evitar quebra de linha */
-}
-
-/* Estilo para as linhas de resumo de comparação */
-.summary-description {
-  font-size: 13px; /* Tamanho da fonte reduzido */
-  text-align: left !important; /* Força o alinhamento à esquerda */
-  white-space: nowrap;
-  margin-left: 20px; /* Espaçamento reduzido */
-  font-weight: bold;
-  padding-top: 5px; /* Espaçamento reduzido */
-}
-
-.summary-value {
-  font-size: 13px; /* Tamanho da fonte reduzido */
-  text-align: left !important; /* Força o alinhamento à esquerda */
-  white-space: nowrap;
-  margin-left: 20px; /* Espaçamento reduzido */
-  font-weight: bold;
-  padding-top: 5px; /* Espaçamento reduzido */
-}
-
-/* Estilo inicial da tabela */
-.tabela-zoom {
-  /* `transform: scale(1);` é o tamanho original. */
-  transform: scale(1);
-  /* A transição é o que faz o zoom ser suave, levando 0.3 segundos. */
-  transition: transform 0.3s ease-in-out;
-  /* Garante que a tabela seja um bloco para aplicar o zoom corretamente. */
-  display: block;
-}
-
-/* Estilo da tabela quando ela está com zoom */
-.tabela-zoom.zoom-ativo {
-  /* `transform: scale(1.2);` aumenta o tamanho da tabela em 20%. */
-  transform: scale(1.2);
-}
-
-/* ========================================================================== */
-/* Estilos do Modal (Desafio) */
-/* ========================================================================== */
-
-.w3-modal {
-  display: block;
-  position: fixed;
-  z-index: 5;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding-top: 50px;
-}
-
-/*configurações do modal*/
-
-#modalP2,
-.w3-modal-content {
-  width: 100%;
-  height: 520px;
-  position: fixed;
-  margin: 0 0 20px 60px;
-  top: 15px;
+  animation: animatezoom 0.4s;
 }
 
 @keyframes animatezoom {
   from {
     transform: scale(0);
   }
+
   to {
     transform: scale(1);
   }
 }
 
-.w3-modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 10px auto;
-  border: 1px solid #888;
-  width: 90%;
-  max-width: 1200px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  animation-duration: 0.4s;
-  border-radius: 10px;
-  animation-name: animatezoom;
+.modal-header {
+  padding: 0.5rem 1rem;
+  position: relative;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
 }
 
-.w3-display-topright {
+#modal-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.modal-close-button {
   position: absolute;
-  right: 25px; /* Posição mais padronizada */
-  top: 10px;
-  padding: 2px; /* Valor 'auto' removido, pois é inválido para padding */
-  font-size: 22px;
-  font-weight: bold;
-  z-index: 10;
-  cursor: pointer; /* Essencial para indicar que o elemento é clicável */
-  transition: transform 0.3s ease, border 0.3s ease; /* Transição suave para o efeito de hover */
-  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4)); /* Efeito de sombra para destacar o botão */
+  top: 5px;
+  right: 10px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: #888;
 }
 
-.w3-display-topright:hover {
-  transform: scale(1.1);
-  border: 2px solid rgb(254, 250, 250);
+.modal-close-button:hover {
+  color: #000;
 }
 
-.desafio-titulo {
-  font-size: 36px;
-  margin: 10px auto;
-  font-weight: bold;
-}
-
-.modal-columns-container {
+.modal-body-content {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-  margin-top: 30px;
-  height: auto;
-  max-height: 400px;
+  flex-direction: column;
+  /* Padrão mobile */
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+  flex-grow: 1;
 }
 
 .modal-column {
-  margin-top:45px;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  flex: 1;
-  padding: 10px;
-  text-align: center;
+  gap: 1rem;
 }
 
-.modal-texto {
-  width: 400px;
-  margin-top: -110px;
-  font-size: 1.3em;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-shadow: 3px 3px 8px #022325ae;
-}
-
-.modal-texto1 {
-  width: 500px;
-  margin-top: 10px;
-  font-size: 18px;
-  margin-bottom: 10px;
-  text-shadow: 3px 3px 8px #022325ae;
-}
-
-.modal-texto1:hover {
-  transform: scale(1.2);
-  border-radius: 8px;
-  position: fixed;
-  color:white;
-  z-index: 10;
-  justify-content: center;
-  border: 8px double rgb(236, 243, 236);
-  padding: 20px;
- background: radial-gradient(circle at top left, hsla(190, 78%, 81%, 0.4), transparent 40%),
-              radial-gradient(circle at bottom right, hsla(280, 83%, 73%, 0.4), transparent 40%);
-  background-color: #0d1117; /* Um fundo escuro para destacar os gradientes */
-  background-size: 200% 200%;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.256);
-  animation: moveGradient 15s ease-in-out infinite;
-  box-shadow: 12px 12px 15px rgb(46, 46, 44);
-}
-
-.error-message{
-  border: solid 2px red;
-  font-size: 20px;
-  top: 380px;
-  color:red;
-  font-weight: bold;
-  background-color: rgba(255, 0, 0, 0.094);
-  padding: 8px;
-  box-shadow: 5px 5px 3px #97a4a4;
-  position: fixed;
-  border-radius: 10px;
-}
-
-#parabola-img,
-#ParabolaDesafio,
-#ParabolaDesafio-4,
-#ParabolaDesafio-5,
-#ParabolaVerificacao-5,
-#ParabolaDesafio-k {
-  width: 250px;
-  height: 250px;
- margin-bottom: 15px;
-  object-fit: contain;
-}
-
-#Parabola2Verificacao,
-#TabelaDesafio,
-#ParabolaVerificacao-4,
-#ParabolaVerificacao-5,
-#ParabolaVerificacao-k{
-  width: 340px;
-  height: 300px;
- margin-bottom: 15px;
-  object-fit: contain;
-  padding: 8px;
-  border: solid 2px rgba(248, 33, 33, 0.452);
-}
-
-#TabelaVerificacao-4,
-#TabelaVerificacao-5,
-#TabelaVerificacao-k {
-  width: 450px;
-  height: 300px;
-  object-fit: cover;
-  top: 150px;
-  margin-left: -65px;
-  border: solid 2px rgba(248, 33, 33, 0.452);
-}
-
-#TabelaDesafio:hover,
-#TabelaVerificacao-4:hover,
-#TabelaVerificacao-5:hover,
-#TabelaVerificacao-k:hover{
-  transform: scale(1.4);
-  filter: none;
-  object-fit: cover;
-  padding: 0;
-}
-
-#TabelaDesafio:active,
-#TabelaVerificacao-4:active,
-#TabelaVerificacao-5:active,
-#TabelaVerificacao-k:active{
-  transform: scale(1.2);
-}
-
-.modal-column1{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: -95px;
-  margin-right: -95px;
-  padding: 20px;
-  margin-top: 170px;
+.modal-column img {
+  max-width: 100%;
   height: auto;
-  max-height: 400px;
+  max-height: 250px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
 }
 
-.modal-column2{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 0px;
-  margin-right: 5px;
-  padding: 6px;
-  margin-top: 185px;
-  height: 420px;
-  max-height: 420px;
+.modal-column .modal-input {
+  width: 100%;
 }
 
-.modal-column3{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 0px;
-  margin-right: 5px;
-  padding: 6px;
-  margin-top: 185px;
-  height: 420px;
-  max-height: 420px;
+.modal-controls {
+  gap: 0.5rem;
 }
 
-/* Agrupando todos os seletores de botões em uma única classe para melhor manutenção */
-.modal-button {
-  width: 180px;
-  height: 40px;
-  margin: 10px auto;
+.modal-controls .section-title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-controls button {
+  width: 100%;
   border: outset 4px #8ae1f3;
-  background: linear-gradient(
-    to right,
-    #010238,
-    #1618bd,
-    #208bf0,
-    #0ae6f6,
-    #9ff4f5
-  );
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9);
-  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.9);
-  transition: all 0.3s ease-in-out;
-  border-radius: 10px;
+  background: linear-gradient(to right, #010238, #1618bd, #208bf0, #0ae6f6, #9ff4f5);
 }
 
-/* Aplicando o hover a todos os botões com a classe .modal-button */
-.modal-button:hover {
-  background: linear-gradient(
-    to right,
-    #d3d3ed,
-    #8082e5,
-    #083a6a,
-    #134245,
-    #001112
-  );
-  border: outset 4px #97a4a4;
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
-  transform: scale(1.2);
-}
-
-/* Aplicando o active a todos os botões com a classe .modal-button */
-.modal-button:active {
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  transform: scale(1.2);
-}
-
-/* Estilos para inputs dentro do modal */
-.modal-input {
-  width: 240px;
-  height: 40px;
-  margin: auto 5px;
-  padding: 5px auto;
-  border: outset 4px #8ae1f3;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0);
-  text-align: center;
-  margin-left: 10px;
-  border-radius: 10px;
-}
-
-/* ========================================================================== */
-/* Estilos para Scrollbar e Media Queries */
-/* ========================================================================== */
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f13c;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888888de;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #55555582;
-}
-
-
-@media (max-width: 768px) {
-  section {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+/* 4. MEDIA QUERIES PARA RESPONSIVIDADE */
+@media (min-width: 768px) {
+  .main-grid-container {
+    grid-template-columns: 1fr 1fr;
+    /* Duas colunas */
+    grid-template-areas:
+      "controls controls"
+      "graph table"
+      "menu menu";
   }
 
-  .Explorar11,
-  #Explorar12,
-  #Explorar13,
-  .Fexplorar14 {
-    width: 95%;
-    height: auto;
-    margin: 10px 0;
+  #controls-section .controls-content {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-grid-container {
+    height: calc(100vh - 160px);
+    /* Ocupa a altura da tela menos header/footer */
+    grid-template-columns: 2fr 2fr 1fr;
+    /* Três colunas */
+    grid-template-rows: auto 1fr;
+    /* Linha de controles + linha de conteúdo */
+    grid-template-areas:
+      "controls controls controls"
+      "graph table menu";
   }
 
-  .Explorar11 input,
-  .Explorar11 label {
-    font-size: 16px;
-  }
-
-  .Explorar11 button,
-  .Fexplorar14 button {
-    width: 95%;
-    margin: 5px auto;
-  }
-
-  .modal-columns-container {
-    flex-direction: column;
-    gap: 10px;
+  .modal-body-content {
+    flex-direction: row;
+    /* Colunas lado a lado no modal */
   }
 }

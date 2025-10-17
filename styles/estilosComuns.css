@@ -326,6 +326,167 @@ main {
 
 /* 3. Responsividade */
 
+/*para tela menores que 767px*/
+@media (max-widhth: 767px) {
+  :root {
+    /* ... Variáveis CSS ... (sem alterações) */
+    --color-primary-dark: rgba(8, 2, 93, 0.936);
+    --color-text-shadow: rgb(101, 100, 105);
+    --color-subtitle: rgba(3, 7, 252, 0.6);
+    --color-subtitle-shadow: rgb(100, 98, 124);
+    --color-footer-text: black;
+    --color-border: #040111;
+    --gradient-main: linear-gradient(to right, #ff5f6d, #ffc371, #fff8ba, #b5e8a6, #7ac5c1);
+    --font-primary: "Times New Roman",
+    Times,
+    serif;
+    --font-title: "Archivo Black",
+    sans-serif;
+    --font-subtitle: "Handlee",
+    cursive;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: #333;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    background-image: url("../img/Logo01.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  header,
+  footer {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: var(--gradient-main);
+    z-index: 10;
+  }
+
+  main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    /* Tamanho de fonte base para mobile */
+    color: var(--color-primary-dark);
+    text-shadow: 2px 2px 3px var(--color-text-shadow);
+    transition: transform 0.3s ease;
+  }
+
+  h1:hover {
+    transform: scale(1.05);
+  }
+
+  #main-subtitle {
+    font-size: 1.3rem;
+    /* Tamanho de fonte base para mobile */
+    font-family: var(--font-subtitle);
+    color: var(--color-subtitle);
+    text-shadow: 1px 1px 2px var(--color-subtitle-shadow);
+    font-style: italic;
+    margin-top: -0.5rem;
+  }
+
+  p {
+    max-width: 65ch;
+    text-align: justify;
+    text-indent: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .welcome-text {
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  button {
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  button:hover,
+  button:focus-visible {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    outline: none;
+  }
+
+  button:active {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  #orientation-warning {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.5rem;
+  }
+
+  /* AVISO DE ORIENTAÇÃO PARA TELAS <= 800px (COBRE NOSSO ALVO DE 767px) */
+  @media screen and (max-width: 800px) and (orientation: portrait) {
+    #orientation-warning {
+      display: flex;
+    }
+  }
+  
+}
+
 /* A partir de 768px (tablets), muda para o layout de duas colunas lado a lado */
 @media (min-width: 768px) {
   .description-content {
@@ -358,5 +519,59 @@ main {
 .welcome-text:hover {
   transform: scale(1.02);
   background-color: rgba(190, 226, 190, 0.6);
+}
+
+/* --- Estilos Base para Inputs --- */
+input[type="number"] {
+  height: 40px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* --- Estilos Base para Tabelas --- */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2px;
+  text-align: center;
+  font-size: 14px;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 4px;
+  text-align: center;
+}
+
+th {
+  background-color: lightblue;
+  border: 1px solid darkblue;
+  color: brown;
+  border-radius: 5px;
+}
+
+/* --- Estilos da Barra de Rolagem --- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f13c;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888888de;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #55555582;
 }
 

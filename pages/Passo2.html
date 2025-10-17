@@ -1,431 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Passo n = k - Explorando o Princípio da Indução Matemática
-    </title>
-    
-    <link rel="stylesheet" href="../styles/estilosComuns.css" />
-    <link rel="stylesheet" href="../styles/estiloPasso2.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Geist+Mono:wght@100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Parisienne&family=Playwrite+HR+Lijeva:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    
-    <script type="module" src="../js/Passo2.js"></script>
-  </head>
-  <body>
-    <header>
-      <div id="tit1">
-        <h1>Explorando o Princípio da Indução Matemática</h1>
-      </div>
-      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Passo n = k - Explorando o Princípio da Indução Matemática</title>
 
-    <main>
-      <fieldset class="Explorar11">
-        <legend class="Elegend">Escolha um número <b>n</b> de partes:</legend>
-        <label for="n-value"><b>Digite o valor de n: </b></label>
+  <link rel="stylesheet" href="../styles/estilosComuns.css" />
+  <link rel="stylesheet" href="../styles/estiloPasso2.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
+
+  <script type="module" src="../js/Passo2.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Explorando o Princípio da Indução Matemática</h1>
+    <p class="subtitle">Uma Abordagem Visual com Faixas de Parábola</p>
+  </header>
+
+  <main class="main-grid-container">
+    <section id="controls-section" class="grid-item">
+      <h2 class="section-title">Escolha um número <b>n</b> de partes:</h2>
+      <div class="controls-content">
+        <label for="n-value">Digite o valor de n:</label>
         <input type="number" id="n-value" class="modal-input" min="2" max="1000" value="2" />
-        <button id="gerar-grafico">
-          <b>Gerar Gráfico</b>
-        </button>
-        <button id="limpar-pagina">
-          <b>Limpar</b>
-        </button>
-      </fieldset>
-
-      <section>
-        <fieldset id="Explorar12">
-          <legend class="Elegend">Gráfico</legend>
-          <div id="plot"></div>
-        </fieldset>
-
-        <fieldset id="Explorar13">
-          <legend class="Elegend">Tabela</legend>
-          <div id="tabela-container" ></div>
-        </fieldset>
-
-        <fieldset class="Fexplorar14">
-          <legend class="Elegend">Menu</legend>
-          
-          <button id="voltarTeoria" onclick="window.open('./Problema2.html', '_blank')">
-              O Problema
-            </button>
-
-            <button id="Instrucao" onclick="window.open('./instrucaoP23.html', '_blank')">
-              Instruções
-            </button>
-            
-            <button id="Verificar">
-              Verificar Resposta
-            </button>
-
-            <button id="ProximaEtapa" class="hidden" onclick="window.location.href='./Passo3.html'">
-              Próxima Etapa
-            </button>
-
-            <button id="Sair" onclick="window.location.href='https://www.google.com.br'" target="_blank">
-              Sair
-            </button>
-
-        </fieldset>
-      </section>
-
-      <div id="modalP2" class="w3-modal hidden" style="width: auto; height: auto; display: block;">
-        <div class="w3-modal-content">
-          <header class="w3-container w3-teal">
-            <span class="w3-button w3-display-topright fechar-modal" style="display:none;">&times;</span>
-            <h2 class="desafio-titulo"></h2>
-          </header>
-          
-          <div class="modal-body">
-            <!-- Conteúdo inicial para n = 3  (Desafio 1) -->
-            <div id="conteudo-desafio" class="modal-columns-container hidden">
-              <div class="modal-column">
-                <img id="parabola-img" src="../img/ParabolaQuizz.jpg" alt="Parábola y = x²" />
-              </div>
-              <div class="modal-column">
-                <p class="modal-texto">
-                  A parábola será dividida em 3 partes iguais. Quantos retângulos serão formados?
-                  <br><br>
-                </p>
-                <input type="number" id="prompt-input" class="modal-input" min="2" placeholder="Digite um valor aqui: " />
-              </div>
-              <div class="modal-column">
-
-              <fieldset class="FButn142">
-              <legend> Controles: </legend>
-                <button id="prompt-ok-btn3" class="modal-button">Confirmar</button>
-                <button id="prompt-cancel-btn3" class="modal-button">Cancelar</button>
-                
-                <fieldset class="FBtn14">
-                <legend>Menu: </legend>
-                      
-                      <button
-                        id="Verificar3"
-                        onclick="window.open('./apresentacaoTeorica2.html', '_blank');"
-                      >
-                        Definição do PIM
-                      </button>
-                      
-                      <button id="voltarTeoria3" onclick="window.open('./Problema2.html', '_blank')">
-                    O Problema
-                  </button>
-
-                  <button id="Instrucao3" onclick="window.open('./instrucaoP22.html', '_blank')">
-                    Instruções
-                  </button>
-            </fieldset>
-            </fieldset>
-              </div>
-            </div>
-
-            <!-- Conteúdo do Gráfico para n = 3 -->
-            <div id="conteudo-grafico-e-pergunta" class="modal-columns-container hidden">
-              <div class="modal-column">
-                <img id="ParabolaDesafio" src="../img/Parabola2desafio.jpg" alt="Polígono retangular inscrito" />
-              </div>
-              <div class="modal-column">
-                <p class="modal-texto">
-                  Qual é a área do polígono retangular inscrito nesse gráfico? <span style="font-size: 15px; color:blue";>(Considere uma aproximação de três casas decimais.)</span> <br><br>
-                </p>
-                <input type="number" id="area-input" class="modal-input" placeholder="Digite a área aqui: " />
-              </div>
-              
-              <div class="modal-column">
-                <fieldset class="FButn142">
-              <legend> Menu: </legend>
-                <button id="prompt-ok-btn33" class="modal-button">Confirmar</button>
-                <button id="prompt-cancel-btn33" class="modal-button">Cancelar</button>
-                
-                <fieldset class="FBtn14">
-                <legend>Controles: </legend>
-                      
-                      <button
-                        id="Verificar33"
-                        onclick="window.open('./apresentacaoTeorica2.html', '_blank');"
-                      >
-                        Definição do PIM
-                      </button>
-                      
-                      <button id="voltarTeoria33" onclick="window.open('./Problema2.html', '_blank')">
-                    O Problema
-                  </button>
-
-                  <button id="Instrucao33" onclick="window.open('./instrucaoP22.html', '_blank')">
-                    Instruções
-                  </button>
-            </fieldset>
-            </fieldset>
-              </div>
-            </div>
-
-            <!-- Conteúdo de Verificação para n = 3 -->
-            <div id="conteudo-verificacao" class="modal-columns-container hidden">
-              <div class="modal-column">
-                <img id="Parabola2Verificacao" src="../img/Parabola2Verificacao.jpg" alt="Polígono retangular inscrito n3" />
-              </div>
-              <div id="TabelaD1" class="modal-column1">
-                <p class="modal-texto">
-                  <img id="TabelaDesafio" src="../img/Tabela1Verificacao.jpg" alt="Tabela1VerificacaoN3" />
-                </p>
-              </div>
-              <div class="modal-column">
-                <button id="proximo-passo-btn3" class="modal-button"> Desafio 2</button>
-              </div>
-            </div>
-
-            <!-- Novo conteúdo para n = 4 (Desafio 2) -->
-            <div id="conteudo-desafio2" class="modal-columns-container hidden">
-            <div class="modal-column">
-              <img id="parabola-img" src="../img/ParabolaQuizz.jpg" alt="Parábola y = x²" />
-              </div>
-              <div class="modal-column">
-                <p class="modal-texto">
-                  Agora, a parábola será dividida em 4 partes. Quantos retângulos serão formados?
-                  <br><br>
-                </p>
-                <input type="number" id="prompt-input-2" class="modal-input" placeholder="Digite um valor aqui: " />
-              </div>
-              
-              <div class="modal-column">
-                <fieldset class="FButn142">
-              <legend> Menu: </legend>
-                <button id="prompt-ok-btn4" class="modal-button">Confirmar</button>
-                <button id="prompt-cancel-btn4" class="modal-button">Cancelar</button>
-                
-                <fieldset class="FBtn14">
-                <legend>Controles: </legend>
-                      
-                      <button
-                        id="Verificar4"
-                        onclick="window.open('./apresentacaoTeorica2.html', '_blank');"
-                      >
-                        Definição do PIM
-                      </button>
-                      
-                      <button id="voltarTeoria4" onclick="window.open('./Problema2.html', '_blank')">
-                    O Problema
-                  </button>
-
-                  <button id="Instrucao4" onclick="window.open('./instrucaoP22.html', '_blank')">
-                    Instruções
-                  </button>
-            </fieldset>
-            </fieldset>
-              </div>
-            </div>
-
-            <!-- Novo conteúdo do Gráfico para n = 4 -->
-            <div id="conteudo-grafico-e-pergunta2" class="modal-columns-container hidden">
-              <div class="modal-column">
-                <img id="ParabolaDesafio-4" src="../img/ParabolaN4desafio.jpg" alt="Polígono retangular inscrito n4" />
-              </div>
-              <div class="modal-column">
-                <p class="modal-texto">
-                  Considerando uma aproximação de três casas decimais, qual é a área para n = 4?
-                  <br><br>
-                </p>
-                <input type="number" id="area-input-2"  class="modal-input" placeholder="Digite a área aqui: " />
-              </div>
-              
-              <div class="modal-column">
-                <fieldset class="FButn142">
-              <legend> Menu: </legend>
-                <button id="prompt-ok-btn44" class="modal-button">Confirmar</button>
-                <button id="prompt-cancel-btn44" class="modal-button">Cancelar</button>
-                
-                <fieldset class="FBtn14">
-                <legend>Controles: </legend>
-                      
-                      <button
-                        id="Verificar44"
-                        onclick="window.open('./apresentacaoTeorica2.html', '_blank');"
-                      >
-                        Definição do PIM
-                      </button>
-                      
-                      <button id="voltarTeoria44" onclick="window.open('./Problema2.html', '_blank')">
-                    O Problema
-                  </button>
-
-                  <button id="Instrucao44" onclick="window.open('./instrucaoP22.html', '_blank')">
-                    Instruções
-                  </button>
-            </fieldset>
-            </fieldset>
-              </div>
-            </div>
-
-            <!-- Conteúdo de Verificação para n = 4 -->
-            <div id="conteudo-verificacao2" class="modal-columns-container hidden">
-              <div class="modal-column">
-                <img id="ParabolaVerificacao-4" src="../img/ParabolaN4Verificacao.jpg" alt="Polígono retangular inscrito n4" />
-              </div>
-              <div class="modal-column2">
-                <p class="modal-texto">
-                  <img id="TabelaVerificacao-4" src="../img/TabelaN4Verificacao.jpg" alt="Tabela1VerificacaoN4" />
-                </p>
-              </div>
-              <div class="modal-column">
-                <button id="proximo-passo-btn-5" class="modal-button">Desafio 3</button>
-            
-              </div>
-            </div>
-            
-            <!-- Novo conteúdo para n = 5 (Desafio 3) -->
-            <div id="conteudo-desafio3" class="modal-columns-container hidden">
-              <div class="modal-column">
-                <img id="parabola-img" src="../img/ParabolaQuizz.jpg" alt="Parábola y = x²" />
-              </div>
-              <div class="modal-column">
-                <p class="modal-texto">
-                  Considerando uma divisão do intervalo [0, 1] em cinco partes iguas, para n = 5, uantos retângulos serão formados?
-                  <br><br>
-                </p>
-                <input type="number" id="prompt-input-3" class="modal-input" placeholder="Digite um valor aqui: " />
-              </div>
-              
-              <div class="modal-column">
-                <fieldset class="FButn142">
-              <legend> Menu: </legend>
-                <button id="prompt-ok-btn5" class="modal-button">Confirmar</button>
-                <button id="prompt-cancel-btn5" class="modal-button">Cancelar</button>
-                
-                <fieldset class="FBtn14">
-                <legend>Controles: </legend>
-                      
-                      <button
-                        id="Verificar55"
-                        onclick="window.open('./apresentacaoTeorica2.html', '_blank');"
-                      >
-                        Definição do PIM
-                      </button>
-                      
-                      <button id="voltarTeoria5" onclick="window.open('./Problema2.html', '_blank')">
-                    O Problema
-                  </button>
-
-                  <button id="Instrucao5" onclick="window.open('./instrucaoP22.html', '_blank')">
-                    Instruções
-                  </button>
-            </fieldset>
-            </fieldset>
-              </div>
-            </div>
-
-            <!-- Novo conteúdo do Gráfico para n = 5 -->
-            <div id="conteudo-grafico-e-pergunta3" class="modal-columns-container hidden">
-              <div class="modal-column">
-                <img id="ParabolaDesafio-5" src="../img/ParabolaN5desafio.jpg" alt="Polígono retangular inscrito n5" />
-              </div>
-              <div class="modal-column">
-                <p class="modal-texto">
-                  Qual é a área do polígono retangular inscrito formada pela partição do intervalo em n = 5 partes iguais?<br><br>
-                </p>
-                <input type="number" id="area-input-3" class="modal-input" placeholder="Digite a área aqui: " />
-              </div>
-              
-              <div class="modal-column">
-                <fieldset class="FButn142">
-              <legend> Menu: </legend>
-                <button id="prompt-ok-btn6" class="modal-button">Confirmar</button>
-                <button id="prompt-cancel-btn6" class="modal-button">Cancelar</button>
-                
-                <fieldset class="FBtn14">
-                <legend>Controles: </legend>
-                      
-                      <button
-                        id="Verificar6"
-                        onclick="window.open('./apresentacaoTeorica2.html', '_blank');"
-                      >
-                        Definição do PIM
-                      </button>
-                      
-                      <button id="voltarTeoria6" onclick="window.open('./Problema2.html', '_blank')">
-                    O Problema
-                  </button>
-
-                  <button id="Instrucao6" onclick="window.open('./instrucaoP22.html', '_blank')">
-                    Instruções
-                  </button>
-            </fieldset>
-            </fieldset>
-              </div>
-            </div>
-
-            <!-- Conteúdo de Verificação para n = 5 -->
-            <div id="conteudo-verificacao3" class="modal-columns-container hidden">
-              <div class="modal-column">
-                <img id="ParabolaVerificacao-5" src="../img/ParabolaN5desafio.jpg" alt="Polígono retangular inscrito n5" />
-              </div>
-              <div class="modal-column3">
-                <p class="modal-texto">
-                  <img id="TabelaVerificacao-5" src="../img/TabelaN5Verificacao.jpg" alt="Tabela1VerificacaoN5" />
-                </p>
-              </div>
-              <div class="modal-column">
-                <button id="proximo-passo-btn-7" class="modal-button">Desafio 4</button>
-                
-              </div>
-            </div>
-
-            <!-- Novo conteúdo para n = k (Desafio 4) -->
-            <div id="conteudo-desafio4" class="modal-columns-container hidden">
-            <div class="modal-column">
-              <img id="ParabolaDesafio-k" src="../img/ParabolaNkdesafio.jpg" alt="Polígono retangular inscrito n5" />
-              </div>
-              <div class="modal-column">
-                <p class="modal-texto1">
-                  Considerando n = k partes iguais do intervalo [0, 1], como poderiamos representar em função de k, o cálculo da área do polígono retangular inscrito?
-                <br><br>
-                &bullet; Experimente diferentes valores de n, antes de responder essa pergunta. Clique no botão <span style="color:blue";>"Próxima Etapa"</span>.
-                <br><br>
-                &bullet; Após a experimentação, clique no botão <span style="color:green";>"Verificar Resposta"</span> para seguir para o próximo passo.
-                </p>
-              </div>
-              
-              <div class="modal-column">
-                <!-- Este botão fecha o modal e habilita os botões da página principal. -->
-                <button id="proximo-passo-btn5" class="modal-button">Próxima Etapa</button>
-                
-              </div>
-            </div>
-
-            <!-- Conteúdo de Verificação genérico -->
-            <div id="conteudo-verificar" class="modal-columns-container hidden">
-            <div class="modal-column">
-              <img id="ParabolaVerificacao-k" src="../img/ParabolaNkdesafio.jpg" alt="Polígono retangular inscrito n5" />
-              </div>
-              <div class="modal-column">
-                <p class="modal-texto3">
-                  <img id="TabelaVerificacao-k" src="../img/TabelaNkVerificacao.jpg" alt="Polígono retangular inscrito n5" />
-                </p>
-              </div>
-              <div class="modal-column">
-                <!-- Clica no botão fechar da pagina Passo2.html-->
-                <button id="fecharVerificarBtn" class="modal-button">Fechar</button>
-              </div>
-            </div>
-          </div>
-          
-          <footer style="transform:scale(1);" class="w3-container">
-            &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
-          </footer>
-        </div>
+        <button id="gerar-grafico">Gerar Gráfico</button>
+        <button id="limpar-pagina">Limpar</button>
       </div>
-    </main>
-    
-    <footer>
-      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
-    </footer>
+    </section>
 
-    <audio id="error-audio" src="../sons/Erro.mp3" preload="auto"></audio>
-  </body>
+    <section id="graph-section" class="grid-item">
+      <h2 class="section-title">Gráfico</h2>
+      <div id="plot" class="content-container"></div>
+    </section>
+
+    <section id="table-section" class="grid-item">
+      <h2 class="section-title">Tabela</h2>
+      <div id="tabela-container" class="content-container"></div>
+    </section>
+
+    <nav id="menu-section" class="grid-item">
+      <h2 class="section-title">Menu</h2>
+      <div class="menu-buttons">
+        <button id="voltarTeoria">O Problema</button>
+        <button id="Instrucao">Instruções</button>
+        <button id="Verificar">Verificar Resposta</button>
+        <button id="ProximaEtapa" class="hidden">Próxima Etapa</button>
+        <button id="Sair">Sair</button>
+      </div>
+    </nav>
+  </main>
+
+  <footer>
+    &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+  </footer>
+
+  <div id="challenge-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-content">
+      <header class="modal-header">
+        <h2 id="modal-title">Título do Desafio</h2>
+        <button id="modal-close-btn" class="modal-close-button">&times;</button>
+      </header>
+
+      <div id="modal-body" class="modal-body-content">
+        <div class="modal-column">
+          <img id="modal-image" src="" alt="Imagem do desafio" />
+        </div>
+        <div class="modal-column">
+          <p id="modal-text">Texto da pergunta do desafio...</p>
+          <input type="number" id="modal-input" class="modal-input" placeholder="Digite sua resposta aqui" />
+        </div>
+        <nav class="modal-column modal-controls">
+          <h3 class="section-title">Controles</h3>
+          <button id="modal-confirm-btn" class="modal-button">Confirmar</button>
+          <button id="modal-cancel-btn" class="modal-button">Cancelar</button>
+          <h3 class="section-title">Ajuda</h3>
+          <button id="modal-pim-btn">Definição do PIM</button>
+          <button id="modal-problem-btn">O Problema</button>
+          <button id="modal-instructions-btn">Instruções</button>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div id="orientation-warning">
+    <p>Para uma melhor experiência, por favor, gire seu dispositivo para a posição de paisagem (horizontal).</p>
+  </div>
+
+  <audio id="error-audio" src="../sons/Erro.mp3" preload="auto"></audio>
+</body>
+
 </html>
