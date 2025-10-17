@@ -350,12 +350,6 @@ main {
   font-size: 1.2rem;
 }
 
-@media (max-width: 768px) {
-  .column-graphics {
-      width: 20%;
-    }
-
-}
 
 @media (min-width: 768px) {
 
