@@ -12,11 +12,11 @@ main {
 .problem-content-3col {
   display: flex;
   flex-direction: column; /* Padrão Mobile: empilhado */
-  gap: 3.5rem;
+  gap: 1rem;
   width: 100%;
   justify-content: space-between;
-  max-height: 85%;
-  max-width: 1400px; /* Aumenta a largura máxima para acomodar 3 colunas */
+  max-height: 75%;
+  max-width: 1600px; /* Aumenta a largura máxima para acomodar 3 colunas */
   align-items: center;
 }
 
@@ -25,7 +25,8 @@ main {
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 90%;
+  padding: 0.2rem;
+  height: 60%;
 }
 
 /* 3. Estilo das Colunas Específicas */
@@ -64,8 +65,8 @@ main {
   background-color: rgba(252, 252, 250, 0.3);
   border: 1px solid rgba(202, 248, 247, 0.5);
   border-radius: 20px;
-  padding: 1.5rem;
-  height: 100%; /* Faz a caixa de texto ocupar toda a altura da coluna */
+  padding: 1rem;
+  height: 90%; /* Faz a caixa de texto ocupar toda a altura da coluna */
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
   font-size: 0.9rem; /* Ajusta o tamanho da fonte para caber melhor */

@@ -1,6 +1,167 @@
 // Arquivo: Passo1.js
 import { quizData } from "./perguntasQuizz.js";
 
+// --- Constante para o HTML de Conclusão (Melhoria de Manutenibilidade) ---
+const quizConclusionHTML = `<h3 class="feedback-title success" style="font-size: 1.2rem;">Conclusões Importantes:</h3><div class="feedback-content"><p>Observe que para n = 1 não há retângulos, e para n = 2 temos o primeiro caso com um retângulo. Por isso, o caso base nessa exploração é n = 2.</p><p>Observe que a área desse retângulo pode ser escrita como: </p><p><math>
+
+  <mrow>
+
+    <mi>A(</mi>
+
+    <mn>2)</mn>
+
+    <mo>=</mo>
+
+    <mrow>
+
+      <mo>(</mo>
+
+      <mfrac>
+
+        <mn>1</mn>
+
+        <mn>2</mn>
+
+      </mfrac>
+
+      <mo>)</mo>
+
+    </mrow>
+
+    <mo>&middot;</mo>
+
+    <msup>
+
+      <mrow>
+
+        <mo>(</mo>
+
+        <mfrac>
+
+          <mn>1</mn>
+
+          <mn>2</mn>
+
+        </mfrac>
+
+        <mo>)</mo>
+
+      </mrow>
+
+      <mn>2</mn>
+
+    </msup>
+
+    <mo>=</mo>
+
+    <mfrac>
+
+      <msup>
+
+        <mn>1</mn>
+
+        <mn>2</mn>
+
+      </msup>
+
+      <msup>
+
+        <mn>2</mn>
+
+        <mn>3</mn>
+
+      </msup>
+
+    </mfrac>
+
+    <mo>=</mo>
+
+    <mfrac>
+
+      <msup>
+
+        <mrow>
+
+          <mo>(</mo>
+
+          <mrow>
+
+            <mn>2</mn>
+
+            <mo>&minus;</mo>
+
+            <mn>1</mn>
+
+          </mrow>
+
+          <mo>)</mo>
+
+        </mrow>
+
+        <mn>2</mn>
+
+      </msup>
+
+      <msup>
+
+        <mn>2</mn>
+
+        <mn>3</mn>
+
+      </msup>
+
+    </mfrac>
+
+    <mo>=</mo>
+
+    <mrow>
+
+      <mfrac>
+
+        <mn>1</mn>
+
+        <msup>
+
+          <mn>2</mn>
+
+          <mn>3</mn>
+
+        </msup>
+
+      </mfrac>
+
+    </mrow>
+
+    <mo>&middot;</mo>
+
+    <msup>
+
+      <mrow>
+
+        <mo>(</mo>
+
+        <mrow>
+
+          <mn>2</mn>
+
+          <mo>&minus;</mo>
+
+          <mn>1</mn>
+
+        </mrow>
+
+        <mo>)</mo>
+
+      </mrow>
+
+      <mn>2</mn>
+
+    </msup>
+
+  </mrow>
+
+</math></p><p>E portanto, para n = 2, a A(n) é verdadeira.</p></div>`;
+
 document.addEventListener("DOMContentLoaded", function () {
   // --- 1. SELEÇÃO DE ELEMENTOS DO DOM ---
   const perguntasDiv = document.getElementById("perguntas");
@@ -24,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentQuestionIndex = 0;
   let correctAnswersCount = 0;
   let attempts = 0;
-  const questions = [...quizData];
+  const questions = [...quizData]; // Cria cópia mutável para embaralhar
 
   // Sons e Efeitos
   const errorSound = new Audio("../sons/Erro.mp3");
@@ -80,10 +241,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  /**
+   * OTIMIZAÇÃO: Função centralizada para lidar com o próximo passo
+   * (mostrar próximo botão ou finalizar o quiz).
+   */
+  function handleNextStep(delay = 0) {
+    const isLastQuestion = currentQuestionIndex === questions.length - 1;
+    if (isLastQuestion) {
+      setTimeout(finalizarQuiz, delay);
+    } else {
+      // Adiciona um pequeno delay antes de mostrar o botão
+      setTimeout(() => proximaPerguntaBtn.classList.remove("hidden"), 300);
+    }
+  }
+
   function verificarResposta(selectedIndex) {
     const currentQuestion = questions[currentQuestionIndex];
     const isCorrect = selectedIndex === currentQuestion.respostaCorretaIndex;
-    const isLastQuestion = currentQuestionIndex === questions.length - 1;
 
     document.querySelectorAll(".alternativa-btn").forEach(btn => (btn.disabled = true));
     justificativaDiv.classList.remove("hidden");
@@ -93,12 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
       justificativaDiv.innerHTML = `<h1 class="feedback-title success">Parabéns! Resposta Correta!</h1><p class="feedback-content">${currentQuestion.justificativa}</p>`;
       parabola1.classList.add("hidden");
       parabola2.classList.remove("hidden");
-
-      if (!isLastQuestion) {
-        proximaPerguntaBtn.classList.remove("hidden");
-      } else {
-        setTimeout(finalizarQuiz, 2000); // Finaliza automaticamente após acertar a última
-      }
+      handleNextStep(2000); // Avança após 2 segundos
     } else {
       attempts++;
       if (attempts < 3) {
@@ -114,12 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
         justificativaDiv.innerHTML = `<h1 class="feedback-title error">Que Pena!</h1><p class="feedback-content">Você usou todas as suas tentativas. A resposta correta é: <br>  ${currentQuestion.alternativas[currentQuestion.respostaCorretaIndex]}</p>`;
         parabola1.classList.add("hidden");
         parabola2.classList.remove("hidden");
-
-        if (!isLastQuestion) {
-          proximaPerguntaBtn.classList.remove("hidden");
-        } else {
-          setTimeout(finalizarQuiz, 3000); // Finaliza automaticamente após errar a última
-        }
+        handleNextStep(3000); // Avança após 3 segundos
       }
     }
   }
@@ -134,7 +298,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (scorePercentage < 70) {
       PenaSound.play().catch(e => console.error("Erro ao tocar som:", e));
-      justificativaDiv.innerHTML = `<h1 class="feedback-title error">Que Pena!</h1><h2 class="feedback-content">Sua pontuação foi de ${scorePercentage.toFixed(1)}%.</h2>Você precisa refazer o Quizz para prosseguir.</p>`;
+
+      // CORREÇÃO DE ERRO: Tag <p> fechada corretamente
+      justificativaDiv.innerHTML = `<h1 class="feedback-title error">Que Pena!</h1><h2 class="feedback-content">Sua pontuação foi de ${scorePercentage.toFixed(1)}%.</h2><p>Você precisa refazer o Quizz para prosseguir.</p>`;
       refazerBtn.classList.remove("hidden");
     } else {
       clapSound.play().catch(e => console.error("Erro ao tocar som:", e));
@@ -143,86 +309,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       setTimeout(() => {
         justificativaDiv.innerHTML = `<h2 class="feedback-title success">Agora, você está pronto para o Passo 2!</h2>`;
-        perguntasDiv.innerHTML = `<h3 class="feedback-title success" style="font-size: 1.2rem;">Conclusões Importantes:</h3><div class="feedback-content"><p>Observe que para n = 1 não há retângulos, e para n = 2 temos o primeiro caso com um retângulo. Por isso, o caso base nessa exploração é n = 2.</p><p>Observe que a área desse retângulo pode ser escrita como: </p><p><math>
-  <mrow>
-    <mi>A(</mi>
-    <mn>2)</mn>
-    <mo>=</mo>
-    <mrow>
-      <mo>(</mo>
-      <mfrac>
-        <mn>1</mn>
-        <mn>2</mn>
-      </mfrac>
-      <mo>)</mo>
-    </mrow>
-    <mo>&middot;</mo>
-    <msup>
-      <mrow>
-        <mo>(</mo>
-        <mfrac>
-          <mn>1</mn>
-          <mn>2</mn>
-        </mfrac>
-        <mo>)</mo>
-      </mrow>
-      <mn>2</mn>
-    </msup>
-    <mo>=</mo>
-    <mfrac>
-      <msup>
-        <mn>1</mn>
-        <mn>2</mn>
-      </msup>
-      <msup>
-        <mn>2</mn>
-        <mn>3</mn>
-      </msup>
-    </mfrac>
-    <mo>=</mo>
-    <mfrac>
-      <msup>
-        <mrow>
-          <mo>(</mo>
-          <mrow>
-            <mn>2</mn>
-            <mo>&minus;</mo>
-            <mn>1</mn>
-          </mrow>
-          <mo>)</mo>
-        </mrow>
-        <mn>2</mn>
-      </msup>
-      <msup>
-        <mn>2</mn>
-        <mn>3</mn>
-      </msup>
-    </mfrac>
-    <mo>=</mo>
-    <mrow>
-      <mfrac>
-        <mn>1</mn>
-        <msup>
-          <mn>2</mn>
-          <mn>3</mn>
-        </msup>
-      </mfrac>
-    </mrow>
-    <mo>&middot;</mo>
-    <msup>
-      <mrow>
-        <mo>(</mo>
-        <mrow>
-          <mn>2</mn>
-          <mo>&minus;</mo>
-          <mn>1</mn>
-        </mrow>
-        <mo>)</mo>
-      </mrow>
-      <mn>2</mn>
-    </msup>
-  </mrow>
-</math></p><p>E portanto, para n = 2, a A(n) é verdadeira.</p></div>`;
+
+        // Inserindo o HTML da constante
+        perguntasDiv.innerHTML = quizConclusionHTML;
+
+        // CORREÇÃO CRÍTICA: Manda o MathJax renderizar as novas fórmulas
+        if (window.MathJax && typeof window.MathJax.typeset === 'function') {
+          window.MathJax.typeset([perguntasDiv]);
+        }
+
         finalizarBtn.classList.remove("hidden");
         parabola1.classList.add("hidden");
         parabola2.classList.remove("hidden");

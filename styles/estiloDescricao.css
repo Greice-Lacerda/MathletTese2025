@@ -1,105 +1,82 @@
 /* ========================================================================== */
-/* ESTILOS EXCLUSIVOS PARA A PÁGINA DESCRICAO.HTML                            */
+/* ESTILOS EXCLUSIVOS PARA A PÁGINA DESCRICAO.HTML                             */
 /* ========================================================================== */
 
-/* 1. Ajuste do Layout Principal da Página */
-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  padding: 1rem;
-  height: 100%;
-}
-
-/* 2. Layout do Conteúdo em Duas Colunas */
-.description-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-}
-
-.description-column {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-/* ========================================================================== */
-/* 3. NOVAS REGRAS: Moldura Circular e Espaçamento da Lista                   */
-/* ========================================================================== */
-
-/* Estilo para a imagem com moldura circular */
-.description-column img {
-  width: 250px;   /* Define uma largura fixa */
-  height: 250px;  /* Altura igual à largura para formar um quadrado */
-  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
-  border-radius: 50%; /* Transforma a moldura em um círculo perfeito */
-  border: 15px double var(--color-border); /* Usa a variável de cor do arquivo comum */
+#description-image {
+  /* REDUÇÃO DO TAMANHO DA IMAGEM PARA EVITAR SOBREPOSIÇÃO */
+  width: 150px;
+  /* Largura menor por padrão (mobile) */
+  height: 150px;
+  /* Altura igual à largura para manter o círculo */
+  object-fit: cover;
+  border-radius: 50%;
+  /* Círculo perfeito */
+  border: 15px double var(--color-border);
   box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Estilo para criar espaçamento duplo entre os itens da lista */
+/* Estilo para criar espaçamento entre os itens da lista */
 .welcome-text ul li {
-  margin-bottom: 0.8rem; /* Aumenta o espaço abaixo de cada item */
+  margin-bottom: 0.8rem;
   text-align: justify;
 }
 
-/* Remove a margem do último item para um alinhamento visual melhor */
 .welcome-text ul li:last-child {
   margin-bottom: 0;
 }
 
+.controlsDesc {
+  display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  position: fixed;
+  height: 5rem;
+  bottom: 2.5rem;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+  margin-top: 0;
+}
 
 /* ========================================================================== */
-/* 4. Responsividade                                                        */
+/* 4. Responsividade                                                          */
 /* ========================================================================== */
-
-/* ========================================================================== */
-/* 5. Responsividade                                                        */
-/* ========================================================================== */
-/* telas menores que tablets */
 
 @media (max-width: 767px) {
-  .welcome-text ul li {
-      margin-left: 0.8rem;
-      /* Aumenta o espaço abaixo de cada item */
-      text-align: justify;
-    }
+  .welcome-text ul {
+    padding-left: 1.5rem;
+  }
 }
 
-/* A partir de 768px (tablets), muda para o layout de duas colunas lado a lado */
+/* A partir de 768px (tablets) */
 @media (min-width: 768px) {
-  .description-content {
-    flex-direction: row;
-    align-items: stretch;
-  }
 
-  .description-column img {
-    width: 400px;
-    height: 270px;
+  h1 {
+      text-align: center;
+    } 
+
+  #description-image {
+    /* Ajuste para tablets, mantendo o círculo */
+    width: 230px;
+    height: 230px;
   }
 }
 
-/* Para telas maiores, podemos aumentar a imagem */
+/* Para telas maiores */
 @media (min-width: 1024px) {
-  .description-column img {
-    width: 320px;
-    height: 320px;
+
+  #description-image {
+    /* Ajuste para desktops, mantendo o círculo */
+    width: 250px;
+    height: 250px;
   }
 }
 
-/* A estilização dos botões no .controls já é herdada de estilosComuns.css */
-* Estilo específico para botões de navegação/ação */
-#theory-btn {
-  background: linear-gradient(135deg, #010238, #208bf0);
-  border: 2px outset #8ae1f3;
-}
 #theory-btn {
   background: linear-gradient(135deg, #002e00, #068531);
   border-color: #d3f1cf;

@@ -1,3 +1,5 @@
+/*Estilos comuns para todas as paginas do site ou aplicativo*/
+
 /* Importação das fontes - DEVE estar no topo do arquivo */
 @import url("https://fonts.googleapis.com/css2?family=Gill+Sans&family=Handlee&family=Monsieur+La+Doulaise&family=Archivo+Black&display=swap");
 
@@ -49,7 +51,11 @@ body {
   overflow-x: hidden;
 }
 
-body::before {
+/* OTIMIZAÇÃO: 
+  Usamos :not(.page-index) para que esta imagem de fundo global
+  NÃO seja carregada na página 'index.html', que já tem seu próprio fundo.
+*/
+body:not(.page-index)::before {
   content: "";
   background-image: url("../img/Logo01.png");
   background-size: cover;
@@ -113,6 +119,12 @@ h1:hover {
   transform: scale(1.05);
 }
 
+#main-title {
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+}
+
 #main-subtitle {
   font-size: 1.3rem;
   font-family: var(--font-subtitle);
@@ -163,7 +175,7 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   width: 100%;
 }
 
@@ -177,7 +189,7 @@ button:active {
 
 #description-image {
   width: 100%;
-  max-width: 280px;
+  max-width: 250px;
   height: auto;
   border-radius: 40px;
   border: 15px double var(--color-border);
@@ -274,6 +286,7 @@ button:active {
 /* --- Telas Médias (Tablets, a partir de 768px) --- */
 @media (min-width: 768px) {
   h1 {
+    text-align: center;
     font-size: 2.5rem;
   }
 
@@ -293,11 +306,26 @@ button:active {
 
 /* --- Telas Grandes (Desktops, a partir de 1024px) --- */
 @media (min-width: 1024px) {
+
+  h1 {
+    text-align: center;
+  }
+
   p {
     font-size: 1.1rem;
   }
 
   #description-image {
-    max-width: 400px;
+    max-width: 300px;
   }
+}
+
+/* ========================================================================== */
+/* 8. Classes de Destaque (Adicionado na Refatoração)                     */
+/* ========================================================================== */
+
+/* Usado para substituir a tag <u> por semântica correta */
+.highlight-text {
+  text-decoration: underline;
+  font-weight: bold;
 }

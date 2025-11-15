@@ -1,6 +1,6 @@
 /* ========================================================================== */
-/* ESTILOS EXCLUSIVOS PARA A PÁGINA PASSO1.HTML (Painel de Exploração)      */
-/* VERSÃO FINAL REVISADA E RESPONSIVA                                       */
+/* ESTILOS EXCLUSIVOS PARA A PÁGINA PASSO1.HTML (Painel de Exploração)         */
+/* VERSÃO FINAL REVISADA E RESPONSIVA                                        */
 /* ========================================================================== */
 
 :root {
@@ -23,23 +23,33 @@
 /* 1. LAYOUT DE TELA CHEIA E BASE */
 html {
   font-size: 16px;
-  /* Base para o cálculo de rem */
 }
 
 body.page-step1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
+  /* NOTA: Removido 'display:flex' da refatoração anterior do HTML, 
+     pois 'header' e 'footer' agora controlam o layout principal. */
+  padding: 0;
+  /* O 'main' terá o padding */
   overflow: hidden;
   height: 100vh;
   box-sizing: border-box;
+
+  /* Garante que o grid de 3 linhas (header, main, footer) funcione */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 main {
   width: 100%;
   height: 100%;
   max-width: 1800px;
+  margin: 0 auto;
+  /* Centraliza o painel principal */
+  padding: 1rem;
+  /* Adiciona espaçamento ao redor do painel */
+  box-sizing: border-box;
+  overflow: hidden;
+  /* O painel interno controlará o scroll */
 }
 
 /* 2. LAYOUT DO PAINEL PRINCIPAL */
@@ -53,6 +63,8 @@ main {
   border-radius: var(--raio-borda-painel);
   background-color: var(--cor-fundo-painel);
   padding: 0.5rem;
+  box-sizing: border-box;
+  /* Adicionado para padding não estourar */
 }
 
 .main-content-grid {
@@ -60,9 +72,11 @@ main {
   display: grid;
   gap: 0.8rem;
   overflow: hidden;
-  /* MOBILE FIRST (Padrão) */
+
+  /* MOBILE FIRST (Padrão: Retrato) */
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, auto);
+  /* Linhas de altura automática */
   grid-template-areas:
     "graphics"
     "quiz"
@@ -97,6 +111,7 @@ main {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  /* O .column-content interno terá o scroll */
 }
 
 .column-title {
@@ -106,16 +121,16 @@ main {
   margin-bottom: 0.5rem;
   flex-shrink: 0;
   font-size: clamp(1.1rem, 2.5vmin, 1.5rem);
-  overflow: hidden;
 }
 
 .column-content {
   flex-grow: 1;
+  /* CORREÇÃO DE OVERFLOW: 'hidden' -> 'auto' */
   overflow: auto;
+  /* Permite rolagem se o conteúdo for maior */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
 }
 
 /* 4. ESTILOS DE COMPONENTES */
@@ -162,7 +177,8 @@ main {
 
 .alternativa-btn:hover,
 .alternativa-btn:focus-visible {
-  transform: scale(1);
+  transform: scale(1.02);
+  /* Leve aumento */
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
   outline: none;
@@ -195,7 +211,8 @@ main {
 
 .nav-buttons button:hover,
 .nav-buttons button:focus-visible {
-  transform: scale(1);
+  /* CORREÇÃO DE UX: transform: scale(1) -> scale(1.05) */
+  transform: scale(1.05);
   background: var(--gradiente-nav-hover);
   color: rgb(245, 245, 248);
   border-color: #ece0e0;
@@ -208,11 +225,12 @@ main {
   background: var(--gradiente-action);
 }
 
-/* AJUSTE: Posiciona o primeiro botão de ação na parte inferior do menu */
+/* Posiciona o primeiro botão de ação na parte inferior do menu */
 #ProximaPerguntaBtn,
 #finalizarBtn,
 #refazerBtn {
   margin-top: auto;
+  /* Isso empurra para baixo, excelente! */
   border: outset 4px #f2c4a6;
   background: linear-gradient(to right, #fb0404, #dd980e, #ddef5b);
   color: white;
@@ -236,9 +254,13 @@ main {
 
 /* 5. ÁREA DE MENSAGENS E PROGRESSO */
 .messages-area {
-  gap: 0rem;
-  height: 11.25rem;
-  /* 180px */
+  gap: 0.5rem;
+  /* Aumentado de 0 para dar espaço entre a barra e o texto */
+  /* CORREÇÃO DE OVERFLOW: Trocado 'height' por 'min-height' */
+  min-height: 11.25rem;
+  /* 180px (Garante tamanho mínimo) */
+  height: auto;
+  /* Permite crescer se necessário */
 }
 
 #quiz-progress-bar-wrapper {
@@ -246,7 +268,10 @@ main {
   border-radius: var(--raio-borda-interno);
   overflow: hidden;
   position: relative;
-  height: 10px;
+  height: 18px;
+  /* Aumentado para melhor visibilidade */
+  flex-shrink: 0;
+  /* Impede que encolha */
 }
 
 #quiz-progress-bar {
@@ -259,7 +284,8 @@ main {
 
 #quiz-progress-text {
   position: absolute;
-  top: 70%;
+  top: 50%;
+  /* Centralizado verticalmente */
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
@@ -291,8 +317,6 @@ main {
   min-width: 100%;
   max-width: 100%;
   font-size: clamp(1.2rem, 3vmin, 1.5rem);
-  /* AJUSTE: Define a largura e centraliza o bloco */
-
 }
 
 .feedback-title.success {
@@ -331,15 +355,35 @@ main {
   opacity: 0.9;
 }
 
-@media (max-width: 767px) {
+/* ========================================================================== */
+/* 7. RESPONSIVIDADE                                                          */
+/* ========================================================================== */
 
-  /* celulares */
+/* --- Celulares (Paisagem) --- */
+/* CORREÇÃO CRÍTICA: Adicionado 'and (orientation: landscape)'
+  para impedir que este layout quebre o modo retrato (que usa o 'mobile-first')
+*/
+@media (max-width: 767px) and (orientation: landscape) {
+
   .main-content-grid {
     grid-template-columns: 2fr 5fr 2fr;
     grid-template-rows: 6fr auto;
     grid-template-areas:
       "graphics quiz menu"
       "messages messages menu";
+  }
+
+  .column-title {
+    display: none;
+    /* Oculta títulos para economizar espaço */
+  }
+
+  /* MELHORIA DE ACESSIBILIDADE: Fontes aumentadas de 0.6rem */
+  #perguntas,
+  #Justific {
+    margin-top: 2px;
+    font-size: 0.8rem;
+    line-height: 1.2;
   }
 
   #alternativas,
@@ -349,153 +393,115 @@ main {
   .feedback-title.success,
   .feedback-title.error,
   .quiz-question-reminder,
-  .column-content,
   #quiz-progress-text {
-    font-size: 0.6rem;
-    line-height: 1;
+    font-size: 0.8rem;
+    line-height: 1.2;
     gap: 2px;
-  }
-
-  .column-title {
-    display: none;
-  }
-
-  #perguntas,
-  #Justific {
-    margin-top: 2px;
-    font-size: 0.6rem;
-    line-height: 1;
   }
 
   #alternativas {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* 1. Cria duas colunas de tamanho igual */
+    /* Ótima ideia para economizar espaço */
     gap: 2px;
-    /* 2. Define um espaço entre os botões */
-
-    /* Reseta a direção flex, pois agora usamos grid */
     flex-direction: unset;
   }
 
-  /* Opcional, mas recomendado para um visual mais limpo na grade */
   #alternativas button {
     width: 100%;
-    /* Faz o botão ocupar toda a largura da sua coluna */
     text-align: left;
-    /* Centraliza o texto, que fica melhor no formato de grade */
   }
-
-  #quiz-progress-bar-wrapper,
-  #quiz-progress-text {
-    font-size: 0.5rem;
-    height: 8px;
-  }
-
 
   .alternativa-btn {
-    font-size: 0.6rem;
-    gap: 2px;
+    font-size: 0.75rem;
+    /* Mínimo legível */
+    padding: 4px;
   }
 
-  .messages-area {
-    width: 100%;
-    height: 4rem;
-    line-height: 0.3rem;
-  }
-
-  .column-graphics {
-    width: 100%;
-    height: auto;
-  }
-
-  .column-quiz {
-    width: 100%;
-    height: auto;
-  }
-
-  .column-menu {
-    width: 100%;
-    height: auto;
+  #quiz-progress-bar-wrapper {
+    font-size: 0.7rem;
+    height: 10px;
   }
 
   .messages-area {
     height: auto;
-    /* Permite que a altura se ajuste ao conteúdo */
     min-height: 5rem;
-    /* Garante uma altura mínima */
+    line-height: 1.2;
+    /* Ajustado */
   }
 
-  /* As colunas agora se ajustam automaticamente, não precisam de width/height */
-
-  /* --- AJUSTES DE USABILIDADE NOS BOTÕES --- */
   .nav-buttons button {
     padding: 3.5px;
-    /* Padding razoável para toque */
-    font-size: 0.7rem;
-    /* Fonte legível em telas pequenas */
+    font-size: 0.75rem;
+    /* Mínimo legível */
     border-width: 2px;
     width: 95%;
-    /* Ocupa a largura da coluna de menu */
     margin-bottom: 6px;
   }
 
-  /* CORREÇÃO UX: O botão deve crescer sutilmente, não encolher */
   .nav-buttons button:hover,
   .nav-buttons button:focus-visible {
-    transform: scale(1);
-    /* Efeito de crescimento sutil */
+    /* CORREÇÃO DE UX: scale(1) -> scale(1.05) */
+    transform: scale(1.05);
   }
 
-  /* MELHORIA: Estiliza os botões de ação de forma consistente e centralizada */
   .action-buttons {
     margin-top: auto;
-    /* Mantém o alinhamento na base do menu flex */
     border: outset 1px #f2c4a6;
-    /* Borda mais sutil para mobile */
     background: linear-gradient(to right, #fb0404, #dd980e, #ddef5b);
   }
 
   .action-buttons:hover,
   .action-buttons:focus-visible {
-    /* Herda o transform: scale(1.05) do .nav-buttons button:hover e aplica o novo fundo */
     background: var(--gradiente-action-hover);
   }
 }
 
-/* 7. RESPONSIVIDADE E TELA CHEIA */
-#orientation-warning {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.95);
-  color: white;
-  z-index: 9999;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  font-size: 1.2rem;
-}
 
+/* --- Aviso de Orientação (Celulares/Retrato) --- */
+/* Esta regra está correta e captura dispositivos de até 800px em retrato */
 @media (max-width: 800px) and (orientation: portrait) {
 
-  /* AVISO DE ORIENTAÇÃO */
+  /* Esconde o 'header' e 'footer' do layout principal */
+  .main-header,
+  footer {
+    display: none;
+  }
+
+  /* O 'body' não precisará de grid, pois 'main' está oculto */
+  body.page-step1 {
+    display: block;
+  }
+
   main {
     display: none;
+    /* Esconde o painel da aplicação */
   }
 
   #orientation-warning {
     display: flex;
+    /* Mostra o aviso */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
   }
 }
 
+/* --- Tablet (Paisagem e Retrato) --- */
 @media (min-width: 768px) {
 
-  /* TABLET */
+  /* Esta regra se aplica a tablets (>=768px), 
+     mas será sobrescrita pela regra de 'desktop' (>=1024px) */
   .main-content-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr auto;
@@ -505,14 +511,15 @@ main {
   }
 }
 
+/* --- Desktop --- */
 @media (min-width: 1024px) {
-
-  /* DESKTOP */
   .main-content-grid {
     grid-template-columns: 1fr 1.5fr 280px;
+    /* Menu lateral fixo */
     grid-template-rows: 1fr auto;
     grid-template-areas:
       "graphics quiz menu"
       "messages messages menu";
+    /* Área de msg ocupa 2 colunas */
   }
 }

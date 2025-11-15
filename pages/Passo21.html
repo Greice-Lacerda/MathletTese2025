@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Caso n = 3 - Explorando o Princípio da Indução Matemática
+    </title>
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+    <link rel="stylesheet" href="../styles/estiloApresentacao.css" />
+    <link rel="stylesheet" href="../styles/estiloDescPasso1.css" />
+    <link rel="stylesheet" href="../styles/estiloDescricao.css" />
+    <link rel="stylesheet" href="../styles/estiloPasso21.css" />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    <script type="module" src="../js/Passo21.js"></script>
+</head>
+
+<body>
+    <header class="main-header">
+        <h1 id="main-title">Explorando o Princípio da Indução Matemática</h1>
+        <p id="main-subtitle">Uma Abordagem Visual com Faixas de Parábola</p>
+    </header>
+
+    <main>
+        <div class="theory-content">
+            <div id="theory-column-Passo21">
+                <img id="imagem-desafio-n3" src="../img/Parabola2desafio.jpg" alt="Gráfico do desafio para n = 3">
+            
+                <img id="imagem-resposta-n3" class="hidden" src="../img/Tabela1Verificacao.jpg"
+                    alt="Gráfico com o cálculo da área para n = 3">
+            </div>
+
+            <div class="theory-column-passo21quest" style="text-align: center;">
+                
+                    <p style="text-align: center;">Observe o gráfico. Qual é a área do polígono retangular inscrito para uma divisão em <strong>n = 3</strong> partes do intervalo [0, 1]?  (Use 3 casas decimais)</p>
+                
+                <div id="theory-content-BTNPasso21">
+                    <input style="text-align: center;" type="number" id="answer-input" class="answer-input" placeholder="Digite a área aqui...">
+                    <button id="Verificar" class="button-emphasis">Verificar Resposta</button>
+                </div>
+                
+                <h3 class="feedback-title">Cálculo e Verificação</h3>
+                <div id="feedback-container" class="content-container">
+                    <p>Aguardando sua resposta...</p>
+                </div>
+            </div>
+        </div>
+        <div class="controlsDesc">
+            <button id="problem-btn" onclick="window.open('./Problema2.html', '_blank')">O Problema</button>
+            <button id="back-btn" onclick="window.open('./InstrucaoP22.html', '_blank')">Instruções</button>
+                <button id="ProximaEtapa" class="hidden" onclick="window.location.href='./passo22.html'">
+                Próximo Desafio
+            </button>
+            <button id="exit-btn" onclick="window.location.href='../index.html'">Sair</button>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+
+    <div id="orientation-warning">
+        <p>Para uma melhor experiência, por favor, gire seu dispositivo para a posição de paisagem (horizontal).</p>
+    </div>
+
+</body>
+
+</html>

@@ -1,242 +1,159 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Explorando a Prova do Passo de Indução Matemática
-    </title>
 
-    <link rel="stylesheet" href="../styles/estilosComuns.css" />
-    <link rel="stylesheet" href="../styles/estiloPasso3.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Geist+Mono:wght@100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Parisienne&family=Playwrite+HR+Lijeva:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prova do Passo de Indução - Etapa Guiada</title>
 
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="../styles/estilosComuns.css" />
+  <link rel="stylesheet" href="../styles/estiloPasso33.css" />
 
-    <script type="module" src="../js/Passo3.js"></script>
-  </head>
-  <body>
-    <header>
-      <div id="tit1">
-        <h1>Explorando o Princípio da Indução Matemática</h1>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script type="module" src="../js/Passo33.js"></script>
+</head>
+
+<body>
+  <header>
+    <div id="tit1">
+      <h1>Explorando o Princípio da Indução Matemática</h1>
+    </div>
+    <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+  </header>
+
+  <main>
+    <div class="main-layout">
+
+      <!-- COLUNA ESQUERDA: GRÁFICO (FIXO) -->
+      <div class="coluna-grafico">
+        <fieldset id="ColGraf1">
+          <legend>Visualização Gráfica</legend>
+          <div id="plotGrfM32"></div>
+        </fieldset>
       </div>
-      <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
-    </header>
 
-    <main>
-      <section class="Explorar11">
-        <fieldset class="column-fieldset">
-          <legend class="Elegend">Passo 1: Caso Base</legend>
-          <p class="ProvaP3_1">
-            No Passo 1, verificamos que a fórmula é válida para o primeiro caso, n
-            = 2 <br> <span style="color: red; font-weight: bold">(Caso base)</span>.
-            <br /><br /><br />
-          </p>
-          <div class="case-image">
-            <img
-              src="../img/GraficoPassoN2.jpg"
-              id="Passo2NK"
-              alt="Gráfico da parábola para n = 2, representando o caso base."
-            />
-          </div>
-            <br><br><br><br>
-          <div class="formula-display" class="ProvaP3_1">
-            <math display="block" class="ProvaP3_11">
-              <mi>A</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>2</mi>
-                <mo>)</mo>
-              </mrow>
-              <mo>=</mo>
-              <mfrac>
-                <mn>1</mn>
-                <mi>2</mi>
-              </mfrac>
-              <mo>&middot;</mo>
-              <msup>
-                <mrow>
-                  <mo>(</mo>
+      <!-- COLUNA CENTRAL: CONTEÚDO DINÂMICO E CONTROLES -->
+      <div class="secao-prova">
+
+        <!-- Etapa 1: Juntando as Peças (Visível no Início) -->
+        <div id="etapa-1" class="display visible">
+
+          <fieldset id="etapa-11">
+            <legend>Formalizando o Conceito</legend>
+
+            <p class="proof-step-text">
+              Ao avançamos da hipótese (k) para o passo (k + 1), a visualização nos mostra que a área total é composta
+              por duas partes distintas:
+            </p>
+
+            <p class="proof-step-text1"> &bullet; A base dos <span style="color: #007bff;"> k retângulos azuis</span>
+              (considerado o retângulo degenerado) muda de <span><math>
                   <mrow>
+                    <mo>(</mo>
                     <mfrac>
                       <mn>1</mn>
                       <msup>
-                        <mi>2</mi>
-                      </msup>
+                        <mn>k</mn>
                     </mfrac>
-                  </mrow>
-                  <mo>)</mo>
-                </mrow>
-                <mn>2</mn>
-              </msup>
-              <mo>=</mo>
-              <mfrac>
-                <mn>1</mn>
-                <mi>2</mi>
-              </mfrac>
-              <mo>&middot;</mo>
-              <mfrac>
-                <mn>1</mn>
-                <msup>
-                  <mi>2</mi>
-                  <mn>2</mn>
-                </msup>
-              </mfrac>
-              <mo>=</mo>
-              <mfrac>
-                <mn>1</mn>
-                <msup>
-                  <mi>2</mi>
-                  <mn>3</mn>
-                </msup>
-              </mfrac>
-              <mo>=</mo>
-              <mfrac>
-                <mn>1</mn>
-                <mi>8</mi>
-              </mfrac>
-              <mo>=</mo>
-              <mn>0,125 </mn>
-            </math>
-          </div>
-        </fieldset>
-
-        <fieldset class="column-fieldset">
-          <legend class="Elegend">Passo 2: Hipótese de Indução</legend>
-          <p class="ProvaP3_1">
-            Assumimos que a fórmula é verdadeira para um número inteiro
-            arbitrário, n = k
-            <span style="color: red; font-weight: bold"
-              >(Hipótese de indução)</span
-            >.
-            <br /><br /><br />
-          </p>
-          <div class="case-image2">
-            <img
-              src="../img/ParabolaNkdesafio.jpg"
-              id="Passo22NK"
-              alt="Gráfico da parábola para n = k, ilustrando a hipótese de indução."
-            />
-          </div>
-          <div class="formula-display1" class="ProvaP3_1">
-            <math display="block" class="ProvaP3_1">
-              <mi>A</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>k</mi>
-                <mo>)</mo>
-              </mrow>
-              <mo>=</mo>
-              <mfrac>
-                <mn>1</mn>
-                <msup>
-                  <mi>k</mi>
-                  <mn>3</mn>
-                </msup>
-              </mfrac>
-              <mo>&middot;</mo>
-              <mrow>
-                <mo>[</mo>
-                <msup>
-                  <mn>1</mn>
-                  <mn>2</mn>
-                </msup>
-                <mo>+</mo>
-                <msup>
-                  <mn>2</mn>
-                  <mn>2</mn>
-                </msup>
-                <mo>+</mo>
-                <mo>...</mo>
-                <mo>+</mo>
-                <msup>
-                  <mrow>
-                    <mo>(</mo>
-                    <mrow>
-                      <mi>k</mi>
-                      <mo>&minus;</mo>
-                      <mn>1</mn>
-                    </mrow>
                     <mo>)</mo>
                   </mrow>
-                  <mn>2</mn>
-                </msup>
-                <mo>]</mo>
-              </mrow>
-            </math>
-          </div>
-        </fieldset>
-
-        <fieldset class="column-fieldset">
-          <legend class="Elegend">Passo 3: Passo Indutivo</legend>
-          <p class="ProvaP3_1">
-            <b>Agora, vamos para o passo de indução.</b>
-          </p>
-          <p class="ProvaP3_1">
-            Clique no botão abaixo para explorar a provar da validade de:
-          </p>
-
-          <div class="formula-display2">
-            <math display="block" class="ProvaP3_1">
-              <mi>A</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>n</mi>
-                <mo>)</mo>
-              </mrow>
-              <mo>=</mo>
-              <mfrac>
-                <mn>1</mn>
-                <msup>
-                  <mi>n</mi>
-                  <mn>3</mn>
-                </msup>
-              </mfrac>
-              <mo>&middot;</mo>
-              <mrow>
-                <mo>[</mo>
-                <msup>
-                  <mn>1</mn>
-                  <mn>2</mn>
-                </msup>
-                <mo>+</mo>
-                <msup>
-                  <mn>2</mn>
-                  <mn>2</mn>
-                </msup>
-                <mo>+</mo>
-                <mo>...</mo>
-                <mo>+</mo>
-                <msup>
+                </math> para <math>
                   <mrow>
                     <mo>(</mo>
-                    <mrow>
-                      <mi>n</mi>
-                      <mo>&minus;</mo>
+                    <mfrac>
                       <mn>1</mn>
-                    </mrow>
+                      <msup>
+                        <mn>k + 1
+                    </mfrac>
                     <mo>)</mo>
                   </mrow>
-                  <mn>2</mn>
-                </msup>
-                <mo>]</mo>
-              </mrow>
-            </math>
-          </div>
-          <button id="start-proof-btn" style="margin:20px auto;" onclick="window.open('Passo31.html', '_self')">Iniciar Prova</button>
-        </fieldset>
+                </math></span>, e portanto, a soma de suas áreas precisa ser recalculada.
+            </p>
+
+            <p class="proof-step-text1"> &bullet; O <span style="color: #fd7505ff">(k + 1)-ésimo retângulo </span> é
+              adicionado no final do intervalo, também possui base <span><math>
+                  <mrow>
+                    <mo>(</mo>
+                    <mfrac>
+                      <mn>1</mn>
+                      <msup>
+                        <mn>k + 1
+                    </mfrac>
+                    <mo>)</mo>
+                  </mrow>
+                </math></span> e sua altura é determinada pelo valor da função nesse ponto.</p>
+
+            <p class="proof-step-text"> Visualize no gráfico que, juntando essas duas ideias, temos a área total do
+              polígono retangular inscrito expressa da seguinte forma:
+            </p>
+
+            <div class="formula-display formula-highlight">
+              Área(k + 1) = <span style="color: #007bff">A(k)<sub>recalculada</sub></span> +
+              <span style="color: #fd7505ff"> A<sub>(k + 1)</sub>(Área do Novo Retângulo)</span>
+            </div>
+
+            <p class="proof-step-text"> Para prosseguir, adicione 10 ou mais novos retângulos ao gráfico.
+            </p>
+
+          </fieldset>
+
+        </div>
       </div>
-      </section>
-    </main>
 
-    <footer>
-      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
-    </footer>
-  </body>
-</html>
+      <!-- COLUNA DIREITA: MENU PRINCIPAL (FIXO) -->
+      <div class="coluna-controles">
+
+        <fieldset>
+          <legend>Menu</legend>
+
+          <button id="PimP33" onclick="window.open('./apresentacaoTeorica2.html', '_blank')">
+            Definição do PIM
+          </button>
+
+          <button id="PimP33" onclick="window.open('./Problema2.html', '_blank')">
+            O Problema
+          </button>
+
+          <button id="PimP33" onclick="window.open('./instrucaoP24.html', '_blank')">
+            Instruções
+          </button>
+
+          <!-- Controles do Gráfico (Sempre visíveis na coluna central) -->
+          <div id="gerar-grafico">
+
+            <fieldset>
+
+              <legend>Controles do Gráfico</legend>
+
+              <input type="number" id="numRectanglesInput" min="1" placeholder="Inserir valor" />
+
+              <button id="set-k-btn">Gerar Gráfico</button>
+
+              <button id="add-rectangle-btn" disabled>Adicionar Retângulo</button>
+
+              <button id="btn-formalizar" class="display hidden" onclick="window.open('./Passo34.html', '__self')">Formalizando...</button>
+
+            </fieldset>
+
+          </div>
+
+        </fieldset>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+  </footer>
+
+</body>
+
+</html

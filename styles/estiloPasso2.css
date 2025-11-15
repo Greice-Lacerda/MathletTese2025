@@ -1,245 +1,629 @@
-/* ========================================================== */
-/* ESTILOS ESPECÍFICOS PARA A PÁGINA PASSO2                   */
-/* ========================================================== */
+/* estiloPasso2.css */
 
-/* 1. LAYOUT PRINCIPAL DA PÁGINA (MOBILE-FIRST) */
-.main-grid-container {
-  display: grid;
-  width: 100%;
-  padding: 1rem;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-  /* Uma coluna por padrão */
-  grid-template-areas:
-    "controls"
-    "graph"
-    "table"
-    "menu";
+/* ========================================================================== */
+/* ESTILOS GERAIS E LAYOUT PRINCIPAL */
+/* ========================================================================== */
+
+.hidden {
+  display: none !important;
 }
 
-.grid-item {
-  border: 1px solid #fa9b9b86;
-  border-radius: 15px;
-  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
-  padding: 1rem;
+/* Container que agrupa os 3 passos iniciais */
+.Explorar11 {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  /* Garante que todos os fieldsets tenham a mesma altura */
+  gap: 20px;
+  width: 95%;
+  max-width: 1400px;
+  margin: 2rem auto;
+  /* OTIMIZAÇÃO: Trocado '70px' por '2rem' */
+  flex-wrap: wrap;
+  /* Permite quebrar a linha em telas menores */
+}
+
+/* Estilo para cada coluna (Passo 1, 2 e 3) */
+.column-fieldset {
+  flex: 1;
+  /* Permite que cresçam igualmente */
+  min-width: 360px;
+  /* Largura mínima antes de quebrar a linha */
+
+  /* CORREÇÃO DE LAYOUT: Trocado height por min-height */
+  min-height: 480px;
+
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  /* Aumentado de 5px */
+  margin-top: 30px;
+  background-color: #fdfdfd2b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Espaça o conteúdo verticalmente */
+  text-align: center;
+  gap: 1rem;
+  /* Aumentado de 5px */
+}
+
+/* NOTA: Este seletor ainda usa 'P3'. Mantido por dependência do JS. */
+.columnProvaP3_1 {
+  flex: 1;
+  min-width: 350px;
+  min-height: 520px;
+  /* CORREÇÃO: Trocado height por min-height */
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  margin-top: 45px;
+  background-color: #fdfdfd2b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  gap: 5px;
+}
+
+/* OTIMIZAÇÃO: Seletores combinados */
+.column-fieldset:hover,
+.columnProvaP3_1:hover {
+  border: 1px solid #0829fb;
+  background-color: #f3f3f4cb;
+}
+
+.Elegend,
+legend {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding: 2px;
+}
+
+.intro-text {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+/* Imagens dentro dos fieldsets */
+/* CORREÇÃO: Margens negativas removidas para estabilizar o layout */
+.case-image {
+  position: static;
+  margin-top: 1rem;
+}
+
+.case-image2 {
+  position: static;
+  margin-top: 1rem;
+}
+
+#Passo2NK,
+#Passo22NK {
+  width: 200px;
+  height: 175px;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: solid 2px rgba(220, 53, 69, 0.3);
+  object-fit: cover;
+  /* Adicionado para evitar distorção */
+}
+
+/* ========================================================================== */
+/* SEÇÃO DA PROVA INTERATIVA (MODAL?) */
+/* NOTA: Estes estilos parecem ser de um modal, mas usam Posição Fixa 
+   que conflita com a responsividade. Ajustados para fluir.
+*/
+/* ========================================================================== */
+#ProvaP3K-1 {
+  display: flex;
+  /* Adicionado para a regra 'flex-direction' fazer efeito */
+  flex-direction: row;
+}
+
+#GrafP3,
+#BtnP3 {
+  display: flex;
+  /* Adicionado para a regra 'flex-direction' fazer efeito */
   flex-direction: column;
 }
 
-/* Mapeamento das áreas do grid */
-#controls-section {
-  grid-area: controls;
-}
-
-#graph-section {
-  grid-area: graph;
-}
-
-#table-section {
-  grid-area: table;
-}
-
-#menu-section {
-  grid-area: menu;
-}
-
-.section-title {
-  font-size: 1.2em;
-  color: black;
-  text-shadow: 2px 2px 1px #0a0a0a62;
-  text-align: center;
-  margin: 0 0 1rem 0;
-}
-
-.content-container {
-  flex-grow: 1;
-  /* Faz o conteúdo ocupar o espaço disponível */
-  min-height: 300px;
-  background-color: white;
+/* CORREÇÃO DE LAYOUT: Removida Posição Fixa */
+#ProvaP3 {
+  display: block;
+  overflow: hidden;
+  z-index: 5;
+  width: 100%;
+  /* Ajustado de 1000px */
+  max-width: 1000px;
+  min-height: 490px;
+  /* Trocado de height */
+  margin: 1rem auto;
+  /* Centralizado */
   border-radius: 10px;
-  overflow: auto;
-  /* Adiciona rolagem interna se necessário */
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 50px;
 }
 
-/* 2. ESTILOS DOS COMPONENTES DA PÁGINA */
-#controls-section .controls-content {
+/* CORREÇÃO DE LAYOUT: Removida Posição Fixa */
+.ProvaP31 {
+  border-radius: 10px;
+  width: 100%;
+  /* Ajustado de 1000px */
+  max-width: 1000px;
+  min-height: 540px;
+  /* Trocado de height */
+  margin: 1rem auto;
+  /* Centralizado */
+  background-color: #f8e0e0;
+  box-shadow: 10px 10px 6px #0e0d0d94;
+}
+
+.ProvaP32 {
+  padding: 15px 25px;
+  background-color: #007bff;
+  color: white;
+}
+
+.desafio-titulo31 {
+  text-align: center;
+  font-size: 1.6em;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 20px auto;
+}
+
+.modal-body3 {
+  padding: 5px 0;
+}
+
+.modal-panel3 {
+  display: flex;
+  margin: 1rem 10px;
+  /* Trocado de 100px */
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.ProvaP3_1,
+.ProvaP3_11 {
+  align-items: center;
+  margin: 10px auto;
+  padding: 0 1rem;
+  /* Adicionado padding lateral */
+  font-size: 22px;
+  line-height: 1.3;
+  max-width: 1000px;
+  text-align: center;
+  text-shadow: 1.5px 1.5px 4px rgb(93, 90, 90);
+}
+
+.ProvaP3_11 {
+  font-size: 20px;
+}
+
+.ProvaP33,
+.ProvaP333,
+.ProvaP34,
+.ProvaP33_3,
+.ProvaP3-M3 {
+  margin: 10px auto;
+  padding: 0 1rem;
+  font-size: 22px;
+  line-height: 1.3;
+  max-width: 800px;
+  text-align: center;
+  text-shadow: 1.5px 1.5px 4px rgb(93, 90, 90);
+  color: #0e0d0d;
+}
+
+.ProvaP33_3 {
+  margin: 80px auto;
+  font-size: 19.5px;
+}
+
+.ProvaP3-M3 {
+  margin: 65px auto;
+  font-size: 19.5px;
+}
+
+#ProvaP3-M4 {
+  margin: 1rem auto;
+  /* Trocado de -240px */
+  justify-items: center;
+  justify-content: center;
+  width: 260px;
+  min-width: 200px;
+  border: 1px solid rgba(241, 10, 10, 0.811);
+  box-shadow: 5px 5px 3px gray;
+  border-radius: 10px;
+  height: 180px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ========================================================================== */
+/* LAYOUT DE COLUNAS */
+/* ========================================================================== */
+
+.two-columns {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
+  gap: 20px;
 }
 
-#controls-section label {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-#controls-section button {
+#plot {
   width: 100%;
-  border: outset 4px #8ae1f3;
-  background: linear-gradient(to right, #010238, #1618bd, #208bf0, #0ae6f6, #9ff4f5);
+  max-width: 900px;
+  height: 310px;
+  margin: 2px auto;
+  border-radius: 10px;
 }
 
-#menu-section .menu-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  height: 100%;
-}
+/* ========================================================================== */
+/* FÓRMULAS MATEMÁTICAS */
+/* ========================================================================== */
 
-#menu-section #ProximaEtapa,
-#menu-section #Verificar {
-  border: outset 4px #f0a8a8;
-  background: linear-gradient(to right, #350202, #6b0505, #e81414, #f69605);
-}
-
-#menu-section #Instrucao,
-#menu-section #voltarTeoria,
-#menu-section #Sair {
-  border: outset 4px #4caf50;
-  background: linear-gradient(to right, #064108, #09680e, #56d25a, #aff7b1);
-}
-
-/* 3. ESTILOS DO MODAL */
-.modal-overlay {
-  position: fixed;
-  z-index: 100;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+.formula-display,
+.formula-display1,
+.formula-display2 {
+  font-family: "Times New Roman", Times, serif;
+  background-color: #f0f4f855;
+  border: 1px dashed #007bff;
+  border-radius: 8px;
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 8px;
+  /* Padding unificado */
+  width: 90%;
+  /* Largura flexível */
+  max-width: 390px;
+  /* Largura máxima */
+  min-width: auto;
+  /* Removido min-width fixo */
+  margin: 1rem auto;
+  /* Margem unificada */
 }
 
-.modal-content {
-  background-color: #fefefe;
-  width: 95%;
-  max-width: 1200px;
-  max-height: 95vh;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  animation: animatezoom 0.4s;
+/* CORREÇÃO DE LAYOUT: Removida a posição fixa e margem de 350px */
+.formula-display {
+  /* position: fixed; */
+  /* Removido */
+  /* margin: 350px 20px; */
+  /* Removido */
 }
 
-@keyframes animatezoom {
-  from {
-    transform: scale(0);
-  }
-
-  to {
-    transform: scale(1);
-  }
+.formula-display:hover,
+.formula-display1:hover,
+.formula-display2:hover {
+  transform: scale(1.01);
+  background-color: black;
+  color: white;
+  border: solid 2px white;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2);
 }
 
-.modal-header {
-  padding: 0.5rem 1rem;
-  position: relative;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-}
-
-#modal-title {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.modal-close-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  box-shadow: none;
-  color: #888;
-}
-
-.modal-close-button:hover {
-  color: #000;
-}
-
-.modal-body-content {
-  display: flex;
-  flex-direction: column;
-  /* Padrão mobile */
-  gap: 1rem;
-  padding: 1rem;
-  overflow-y: auto;
-  flex-grow: 1;
-}
-
-.modal-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.modal-column img {
+math {
+  font-size: 18px;
+  overflow-x: auto;
+  /* Permite rolagem horizontal se a fórmula for muito longa */
+  overflow-y: hidden;
   max-width: 100%;
-  height: auto;
-  max-height: 250px;
-  border: 2px solid #ddd;
+}
+
+.formula-highlight {
+  font-size: 18px;
+  background-color: #e9ecef;
+  border-style: solid;
+  max-width: 600px;
+}
+
+.formula-large-text {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.formula-com-delimitador {
+  border: 2px solid #007bff;
+  padding: 5px 15px;
+  border-radius: 8px;
+  background-color: #e7f3ff;
+}
+
+/* REMOVIDO: .fraction-container, .numerator, .denominator. 
+   O MathJax cuidará disso.
+*/
+
+/* ========================================================================== */
+/* BOTÕES */
+
+#Verificar3,
+#voltarTeoria3,
+#Instrucao3 {
+  width: 250px;
+  font-size: 18px;
+  text-shadow: 2px 2px 1px rgba(10, 0, 0, 0.5);
+  /* corrigido '1cqi' */
+  height: 50px;
+  margin: 10px auto;
+  border: outset 4px #4caf50;
+  background: linear-gradient(to right,
+      #064108,
+      #09680e,
+      #56d25a,
+      #aff7b1,
+      #7a9c7d);
+  color: white;
+}
+
+#Verificar3:hover,
+#voltarTeoria3:hover,
+#Instrucao3:hover {
+  background: linear-gradient(to right,
+      #6bc06e,
+      #9ed4a0,
+      #bee2be,
+      #d8ead8,
+      #f0f9f0);
+  border: outset 4px #6bc06e;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+  color: #0e0d0d;
+}
+
+#Verificar3:active,
+#voltarTeoria3:active,
+#Instrucao3:active {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transform: scale(1);
+}
+
+#numRectanglesInput {
+  width: 200px;
+  margin: 0 auto;
+  padding: 3px;
   border-radius: 8px;
 }
 
-.modal-column .modal-input {
-  width: 100%;
+#numRectanglesInput:hover {
+  border: black double 3px;
 }
 
-.modal-controls {
-  gap: 0.5rem;
-}
-
-.modal-controls .section-title {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.modal-controls button {
-  width: 100%;
+#set-k-btn {
+  width: 200px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 8px;
   border: outset 4px #8ae1f3;
-  background: linear-gradient(to right, #010238, #1618bd, #208bf0, #0ae6f6, #9ff4f5);
+  background: linear-gradient(to right, #010238, #1618bd, #208bf0);
+  color: white;
+  cursor: pointer;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease-in-out;
 }
 
-/* 4. MEDIA QUERIES PARA RESPONSIVIDADE */
-@media (min-width: 768px) {
-  .main-grid-container {
-    grid-template-columns: 1fr 1fr;
-    /* Duas colunas */
-    grid-template-areas:
-      "controls controls"
-      "graph table"
-      "menu menu";
-  }
-
-  #controls-section .controls-content {
-    flex-direction: row;
-    justify-content: center;
-  }
+#start-proof-btn,
+.next-step-btn,
+.next-step-btn1,
+#add-rectangle-btn,
+#avaliaçãoP3,
+#voltarP3_1 {
+  height: auto;
+  /* Trocado de 40px para altura automática */
+  min-height: 40px;
+  border-radius: 10px;
+  border: outset 4px #8ae1f3;
+  background: linear-gradient(to right, #010238, #1618bd, #208bf0);
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  /* Padding em vez de padding: 0 auto */
+  font-size: 18px;
+  margin: 5px auto;
+  cursor: pointer;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease-in-out;
 }
 
-@media (min-width: 1024px) {
-  .main-grid-container {
-    height: calc(100vh - 160px);
-    /* Ocupa a altura da tela menos header/footer */
-    grid-template-columns: 2fr 2fr 1fr;
-    /* Três colunas */
-    grid-template-rows: auto 1fr;
-    /* Linha de controles + linha de conteúdo */
-    grid-template-areas:
-      "controls controls controls"
-      "graph table menu";
-  }
+#next-step-btn2 {
+  height: auto;
+  /* Trocado de 40px */
+  min-height: 40px;
+  border-radius: 10px;
+  border: outset 4px #f2c4a6;
+  background: linear-gradient(to right, #fb0404, #dd980e, #ddef5b);
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  /* Trocado de 2px */
+  font-size: 18px;
+  margin: 5px auto;
+  cursor: pointer;
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease-in-out;
+}
 
-  .modal-body-content {
-    flex-direction: row;
-    /* Colunas lado a lado no modal */
-  }
+/* Estilos específicos ou que sobrepõem a base */
+#start-proof-btn,
+.next-step-btn,
+.next-step-btn1,
+.next-step-btn2,
+#voltarP3_1 {
+  font-size: 16px;
+  margin: 1rem auto;
+  /* Trocado de 0 60px */
+  display: block;
+  /* Garante que a margem auto funcione */
+}
+
+/* ADICIONADO: Estilo para o botão que tinha style inline */
+#start-proof-btn {
+  margin: 20px auto;
+}
+
+.next-step-btn,
+.next-step-btn1,
+.next-step-btn2,
+#add-rectangle-btn,
+#avaliaçãoP3 {
+  padding: 12px;
+  min-width: 150px;
+}
+
+/* Efeitos Hover agrupados */
+#start-proof-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+.next-step-btn:hover,
+#add-rectangle-btn:hover,
+#avaliaçãoP3:hover,
+.next-step-btn2:hover,
+#set-k-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.4);
+  border-color: #6ba4c0;
+}
+
+/* ========================================================================== */
+/* SEÇÃO DO GRÁFICO PERSONALIZADO (Layout com Posição Fixa) */
+/* NOTA: Estes estilos são muito rígidos e não responsivos. */
+/* ========================================================================== */
+
+#MenuGerarGrafico {
+  border: 1px solid rgba(241, 32, 32, 0.614);
+  box-shadow: 5px 5px 3px gray;
+  border-radius: 8px;
+  background-color: #9e87ef24;
+  width: 95%;
+  /* Trocado de 860px */
+  max-width: 860px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* Adicionado */
+  justify-content: center;
+  height: auto;
+  /* Trocado de 90px */
+  min-height: 90px;
+  margin: 15px auto;
+  padding: 0.5rem;
+  /* Trocado de 5px auto */
+  display: flex;
+}
+
+#GraficoGerado {
+  border: 1px solid rgba(241, 32, 32, 0.614);
+  box-shadow: 5px 5px 3px gray;
+  border-radius: 8px;
+  background-color: #9e87ef24;
+  width: 95%;
+  /* Trocado de 860px */
+  max-width: 860px;
+  flex-direction: row;
+  justify-content: center;
+  height: auto;
+  /* Trocado de 430px */
+  min-height: 430px;
+  margin: 1rem auto;
+  /* Trocado de -20px auto */
+  padding: 10px;
+  display: flex;
+}
+
+.GrfM32 {
+  width: 100%;
+  /* Trocado de 860px */
+  max-width: 860px;
+  height: auto;
+  margin: 0 auto;
+  flex-direction: column;
+  padding: 2px;
+  gap: 5px;
+  border: 1px solid rgba(241, 10, 10, 0.811);
+  box-shadow: 5px 5px 3px gray;
+  border-radius: 10px;
+  background-color: #5c0af452;
+}
+
+#LadGrfP3 {
+  margin: 15px auto;
+  min-width: 300px;
+  width: 95%;
+  border: 1px solid rgba(241, 10, 10, 0.811);
+  box-shadow: 5px 5px 3px gray;
+  border-radius: 10px;
+  height: auto;
+  /* Trocado de 535px */
+  min-height: 535px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#plotGrfM32 {
+  width: 100%;
+  /* Trocado de 860px */
+  height: 390px;
+  padding: 2px 0;
+  margin: 0 auto;
+}
+
+/* ========================================================================== */
+/* ESTILOS PARA BARRA DE ROLAGEM */
+/* ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ADICIONADO: Classe para o texto em vermelho (do HTML refatorado) */
+.text-highlight-red {
+  color: red;
+  font-weight: bold;
 }

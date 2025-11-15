@@ -1,3 +1,4 @@
+<!--Página de descrição dos objetivos do mathlet corrigido não mexer.-->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -20,7 +21,7 @@
   <main>
     <div class="description-content">
       <div class="description-column">
-        <img src="../img/LogoPagInicialClaro.png" alt="Logo da oficina de matemática" />
+        <img src="../img/LogoPagInicialClaro.png" alt="Logo da oficina de matemática" id="description-image" />
       </div>
 
       <div class="description-column">
@@ -28,8 +29,9 @@
           <h2>Objetivos do Mathlet</h2>
           <ul>
             <li>
-              Proporcionar uma nova perspectiva sobre o <u>Princípio da Indução
-                Matemática (PIM)</u>, explorando-o de forma visual e geométrica.
+              Proporcionar uma nova perspectiva sobre o
+              <span class="highlight-text">Princípio da Indução Matemática (PIM)</span>,
+              explorando-o de forma visual e geométrica.
             </li>
             <li>
               Usando a tecnologia, você irá construir e analisar a área de
@@ -46,7 +48,7 @@
       </div>
     </div>
 
-    <div class="controls">
+    <div class="controlsDesc">
       <button id="back-btn" onclick="window.location.href='../index.html'">Voltar</button>
       <button id="theory-btn" onclick="window.location.href='./apresentacaoTeorica.html'">Apresentação Teórica</button>
       <button id="exit-btn" onclick="exitApp()">Sair</button>
@@ -63,9 +65,11 @@
 
   <script>
     function exitApp() {
+      // Verifica se está em tela cheia e sai, se possível
       if (document.fullscreenElement && document.exitFullscreen) {
         document.exitFullscreen();
       }
+      // Redireciona para fora do app
       window.location.href = 'https://www.google.com.br';
     }
   </script>

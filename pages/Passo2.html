@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    Explorando a Prova do Passo de Indução Matemática
+  </title>
+
+  <link rel="stylesheet" href="../styles/estilosComuns.css" />
+  <link rel="stylesheet" href="../styles/estiloPasso2.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Geist+Mono:wght@100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Parisienne&family=Playwrite+HR+Lijeva:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet" />
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+
+  <script type="module" src="../js/Passo2.js"></script>
+</head>
+
+<body>
+  <header class="main-header">
+    <h1 id="main-title">Explorando o Princípio da Indução Matemática</h1>
+    <p id="main-subtitle">Uma Abordagem Visual com Faixas de Parábola</p>
+  </header>
+
+  <main>
+    <section class="Explorar11">
+      <fieldset class="column-fieldset">
+        <legend class="Elegend">Passo 1: Caso Base</legend>
+        <p class="ProvaP3_1">
+          No Passo 1, verificamos que a fórmula é válida para o primeiro caso, n
+          = 2
+          <span class="text-highlight-red">(Caso base)</span>.
+        </p>
+        <div class="case-image">
+          <img src="../img/GraficoPassoN2.jpg" id="Passo2NK"
+            alt="Gráfico da parábola para n = 2, representando o caso base." />
+        </div>
+
+        <div class="formula-display ProvaP3_1">
+          <math display="block" class="ProvaP3_11">
+            <mi>A</mi>
+            <mrow>
+              <mo>(</mo>
+              <mi>2</mi>
+              <mo>)</mo>
+            </mrow>
+            <mo>=</mo>
+            <mfrac>
+              <mn>1</mn>
+              <mi>2</mi>
+            </mfrac>
+            <mo>&middot;</mo>
+            <msup>
+              <mrow>
+                <mo>(</mo>
+                <mrow>
+                  <mfrac>
+                    <mn>1</mn>
+                    <mi>2</mi>
+                  </mfrac>
+                </mrow>
+                <mo>)</mo>
+              </mrow>
+              <mn>2</mn>
+            </msup>
+            <mo>=</mo>
+
+            <mfrac>
+              <mn>1</mn>
+              <msup>
+                <mi>2</mi>
+                <mn>3</mn>
+              </msup>
+            </mfrac>
+            <mo>=</mo>
+            <mfrac>
+              <mn>1</mn>
+              <mi>8</mi>
+            </mfrac>
+            <mo>=</mo>
+            <mn>0,125 </mn>
+          </math>
+        </div>
+      </fieldset>
+
+      <fieldset class="column-fieldset">
+        <legend class="Elegend">Passo 2: Hipótese de Indução</legend>
+        <p class="ProvaP3_1">
+          Como a fórmula se mostrou verdadeira para n = 2, vamos explorar seu valores para um número inteiro n = 3, n =
+          4, n = 5 e para n = k (arbitrário)?
+          <span class="text-highlight-red">(Hipótese de indução)</span>.
+        </p>
+        <div class="case-image2">
+          <img src="../img/ParabolaNkdesafio.jpg" id="Passo22NK"
+            alt="Gráfico da parábola para n = k, ilustrando a hipótese de indução." />
+        </div>
+
+        </div>
+        <button id="start-proof-btn" onclick="window.open('Passo21.html', '_self')">Iniciar Exploração</button>
+      </fieldset>
+    </section>
+  </main>
+
+  <footer>
+    &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+  </footer>
+
+  <div id="orientation-warning">
+    <p>Para uma melhor experiência, por favor, gire seu dispositivo para a posição de paisagem (horizontal).</p>
+  </div>
+
+</body>
+
+</html>

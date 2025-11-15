@@ -1,5 +1,5 @@
 /* ========================================================================== */
-/* ESTILOS EXCLUSIVOS PARA A PÁGINA DE ENTRADA (INDEX.HTML)                   */
+/* ESTILOS EXCLUSIVOS PARA A PÁGINA DE ENTRADA (INDEX.HTML)                  */
 /* ========================================================================== */
 
 /* O fundo que cobre a tela inteira */
@@ -22,10 +22,11 @@
   padding: 1rem;
 }
 
-/* A caixa de conteúdo no centro */
+/* A caixa de conteúdo no centro (Mobile-first) */
 .modal-content {
   display: flex;
-  flex-direction: column; /* Padrão Mobile: empilhado */
+  flex-direction: column;
+  /* Empilhado em telas pequenas (padrão) */
   align-items: center;
   gap: 1.5rem;
   padding: 2rem;
@@ -33,14 +34,20 @@
   border-radius: 15px;
   border: 1px solid rgba(10, 230, 246, 0.8);
   box-shadow: 0 0 25px rgba(10, 230, 246, 0.5);
-  max-width: 95%;
-  width: 600px; /* Largura máxima para legibilidade em telas maiores */
+
+  /* CORREÇÃO DE RESPONSIVIDADE:
+    'width: 95%' garante que ele use 95% da tela em celulares.
+    'max-width: 600px' limita o tamanho em telas maiores.
+  */
+  width: 95%;
+  max-width: 600px;
   color: white;
 }
 
 /* Estilo para a logo dentro do modal */
 .modal-logo {
-  width: 200px; /* Tamanho reduzido para mobile */
+  width: 200px;
+  /* Tamanho padrão (mobile) */
   height: auto;
   border: 10px double rgba(10, 230, 246, 0.4);
   border-radius: 50%;
@@ -56,19 +63,22 @@
 
 #modal-title {
   font-size: 1.8rem;
-  color: blue;
+  /* CORREÇÃO DE DESIGN: Trocado 'blue' por 'white' para consistência */
+  color: #FFFFFF;
   line-height: 1.2;
   text-shadow: 2px 2px 4px rgba(253, 253, 253, 0.342);
 }
 
 .modal-subtitle {
   font-size: 1.2rem;
-  text-indent: 0; /* Remove o recuo do parágrafo padrão */
+  text-indent: 0;
+  /* Remove o recuo do parágrafo padrão */
   max-width: 100%;
   opacity: 0.9;
   text-shadow: 1px 1px 3px rgba(10, 230, 246, 0.7);
   transition: transform 0.3s ease;
 }
+
 .modal-subtitle:hover {
   transform: scale(1.05);
 }
@@ -85,6 +95,7 @@
   margin-top: 1.5rem;
   transition: all 0.3s ease;
 }
+
 #start-workshop-btn:hover {
   background-color: #0ae6f6;
   color: #0a1734;
@@ -92,46 +103,35 @@
   box-shadow: 0 0 20px rgba(10, 230, 246, 0.5);
 }
 
-/* Media Query para o modal em telas maiores */
-@media (max-width: 767px) {
-  .modal-content {
-    flex-direction: row;
-    width: 600px;
-  }
 
-  .modal-logo {
-    width: 150px;
-  }
+/* CORREÇÃO DE ERRO: 
+  Removido o bloco '@media (max-width: 767px)' que estava quebrado
+  e continha erros de lógica de responsividade.
+*/
 
-  .modal-text {
-    align-items: center;
-  }
 
-  #modal-title {
-    font-size:rem;
-  }
-
-  .modal-subtitle {
-    font-size: 1rem;
-  }
-}
-
-/* Media Query para o modal em telas maiores */
+/* Media Query para o modal em telas maiores (Tablets e Desktops) */
 @media (min-width: 768px) {
   .modal-content {
     flex-direction: row;
-    width: 900px;
+    /* Lado a lado em telas maiores */
+    /* CORREÇÃO DE RESPONSIVIDADE: Trocado 'width' por 'max-width' */
+    max-width: 900px;
     padding: 2.5rem;
   }
+
   .modal-logo {
     width: 250px;
   }
+
   .modal-text {
     align-items: center;
   }
+
   #modal-title {
     font-size: 2.5rem;
   }
+
   .modal-subtitle {
     font-size: 1.5rem;
   }

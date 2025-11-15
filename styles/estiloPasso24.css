@@ -1,0 +1,177 @@
+/* ========================================================== */
+/* ESTILOS ESPECÍFICOS PARA O DESAFIO (PASSO 2.4 - n=k)       */
+/* ========================================================== */
+
+/* 1. Layout Principal (As 3 Colunas) */
+.content-columns {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    padding: 1rem;
+    flex-grow: 1;
+    /* Faz as colunas ocuparem o espaço vertical */
+    overflow-y: auto;
+    /* Permite rolagem se as colunas crescerem */
+    min-height: 400px;
+}
+
+.content-column {
+    flex: 1;
+    /* As 3 colunas terão a mesma largura */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    min-width: 280px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--color-primary-dark);
+    text-shadow: 1px 1px 2px var(--color-text-shadow);
+    text-align: center;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eee;
+}
+
+.content-container {
+    flex-grow: 1;
+    min-height: 200px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: auto;
+    padding: 1rem;
+    border: 1px solid #ddd;
+}
+
+/* 2. Barra de Controle Inferior */
+.controls-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-top: 2px solid #eee;
+    background-color: rgba(248, 249, 250, 0.9);
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+.control-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+#generation-controls label {
+    font-weight: bold;
+}
+
+#generation-controls .modal-input {
+    width: 80px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+#generation-controls button {
+    padding: 0.5rem 1rem;
+}
+
+#navigation-buttons button {
+    padding: 0.5rem 1rem;
+}
+
+/* 3. Estilos da Coluna de Desafio */
+.challenge-question {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#choice-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.choice-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    background-color: #f8f9fa;
+    color: #333;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.choice-btn:hover {
+    background-color: #e9ecef;
+    border-color: #007bff;
+    transform: translateY(-2px);
+}
+
+.feedback-box {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 0;
+    border-radius: 8px;
+}
+
+.feedback-error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+
+.feedback-success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+/* 4. Estilos da Tabela */
+#tabela-container table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#tabela-container th,
+#tabela-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tabela-container th {
+    background-color: #f2f2f2;
+}
+
+/* 5. Responsividade */
+@media (max-width: 1024px) {
+
+    /* Empilha as 3 colunas em telas médias/pequenas */
+    .content-columns {
+        flex-direction: column;
+        overflow-y: visible;
+    }
+
+    /* Centraliza os grupos de controle na barra inferior */
+    .controls-bar {
+        flex-direction: column;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Instruçõe Passo 2.1 - Explorando o Princípio da Indução Matemática
+    </title>
+    <link rel="stylesheet" href="../styles/estiloInstrucao.css" />
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+    <link rel="stylesheet" href="../styles/estiloPasso21.css" />
+</head>
+
+<body>
+    <header class="main-header">
+        <h1 id="main-title">Explorando o Princípio da Indução Matemática</h1>
+        <p id="main-subtitle">Uma Abordagem Visual com Faixas de Parábola</p>
+    </header>
+
+    <main>
+        <section>
+            <fieldset id="ExplorarIn11">
+                <legend class="Elegend1">
+                    <h1 style="text-align:center; font-size: 26px;">Instruções</h1>
+                </legend>
+
+                <div class="instrucIn1">
+
+                    <p style="margin: 15px 0;">
+                    <h3>A Hipótese de Indução - Etapa 3</h3>
+                    <br>
+                    <p class="instrucP222">Nesta fase, você investigará como a soma das áreas dos retângulos se comporta
+                        à medida que
+                        aumentamos o número de divisões <b>(n)</b> do intervalo.
+
+                    <p class="instrucP222">O objetivo é observar um padrão nos casos específicos para, então, conseguir
+                        criar uma fórmula
+                        geral para um caso <strong>n = k qualquer</strong>. </p>
+
+                </div>
+
+                <div class="instrucIn2">
+                    <h3>Desafio 3: Casos n = 5 </h3>
+
+                    <p class="instrucP222"> O processo realizado no caso 1 deverá ser repetido para mais dois casos,
+                        aumentando o número de
+                        divisões.</p>
+
+                    <p class="instrucP222"> Em cada um desses casos, você responderá às mesmas duas perguntas. O seu
+                        objetivo é anotar,
+                        calcular e comparar os resultados finais das áreas do polígono retangular inscrito.
+                    </p>
+
+                    <p class="isntrucP222"> Ao inserir a resposta correta em cada caso, uma tela de verificação mostrará
+                        o cálculo detalhado
+                        para que você possa comparar sua resposta.
+
+                    <p class="instrucP222"><b>Você consegue notar um padrão surgindo?</b></p>
+                </div>
+
+                <div class="instrucIn3">
+                    <p>
+                        Observe que a área construída possui as seguintes características:
+
+                    <ul style="font-size:12px; margin: 5px 20px; padding: 0; ">
+                        <li>a <strong>largura (x<sub>i</sub>)</strong> de cada retângulo igual a Δx = <math
+                                xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>.
+                        </li>
+
+                        <li>as <strong>alturas (y<sub>i</sub>)</strong> dos retângulos calculadas pela <strong>função y
+                                =
+                                x<sup>2</sup></strong> nos pontos
+                            de partida de cada subintervalo: x<sub>i</sub> = 0,
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>,
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>2</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>,
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>3</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>,
+                            ..., <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>n &minus; 1</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>.
+                        </li>
+
+                        <li>a <strong>área total A(n)</strong> é a soma das áreas (A<sub>i</sub>) de todos os retângulos
+                            inscritos.
+                        </li>
+                    </ul>
+                    <br>
+                    Calcule o valor da area para n = 5, ou seja, A(5), insira o valor no campo correto e clique em
+                    verificar.
+                    </p>
+                    <br>
+                    <button id="ProximaEtapaInst2" onclick="window.close();">
+                        Fechar Instruções
+                    </button>
+                </div>
+            </fieldset>
+        </section>
+    </main>
+    <footer>
+        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+
+    <div id="orientation-warning">
+        <p>Para uma melhor experiência, por favor, gire seu dispositivo para a posição de paisagem (horizontal).</p>
+    </div>
+
+</body>
+
+</html>
+
+
+<!--DOCTYPE html>
+
+                    <div class="instrucP22">
+                        <h3>O Grande Salto: Generalizando para n = k</h3>
+                
+                        <p class="instrucP222">Este é o desafio mais importante e o coração do passo de indução!</p>
+
+                        <p class="instrucP222">Até agora, você calculou valores numéricos para as áreas. Agora, o objetivo é diferente: encontrar uma ou expressão algébrica que funcione para qualquer número k de divisões.</p>
+                        <br/>
+
+                        <h3>Como Encarar o Problema?</h3>
+                        
+                        <p class="instrucP222"> Olhe para o padrão, analise os resultados que você obteve para n = 3, 4, 5 e busque por uma fórmula da área total que se relacione com o valor de n.</p>
+
+                        <button id="ProximaEtapa" onclick="window.close();">
+                            Fechar Instruções
+                        </button>
+                    </div>
+        </fieldset>
+      </section>
+    </main>
+    <footer>
+      &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+  </body>
+</html>

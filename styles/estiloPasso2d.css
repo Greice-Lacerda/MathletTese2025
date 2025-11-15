@@ -1,0 +1,241 @@
+/* ========================================================== */
+/* ESTILOS ESPECÍFICOS PARA A PÁGINA PASSO2                   */
+/* ========================================================== */
+
+/* 1. LAYOUT PRINCIPAL DA PÁGINA (MOBILE-FIRST) */
+.main-grid-container {
+  display: grid;
+  width: 100%;
+  /* padding: 1rem; (Movido para o 'main' em 'estilosComuns.css') */
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  /* Uma coluna por padrão */
+  grid-template-areas:
+    "controls"
+    "graph"
+    "table"
+    "menu";
+}
+
+.grid-item {
+  border: 1px solid #fa9b9b86;
+  border-radius: 15px;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mapeamento das áreas do grid (Corrigido para os IDs do HTML) */
+#controls-section {
+  grid-area: controls;
+}
+
+#graph-section {
+  grid-area: graph;
+}
+
+#table-section {
+  grid-area: table;
+}
+
+#menu-section {
+  grid-area: menu;
+}
+
+.section-title {
+  font-size: 1.2em;
+  color: black;
+  text-shadow: 2px 2px 1px #0a0a0a62;
+  text-align: center;
+  margin: 0 0 1rem 0;
+}
+
+.content-container {
+  flex-grow: 1;
+  /* Faz o conteúdo ocupar o espaço disponível */
+  min-height: 250px;
+  /* Reduzido para melhor ajuste em telas menores */
+  background-color: white;
+  border-radius: 10px;
+  overflow: auto;
+  /* Adiciona rolagem interna se necessário */
+  padding: 0.5rem;
+  /* Adicionado padding interno */
+}
+
+/* 2. ESTILOS DOS COMPONENTES DA PÁGINA */
+/* CORREÇÃO: Seletor ajustado */
+#controls-section .controls-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: auto;
+  /* Controles não precisam de altura mínima */
+}
+
+#controls-section label {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+#controls-section button {
+  width: 100%;
+  border: outset 4px #8ae1f3;
+  background: linear-gradient(to right, #010238, #1618bd, #208bf0, #0ae6f6, #9ff4f5);
+}
+
+/* CORREÇÃO: Seletor ajustado */
+#menu-section .menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  min-height: auto;
+  /* Menu não precisa de altura mínima fixa */
+}
+
+#menu-section #ProximaEtapa,
+#menu-section #Verificar {
+  border: outset 4px #f0a8a8;
+  background: linear-gradient(to right, #350202, #6b0505, #e81414, #f69605);
+}
+
+#menu-section #Instrucao,
+#menu-section #voltarTeoria,
+#menu-section #Sair {
+  border: outset 4px #4caf50;
+  background: linear-gradient(to right, #064108, #09680e, #56d25a, #aff7b1);
+}
+
+/* 3. ESTILOS DO MODAL */
+
+/* REMOVIDO: Bloco '.modal-overlay', '.modal-content', '.modal-header'
+  e '@keyframes animatezoom'. 
+  Eles conflitam com as classes 'w3-modal' usadas no HTML.
+*/
+
+/* CORREÇÃO: Seletor alterado de '#modal-title' para '.desafio-titulo' (classe do HTML) */
+.desafio-titulo {
+  margin: 0;
+  font-size: 1.5rem;
+  color: white;
+  /* Adicionado para legibilidade no header 'w3-teal' */
+}
+
+/* CORREÇÃO: Seletor alterado de '.modal-close-button' para '.fechar-modal' (classe do HTML) */
+.fechar-modal {
+  /* O 'w3-button' já cuida disso, mas podemos forçar: */
+  font-size: 2rem !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #FFF !important;
+  /* Branco para melhor contraste no teal */
+}
+
+.fechar-modal:hover {
+  color: #000 !important;
+}
+
+/* CORREÇÃO: Seletor alterado de '.modal-body-content' para '.modal-body' (classe do HTML) */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  /* Padrão mobile */
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.modal-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modal-column img {
+  max-width: 100%;
+  height: auto;
+  max-height: 250px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+}
+
+/* CORREÇÃO: Seletor alterado de '.modal-input' para 'input[type="number"]' */
+.modal-column input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  /* Adicionado para melhor aparência */
+  font-size: 1rem;
+  box-sizing: border-box;
+  /* Adicionado para o padding não quebrar o layout */
+}
+
+.modal-controls {
+  gap: 0.5rem;
+  width: 100%;
+  /* Faz os botões ocuparem a coluna */
+}
+
+.modal-controls .section-title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-controls button {
+  width: 100%;
+  border: outset 4px #8ae1f3;
+  background: linear-gradient(to right, #010238, #1618bd, #208bf0, #0ae6f6, #9ff4f5);
+}
+
+/* ADICIONADO: Classe para o texto de nota (do HTML refatorado) */
+.modal-text-note {
+  font-size: 0.9rem;
+  color: blue;
+  font-style: italic;
+}
+
+
+/* 4. MEDIA QUERIES PARA RESPONSIVIDADE */
+@media (min-width: 768px) {
+  .main-grid-container {
+    grid-template-columns: 1fr 1fr;
+    /* Duas colunas */
+    grid-template-areas:
+      "controls controls"
+      "graph table"
+      "menu menu";
+  }
+
+  #controls-section .controls-content {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* Adicionado para quebrar em telas médias */
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-grid-container {
+    /* Ocupa a altura da tela menos header/footer (do estilosComuns.css) */
+    height: 100%;
+    grid-template-columns: 2fr 2fr 1fr;
+    /* Três colunas */
+    grid-template-rows: auto 1fr;
+    /* Linha de controles + linha de conteúdo */
+    grid-template-areas:
+      "controls controls controls"
+      "graph table menu";
+  }
+
+  /* CORREÇÃO: Seletor alterado de '.modal-body-content' para '.modal-columns-container' */
+  .modal-columns-container {
+    flex-direction: row;
+    /* Colunas lado a lado no modal */
+  }
+}
