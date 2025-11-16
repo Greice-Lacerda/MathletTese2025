@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnConcluir2) {
     btnConcluir2.addEventListener("click", () => {
       // TODO: Atualizar este link para o próximo passo real
-      window.location.href = "./conclusao.html";
+      window.location.href = "./Passo5.html";
     });
   }
 

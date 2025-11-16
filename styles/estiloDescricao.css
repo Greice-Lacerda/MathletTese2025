@@ -81,3 +81,64 @@
   background: linear-gradient(135deg, #002e00, #068531);
   border-color: #d3f1cf;
 }
+
+/* ============================================== */
+/* ADICIONAR ESTES ESTILOS AO 'estiloDescricao.css' */
+/* ============================================== */
+
+/* Para o resumo final na página de conclusão */
+.summary-container-final {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.summary-step {
+  padding: 0.5rem 0.75rem;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.summary-step strong {
+  color: #0056b3;
+  /* Azul escuro */
+  margin-right: 5px;
+}
+
+/* Para os botões no final da página de descrição */
+.controls-bar-local {
+  display: flex;
+  justify-content: flex-end;
+  /* Alinha botões à direita */
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #eee;
+}
+
+.controls-bar-local button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid var(--color-button-action);
+  background: var(--grad-button-action);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.controls-bar-local button:hover {
+  background: var(--grad-button-action-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

@@ -1,127 +1,117 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Exploração Concluída! - Explorando o Princípio da Indução Matemática
-    </title>
-    <link rel="stylesheet" href="../styles/estiloDescricao.css" />
-    <link rel="stylesheet" href="../styles/estilosComuns.css" />
-    <link rel="stylesheet" href="../styles/estiloResumo.css" />
-    <script
-      src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"
-    ></script>
-  </head>
-  <body>
-    <div id="Resume-modal">
-      <fieldset class="Resume-content">
-        <div>
-          <img
-            src="../img/LogoPagInicial.png"
-            alt="Logo da Oficina"
-            class="Resume-logo"
-          />
-        </div>
 
-        <div>
-          <h1 id="Hresume" style="color: white">Exploração Concluída!</h1>
-          <p id="Presume" style="text-align: center">
-            O Princípio da Indução Matemática: Uma Abordagem Visual com Faixas de
-            Parábola
-          </p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exploração Concluída! - Explorando o Princípio da Indução Matemática</title>
 
-          <button id="resume-workshop-btn-1">Encerrar Exploração</button>
-        </div>
-      </fieldset>
-    </div>
+  <link rel="stylesheet" href="../styles/estiloDescricao.css" />
+  <link rel="stylesheet" href="../styles/estilosComuns.css" />
+  <link rel="stylesheet" href="../styles/estiloResumo.css" />
 
-    <div id="resumeMain" style="visibility: hidden">
-      <fieldset id="ResumeModal1">
-          <fieldset class="ResumeContent1">
-              <div>
-                <img
-                  id="ResuIma"
-                  src="../img/Logo1.png"
-                  alt="Logo da Oficina"
-                  class="Resume-logo"
-                />
-              </div>
-      
-              <div>
-              <p>
-                <h2>DOUTORADO EM ENSINO DA MATEMÁTICA - PEMAT</h2>
-                <h3>PESQUISA EM ENSINO DA MATEMÁTICA</h3>
-                <h4>Orientadora: <i>Márcia Maria Fusaro Pinto</i></h4>
-                <h4>Doutoranda:</b> <span class="NegIndLegRes">Greice Keli Silva Lacerda</span></h4>
-              
-              <p id="ResuFin1">Nossa jornada de aprendizado sobre o Princípio da Indução Matemática termina aqui!
-              <p id="ResuFin2">Agradecemos a sua participação!</p>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
 
-              <p id="ResuFin3" style="color:red; font-weight: bold;">Não esqueça de preencher o questionário!</p>
-              </div>
-        </fieldset>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Seleciona os elementos da página
+      const ResumeModal = document.getElementById("Resume-modal");
+      const mainContentResume = document.getElementById("resumeMain");
+      const resumeButton1 = document.getElementById("resume-workshop-btn-1");
+      const resumeButton2 = document.getElementById("resume-workshop-btn2");
+      const parerButton = document.getElementById("Parer");
+      const applauseSound = document.getElementById("aplausos-audio");
 
-                <div id="resume-workshop-btn-2">
-                <button id="resume-workshop-btn2">Questionário Avaliativo
-                </button>
-                
-                <button id="Parer" onclick="window.location.href='../index.html'">Página Principal
-                </button>
-                </div>
-      </fieldset>
-    </div>
-<audio id="aplausos-audio" src="../sons/aplausos.mp3" preload="auto"></audio>
-    
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    // Seleciona os elementos da página
-    const ResumeModal = document.getElementById("Resume-modal");
-    const mainContentResume = document.getElementById("resumeMain");
-    const resumeButton1 = document.getElementById("resume-workshop-btn-1");
-    const resumeButton2 = document.getElementById("resume-workshop-btn2");
-    const parerButton = document.getElementById("Parer");
-    const applauseSound = document.getElementById("aplausos-audio");
-
-    // Adiciona o evento de clique para o primeiro botão
-    if (resumeButton1) {
+      // Adiciona o evento de clique para o primeiro botão
+      if (resumeButton1) {
         resumeButton1.addEventListener("click", () => {
-            // Esconde o modal inicial
-            ResumeModal.style.display = "none";
-            
-            // Mostra o conteúdo principal da página
-            mainContentResume.style.visibility = "visible";
-            
-            //CORREÇÃO: Dispara os confetes em uma camada superior
+          // Esconde o modal inicial
+          ResumeModal.style.display = "visible";
+
+          // Mostra o conteúdo principal da página
+          mainContentResume.style.visibility = "hidden";
+
+          // Dispara os confetes
+          if (typeof confetti === 'function') {
             confetti({
-                particleCount: 500,
-                spread: 100,
-                origin: { y: 0.5 },
-                zIndex: 99999 // Garante que os confetes fiquem na frente de tudo
+              particleCount: 500,
+              spread: 100,
+              origin: { y: 0.5 },
+              zIndex: 99999
             });
+          }
 
-            // Toca o som de aplausos
-            if (applauseSound) {
-                applauseSound.currentTime = 0;
-                applauseSound.play();
-            }
+          // Toca o som de aplausos
+          if (applauseSound) {
+            applauseSound.currentTime = 0;
+            applauseSound.play();
+          }
         });
-    }
+      }
 
-    // Adiciona o evento de clique para o botão do questionário
-    if (resumeButton2) {
+      // Adiciona o evento de clique para o botão do questionário
+      if (resumeButton2) {
         resumeButton2.addEventListener("click", () => {
-            window.open('https://forms.gle/TgVwTmSbAGRaXPhHA', '_blank');
+          window.open('https://forms.gle/TgVwTmSbAGRaXPhHA', '_blank');
         });
-    }
+      }
 
-    // Adiciona a funcionalidade correta para o botão "Página Principal"
-    if (parerButton) {
+      // Adiciona a funcionalidade correta para o botão "Página Principal"
+      // (O onclick= no HTML já fazia isso, mas assim fica mais limpo)
+      if (parerButton) {
         parerButton.addEventListener("click", () => {
-              window.location.href='../index.html';
+          window.location.href = '../index.html';
         });
-    }
-});
-</script>
-  </body>
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div id="Resume-modal">
+    <fieldset class="Resume-content">
+      <div>
+        <img src="../img/LogoPagInicial.png" alt="Logo da Oficina" class="Resume-logo" />
+      </div>
+      <div>
+        <h1 id="Hresume" style="color: white">Exploração Concluída!</h1>
+        <p id="Presume" style="text-align: center">
+          O Princípio da Indução Matemática: Uma Abordagem Visual com Faixas de
+          Parábola
+        </p>
+        <button id="Parer">Página Principal</button>
+
+      </div>
+    </fieldset>
+  </div>
+
+  <div id="resumeMain">
+    <fieldset id="ResumeModal1">
+      <fieldset class="ResumeContent1">
+        <div>
+          <img id="ResuIma" src="../img/Logo1.png" alt="Logo da Oficina" class="Resume-logo" />
+        </div>
+
+        <div style="text-align: center;">
+          <h2>DOUTORADO EM ENSINO DA MATEMÁTICA  PEMAT</h2>
+          <br>
+          <h3>PESQUISA EM ENSINO DA MATEMÁTICA</h3>
+          <p>Orientadora: <i>Márcia Maria Fusaro Pinto</i></p>
+          <p>Doutoranda: <span class="NegIndLegRes">Greice Keli Silva Lacerda</span></p>
+
+          <p id="ResuFin1">Nossa jornada termina aqui! Agradecemos a sua participação!</p>
+          <p id="ResuFin3" style="color:rgb(220, 239, 11); font-weight: bold;">Ajude-nos em nossa pesquisa sobre Mathlet respondendo ao questionário avaliativo!</p>
+        </div>
+      </fieldset>
+
+      <div id="resume-workshop-btn-2">
+        <button id="resume-workshop-btn2">Questionário Avaliativo</button>
+        <button id="resume-workshop-btn-1">Encerrar Exploração</button>
+      </div>
+    </fieldset>
+  </div>
+
+  <audio id="aplausos-audio" src="../sons/Aplausos.mp3" preload="auto"></audio>
+</body>
+
 </html>

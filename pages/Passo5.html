@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prova do Passo de Indução - Etapa Guiada</title>
+    <title>Passo 5 - Organizando a Prova Final</title>
 
     <link rel="stylesheet" href="../styles/estilosComuns.css" />
-    <link rel="stylesheet" href="../styles/estiloPasso35.css" />
+    <link rel="stylesheet" href="../styles/estiloPasso5.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,159 +15,262 @@
         href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet" />
 
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script type="module" src="../js/Passo35.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+    <script type="module" src="../js/Passo5.js"></script>
 </head>
 
 <body>
-    <header>
-        <div id="tit1">
-            <h1>Explorando o Princípio da Indução Matemática</h1>
-        </div>
-        <div id="tit2">Uma Abordagem Visual com Faixas de Parábola</div>
+    <header class="main-header">
+        <h1 id="main-title">Explorando o Princípio da Indução Matemática</h1>
+        <p id="main-subtitle">Uma Abordagem Visual com Faixas de Parábola</p>
     </header>
 
     <main>
-        <div class="main-layout">
-
-            <!-- COLUNA ESQUERDA: GRÁFICO (FIXO) -->
-            <div class="coluna-grafico">
-                
-                <fieldset id="ColGraf1">
-                    <legend>Visualização Gráfica</legend>
-                    <div id="plotGrfM32"></div>
-                </fieldset>
-            
+        <div class="controls-bar">
+            <div id="feedback-container" class="feedback-box">
+                <p>Aguardando...</p>
             </div>
+            <div class="control-group" id="navigation-buttons">
+                <button id="problem-btn" class="menu-button" onclick="window.open('ProblemaPasso5.html', '_blank')">O
+                    Problema</button>
+                <button id="instructions-btn" class="menu-button"
+                    onclick="window.open('instrucaoPasso5.html', '_blank')">Instruções</button>
+                <button id="conclusao-btn" class="menu-button hidden" onclick="window.open('conclusao.html', '_self')">Ver
+                    Conclusão</button>
+            </div>
+        </div>
+        
+        <div class="content-columns">
 
-            <div id="etapa-2">
+            <section class="column-container" id="drop-column">
+                <h2 class="section-title">Ordem da Prova</h2>
+                <p class="drop-instructions">Arraste as etapas ou clique nelas e
+                    depois no local correto na tabela.</p>
 
-                <fieldset id="etapa-22">
-                    <legend>Do visual para a Matemática</legend>
+                <table id="drop-table" class="drop-zone-table">
+                    <tbody id="drop-area">
+                        <tr>
+                            <td class="row-number">1.</td>
+                            <td class="placeholder" data-slot="1"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">2.</td>
+                            <td class="placeholder" data-slot="2"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">3.</td>
+                            <td class="placeholder" data-slot="3"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">4.</td>
+                            <td class="placeholder" data-slot="4"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">5.</td>
+                            <td class="placeholder" data-slot="5"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">6.</td>
+                            <td class="placeholder" data-slot="6"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">7.</td>
+                            <td class="placeholder" data-slot="7"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">8.</td>
+                            <td class="placeholder" data-slot="8"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">9.</td>
+                            <td class="placeholder" data-slot="9"></td>
+                        </tr>
+                        <tr>
+                            <td class="row-number">10.</td>
+                            <td class="placeholder" data-slot="10"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
-                    <p class="proof-step-text3">
-                        Vamos considerar agora, apenas o novo retãngulo inserido. A área desse <span
-                            style="color: #fd7e14;">novo
-                            retângulo</span>, será calculada da seguinte forma:
-                    </p>
+            <section class="column-container" id="drag-column">
+                <h2 class="section-title">Etiquetas Disponíveis</h2>
+                <p class="drop-instructions">Arraste estas etapas para a área de ordenação.</p>
 
-                    <p class="PassoP35">
-                        &bullet; A nova base é gerada pela divisão do intervalo em (k + 1) partes;
-                    </p>
+                <div id="drag-area" class="drag-zone">
 
-                    <p class="PassoP35">
-                        &bullet; A altura será calculada pela função y = x<sup>2</sup> no extremo k do intervalo.
-                    </p>
-
-                    <p class="proof-step-text3">
-                        Assim, a área <span style="color: #fd7e14;">A<sub>k + 1 </sub>(área do novo
-                            retângulo)</span> pode ser representada pela expressão:
-                    </p>
-
-                    <p class="proof-step-text3" style="text-align:center;">
-                        <span style="color: #ff8800;">A<sub>k + 1</sub>
-                            = <math display="inline">
-                                <mrow>
-                                    <mo>(</mo>
-                                    <mfrac>
-                                        <mrow>
-                                            <mn>1</mn>
-                                        </mrow>
-                                        <mrow>
-
-                                            <mi>k</mi>
-                                            <mo>+</mo>
-                                            <mn>1</mn>
-
-                                        </mrow>
-                                    </mfrac>
-                                    <mo>)</mo>
-                                </mrow>
-
-                                <mo>&middot;</mo>
-                                <msup>
-                                    <mrow>
-                                        <mo>[</mo>
-                                        <mfrac>
-                                            <mrow>
-                                                <mn>(k − 1) + 1</mn>
-                                            </mrow>
-                                            <mrow>
-
-                                                <mi>k</mi>
-                                                <mo>+</mo>
-                                                <mn>1</mn>
-
-                                            </mrow>
-                                        </mfrac>
-                                        <mo>]</mo>
-                                    </mrow>
-                                    <mrow>
-                                        <mn>2</mn>
-                                    </mrow>
-                                </msup>
-
+                    <div class="draggable-item" draggable="true" data-order="1">
+                        Assumimos que A(k) é válida para n = k, temos:
+                        <span style="color: #007bff; font-size: 12px;">
+                            <math>
+                                <mi>A</mi>
+                                <mo stretchy="false">(</mo>
+                                <mi>k</mi>
+                                <mo stretchy="false">)</mo>
                                 <mo>=</mo>
-
                                 <mrow>
-                                    <mo>(</mo>
                                     <mfrac>
-                                        <mrow>
-                                            <mn>1</mn>
-                                        </mrow>
-                                        <mrow>
-
-                                            <mi>k</mi>
-                                            <mo>+</mo>
-                                            <mn>1</mn>
-
-                                        </mrow>
-                                    </mfrac>
-                                    <mo>)</mo>
-                                </mrow>
-
-                                <mo>&middot;</mo>
-                                <msup>
-                                    <mrow>
-                                        <mo>[</mo>
-                                        <mfrac>
-                                            <mrow>
-                                                <mn>k</mn>
-                                            </mrow>
-                                            <mrow>
-
-                                                <mi>k</mi>
-                                                <mo>+</mo>
-                                                <mn>1</mn>
-
-                                            </mrow>
-                                        </mfrac>
-                                        <mo>]</mo>
-                                    </mrow>
-                                    <mrow>
-                                        <mn>2</mn>
-                                    </mrow>
-                                </msup>
-                            </math></span>
-                    </p>
-
-                    <p class="proof-step-text3">
-                        Logo, temos:
-                    </p>
-
-                    <div class="formula-display3">
-                        <p class="proof-step-text3" style="text-align:center; font-size: 26px;">
-                            A<sub>k + 1</sub>
-                            = <math display="inline" style="font-size: 24px;">
-                                <mfrac>
-                                    <mrow>
+                                        <mn>1</mn>
                                         <msup>
                                             <mi>k</mi>
-                                            <mn>2</mn>
+                                            <mn>3</mn>
                                         </msup>
-                                    </mrow>
+                                    </mfrac>
+                                </mrow>
+                                <mo>&middot;</mo>
+                                <mrow>
+                                    <mo>[</mo>
+                                    <msup>
+                                        <mn>1</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <mo>...</mo>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>&minus;</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>]</mo>
+                                </mrow>
+                            </math>
+                        </span>
+                    </div>
+
+                    <div class="draggable-item" draggable="true" data-order="2">
+                        Devemos provar que A(k + 1) é válida para todo k + 1.
+                    </div>
+
+                    <div class="draggable-item" draggable="true" data-order="3">
+                        Sabemos que a expressão da nova area será igual a:
+                        <p style="font-size: 12px;"> A(k + 1) = <span style="color: #007bff">
+                                A(k)<sub>recalculada</sub></span> +
+                            <span style="color: #fd7505ff"> A<sub>k+1</sub> (Novo Retângulo)</span>
+                        </p>
+                    </div>
+
+                    <div class="draggable-item" draggable="true" data-order="4">
+                        Recalculando a area dos k - 1 retangulos inscritos para
+                        k + 1 partes, temos:
+                        <span style="color: #007bff;">
+                            A(k)<sub>recalculada</sub>
+                            = <math display="inline">
+                                <msup>
                                     <mrow>
+                                        <mo>(</mo>
+                                        <mfrac>
+                                            <mi>k</mi>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mn>3</mn>
+                                </msup>
+                                <mo>&middot;</mo>
+                                <mrow>
+                                    <mo>A(k)</mo>
+                                </mrow>
+                            </math>
+                        </span>
+                    </div>
+
+                    <div class="draggable-item" draggable="true" data-order="5">
+                        A área do novo retangulo é igual a:
+                        <p style="font-size: 12px; color: orange;"><math>
+                                <mi>A</mi>
+                                <mo stretchy="false">(</mo>
+                                <mi>k</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo stretchy="false">)</mo>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mfrac>
+                            </math></p>
+                    </div>
+
+                    <div class="draggable-item" draggable="true" data-order="6">
+                        Logo, a expressão da nova área será: <p style="font-size: 12px;">A(k + 1) = <math
+                                display="inline">
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mfrac>
+                                            <mi>k</mi>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mn>3</mn>
+                                </msup>
+                                <mo>&middot;</mo>
+                                <mrow>
+                                    <mo>A(k)</mo>
+                                </mrow>
+                            </math>
+                            +
+                            <math display="inline">
+                                <mfrac>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mfrac>
+                            </math>
+                        </p>
+                    </div>
+
+                    <div class="draggable-item" draggable="true" data-order="7">
+                        Reorganizando a expressão da nova área :
+                        <p style="font-size: 12px;">A(k + 1) = <math display="inline">
+                                <mrow>
+                                    <mfrac>
+                                        <mn>1</mn>
                                         <msup>
                                             <mrow>
                                                 <mo>(</mo>
@@ -178,59 +281,510 @@
                                             </mrow>
                                             <mn>3</mn>
                                         </msup>
+                                    </mfrac>
+                                </mrow>
+                                <mo>&middot;</mo>
+                                <mrow>
+                                    <mo>[</mo>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                    <mrow>
+                                        <mo>A(k)</mo>
                                     </mrow>
-                                </mfrac>
-                            </math></span>
-                        </p></span>
+                                </mrow>
+                            </math>
+                            +
+                            <math display="inline">
+                                <msup>
+                                    <mi>k</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>]</mo>
+                            </math>
+                        </p>
                     </div>
-                    
-                    <p class="proof-step-text3" style="text-align:center;">
-                        Agora, vamos prosseguir para a prova do passo de indução?
-                    </p>
-                </fieldset>
-            
-            </div>
 
-        <!-- COLUNA DIREITA: MENU PRINCIPAL (FIXO) -->
-        <div class="coluna-controles">
+                    <div class="draggable-item" draggable="true" data-order="8">
+                        Usando a Hipótese de Indução, temos: <p style="font-size: 12px;"><math display="inline"><math
+                                    display="inline">
 
-            <fieldset>
-                <legend>Menu</legend>
+                                    <mi>A</mi>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>k</mi>
+                                    <mo>+</mo>
+                                    <mn>1</m>
+                                        <mo stretchy="false">)</mo>
+                                        <mo>=</mo>
 
-                <button id="PimP33" onclick="window.open('./apresentacaoTeorica2.html', '_blank')">
-                    Definição do PIM
-                </button>
+                                        <mrow>
+                                            <mfrac>
+                                                <mn>1</mn>
+                                                <msup>
+                                                    <mrow>
+                                                        <mo>(</mo>
+                                                        <mi>k</mi>
+                                                        <mo>+</mo>
+                                                        <mn>1</mn>
+                                                        <mo>)</mo>
+                                                    </mrow>
+                                                    <mn>3</mn>
+                                                </msup>
+                                            </mfrac>
+                                        </mrow>
 
-                <button id="PimP33" onclick="window.open('./Problema2.html', '_blank')">
-                    O Problema
-                </button>
+                                        <mo>&middot;</mo>
 
-                <button id="PimP33" onclick="window.open('./instrucaoP24.html', '_blank')">
-                    Instruções
-                </button>
+                                        <mrow>
+                                            <mo>[</mo>
 
-                <!-- Controles do Gráfico (Sempre visíveis na coluna central) -->
-                <div id="gerar-grafico">
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <msup>
+                                                    <mn>1</mn>
+                                                    <mn>2</mn>
+                                                </msup>
+                                                <mo>+</mo>
+                                                <mo>...</mo>
+                                                <mo>+</mo>
+                                                <msup>
+                                                    <mrow>
+                                                        <mo>(</mo>
+                                                        <mi>k</mi>
+                                                        <mo>&minus;</mo>
+                                                        <mn>1</mn>
+                                                        <mo>)</mo>
+                                                    </mrow>
+                                                    <mn>2</mn>
+                                                </msup>
+                                                <mo>)</mo>
+                                            </mrow>
 
-                    <fieldset>
+                                            <mo>+</mo>
 
-                        <legend>Controles do Gráfico</legend>
+                                            <msup>
+                                                <mi>k</mi>
+                                                <mn>2</mn>
+                                            </msup>
 
-                        <input type="number" id="numRectanglesInput" min="1" placeholder="0" />
+                                            <mo>]</mo>
+                                        </mrow>
+                                </math>
+                        </p>
+                    </div>
 
-                        <button id="set-k-btn">Gerar Gráfico</button>
+                    <div class="draggable-item" draggable="true" data-order="9">
+                        Reorganizando a expressão obtida:
+                        <p style="font-size: 12px;"><math>
+                                <mi>A</mi>
+                                <mo stretchy="false">(</mo>
+                                <mi>k</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo stretchy="false">)</mo>
+                                <mo>=</mo>
 
-                        <button id="add-rectangle-btn" disabled>Adicionar Retângulo</button>
+                                <mrow>
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mfrac>
+                                </mrow>
 
-                        <button id="btn-concluir2" class="display hidden">Nova Área</button>
+                                <mo>&middot;</mo>
 
-                    </fieldset>
+                                <mrow>
+                                    <mo>[</mo>
+                                    <msup>
+                                        <mn>1</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <mo>...</mo>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>&minus;</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>]</mo>
+                                </mrow>
+                            </math>
+                    </div>
+
+                    <div class="draggable-item" draggable="true" data-order="10">
+                        Deste modo, podemos concluir que A(k + 1) é válida para todo n = k + 1.
+                    </div>
 
                 </div>
 
-            </fieldset>
+                <div id="summary-area" class="summary-container hidden">
 
-        </div>
+                    <h3 class="summary-title">Resumo da Prova de Indução</h3>
+
+                    <div class="summary-step"><strong>1. Hipótese de Indução:</strong>
+                        Assumimos que <span style="color: #007bff; font-size: 12px;">
+                            <math>
+                                <mi>A</mi>
+                                <mo stretchy="false">(</mo>
+                                <mi>k</mi>
+                                <mo stretchy="false">)</mo>
+                                <mo>=</mo>
+                                <mrow>
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <msup>
+                                            <mi>k</mi>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mfrac>
+                                </mrow>
+                                <mo>&middot;</mo>
+                                <mrow>
+                                    <mo>[</mo>
+                                    <msup>
+                                        <mn>1</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <mo>...</mo>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>&minus;</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>]</mo>
+                                </mrow>
+                            </math>
+                        </span> é válida para n = k.
+                    </div>
+
+                    <div class="summary-step"><strong>2. Objetivo (Tese):</strong>
+                        Devemos provar que A(k + 1) é válida
+                        para todo k + 1.
+                    </div>
+
+                    <div class="summary-step"><strong>3. Montar A(k + 1):</strong>
+                        Sabemos que a expressão da nova area
+                        será igual a: <span style="font-size: 12px;"> A(k + 1) = <span style="color: #007bff">
+                                A(k)<sub>recalculada</sub></span> +
+                            <span style="color: #fd7505ff"> A<sub>k+1</sub> (Novo Retângulo)</span>
+                        </span>
+                    </div>
+
+                    <div class="summary-step"><strong>4. Recalcular A(k):</strong>
+                        Recalculando a area dos k - 1
+                        retangulos, temos: <span style="color: #007bff;">
+                            A(k)<sub>recalculada</sub>
+                            = <math display="inline">
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mfrac>
+                                            <mi>k</mi>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mn>3</mn>
+                                </msup>
+                                <mo>&middot;</mo>
+                                <mrow>
+                                    <mo>A(k)</mo>
+                                </mrow>
+                            </math>
+                        </span>
+                    </div>
+
+                    <div class="summary-step"><strong>5. Área do Novo Retângulo:</strong>
+                        A área do novo retangulo é
+                        igual a <span style="font-size: 12px; color: orange;"><math>
+                                <mi>A</mi>
+                                <mo stretchy="false">(</mo>
+                                <mi>k</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo stretchy="false">)</mo>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mfrac>
+                            </math></span>
+                    </div>
+
+                    <div class="summary-step"><strong>6. Expressão Completa:</strong>
+                        Logo, a expressão da nova área será: <span style="font-size: 12px;">A(k + 1) = <math
+                                display="inline">
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mfrac>
+                                            <mi>k</mi>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </mfrac>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mn>3</mn>
+                                </msup>
+                                <mo>&middot;</mo>
+                                <mrow>
+                                    <mo>A(k)</mo>
+                                </mrow>
+                            </math>
+                            +
+                            <math display="inline">
+                                <mfrac>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mfrac>
+                            </math>
+                        </span>
+                    </div>
+
+                    <div class="summary-step"><strong>7. Reorganizar:</strong>
+                        Reorganizando a expressão da nova área: A(k + 1) =
+                        <math display="inline">
+                                <mrow>
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mfrac>
+                                </mrow>
+                                <mo>&middot;</mo>
+                                <mrow>
+                                    <mo>[</mo>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                    <mrow>
+                                        <mo>A(k)</mo>
+                                    </mrow>
+                                </mrow>
+                            </math>
+                            +
+                            <math display="inline">
+                                <msup>
+                                    <mi>k</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>]</mo>
+                            </math>
+                    </div>
+
+                    <div class="summary-step"><strong>8. Usar a Hipótese:</strong>
+                        Usando a Hipótese de Indução, temos:                        
+                            <math display="inline">
+                                <mi>A</mi>
+                                <mo stretchy="false">(</mo>
+                                <mi>k</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo stretchy="false">)</mo>
+                                <mo>=</mo>
+
+                                <mrow>
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mfrac>
+                                </mrow>
+
+                                <mo>&middot;</mo>
+
+                                <mrow>
+                                    <mo>[</mo>
+
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <msup>
+                                            <mn>1</mn>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>+</mo>
+                                        <mo>...</mo>
+                                        <mo>+</mo>
+
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>&minus;</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>2</mn>
+                                        </msup>
+                                        <mo>)</mo>
+                                    </mrow>
+
+                                    <mo>+</mo>
+
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </msup>
+
+                                    <mo>]</mo>
+                                </mrow>
+                            </math>
+                    </div>
+
+                    <div class="summary-step"><strong>9. Reorganizar (Final):</strong>
+                        Reorganizando a expressão obtida:
+                        <math>
+                                <mi>A</mi>
+                                <mo stretchy="false">(</mo>
+                                <mi>k</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo stretchy="false">)</mo>
+                                <mo>=</mo>
+
+                                <mrow>
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mfrac>
+                                </mrow>
+
+                                <mo>&middot;</mo>
+
+                                <mrow>
+                                    <mo>[</mo>
+                                    <msup>
+                                        <mn>1</mn>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <mo>...</mo>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>k</mi>
+                                                <mo>&minus;</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </msup>
+
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>]</mo>
+                                </mrow>
+                            </math>
+                    </div>
+
+                    <div class="summary-step"><strong>10. Concluir:</strong>
+                        Deste modo, podemos concluir que A(k + 1) é válida para todo n = k + 1.
+                    </div>
+
+                </div>
+            </section>
+        </div>        
         </div>
     </main>
 
@@ -238,6 +792,12 @@
         &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
     </footer>
 
+    <div id="orientation-warning">
+        <p>Para uma melhor experiência, por favor, gire seu dispositivo para a posição de paisagem (horizontal).</p>
+    </div>
+
+    <audio id="error-audio" src="../sons/Erro.mp3" preload="auto"></audio>
+    <audio id="success-audio" src="../sons/Aplausos.mp3" preload="auto"></audio>
 </body>
 
-</html
+</html>

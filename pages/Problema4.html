@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        O Problema - Explorando o Princípio da Indução Matemática
+    </title>
+    <link rel="stylesheet" href="../styles/estiloInstrucao.css" />
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+    <link rel="stylesheet" href="../styles/estiloPasso21.css" />
+</head>
+
+<body>
+    <header class="main-header">
+        <h1 id="main-title">Explorando o Princípio da Indução Matemática</h1>
+        <p id="main-subtitle">Uma Abordagem Visual com Faixas de Parábola</p>
+    </header>
+
+    <main>
+        <section>
+            <fieldset id="ExplorarIn11">
+                <legend class="Elegend1">
+                    <h1 style="text-align:center; font-size: 26px;">Descrição do Problema</h1>
+                </legend>
+
+                <div class="instrucIn1">
+
+                    <p style="margin: 15px 0;">
+                        A área do polígono retangular inscrito sob a faixa da parábola
+                        y = x<sup>2</sup> no intervalo [0, 1], ilustrado na figura, foi descrita por
+                        Lima (2000), como a expressão:
+                    </p>
+                    <img id="Im11" src="../img/ParabolaQuizz.jpg">
+
+                </div>
+
+                <div class="instrucIn2">
+                    <p style="font-size:18px; margin: 15px 0; padding: 0; transform: scale(1.22);"><strong style="
+            font-size:18px; margin: 0; padding: 0;"><span class="subscript">P<sub>n</sub></span>
+                            = <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <msup>
+                                        <mi>n</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mfrac>
+                            </math> . [1<sup>2</sup> + 2<sup>2</sup> + ... + (n &minus; 1)<sup>2</sup>]</strong>
+                        </strong>
+                    </p>
+
+                    <p>
+                        Onde:
+                    </p>
+
+                    <p><strong>n</strong> é o <strong>número de subintervalos</strong> de mesmo
+                        tamanho obtidos com a divisão do intervalo [0, 1] em n partes iguais;
+                    </p>
+
+                    <p>e o <strong>polígono retangular inscrito
+                        </strong> é a figura geométrica
+                        formada pelos <strong>n &minus; 1</strong> retângulos justapostos internos à
+                        faixa de parábola.
+                    </p>
+
+                </div>
+
+                <div class="instrucIn3">
+                    <p>
+                        Assim, considerando que a área construída possui as seguintes características:
+
+                    <ul style="font-size:12px; margin: 5px 20px; padding: 0; ">
+                        <li>a <strong>largura (x<sub>i</sub>)</strong> de cada retângulo igual a Δx = <math
+                                xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>.
+                        </li>
+
+                        <li>as <strong>alturas (y<sub>i</sub>)</strong> dos retângulos calculadas pela <strong>função y
+                                =
+                                x<sup>2</sup></strong> nos pontos
+                            de partida de cada subintervalo: x<sub>i</sub> = 0,
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>,
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>2</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>,
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>3</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>,
+                            ..., <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>n &minus; 1</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>.
+                        </li>
+
+                        <li>a <strong>área total A(n)</strong> é a soma das áreas (A<sub>i</sub>) de todos os retângulos
+                            inscritos.
+                        </li>
+                    </ul>
+
+                    <p> Calcule o valor da área para n = k, ou seja, A(k), insira o valor no campo correto e clique em
+                        verificar.
+                    </p>
+                    <br>
+                    <button id="ProximaEtapaInst2" onclick="window.close();">
+                        Fechar descrição do problema
+                    </button>
+                </div>
+            </fieldset>
+        </section>
+    </main>
+    <footer>
+        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+
+    <div id="orientation-warning">
+        <p>Para uma melhor experiência, por favor, gire seu dispositivo para a posição de paisagem (horizontal).</p>
+    </div>
+
+</body>
+
+</html>

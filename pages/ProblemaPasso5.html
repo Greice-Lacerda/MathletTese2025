@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        O Problema - Passo 5 - Explorando o Princípio da Indução Matemática
+    </title>
+    <link rel="stylesheet" href="../styles/estiloInstrucao.css" />
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+    <link rel="stylesheet" href="../styles/estiloPasso21.css" />
+</head>
+
+<body>
+    <header class="main-header">
+        <h1 id="main-title">Explorando o Princípio da Indução Matemática</h1>
+        <p id="main-subtitle">Uma Abordagem Visual com Faixas de Parábola</p>
+    </header>
+
+    <main>
+        <section>
+            <fieldset id="ExplorarIn11">
+                <legend class="Elegend1">
+                    <h1 style="text-align:center; font-size: 26px;">Descrição do Problema</h1>
+                </legend>
+
+                <div class="instrucIn1">
+
+                    <p style="margin: 1px 0;">
+
+                    <h3>A Ponte da Intuição para a Álgebra</h3>
+                    <br>
+                    <p>
+                        Nos passos anteriores, vimos como a área A(k + 1) é formada pela
+                        área <span style="color: blue" ;>A(k)<sub>recalculada</sub></span> mais a área do novo retângulo
+                        <span style="color: rgb(255, 149, 0)" ;>A<sub>k</sub></span>.
+                    </p>
+
+                    <hr>
+
+                    <h3>Passos Anteriores</h3>
+                    <br>
+                    <ul class="instructions-list">
+                        <li>
+                            <strong>Passo Base (n = 2):</strong> Vimos que a fórmula da área $A(n)$ era verdadeira para
+                            o nosso caso
+                            inicial.
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Passo de Exploração (n = 3, 4 e 5):</strong> Verificamos que a fórmula também
+                            funcionou para o próximo caso.
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Passo da Hipótese (n = k):</strong> Formalizamos a <strong>Hipótese de
+                                Indução</strong>, assumindo que a
+                            fórmula é verdadeira para um número genérico k.
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="instrucIn2">
+                    <h3>O Desafio é Formalizar</h3>
+                    <br>
+                    <p>
+                        Agora, devemos provar isso formalmente usando álgebra. Esta é a essência do <strong>Passo de
+                            Indução</strong>:
+                        provar que se a fórmula funciona para k, ela também funciona para k + 1.
+                    </p>
+
+                    <h3>A Sua Missão é reconstruir a prova</h3>
+                    <br>
+                    <p>
+                        Construímos 10 etapas da prova que estão embaralhadas na coluna "Etiquetas Disponíveis". Você
+                        deve
+                        colocá-las na tabela "Ordem da Prova", seguindo a sequência correta da dedução matemática.
+                    </p>
+                    <p>
+                        Ao ordenar todas as 10 etapas corretamente, você terá completado o Passo de Indução e
+                        finalizado a demonstração.
+                    </p>
+
+                </div>
+
+                <div class="instrucIn3">
+                    <p>
+                        Lembrese que a área de cada retângulo construído possui as seguintes características:
+
+                    <ul style="font-size:12px; margin: 5px 20px; padding: 0; ">
+                        <li>a <strong>largura (x<sub>i</sub>)</strong> de cada retângulo igual a Δx = <math
+                                xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>.
+                        </li>
+                        <br>
+                        <li>as <strong>alturas (y<sub>i</sub>)</strong> dos retângulos calculadas pela <strong>função y
+                                =
+                                x<sup>2</sup></strong> nos pontos
+                            de partida de cada subintervalo: x<sub>i</sub> = 0,
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>,
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>2</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>,
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>3</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>,
+                            ..., <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mfrac>
+                                    <mn>n &minus; 1</mn>
+                                    <mn>n</mn>
+                                </mfrac>
+                            </math>.
+                        </li>
+                        <br>
+                        <li>a <strong>área total A(n)</strong> é a soma das áreas (A<sub>i</sub>) de todos os retângulos
+                            inscritos.
+                        </li>
+                    </ul>
+                    <br>
+                    <p> Reordene as etapas da formalização do passo indutivo e conclua a prova.
+                    </p>
+                    <br>
+                    <button id="ProximaEtapaInst2" onclick="window.close();">
+                        Fechar descrição do problema
+                    </button>
+                </div>
+            </fieldset>
+        </section>
+    </main>
+    <footer>
+        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+
+    <div id="orientation-warning">
+        <p>Para uma melhor experiência, por favor, gire seu dispositivo para a posição de paisagem (horizontal).</p>
+    </div>
+
+</body>
+
+</html>
+

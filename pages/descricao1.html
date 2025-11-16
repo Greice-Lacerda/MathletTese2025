@@ -1,0 +1,79 @@
+<!--Página de descrição dos objetivos do mathlet corrigido não mexer.-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Objetivos do Mathlet - Explorando o Princípio da Indução Matemática
+    </title>
+    <link rel="stylesheet" href="../styles/estiloDescricao.css" />
+    <link rel="stylesheet" href="../styles/estilosComuns.css" />
+</head>
+
+<body>
+    <header class="main-header">
+        <h1 id="main-title">Explorando o Princípio da Indução Matemática</h1>
+        <p id="main-subtitle">Uma Abordagem Visual com Faixas de Parábola</p>
+    </header>
+
+    <main>
+        <div class="description-content">
+            <div class="description-column">
+                <img src="../img/LogoPagInicialClaro.png" alt="Logo da oficina de matemática" id="description-image" />
+            </div>
+
+            <div class="description-column">
+                <article class="welcome-text">
+                    <h2>Objetivos do Mathlet</h2>
+                    <ul>
+                        <li>
+                            Proporcionar uma nova perspectiva sobre o
+                            <span class="highlight-text">Princípio da Indução Matemática (PIM)</span>,
+                            explorando-o de forma visual e geométrica.
+                        </li>
+                        <li>
+                            Usando a tecnologia, você irá construir e analisar a área de
+                            polígonos retangulares inscritos em uma faixa da parábola
+                            <code>y = x<sup>2</sup></code>.
+                        </li>
+                        <li>
+                            Com esta abordagem prática, esperamos que você compreenda e
+                            ressignifique a aplicação do PIM, articulando os conceitos
+                            teóricos com uma representação visual clara e intuitiva.
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+
+        <div class="controlsDesc">
+            <button id="back-btn" onclick="window.location.href='../index.html'">Voltar</button>
+            <button id="theory-btn" onclick="window.location.href='./apresentacaoTeorica.html'">Apresentação
+                Teórica</button>
+            <button id="exit-btn" onclick="exitApp()">Sair</button>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Greice Lacerda 2025 - Explorando o Princípio da Indução Matemática
+    </footer>
+
+    <div id="orientation-warning">
+        <p>Para uma melhor experiência, por favor, gire seu dispositivo para a posição de paisagem (horizontal).</p>
+    </div>
+
+    <script>
+        function exitApp() {
+            // Verifica se está em tela cheia e sai, se possível
+            if (document.fullscreenElement && document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+            // Redireciona para fora do app
+            window.location.href = 'https://www.google.com.br';
+        }
+    </script>
+</body>
+
+</html>
