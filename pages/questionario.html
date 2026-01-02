@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exploração Concluída! - Explorando o Princípio da Indução Matemática</title>
+  <title>Exploração Concluída! - Inductio</title>
 
   <link rel="stylesheet" href="../styles/estiloDescricao.css" />
   <link rel="stylesheet" href="../styles/estilosComuns.css" />
@@ -12,54 +12,98 @@
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
 
+  <style>
+    /* Estilos extras para a troca de botões */
+    .btn-hidden {
+      display: none;
+    }
+
+    .btn-visible {
+      display: inline-block;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Estilo para o botão de Encerrar (Destaque) */
+    #btn-encerrar {
+      background-color: #475569;
+      /* Cor neutra/cinza */
+      border: 2px solid #cbd5e1;
+    }
+
+    #btn-encerrar:hover {
+      background-color: #334155;
+      border-color: #fff;
+    }
+  </style>
+
   <script defer>
     document.addEventListener("DOMContentLoaded", () => {
-      // Seleciona os elementos da página
-      const ResumeModal = document.getElementById("Resume-modal");
-      const mainContentResume = document.getElementById("resumeMain");
-      const resumeButton1 = document.getElementById("resume-workshop-btn-1");
-      const resumeButton2 = document.getElementById("resume-workshop-btn2");
-      const parerButton = document.getElementById("Parer");
+      // Elementos
+      const btnQuestionario = document.getElementById("btn-questionario");
+      const btnEncerrar = document.getElementById("btn-encerrar");
+      const containerBotoes = document.getElementById("botoes-container");
+      const msgFinal = document.getElementById("mensagem-pós-click");
       const applauseSound = document.getElementById("aplausos-audio");
 
-      // Adiciona o evento de clique para o primeiro botão
-      if (resumeButton1) {
-        resumeButton1.addEventListener("click", () => {
-          // Esconde o modal inicial
-          ResumeModal.style.display = "visible";
+      // --- AÇÃO 1: CLICAR NO QUESTIONÁRIO ---
+      if (btnQuestionario) {
+        btnQuestionario.addEventListener("click", () => {
 
-          // Mostra o conteúdo principal da página
-          mainContentResume.style.visibility = "hidden";
-
-          // Dispara os confetes
-          if (typeof confetti === 'function') {
-            confetti({
-              particleCount: 500,
-              spread: 100,
-              origin: { y: 0.5 },
-              zIndex: 99999
-            });
-          }
-
-          // Toca o som de aplausos
-          if (applauseSound) {
-            applauseSound.currentTime = 0;
-            applauseSound.play();
-          }
-        });
-      }
-
-      // Adiciona o evento de clique para o botão do questionário
-      if (resumeButton2) {
-        resumeButton2.addEventListener("click", () => {
+          // 1. Abrir Formulário em Nova Guia
+          // Substitua pelo LINK CORRETO do seu Form 2 (Avaliativo)
           window.open('https://forms.gle/TgVwTmSbAGRaXPhHA', '_blank');
+
+          // 2. Disparar Confetes
+          if (typeof confetti === 'function') {
+            // Explosão central
+            confetti({
+              particleCount: 150,
+              spread: 70,
+              origin: { y: 0.6 }
+            });
+
+            // Chuva lateral (opcional para dar mais efeito)
+            setTimeout(() => {
+              confetti({ particleCount: 50, angle: 60, spread: 55, origin: { x: 0 } });
+              confetti({ particleCount: 50, angle: 120, spread: 55, origin: { x: 1 } });
+            }, 300);
+          }
+
+          // 3. Tocar Som
+          if (applauseSound) {
+            applauseSound.volume = 0.5; // Volume a 50%
+            applauseSound.currentTime = 0;
+            applauseSound.play().catch(e => console.log("Áudio bloqueado pelo navegador"));
+          }
+
+          // 4. Trocar os Botões e Mostrar Mensagem
+          btnQuestionario.classList.add("btn-hidden"); // Esconde o questionário
+          btnEncerrar.classList.remove("btn-hidden"); // Mostra o Encerrar
+          btnEncerrar.classList.add("btn-visible");
+
+          if (msgFinal) {
+            msgFinal.style.display = "block";
+            msgFinal.innerHTML = "🎉 Obrigado! Clique abaixo para voltar ao início.";
+          }
         });
       }
 
-      // Adiciona a funcionalidade correta para o botão "Página Principal"
-      // (O onclick= no HTML já fazia isso, mas assim fica mais limpo)
-      if (parerButton) {
-        parerButton.addEventListener("click", () => {
+      // --- AÇÃO 2: CLICAR EM ENCERRAR ---
+      if (btnEncerrar) {
+        btnEncerrar.addEventListener("click", () => {
+          // Volta para a index (Home)
           window.location.href = '../index.html';
         });
       }
@@ -68,22 +112,6 @@
 </head>
 
 <body>
-  <div id="Resume-modal">
-    <fieldset class="Resume-content">
-      <div>
-        <img src="../img/LogoPagInicial.png" alt="Logo da Oficina" class="Resume-logo" />
-      </div>
-      <div>
-        <h1 id="Hresume" style="color: white">Exploração Concluída!</h1>
-        <p id="Presume" style="text-align: center">
-          O Princípio da Indução Matemática: Uma Abordagem Visual com Faixas de
-          Parábola
-        </p>
-        <button id="Parer">Página Principal</button>
-
-      </div>
-    </fieldset>
-  </div>
 
   <div id="resumeMain">
     <fieldset id="ResumeModal1">
@@ -93,20 +121,46 @@
         </div>
 
         <div style="text-align: center;">
-          <h2>DOUTORADO EM ENSINO DA MATEMÁTICA  PEMAT</h2>
+          <h2>DOUTORADO EM ENSINO DA MATEMÁTICA – PEMAT</h2>
           <br>
           <h3>PESQUISA EM ENSINO DA MATEMÁTICA</h3>
           <p>Orientadora: <i>Márcia Maria Fusaro Pinto</i></p>
           <p>Doutoranda: <span class="NegIndLegRes">Greice Keli Silva Lacerda</span></p>
 
           <p id="ResuFin1">Nossa jornada termina aqui! Agradecemos a sua participação!</p>
-          <p id="ResuFin3" style="color:rgb(220, 239, 11); font-weight: bold;">Ajude-nos em nossa pesquisa sobre Mathlet respondendo ao questionário avaliativo!</p>
+
+          <p id="ResuFin3" style="color:rgb(220, 239, 11); font-weight: bold;">
+            <span id="mensagem-pós-click">Ajude-nos respondendo ao questionário avaliativo abaixo:</span>
+          </p>
         </div>
       </fieldset>
 
-      <div id="resume-workshop-btn-2">
-        <button id="resume-workshop-btn2">Questionário Avaliativo</button>
-        <button id="resume-workshop-btn-1">Encerrar Exploração</button>
+      <div id="botoes-container" style="text-align: center; margin-top: 520px;">
+
+        <button id="btn-questionario" class="btn-main" style="
+            background: linear-gradient(90deg, #e11d48, #be123c); 
+            color: white; 
+            padding: 15px 30px; 
+            font-size: 1.1rem; 
+            border: none; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
+            transition: transform 0.2s;">
+          📋 Responder Questionário Avaliativo
+        </button>
+
+        <button id="btn-encerrar" class="btn-hidden" style="
+            background: linear-gradient(90deg, #e11d48, #be123c); 
+            color: white; 
+            padding: 15px 30px; 
+            font-size: 1.1rem; 
+            border-radius: 50px; 
+            cursor: pointer;
+            transition: all 0.3s;">
+          Voltar ao Início
+        </button>
+
       </div>
     </fieldset>
   </div>

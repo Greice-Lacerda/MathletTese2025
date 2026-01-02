@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inductio | Pesquisa Inicial</title>
+    <link rel="stylesheet" href="../styles/comuns.css">
+
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #a855f7;
+            --accent: #22d3ee;
+            --bg-dark: #0f172a;
+            --text-light: #f8fafc;
+        }
+
+        body {
+            background: radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+                var(--bg-dark);
+            overflow-y: auto;
+            color: var(--text-light);
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hub-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 4vh 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+            flex-grow: 1;
+            /* Garante que o footer fique embaixo */
+            justify-content: center;
+            /* Centraliza verticalmente */
+        }
+
+        .hub-header {
+            text-align: center;
+        }
+
+        .hub-title {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 30%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .hub-subtitle {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hub-container">
+
+        <header class="hub-header">
+            <h1 class="hub-title">Bem-vindo ao Inductio</h1>
+            <p class="hub-subtitle">Pesquisa de Doutorado - UFRJ</p>
+        </header>
+
+        <div style="
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
+            border: 2px solid #e11d48; 
+            border-radius: 15px; 
+            padding: 30px; 
+            margin: 0 auto; 
+            max-width: 600px; 
+            width: 100%;
+            text-align: center; 
+            box-shadow: 0 4px 20px rgba(225, 29, 72, 0.3);">
+
+            <h3 style="color: #e11d48; margin-top: 0; font-size: 1.5rem; margin-bottom: 15px;">
+                📋 Etapa Obrigatória
+            </h3>
+
+            <p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px;">
+                Para acessar o ambiente de aprendizagem, precisamos registrar sua participação.<br><br>
+                Ao clicar no botão abaixo:<br>
+                1. O <b>Questionário</b> abrirá em uma nova aba.<br>
+                2. Esta aba carregará o <b>Jogo</b> automaticamente.
+            </p>
+
+            <a href="https://forms.gle/1ChT4HUKAZ3s4UnE7" target="_blank" onclick="irParaOJogo()" style="
+                   display: inline-block;
+                   background: linear-gradient(90deg, #e11d48 0%, #be123c 100%); 
+                   color: white; 
+                   padding: 15px 30px; 
+                   text-decoration: none; 
+                   border-radius: 50px; 
+                   font-weight: bold; 
+                   font-size: 1.2rem;
+                   transition: all 0.3s ease;
+                   box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
+                   cursor: pointer;">
+                📝 Responder e Iniciar
+            </a>
+
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-top: 20px;">
+                Após responder, volte para esta aba para começar a Fase 1.
+            </p>
+        </div>
+
+        <footer style="text-align: center; margin-top: 2rem;">
+            <a href="../index.html"
+                style="color: #475569; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">
+                &larr; Voltar à Página Inicial
+            </a>
+        </footer>
+
+    </div>
+
+    <script>
+        function irParaOJogo() {
+            // O navegador vai processar o href (nova aba) primeiro.
+            // O setTimeout dá um pequeno atraso (500ms) antes de mudar esta página atual.
+            setTimeout(function () {
+                // Redireciona a página atual para principal.html
+                window.location.href = 'principal.html';
+            }, 500);
+        }
+
+        // Efeito visual do link do footer
+        const footerLink = document.querySelector('footer a');
+        if (footerLink) {
+            footerLink.addEventListener('mouseover', () => footerLink.style.color = '#94a3b8');
+            footerLink.addEventListener('mouseout', () => footerLink.style.color = '#475569');
+        }
+    </script>
+</body>
+
+</html>
