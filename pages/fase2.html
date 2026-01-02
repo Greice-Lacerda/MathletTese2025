@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inductio - Fase 2: O Passo Indutivo</title>
+    <link rel="stylesheet" href="../styles/comuns.css">
+    <link rel="stylesheet" href="../styles/fase2.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Fase 2: O Passo Indutivo <math>
+                    <mo>(</mo>
+                    <mi>n</mi>
+                    <mo>→</mo>
+                    <mi>n</mi>
+                    <mo>+</mo>
+                    <mn>1</mn>
+                    <mo>)</mo>
+                </math></h1>
+                <p><br></p>
+            <p>Arraste o bloco laranja para o gráfico. Cada novo bloco representa o passo <math>
+                    <mi>k</mi>
+                    <mo>+</mo>
+                    <mn>1</mn>
+                </math> da indução.</p>
+                <p><br></p>
+        </header>
+
+        <main class="canvas-area">
+            <canvas id="dominoCanvas"></canvas>
+            <div class="algebra-panel">
+                <h3>Análise Algébrica</h3>
+                <p><br></p>
+                <div id="formula-build">
+                </div>
+                <div class="stats">
+                    <p><br></p>
+                    <p>Partições (n): <strong id="n-display">2</strong></p>
+                    <p><br></p>
+                    <p>Área Total: <strong id="area-display">0.1250</strong></p>
+                </div>
+            </div>
+            
+        </main>
+<p><br></p>
+        <footer class="controls">
+    
+            <button id="btnReset" class="btn btn-outline">Reiniciar Experimento</button>
+        </footer>
+    </div>
+
+<div id="discoveryModal" class="modal">
+    <div class="modal-content quiz-modal">
+        <h2>🔬 Desafio: A Hipótese de Indução</h2>
+        <p>Com base na experimentação, qual é a fórmula da área <math>
+                <mi>A</mi>
+                <mo>(</mo>
+                <mi>n</mi>
+                <mo>)</mo>
+            </math> para retângulos inscritos?</p>
+
+        <div class="quiz-options">
+            <label class="option">
+                <input type="radio" name="hyp-quiz" value="0">
+                <span><math>
+                        <mfrac>
+                            <mn>1</mn>
+                            <msup>
+                                <mi>n</mi>
+                                <mn>2</mn>
+                            </msup>
+                        </mfrac>
+                        <mo>&#x2211;</mo>
+                        <msup>
+                            <mi>i</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </math></span>
+            </label>
+            <label class="option">
+                <input type="radio" name="hyp-quiz" value="1">
+                <span><math>
+                        <mfrac>
+                            <mn>1</mn>
+                            <msup>
+                                <mi>n</mi>
+                                <mn>3</mn>
+                            </msup>
+                        </mfrac>
+                        <munderover>
+                            <mo>&#x2211;</mo>
+                            <mrow>
+                                <mi>i</mi>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                            </mrow>
+                            <mi>n</mi>
+                        </munderover>
+                        <msup>
+                            <mi>i</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </math></span>
+            </label>
+            <label class="option" id="correct-option">
+                <input type="radio" name="hyp-quiz" value="2">
+                <span><math>
+                        <mfrac>
+                            <mn>1</mn>
+                            <msup>
+                                <mi>n</mi>
+                                <mn>3</mn>
+                            </msup>
+                        </mfrac>
+                        <munderover>
+                            <mo>&#x2211;</mo>
+                            <mrow>
+                                <mi>i</mi>
+                                <mo>=</mo>
+                                <mn>0</mn>
+                            </mrow>
+                            <mrow>
+                                <mi>n</mi>
+                                <mo>-</mo>
+                                <mn>1</mn>
+                            </mrow>
+                        </munderover>
+                        <msup>
+                            <mi>i</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </math></span>
+            </label>
+            <label class="option">
+                <input type="radio" name="hyp-quiz" value="3">
+                <span><math>
+                        <mfrac>
+                            <mn>1</mn>
+                            <mi>n</mi>
+                        </mfrac>
+                        <mo>&#x2211;</mo>
+                        <mi>i</mi>
+                    </math></span>
+            </label>
+            <label class="option">
+                <input type="radio" name="hyp-quiz" value="4">
+                <span><math>
+                        <mfrac>
+                            <mrow>
+                                <mo>(</mo>
+                                <mi>n</mi>
+                                <mo>-</mo>
+                                <mn>1</mn>
+                                <mo>)</mo>
+                                <mi>n</mi>
+                            </mrow>
+                            <mrow>
+                                <mn>2</mn>
+                                <msup>
+                                    <mi>n</mi>
+                                    <mn>2</mn>
+                                </msup>
+                            </mrow>
+                        </mfrac>
+                    </math></span>
+            </label>
+        </div>
+
+        <p id="quiz-feedback" class="feedback-msg"></p>
+        <p><br></p>
+        <button id="btnVoltar" class="btn btn-primary">Voltar a exploração</button>
+        <button id="btnConcluirFase2" class="btn btn-primary" disabled>Concluir Fase 2</button>
+    </div>
+</div>
+    <script src="../logic/fase2.js"></script>
+</body>
+
+</html>

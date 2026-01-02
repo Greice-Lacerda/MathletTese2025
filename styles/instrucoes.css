@@ -1,0 +1,57 @@
+/* instrucoes.css */
+.header-instr {
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+#InstPage{
+    width: 95%;
+    margin-top: 2rem;
+}
+
+.content-instr {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.step {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1.5rem;
+}
+
+.step h3 {
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.step p {
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+.math-box {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+.actions {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    .actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

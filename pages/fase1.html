@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inductio - Fase 1: O Caso Base</title>
+    <link rel="stylesheet" href="../styles/comuns.css">
+    <link rel="stylesheet" href="../styles/fase1.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Fase 1: O Caso Base <math>
+                    <mo>(</mo>
+                    <mi>n</mi>
+                    <mo>=</mo>
+                    <mn>2</mn>
+                    <mo>)</mo>
+                </math></h1>
+            <p>Monte o polígono inscrito e calcule a área inicial para validar a indução.</p>
+        </header>
+
+        <main class="canvas-area">
+            <canvas id="dominoCanvas"></canvas>
+            <div id="feedback" class="feedback-msg">
+                Arraste os retângulos cinzas para as marcas no eixo x<sub>0</sub> = 0 e x<sub>1</sub> = 0.5.
+            </div>
+        </main>
+
+        <footer class="controls">
+            <button id="btnReset" class="btn btn-outline">Resetar Blocos</button>
+        </footer>
+    </div>
+
+    <div id="mathModal" class="modal">
+        <div class="modal-content">
+            <h2>🔬 Validação do Caso Base</h2>
+            <br>
+            <p>Calcule as áreas individuais para n = 2:</p>
+            <p><br></p>
+            <div class="input-group">
+                <label>Área do retângulo em x = 0 (A<sub>0</sub>):</label>
+                <input type="number" id="inputA0" step="0.001" placeholder="Ex: 0.00">
+            </div>
+
+            <div class="input-group">
+                <label>Área do retângulo em x = 0.5 (A<sub>1</sub>):</label>
+                <input type="number" id="inputA1" step="0.001" placeholder="Ex: 0.0">
+            </div>
+
+            <div class="input-group total-group">
+                <label><strong>Área Total A(2) = A<sub>0</sub> + A<sub>1</sub>:</strong></label>
+                <input type="number" id="inputATotal" step="0.001" placeholder="Ex: 0.0">
+            </div>
+
+            <button id="btnVerificarModal" class="btn btn-primary">Verificar Resultados</button>
+            <br><br>
+            <p id="modalFeedback"></p>
+        </div>
+    </div>
+
+    <script src="../logic/fase1.js"></script>
+</body>
+
+</html>

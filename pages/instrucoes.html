@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruções | Inductio</title>
+    <link rel="stylesheet" href="../styles/instrucoes.css">
+    <link rel="stylesheet" href="../styles/comuns.css">
+</head>
+
+<body>
+
+    <main id="InstPage" class="container">
+        <div class="glass-card">
+            <header class="header-instr">
+                <h1>O Guia do Indutivista</h1>
+                <p>Compreenda a mecânica por trás da soma de Riemann e do infinito.</p>
+            </header>
+
+            <section class="content-instr">
+                <article class="step">
+                    <h3>1. O Caso Base <math>
+                            <msub>
+                                <mi>P</mi>
+                                <mn>(2)</mn>
+                            </msub>
+                        </math></h3>
+                    <p>Toda verdade matemática precisa de um ponto de partida. Na <strong>Fase 1</strong>, você validará
+                        a fórmula da área para o menor caso prático: 2 retângulos. Se a base não for sólida, a torre não
+                        se sustenta.</p>
+                </article>
+
+                <article class="step">
+                    <h3>2. A Hipótese de Indução <math>
+                            <msub>
+                                <mi>P</mi>
+                                <mi>k</mi>
+                            </msub>
+                        </math></h3>
+                    <p>Na <strong>Fase 2</strong>, damos o salto para a abstração. Assumimos que a fórmula da área é
+                        verdadeira para um número genérico <math>
+                            <mi>k</mi>
+                        </math> de partições. Esta suposição será a sua principal ferramenta para o próximo passo.</p>
+                </article>
+
+                <article class="step">
+                    <h3>3. O Salto Indutivo <math>
+                            <msub>
+                                <mi>P</mi>
+                                <mi>k</mi>
+                            </msub>
+                            <mo>⇒</mo>
+                            <msub>
+                                <mi>P</mi>
+                                <mrow>
+                                    <mi>k</mi>
+                                    <mo>+</mo>
+                                    <mn>1</mn>
+                                </mrow>
+                            </msub>
+                        </math></h3>
+                    <p>O desafio final. Na <strong>Fase 3</strong>, você provará que se a fórmula vale para <math>
+                            <mi>k</mi>
+                        </math>, ela obrigatoriamente vale para <math>
+                            <mi>k</mi>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                        </math>. Para isso, você deverá aplicar o <strong>recalque da base</strong> e somar o
+                        <strong>novo termo</strong> da partição.</p>
+
+                    <div class="math-box">
+                        <math display="block">
+                            <mi>A</mi>
+                            <mo>(</mo>
+                            <mi>k</mi>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                            <mo>)</mo>
+                            <mo>=</mo>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mfrac>
+                                        <mi>k</mi>
+                                        <mrow>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                        </mrow>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>3</mn>
+                            </msup>
+                            <mi>A</mi>
+                            <mo>(</mo>
+                            <mi>k</mi>
+                            <mo>)</mo>
+                            <mo>+</mo>
+                            <mfrac>
+                                <msup>
+                                    <mi>k</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mi>k</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mn>3</mn>
+                                </msup>
+                            </mfrac>
+                        </math>
+                    </div>
+                </article>
+
+                <article class="step">
+                    <h3>Conclusão: A Integral</h3>
+                    <p>Ao final, você verá como essa soma de quadrados converge para a área exata sob a curva <math>
+                            <mi>y</mi>
+                            <mo>=</mo>
+                            <msup>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msup>
+                        </math> quando o número de retângulos tende ao infinito.</p>
+                </article>
+            </section>
+
+            <footer class="actions">
+                <a href="../index.html" class="btn btn-outline">Voltar ao Menu</a>
+                <a href="fase1.html" class="btn btn-primary">Entendi, vamos começar!</a>
+            </footer>
+        </div>
+    </main>
+
+</body>
+
+</html>

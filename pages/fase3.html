@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inductio - Fase 3: A Prova Final</title>
+    <link rel="stylesheet" href="../styles/fase3.css">
+    <link rel="stylesheet" href="../styles/comuns.css">
+
+</head>
+
+<body>
+    <div class="app-container">
+        <aside style="text-align: justify;" class="sidebar">
+            <header>
+                <span class="step-tag">Passo Final</span>
+                <br><br>
+                <h1>O Veredito</h1>
+                <br>
+            </header>
+            <div class="instructions"
+                <p>Para concluir a prova, demonstre o <strong>Passo Indutivo</strong> montando a igualdade fundamental.
+                </p>
+                <div class="mini-card">
+                    <canvas id="miniCanvas"></canvas>
+                </div>
+                <p class="hint">Identifique a relação entre a base antiga e a nova malha de subdivisão.</p>
+            </div>
+        </aside>
+
+        <main class="workspace">
+            <section class="construction-zone">
+                <div class="equation-card">
+                    <div class="math-header">Demonstração: A(k + 1)</div>
+                    <div class="drop-area">
+                        <span class="eq-text">A(k+1) = </span>
+                        <div class="slot" data-expected="recalc" id="slot1">A(k) Recalculada</div>
+                        <span class="plus">+</span>
+                        <div class="slot" data-expected="novo" id="slot2">Novo Retângulo</div>
+                    </div>
+                    <div id="feedback-area" class="feedback-text"></div>
+                </div>
+            </section>
+
+            <section class="tools-zone">
+                <div class="tools-header">Banco de Peças (Ordem Aleatória)</div>
+                <div class="equation-bank" id="equationBank">
+                    <div class="draggable-part" id="correct-recalc" draggable="true" data-type="recalc">
+                        <math>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mfrac>
+                                        <mi>k</mi>
+                                        <mrow>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                        </mrow>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>3</mn>
+                            </msup>
+                            <mo>⋅</mo>
+                            <mi>A</mi>
+                            <mo>(</mo>
+                            <mi>k</mi>
+                            <mo>)</mo>
+                        </math>
+                    </div>
+                    <div class="draggable-part" id="correct-novo" draggable="true" data-type="novo">
+                        <math>
+                            <mfrac>
+                                <msup>
+                                    <mi>k</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mi>k</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mn>3</mn>
+                                </msup>
+                            </mfrac>
+                        </math>
+                    </div>
+                    <div class="draggable-part" id="wrong-1" draggable="true" data-type="wrong">
+                        <math>
+                            <msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mfrac>
+                                        <mi>k</mi>
+                                        <mrow>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                        </mrow>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>⋅</mo>
+                            <mi>A</mi>
+                            <mo>(</mo>
+                            <mi>k</mi>
+                            <mo>)</mo>
+                        </math>
+                    </div>
+                    <div class="draggable-part" id="wrong-2" draggable="true" data-type="wrong">
+                        <math>
+                            <mfrac>
+                                <msup>
+                                    <mi>k</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <msup>
+                                    <mi>k</mi>
+                                    <mn>3</mn>
+                                </msup>
+                            </mfrac>
+                        </math>
+                    </div>
+                    <div class="draggable-part" id="wrong-3" draggable="true" data-type="wrong">
+                        <math>
+                            <mfrac>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mi>k</mi>
+                                    <mo>+</mo>
+                                    <mn>1</mn>
+                                    <mo>)</mo>
+                                    <mi>k</mi>
+                                </mrow>
+                                <mrow>
+                                    <mn>2</mn>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mrow>
+                            </mfrac>
+                        </math>
+                    </div>
+                    <div class="draggable-part" id="wrong-4" draggable="true" data-type="wrong">
+                        <math>
+                            <msup>
+                                <mrow>
+                                    <mo>[</mo>
+                                    <mfrac>
+                                        <mrow>
+                                            <mi>k</mi>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                    </mfrac>
+                                    <mo>]</mo>
+                                </mrow>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>⋅</mo>
+                            <mfrac>
+                                <mn>1</mn>
+                                <msup>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mi>k</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mn>3</mn>
+                                </msup>
+                            </mfrac>
+                        </math>
+                    </div>
+                </div>
+            </section>
+
+            <button id="btnFinalizarProva" class="btn-main" disabled>Validar Demonstração</button>
+        </main>
+    </div>
+    
+    <div id="finalModal" class="modal">
+        <div class="modal-content wide-modal">
+            <div class="success-icon"><h2>Relatório de Validação Matemática</h2></div>
+            <div class="proof-grid">
+                <div class="proof-column">
+                    <section class="proof-section">
+                        <h3>1. Hipótese de Indução A(k)</h3>
+                        <p>Supomos válida para uma partição <math>
+                                <mi>k</mi>
+                            </math>:</p>
+                        <div class="math-box">
+                            <math display="block">
+                                <mi>A</mi>
+                                <mo>(</mo>
+                                <mi>k</mi>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mfrac>
+                                <munderover>
+                                    <mo>∑</mo>
+                                    <mrow>
+                                        <mi>i</mi>
+                                        <mo>=</mo>
+                                        <mn>0</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mo>-</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </munderover>
+                                <msup>
+                                    <mi>i</mi>
+                                    <mn>2</mn>
+                                </msup>
+                            </math>
+                        </div>
+                    </section>
+                    <section class="proof-section">
+                        <h3>2. O Passo de Transição</h3>
+                        <p>Adicionamos o novo retângulo à base recalculada:</p>
+                        <div class="math-box highlight">
+                            <math display="block">
+                                <mi>A</mi>
+                                <mo>(</mo>
+                                <mi>k</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>3</mn>
+                                    </msup>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mfrac>
+                                <mi>A</mi>
+                                <mo>(</mo>
+                                <mi>k</mi>
+                                <mo>)</mo>
+                                <mo>+</mo>
+                                <mfrac>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mfrac>
+                            </math>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="proof-column">
+                    <section class="proof-section">
+                        <h3>3. Síntese Algébrica</h3>
+                        <p>Unificando os numeradores sob o novo denominador:</p>
+                        <div class="math-box secondary">
+                            <math display="block">
+                                <mi>A</mi>
+                                <mo>(</mo>
+                                <mi>k</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                                <mo>)</mo>
+                                <mo>=</mo>
+                                <mfrac>
+                                    <mn>1</mn>
+                                    <msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mi>k</mi>
+                                            <mo>+</mo>
+                                            <mn>1</mn>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </msup>
+                                </mfrac>
+                                <mo>.</mo>
+                                <mo>[</mo>
+                                <munderover>
+                                    <mo>∑</mo>
+                                    <mrow>
+                                        <mi>i</mi>
+                                        <mo>=</mo>
+                                        <mn>0</mn>
+                                    </mrow>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mo>-</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </munderover>
+                                <msup>
+                                    <mi>i</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>+</mo>
+                                <msup>
+                                    <mi>k</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <mo>]</mo>
+                                <mo>=</mo>
+                                    <mfrac>
+                                        <mn>1</mn>
+                                        <msup>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mi>k</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mn>3</mn>
+                                        </msup>
+                                    </mfrac>
+                                    <mo>.</mo>
+                                    <mo>[</mo>
+                            
+                                    <msup>
+                                        <mi>1</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    
+                                    <mo>...</mo>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mi>(k - 1)</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <msup>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>]</mo>
+                                </math>
+                        </div>
+                    </section>
+                    <section class="proof-section">
+                        <h3>4. Veredito Final</h3>
+                        <p>A área sob y = x<sup>2</sup> no intervalo [0, 1] é dada por:</p>
+                        <div class="final-statement math-box secondary">            
+                            <math display="block">
+                                        <mi>A</mi>
+                                        <mo>(</mo>
+                                        <mi>k</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>)</mo>
+                                        <mo>=</mo>
+                                        <mfrac>
+                                            <mn>1</mn>
+                                            <msup>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mi>k</mi>
+                                                    <mo>+</mo>
+                                                    <mn>1</mn>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mn>3</mn>
+                                            </msup>
+                                        </mfrac>
+                                        <mo>.</mo>
+                                        <munderover>
+                                            <mo>∑</mo>
+                                            <mrow>
+                                                <mi>i</mi>
+                                                <mo>=</mo>
+                                                <mn>0</mn>
+                                            </mrow>
+                                            <mrow>
+                                                <mi>k</mi>
+                                            </mrow>
+                                        </munderover>
+                                        <msup>
+                                            <mi>i</mi>
+                                            <mn>2</mn>
+                                        </msup>
+                                    </math>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <button class="btn-main" onclick="window.location.href='verificacao.html'">Finalizar Estudo</button>
+        </div>
+    </div>
+
+    <script src="../logic/fase3.js"></script>
+</body>
+
+</html>

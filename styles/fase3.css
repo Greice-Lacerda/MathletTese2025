@@ -1,0 +1,325 @@
+:root {
+    --bg: #020617;
+    --card: #0f172a;
+    --primary: #22d3ee;
+    --secondary: #fb923c;
+    --text: #f1f5f9;
+    --success: #22c55e;
+    --error: #ef4444;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    background: #000;
+    padding: 2rem;
+    border-right: 1px solid #1e293b;
+}
+
+.step-tag {
+    background: var(--secondary);
+    color: #000;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.mini-card {
+    background: var(--card);
+    border-radius: 12px;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #334155;
+}
+
+#miniCanvas {
+    width: 100%;
+    height: 120px;
+}
+
+.canvas-caption {
+    font-size: 0.7rem;
+    color: #64748b;
+    text-align: center;
+}
+
+/* Workspace */
+.workspace {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    overflow: hidden;
+}
+
+.equation-card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.math-header {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #64748b;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.drop-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.slot {
+    min-width: 220px;
+    height: 100px;
+    border: 2px dashed #334155;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #020617;
+    transition: 0.3s;
+    color: #475569;
+    font-size: 0.8rem;
+}
+
+.slot.over {
+    border-color: var(--primary);
+    background: rgba(34, 211, 238, 0.05);
+}
+
+.slot.filled {
+    border-style: solid;
+    border-color: var(--primary);
+    color: white;
+    background: var(--card);
+}
+
+/* Equation Bank */
+.tools-zone {
+    width: 100%;
+    max-width: 800px;
+}
+
+.equation-bank {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.draggable-part {
+    background: var(--card);
+    border: 1px solid #1e293b;
+    padding: 1.2rem;
+    border-radius: 12px;
+    cursor: grab;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.draggable-part:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+/* Buttons & Feedback */
+.btn-main {
+    background: var(--primary);
+    color: #020617;
+    border: none;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-main:disabled {
+    background: #1e293b;
+    color: #475569;
+    cursor: not-allowed;
+}
+
+.feedback-text {
+    height: 24px;
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Modal & Proof */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--card);
+    padding: 3rem;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    border: 1px solid var(--primary);
+}
+
+.success-icon {
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.formal-proof-container {
+    text-align: left;
+    margin: 2rem 0;
+    max-height: 50vh;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+.math-box {
+    background: #020617;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 10px 0;
+    border: 1px solid #1e293b;
+}
+
+.math-box.highlight {
+    border-color: var(--secondary);
+}
+
+.final-statement {
+    border: 1px solid var(--success);
+    background: rgba(34, 197, 94, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    color: var(--success);
+    font-weight: 500;
+    margin-top: 1.5rem;
+}
+
+/* Modal Largo */
+.wide-modal {
+    max-width: 950px !important;
+    /* Aumentamos a largura para caber as colunas */
+    width: 95%;
+}
+
+.proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Duas colunas iguais */
+    gap: 30px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.proof-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Ajustes de espaçamento interno para remover rolagem */
+.proof-section h3 {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: var(--primary);
+    border-left: 3px solid var(--primary);
+    padding-left: 10px;
+}
+
+.proof-section p {
+    font-size: 0.85rem;
+    margin: 5px 0;
+}
+
+.math-box {
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+.final-statement {
+    margin-top: 15px;
+    padding: 12px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Responsividade: Volta para uma coluna em telas pequenas */
+@media (max-width: 800px) {
+    .proof-grid {
+        grid-template-columns: 1fr;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+
+    .wide-modal {
+        padding: 1.5rem;
+    }
+}
+
+.equation-bank {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 colunas x 2 linhas */
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.dragging {
+    opacity: 0.5;
+    transform: scale(0.95);
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Responsividade para o banco de peças */
+@media (max-width: 600px) {
+    .equation-bank {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

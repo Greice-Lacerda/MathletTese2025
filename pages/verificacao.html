@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inductio - Fase 4: Ordenação Lógica</title>
+    <link rel="stylesheet" href="../styles/comuns.css">
+    <link rel="stylesheet" href="../styles/estiloPasso5.css">
+
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <header>
+                <span class="step-tag">Revisão Final</span>
+                <br><br>
+                <h1>Lógica da Indução</h1>
+                <br>
+            </header>
+
+            <div class="instructions" style="text-align: justify;">
+                <p>Para provar que você domina o método, organize os passos do Princípio de Indução Matemática na ordem
+                    correta.</p>
+                    <br>
+                <p class="hint"><strong>Como jogar:</strong> Arraste os cartões da esquerda para os espaços numerados na
+                    direita.</p>
+
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+
+                <div id="feedback-area" class="feedback-msg">
+                    Aguardando ordenação...
+                </div>
+                <br>
+                <button id="btnFinalizar" class="btn btn-primary pulse-anim" style="display:none; margin-top: 20px;"
+                    onclick="window.location.href='questionario.html'">
+                    Concluir Jornada 🚀
+                </button>
+            </div>
+        </aside>
+
+        <main class="workspace">
+            <div class="drag-grid">
+
+                <div class="column-source">
+                    <h3>Fragmentos de Lógica</h3>
+                    <div id="source-container" class="card-stack">
+                        <div class="draggable-item" draggable="true" data-id="1">
+                            Base: Verificar se P(n₀) é verdadeiro.
+                        </div>
+                        <div class="draggable-item" draggable="true" data-id="2">
+                            Hipótese: Assumir que P(k) é verdadeiro.
+                        </div>
+                        <div class="draggable-item" draggable="true" data-id="3">
+                            Tese: Identificar o alvo P(k+1).
+                        </div>
+                        <div class="draggable-item" draggable="true" data-id="4">
+                            Demonstração: Provar P(k) ⇒ P(k+1).
+                        </div>
+                        <div class="draggable-item" draggable="true" data-id="5">
+                            Conclusão: Logo, P(n) vale para todo n.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column-target">
+                    <h3>Estrutura da Prova</h3>
+                    <div class="slots-stack">
+                        <div class="drop-slot" data-expected="1">
+                            <span class="slot-number"> <span class="icon">Passo ①</span></span>
+                        </div>
+                        <div class="drop-slot" data-expected="2">
+                            <span class="slot-number"> <span class="icon">Passo ②</span></span></div>
+                        <div class="drop-slot" data-expected="3">
+                            <span class="slot-number"><span class="icon">Passo ③</span></span>
+                        </div>
+                        <div class="drop-slot" data-expected="4">
+                            <span class="slot-number"><span class="icon">Passo ④</span></span>
+                        </div>
+                        <div class="drop-slot" data-expected="5">
+                            <span class="slot-number"><span class="icon">Passo ⑤</span></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../logic/verificacao.js"></script>
+</body>
+
+</html>

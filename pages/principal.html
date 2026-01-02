@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inductio | Hub Principal</title>
+    <link rel="stylesheet" href="../styles/comuns.css">
+    <link rel="stylesheet" href="../styles/estiloPasso5.css">
+
+    <style>
+        /* --- ESTILOS ESPECÍFICOS DESTA PÁGINA (MODERNO/SCIFI) --- */
+
+        body {
+            /* Fundo base escuro com pontos de luz ambiente */
+            background: radial-gradient(circle at 10% 20%, rgba(34, 211, 238, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+                var(--bg-dark);
+            overflow-y: auto;
+            /* Permite rolagem se necessário em telas pequenas */
+        }
+
+        .hub-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 4vh 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Hero Section */
+        .hub-header {
+            text-align: center;
+            position: relative;
+        }
+
+        .hub-title {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 0.5rem;
+            /* Gradiente no texto */
+            background: linear-gradient(135deg, #fff 30%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .hub-subtitle {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Grid Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        /* Cartão da Esquerda - Ação */
+        .mission-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem;
+            background: rgba(30, 41, 59, 0.6);
+            /* Mais escuro */
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .mission-card h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .mission-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-glow {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(168, 85, 247, 0.6);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #94a3b8;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(34, 211, 238, 0.05);
+        }
+
+        /* Cartão da Direita - Dados (HUD Visual) */
+        .data-panel {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Linha decorativa no topo do painel de dados */
+        .data-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .panel-header {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .math-display {
+            font-size: 1.5rem;
+            /* Fórmulas maiores */
+            color: #e2e8f0;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .caption {
+            font-size: 0.9rem;
+            color: #64748b;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Animação de Entrada */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 850px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hub-title {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hub-container">
+
+        <header class="hub-header">
+            <h1 class="hub-title">Princípio da Indução Matemática</h1>
+            <p class="hub-subtitle">A Ponte entre a Geometria Intuitiva e o Rigor da Análise</p>           
+        </header>
+
+        <main class="dashboard-grid">
+
+            <section class="glass-card mission-card" style="text-align: justify;">
+                <h2>Bem-vindo, Matemático</h2>
+                <p>
+                    Você está prestes a entrar numa simulação geométrica.
+                    Seu objetivo é validar a convergência da Soma de Riemann utilizando
+                    o <strong>Princípio da Indução Matemática</strong>.
+                    <br><br>
+                    Prepare-se para manipular blocos finitos e provar verdades infinitas.
+                </p>
+
+                <div class="action-buttons">
+                    <a href="fase1.html" class="btn btn-large btn-glow">
+                        <span>▶</span> Iniciar Experimento
+                    </a>
+                    <a href="instrucoes.html" class="btn btn-large btn-ghost">
+                        Instruções
+                    </a>
+                </div>
+            </section>
+
+            <section class="glass-card data-panel">
+                <div class="panel-header">
+                    <span><h3>O Alvo da Prova</h3></span>
+                    <span>Status: Pending</span>
+                </div>
+
+                <div class="math-display">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mi>A</mi>
+                    <mo stretchy="false">(</mo>
+                    <mi>n</mi>
+                    <mo stretchy="false">)</mo>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mn>1</mn>
+                        <msup>
+                            <mi>n</mi>
+                            <mn>3</mn>
+                        </msup>
+                    </mfrac>
+                    <munderover>
+                        <mo>&#x2211;</mo>
+                        <mrow>
+                            <mi>i</mi>
+                            <mo>=</mo>
+                            <mn>0</mn>
+                        </mrow>
+                        <mrow>
+                            <mi>n</mi>
+                            <mo>&#x2212;</mo>
+                            <mn>1</mn>
+                        </mrow>
+                    </munderover>
+                    <msup>
+                        <mi>i</mi>
+                        <mn>2</mn>
+                    </msup>
+                </math>
+                </div>
+
+                <div class="caption">
+                    Alvo da Prova: <p>Validar a soma das áreas sob <math>
+                            <mi>y</mi>
+                            <mo>=</mo>
+                            <msup>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msup>
+                        </math> para qualquer partição <math>
+                            <mi>n</mi>
+                        </math>.</p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.05); margin: 2rem 0;">
+
+                <div class="math-display" style="font-size: 1.1rem;">
+                    <p class="formula-caption">Demonstre a convergência via P.I.M.</p>
+                </div>
+                <div class="caption">
+                    Ferramenta: Princípio da Indução Matemática
+                </div>
+            </section>
+        </main>
+
+        <footer style="text-align: center; margin-top: 0.5rem;">
+            <a href="../index.html"
+                style="color: #475569; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">
+                &larr; Voltar à Página Inicial)
+            </a>
+        </footer>
+
+    </div>
+
+    <script>
+        const footerLink = document.querySelector('footer a');
+        footerLink.addEventListener('mouseover', () => footerLink.style.color = '#94a3b8');
+        footerLink.addEventListener('mouseout', () => footerLink.style.color = '#475569');
+    </script>
+</body>
+
+</html>
