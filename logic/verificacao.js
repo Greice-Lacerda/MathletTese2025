@@ -1,21 +1,19 @@
 /**
- * INDUCTIO - FASE 4: Lógica de Ordenação
- * Adaptação do antigo 'verificacao.js' para o novo sistema visual
+ * INDUCTIO - FASE 4: Lógica de Ordenação (Mobile Friendly)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Elementos DOM
     const draggables = document.querySelectorAll('.draggable-item');
     const slots = document.querySelectorAll('.drop-slot');
     const sourceContainer = document.getElementById('source-container');
     const feedbackArea = document.getElementById('feedback-area');
     const btnFinalizar = document.getElementById('btnFinalizar');
 
-    let draggedItem = null;
+    let activeDragItem = null;
+    let initialX = 0, initialY = 0;
 
-    // 1. Função de Embaralhamento (Fisher-Yates)
-    // Garante que o usuário sempre tenha que pensar para ordenar
+    // 1. Embaralhamento
     function shuffleItems() {
         const items = Array.from(sourceContainer.children);
         for (let i = items.length - 1; i > 0; i--) {
@@ -23,103 +21,110 @@ document.addEventListener('DOMContentLoaded', () => {
             sourceContainer.appendChild(items[j]);
         }
     }
-
-    // Executa embaralhamento inicial
     shuffleItems();
 
-    // 2. Event Listeners para os Itens (Arrastar)
+    // 2. Configuração de Pointer Events (Drag customizado)
     draggables.forEach(item => {
-        item.addEventListener('dragstart', (e) => {
-            draggedItem = item;
-            item.classList.add('dragging');
-            // Hack para esconder o elemento original enquanto arrasta, mantendo a "imagem fantasma"
-            setTimeout(() => item.style.display = 'none', 0);
-        });
+        item.style.touchAction = "none"; // Vital para celular
+        item.style.cursor = "grab";
+        item.style.position = "relative";
 
-        item.addEventListener('dragend', () => {
-            item.classList.remove('dragging');
-            item.style.display = 'flex'; // Volta a aparecer ao soltar
-            draggedItem = null;
-            checkAllSlots(); // Verifica se completou o jogo
-        });
-    });
-
-    // 3. Event Listeners para os Slots (Soltar)
-    slots.forEach(slot => {
-
-        slot.addEventListener('dragover', (e) => {
-            e.preventDefault(); // Necessário para permitir o drop
-            // Apenas adiciona efeito visual se o slot estiver vazio (ou tiver apenas o label)
-            if (!hasItem(slot)) {
-                slot.classList.add('over');
-            }
-        });
-
-        slot.addEventListener('dragleave', () => {
-            slot.classList.remove('over');
-        });
-
-        slot.addEventListener('drop', (e) => {
+        item.addEventListener('pointerdown', (e) => {
             e.preventDefault();
-            slot.classList.remove('over');
+            activeDragItem = item;
 
-            if (draggedItem && !hasItem(slot)) {
-                // Remove o item de onde estava (source ou outro slot)
-                if (draggedItem.parentNode.classList.contains('drop-slot')) {
-                    // Se veio de outro slot, limpa o estilo daquele slot
-                    resetSlotStyle(draggedItem.parentNode);
-                }
+            // Prepara visual
+            item.setPointerCapture(e.pointerId);
+            item.classList.add('dragging');
+            item.style.zIndex = "9999";
+            item.style.cursor = "grabbing";
 
-                // Esconde o label "Passo X"
-                const label = slot.querySelector('.slot-number');
-                if (label) label.style.display = 'none';
+            // Ponto inicial
+            initialX = e.clientX;
+            initialY = e.clientY;
+        });
 
-                // Adiciona o item ao slot
-                slot.appendChild(draggedItem);
+        item.addEventListener('pointermove', (e) => {
+            if (!activeDragItem) return;
+            e.preventDefault();
 
-                // Validação Imediata (Feedback Visual)
-                validateSlot(slot);
+            const currentX = e.clientX - initialX;
+            const currentY = e.clientY - initialY;
+
+            // Move o elemento visualmente
+            item.style.transform = `translate(${currentX}px, ${currentY}px)`;
+        });
+
+        item.addEventListener('pointerup', (e) => {
+            if (!activeDragItem) return;
+
+            const item = activeDragItem;
+            item.releasePointerCapture(e.pointerId);
+            item.classList.remove('dragging');
+            item.style.zIndex = "";
+            item.style.transform = ""; // Reseta a posição visual
+            item.style.cursor = "grab";
+
+            // Detecção do local de soltura
+            item.style.visibility = 'hidden'; // Esconde para ver o que está embaixo
+            const elementBelow = document.elementFromPoint(e.clientX, e.clientY);
+            item.style.visibility = 'visible';
+
+            // Analisa onde soltou
+            const dropZone = elementBelow ? elementBelow.closest('.drop-slot, #source-container') : null;
+
+            if (dropZone) {
+                handleDrop(item, dropZone);
             }
+
+            activeDragItem = null;
+            initialX = 0; initialY = 0;
         });
     });
 
-    // Permite arrastar de volta para a origem (Source) caso o usuário erre
-    sourceContainer.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        sourceContainer.style.background = "rgba(255,255,255,0.05)";
-    });
+    // 3. Lógica de Drop e Validação
+    function handleDrop(item, targetZone) {
+        // Se soltou no mesmo lugar que já estava, não faz nada
+        if (item.parentNode === targetZone) return;
 
-    sourceContainer.addEventListener('dragleave', () => {
-        sourceContainer.style.background = "transparent";
-    });
-
-    sourceContainer.addEventListener('drop', (e) => {
-        e.preventDefault();
-        sourceContainer.style.background = "transparent";
-        if (draggedItem) {
-            // Se veio de um slot, restaura o label do slot anterior
-            if (draggedItem.parentNode.classList.contains('drop-slot')) {
-                resetSlotStyle(draggedItem.parentNode);
-            }
-            sourceContainer.appendChild(draggedItem);
+        // Limpeza do slot anterior (se veio de um slot)
+        if (item.parentNode.classList.contains('drop-slot')) {
+            resetSlotStyle(item.parentNode);
         }
-    });
 
-    // --- Funções Auxiliares ---
+        // Se soltou no Container de Origem
+        if (targetZone.id === 'source-container') {
+            targetZone.appendChild(item);
+            return;
+        }
 
-    // Verifica se o slot já tem um item (ignorando o span .slot-number)
-    function hasItem(slot) {
-        return slot.querySelectorAll('.draggable-item').length > 0;
+        // Se soltou em um Slot de Resposta
+        if (targetZone.classList.contains('drop-slot')) {
+            // Se o slot já tem um item, mande o item antigo de volta pra origem
+            const existingItem = targetZone.querySelector('.draggable-item');
+            if (existingItem) {
+                sourceContainer.appendChild(existingItem);
+            }
+
+            // Esconde o número do slot
+            const label = targetZone.querySelector('.slot-number');
+            if (label) label.style.display = 'none';
+
+            // Move o item novo para o slot
+            targetZone.appendChild(item);
+
+            // Valida imediatamente
+            validateSlot(targetZone);
+            checkAllSlots();
+        }
     }
 
-    // Restaura aparência original do slot quando o item sai
     function resetSlotStyle(slot) {
         slot.classList.remove('correct', 'wrong');
         const label = slot.querySelector('.slot-number');
         if (label) label.style.display = 'block';
     }
 
-    // Valida um slot individualmente
     function validateSlot(slot) {
         const item = slot.querySelector('.draggable-item');
         if (!item) return;
@@ -130,14 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (expectedId === actualId) {
             slot.classList.add('correct');
             slot.classList.remove('wrong');
-            // Toca som sutil se quiser (opcional)
         } else {
             slot.classList.add('wrong');
             slot.classList.remove('correct');
         }
     }
 
-    // Verifica Vitória
     function checkAllSlots() {
         let correctCount = 0;
         slots.forEach(slot => {
@@ -147,18 +150,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (correctCount === 5) {
-            // Vitória!
             feedbackArea.innerHTML = "<strong>👏 Parabéns!</strong><br>✔️ A lógica está impecável.";
-            feedbackArea.style.color = "#22c55e"; // Verde
+            feedbackArea.style.color = "#22c55e";
             feedbackArea.style.borderLeft = "4px solid #22c55e";
             btnFinalizar.style.display = "block";
 
-            // Trava os itens para não mexer mais
-            draggables.forEach(d => d.setAttribute('draggable', 'false'));
+            // Bloqueia movimento após vencer
+            draggables.forEach(d => d.style.pointerEvents = "none");
         } else {
-            // Reset feedback se ainda não acabou
             feedbackArea.innerText = `Passos Corretos: ${correctCount} / 5`;
-            feedbackArea.style.color = "#94a3b8"; // Cinza
+            feedbackArea.style.color = "#94a3b8";
             feedbackArea.style.borderLeft = "none";
         }
     }

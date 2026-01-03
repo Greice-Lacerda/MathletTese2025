@@ -1,5 +1,6 @@
 /**
  * INDUCTIO - FASE 2: O Passo Indutivo e a Hipótese
+ * Adaptado para Mouse e Celular (Pointer Events)
  */
 
 const canvas = document.getElementById('dominoCanvas');
@@ -16,12 +17,20 @@ const quizOptions = document.querySelectorAll('input[name="hyp-quiz"]');
 // Configurações do Gráfico
 canvas.width = 650;
 canvas.height = 400;
+
+// IMPORTANTE: Impede o scroll da página ao tocar no canvas
+canvas.style.touchAction = "none";
+
 const PADDING_X = 60, FLOOR_Y = 350, UNIT_WIDTH = 500, SCALE_Y = 300;
 
 let n = 2; // Começa de onde parou na Fase 1
 let isDragging = false;
 let isModalOpen = false;
 const sourceBox = { x: 20, y: 20, size: 60 };
+
+// Variáveis para controle de arraste preciso
+let dragOffset = { x: 0, y: 0 };
+let currentDragPos = { x: 0, y: 0 };
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -74,12 +83,17 @@ function draw() {
     ctx.fillStyle = '#fb923c';
     ctx.shadowBlur = isDragging ? 15 : 0;
     ctx.shadowColor = "#fb923c";
-    ctx.fillRect(sourceBox.x, sourceBox.y, sourceBox.size, sourceBox.size);
+
+    // Se estiver arrastando, desenha onde o dedo está. Se não, na posição fixa.
+    const drawX = isDragging ? currentDragPos.x : sourceBox.x;
+    const drawY = isDragging ? currentDragPos.y : sourceBox.y;
+
+    ctx.fillRect(drawX, drawY, sourceBox.size, sourceBox.size);
     ctx.shadowBlur = 0;
 
     ctx.fillStyle = '#000';
     ctx.font = 'bold 16px Arial';
-    ctx.fillText("n + 1", sourceBox.x + 10, sourceBox.y + 35);
+    ctx.fillText("n + 1", drawX + 10, drawY + 35);
 
     // Atualização da Interface
     nDisplay.innerText = n;
@@ -113,53 +127,66 @@ function updateAlgebraPanel(labels, currentN) {
     `;
 }
 
-// --- Lógica de Interação (Mouse) ---
+// --- Lógica de Interação (Pointer Events) ---
 
-canvas.onmousedown = (e) => {
+function getPointerPos(e) {
     const rect = canvas.getBoundingClientRect();
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    return {
+        x: (e.clientX - rect.left) * scaleX,
+        y: (e.clientY - rect.top) * scaleY
+    };
+}
 
-    if (mx > sourceBox.x && mx < sourceBox.x + sourceBox.size &&
-        my > sourceBox.y && my < sourceBox.y + sourceBox.size) {
+canvas.addEventListener('pointerdown', (e) => {
+    const pos = getPointerPos(e);
+
+    if (pos.x > sourceBox.x && pos.x < sourceBox.x + sourceBox.size &&
+        pos.y > sourceBox.y && pos.y < sourceBox.y + sourceBox.size) {
+
         isDragging = true;
-    }
-};
+        dragOffset.x = pos.x - sourceBox.x;
+        dragOffset.y = pos.y - sourceBox.y;
+        currentDragPos = { x: sourceBox.x, y: sourceBox.y };
 
-window.onmousemove = (e) => {
-    if (isDragging) {
+        canvas.setPointerCapture(e.pointerId);
         draw();
-        const rect = canvas.getBoundingClientRect();
-        ctx.fillStyle = 'rgba(251, 146, 60, 0.5)';
-        ctx.fillRect(e.clientX - rect.left - 20, e.clientY - rect.top - 20, 40, 40);
     }
-};
+});
 
-window.onmouseup = (e) => {
+canvas.addEventListener('pointermove', (e) => {
     if (isDragging) {
-        const rect = canvas.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
+        e.preventDefault(); // Evita scroll
+        const pos = getPointerPos(e);
+        currentDragPos.x = pos.x - dragOffset.x;
+        currentDragPos.y = pos.y - dragOffset.y;
+        draw();
+    }
+});
+
+canvas.addEventListener('pointerup', (e) => {
+    if (isDragging) {
+        canvas.releasePointerCapture(e.pointerId);
 
         // Se soltar o bloco dentro da zona do gráfico (Eixo X)
-        if (mx > PADDING_X && mx < PADDING_X + UNIT_WIDTH && my > 100) {
+        if (currentDragPos.x > PADDING_X && currentDragPos.x < PADDING_X + UNIT_WIDTH && currentDragPos.y > 100) {
             n++;
         }
+
         isDragging = false;
-        draw();
+        draw(); // Redesenha com o bloco voltando para o início
     }
-};
+});
 
 // --- Lógica do Quiz ---
 
 quizOptions.forEach(opt => {
     opt.addEventListener('change', (e) => {
-        // Limpar estilos anteriores
         document.querySelectorAll('.option').forEach(el => el.classList.remove('selected-correct', 'selected-wrong'));
-
         const parentLabel = e.target.parentElement;
 
-        if (e.target.value === "2") { // Opção correta (Hipótese de Indução Inscrita)
+        if (e.target.value === "2") {
             parentLabel.classList.add('selected-correct');
             quizFeedback.innerText = "✅ Perfeito! Esta é a hipótese que provaremos por PIM.";
             quizFeedback.style.color = "#22c55e";
@@ -175,7 +202,6 @@ quizOptions.forEach(opt => {
     });
 });
 
-// Botão de Reset
 document.getElementById('btnReset').onclick = () => {
     n = 2;
     isModalOpen = false;
@@ -184,15 +210,7 @@ document.getElementById('btnReset').onclick = () => {
     draw();
 };
 
-// Botão Final -> Fase 3
-btnConcluir.onclick = () => {
-    window.location.href = "fase3.html";
-};
+btnConcluir.onclick = () => window.location.href = "fase3.html";
+btnVoltar.onclick = () => window.location.href = "fase2.html";
 
-// Botão Voltar para Exploração
-btnVoltar.onclick = () => {
-    window.location.href = "fase2.html";
-};
-
-// Inicialização
 draw();
